@@ -8,10 +8,28 @@
     <!--Header einbinden-->
     <div include-html="header.html"></div>
 
-
-
-
-
+    <!--Searchbox-->
+    <form>
+      <div>
+        <div>
+          <input type="text" placeholder="z.B. Programmierer"></input>
+        </div>
+        <div>
+          <select>
+            <option disabled selected value="">Kategorie</option>
+            <option value="">Vollzeit</option>
+            <option value="">Teilzeit</option>
+            <option value="">Freiberufler</option>
+            <option value="">Praktikum</option>
+            <option value="">Befristet</option>
+          </select>
+        </div>
+        <div>
+          <input type="submit" value="Suchen">
+        </div>
+      </div>
+    </form>
+    <div include-html="footer.html"></div>
   </body>
   <script src="scripts/include.js"></script>
   <script>includeHTML();</script>
