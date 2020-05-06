@@ -6,7 +6,7 @@
   </head>
   <body>
     <!--Header einbinden-->
-    <div include-html="header.html"></div>
+    <?php include "header.html"; ?>
 
     <!--Searchbox-->
     <form>
@@ -29,8 +29,6 @@
         </div>
       </div>
     </form>
-    <div include-html="footer.html"></div>
+    <?php include "footer.html"; ?>
   </body>
-  <script src="scripts/include.js"></script>
-  <script>includeHTML();</script>
 </html>

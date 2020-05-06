@@ -6,7 +6,7 @@
   </head>
   <body>
     <!--icludes header -->
-    <div include-html="header.html"></div>
+    <?php include "header.html"; ?>
     <br>
     <br>
     <!--Kontaktformular-->
@@ -27,8 +27,6 @@
       </div>
     </section>
     <!--icludes footer -->
-    <div include-html="footer.html"></div>
+    <?php include "footer.html"; ?>
   </body>
-  <script src="scripts/include.js"></script>
-  <script>includeHTML();</script>
 </html>

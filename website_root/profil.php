@@ -6,14 +6,12 @@
   </head>
   <body>
     <!--Header einbinden-->
-    <div include-html="header.html"></div>
+    <?php include "header.html"; ?>
 
     <!--Searchbox-->
   <h1>  Mein Profil</h1>
     Beispieltext
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-    <div include-html="footer.html"></div>
+    <?php include "footer.html"; ?>
   </body>
-  <script src="scripts/include.js"></script>
-  <script>includeHTML();</script>
 </html>

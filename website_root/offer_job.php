@@ -5,9 +5,7 @@
     <title></title>
   </head>
   <body>
-
-
-    <div include-html="header.html"></div>
+    <?php include "header.html"; ?>
 
     <div>
       <div>
@@ -17,7 +15,7 @@
       Beschreibung:  <input type="text" placeholder=""></input>
       </div>
     <div>
-      Hier Bild einfügen <a href="offer_job.html"> <input type="button" value="Bild hochladen"  >  </
+      Hier Bild einfügen <a href="offer_job.php"> <input type="button" value="Bild hochladen"  >  </
     </div>
       <div>
         <input type="submit" value="Anzeige freischalten">
@@ -25,10 +23,6 @@
       <div>
         <input type="reset" value="Zurücksetzen">
       </div>
-      <div include-html = "footer.html"></div>
+      <?php include "footer.html"; ?>
   </body>
-  <script src="scripts/include.js"></script>
-  <script>includeHTML();</script>
-
-
 </html>
