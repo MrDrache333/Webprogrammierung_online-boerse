@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .button{background-color: #989898;
 
 padding:10px 130px}
@@ -10,3 +11,38 @@ padding:10px 10px}
 
 div#button{ float:right;}
 div#button2{ float:right;}
+=======
+
+.navi {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #989898;
+  /*  position: fixed;*/  /*möglichkeit die leiste fix immer im Bild zu haben */
+  /*  top:20;
+    width: 100%;*/
+
+}
+
+.navibutton{
+    float: left;
+}
+
+.test {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-right: 1px solid #bbb;
+}
+.navibutton :last-child {
+    border-right: none;}
+.test:hover {
+    background-color: #222831;
+}
+.active {
+    background-color: #222831;
+}
+>>>>>>> 58718286ddc10228cbe407ec6c2d49ff59931401
