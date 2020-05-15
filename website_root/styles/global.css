@@ -14,6 +14,7 @@
   padding: 7em 0;
   background: #222831;
   color: rgba(255, 255, 255, 0.7);
+  grid-area: footer;
 }
 
 .footer-row{
@@ -63,4 +64,28 @@
 .footer-link {
   color: rgba(255, 255, 255, 0.4);
   text-decoration: none;
+}
+
+.grid-container {
+  display: grid;
+  height: auto auto auto;
+  align-content: space-around;
+  grid-template-columns: auto auto auto;
+  grid-template-areas:
+      'header header header'
+      'grid-item grid-item grid-item'
+      'footer footer footer';
+  grid-gap: 10px;
+  background-color: #989898;
+  padding:5px;
+}
+.grid-item {
+  background-color: #989898;
+  text-align: center;
+  paddig: 5px 0;
+  font-size : 20px;
+}
+.images {
+  width: 100px;
+  height: 100px;
 }
