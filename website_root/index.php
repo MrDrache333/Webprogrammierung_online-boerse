@@ -2,6 +2,7 @@
 <html lang="de" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/global.css">
     <title></title>
   </head>
   <body>
