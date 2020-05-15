@@ -1,15 +1,15 @@
 
 
 
-.button{color: green;
-font-size: 30px;}
-h1{color:green;}
-div#button{ float:right;}
-div#button2{ float:right;}
-nav{
-color:green;
 
-}
+.button{background-color: #989898;
+
+padding:10px 130px}
+.buttonanmelden{background-color: #989898;
+
+padding:10px 10px}
+
+
 
 
 div#button{ float:right;}
