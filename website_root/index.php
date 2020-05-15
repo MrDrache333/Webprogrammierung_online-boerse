@@ -2,6 +2,7 @@
 <html lang="de" dir="ltr">
   <head>
     <meta charset="utf-8">
+<<<<<<< HEAD
     <style>
     .grid-container {
       display: grid;
@@ -19,6 +20,10 @@
       paddig: 20px 0;
       font-size : 30px;
     }
+=======
+    <link rel="stylesheet" href="styles/global.css">
+    <title></title>
+>>>>>>> 1f95d06339f65ca070f4c9c2a9758a44bbd260c7
   </head>
   <body>
     <?php include "header.html"; ?>
