@@ -7,6 +7,7 @@
     <title></title>
   </head>
   <body>
+
     <?php include "header.html"; ?>
 
     <div>
@@ -26,5 +27,7 @@
         <input type="reset" value="Zurücksetzen">
       </div>
       <?php include "footer.html"; ?>
+    </div>
+
   </body>
 </html>

@@ -7,6 +7,8 @@
     <title></title>
   </head>
   <body>
+    <div class = "grid-container">
+
     <!--Header einbinden-->
     <?php include "header.html"; ?>
 
@@ -31,5 +33,6 @@
     no sea takimata sanctus est Lorem ipsum dolor sit amet.
     Beispieltext
     <?php include "footer.html"; ?>
+  </div>
   </body>
 </html>

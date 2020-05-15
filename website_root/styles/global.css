@@ -66,26 +66,79 @@
   text-decoration: none;
 }
 
-.grid-container {
+.grid-container-index {
   display: grid;
-  height: auto auto auto;
-  align-content: space-around;
   grid-template-columns: auto auto auto;
-  grid-template-areas:
-      'header header header'
-      'grid-item grid-item grid-item'
-      'footer footer footer';
+  padding:10px;
   grid-gap: 10px;
-  background-color: #989898;
-  padding:5px;
+  padding:10px;
+background-color: #989898; /*kompkette seiten Farbe*/
 }
-.grid-item {
-  background-color: #989898;
+
+.grid-container-index > div {
+
   text-align: center;
-  paddig: 5px 0;
-  font-size : 20px;
+  padding:20px 0;
+  font-size: 30px
+
+
 }
+
 .images {
-  width: 100px;
-  height: 100px;
+  width: 400px;
+  height: 400px;
+}
+.logo{
+  grid-column-start: 1;
+  grid-column-end: 2;
+
+}
+.button{
+  grid-column-start: 3;
+  grid-column-end: 4;
+
+
+
+}
+.header{
+
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 4;
+
+}
+/* Navi Leiste*/
+.navi {
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #989898;
+  /*  position: fixed;*/  /*möglichkeit die leiste fix immer im Bild zu haben */
+  /*  top:20;
+    width: 100%;*/
+
+}
+
+.navibutton{
+    float: left;
+}
+
+.test {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-right: 1px solid #bbb;
+}
+.navibutton :last-child {
+    border-right: none;}
+.test:hover {
+    background-color: #222831;
+}
+.active {
+    background-color: #222831;
 }

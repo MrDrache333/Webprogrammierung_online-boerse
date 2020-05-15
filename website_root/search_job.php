@@ -8,6 +8,7 @@
   </head>
   <body>
     <!--Header einbinden-->
+
     <?php include "header.html"; ?>
 
     <!--Searchbox-->
@@ -33,4 +34,5 @@
     </form>
     <?php include "footer.html"; ?>
   </body>
+
 </html>
