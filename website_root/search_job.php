@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles/global.css">
 
-    <title></title>
+    <title>KEFEDO-Job-suchen</title>
   </head>
   <body>
     <!--Header einbinden-->
@@ -18,8 +18,9 @@
             <li class="navibutton"> <a href="offer_job.php" class="naviobjekt"> Anzeige erstellen</a></li>
           <li class="navibutton">  <a href="contact.php" class="naviobjekt">Kontakt </a></li>
             <li class="navibutton"> <a href="impressum.php" class="naviobjekt"> Impressum</a></li></ul>
-          </div>
+
         </nav>
+          </div>
     <!--Searchbox-->
     <form>
       <div>

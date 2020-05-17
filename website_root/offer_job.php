@@ -20,19 +20,19 @@
         </div>
       </nav>
       <div>
-      Anzeigen Name:  <input type="text" placeholder=""><
+      Anzeigen Name:  <input type="text" placeholder=""></input>
       </div>
       <div>
-      Beschreibung:  <input type="text" placeholder="">
+      Beschreibung:  <input type="text" placeholder=""></input>
       </div>
     <div>
-      Hier Bild einfügen <a href="offer_job.php"> <input type="button" value="Bild hochladen"  >
+      Hier Bild einfügen <a href="offer_job.php"> <input type="button" value="Bild hochladen"  ></input>
     </div>
       <div>
-        <input type="submit" value="Anzeige freischalten">
+        <input type="submit" value="Anzeige freischalten"></input>
       </div>
       <div>
-        <input type="reset" value="Zurücksetzen">
+        <input type="reset" value="Zurücksetzen"></input>
       </div>
       <?php include "footer.html"; ?>
     </div>
