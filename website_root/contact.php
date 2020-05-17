@@ -20,6 +20,8 @@
           </div>
 
     <!--Kontaktformular-->
+<div class = "grid-farbe">
+
     <section>
       <div>
         <h2>Kontakt</h2>
@@ -36,6 +38,7 @@
         </form>
       </div>
     </section>
+  </div>
     <!--icludes footer -->
     <?php include "footer.html"; ?>
   </body>

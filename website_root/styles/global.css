@@ -21,7 +21,11 @@
   display: flex;
   flex-wrap: wrap;
 }
+.grid-farbe{
+padding:10px;
+background-color: #c4d7e7;
 
+}
 .text {
   color: #fff;
   text-decoration: none;

@@ -10,7 +10,7 @@
 <div>
   <?php include "header.html"; ?>
   <div class="header">
-    
+
         <ul class="navi">
           <li class="navibutton"> <a href="index.php" class="naviobjekt"> Startseite</a></li>  <!--active Anzeige nur als TEst wie umsteztbar???-->
         <li class="navibutton">   <a href="search_job.php" class="naviobjekt"> Job suchen </a></li>
@@ -18,7 +18,7 @@
         <li class="navibutton">   <a href="contact.php" class="naviobjekt">Kontakt </a></li>
           <li class="navibutton"> <a href="impressum.php" class="naviobjekt"> Impressum</a></li></ul>
         </div>
-
+<div class = "grid-farbe">
       <div>
       Anzeigen Name:  <input type="text" placeholder=""></input>
       </div>
@@ -34,6 +34,7 @@
       <div>
         <input type="reset" value="Zurücksetzen"></input>
       </div>
+    </div>
       <?php include "footer.html"; ?>
     </div>
 

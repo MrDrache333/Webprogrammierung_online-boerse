@@ -22,8 +22,10 @@
 
           </div>
     <!--Searchbox-->
+<div class = "grid-farbe">
     <form>
-        <div class = "grid-container-index">
+
+
       <div>
         <div>
           <input type="text" placeholder="z.B. Programmierer"></input>
@@ -42,8 +44,10 @@
           <input type="submit" value="Suchen">
         </div>
       </div>
-    </div>
+     
     </form>
+
+  </div>
     <?php include "footer.html"; ?>
   </body>
 
