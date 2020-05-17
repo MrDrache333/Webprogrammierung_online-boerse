@@ -7,10 +7,10 @@
     <title></title>
   </head>
   <body>
+<div>
+  <?php include "header.html"; ?>
 
-    <?php include "header.html"; ?>
 
-    <div>
       <div>
       Anzeigen Name:  <input type="text" placeholder=""></input>
       </div>

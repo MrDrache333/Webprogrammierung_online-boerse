@@ -116,6 +116,7 @@ background-color: #989898; /*kompkette seiten Farbe*/
     padding: 0;
     overflow: hidden;
     background-color: #989898;
+
   /*  position: fixed;*/  /*möglichkeit die leiste fix immer im Bild zu haben */
   /*  top:20;
     width: 100%;*/
@@ -124,19 +125,21 @@ background-color: #989898; /*kompkette seiten Farbe*/
 
 .navibutton{
     float: left;
+
 }
 
-.test {
+.naviobjekt {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    border-right: 1px solid #bbb;
+    border-right: 1px solid white;
+
 }
 .navibutton :last-child {
     border-right: none;}
-.test:hover {
+.naviobjekt:hover {
     background-color: #222831;
 }
 .active {
