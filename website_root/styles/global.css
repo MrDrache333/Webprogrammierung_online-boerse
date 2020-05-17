@@ -98,6 +98,12 @@ background-color: #989898; /*kompkette seiten Farbe*/
   grid-column-end: 4;
 
 
+}
+.anmelden{
+border-radius: 8px;
+background-color: #A2B3F8
+
+
 
 }
 .header{
@@ -115,7 +121,7 @@ background-color: #989898; /*kompkette seiten Farbe*/
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #989898;
+    background-color: #A2B3F8;
 
   /*  position: fixed;*/  /*möglichkeit die leiste fix immer im Bild zu haben */
   /*  top:20;
