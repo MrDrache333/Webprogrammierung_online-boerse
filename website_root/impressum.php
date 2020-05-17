@@ -11,8 +11,8 @@
 
     <!--Header einbinden-->
     <?php include "header.html"; ?>
-    <div class="header">
-        
+    <div class="navileiste">
+
           <ul class="navi">
             <li class="navibutton"> <a href="index.php" class="naviobjekt"> Startseite</a></li>  <!--active Anzeige nur als TEst wie umsteztbar???-->
           <li class="navibutton">   <a href="search_job.php" class="naviobjekt"> Job suchen </a></li>

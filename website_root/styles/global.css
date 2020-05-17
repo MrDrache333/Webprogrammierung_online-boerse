@@ -74,9 +74,22 @@ background-color: #c4d7e7;
   display: grid;
   grid-template-columns: auto auto auto;
   padding:10px;
-  grid-gap: 10px;
-  padding:10px;
+  margin-left: 0;
+
+
 background-color: #c4d7e7;
+}
+.headerrahmen{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding:10px;
+
+
+}
+.button-header{
+  grid-column-start: 3;
+  grid-column-end: 4;
+
 }
 
 .grid-container-index > div {
@@ -89,8 +102,8 @@ background-color: #c4d7e7;
 }
 
 .images {
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
 }
 
 .kefedologo{
@@ -111,26 +124,20 @@ background-color: #c4d7e7;
 border-radius: 8px;
 background-color: #A2B3F8
 
-
-
-}
-.header{
-
-  grid-column-start: 1;
-  grid-column-end: 4;
-  background-color: #c4d7e7;
-
-
 }
 /* Navi Leiste*/
-.navi {
 
+.navileiste{
+  grid-column-start: 1;
+  grid-column-end: 4;
+  background-color: #c4d7e7;}
+
+.navi {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #7f7f7f;
-
   /*  position: fixed;*/  /*möglichkeit die leiste fix immer im Bild zu haben */
   /*  top:20;
     width: 100%;*/
@@ -139,11 +146,6 @@ background-color: #A2B3F8
 
 .navibutton{
     float: left;
-
-}
-.umdiebilder{
-background-color: #c4d7e7;
-
 }
 .naviobjekt {
     display: block;
@@ -152,7 +154,6 @@ background-color: #c4d7e7;
     padding: 14px 16px;
     text-decoration: none;
     border-right: 1px solid white;
-
 }
 .navibutton :last-child {
     border-right: none;}
