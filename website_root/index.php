@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous">
+            <title>KEFEDO-Startseite</title>
   </head>
   <body>
       <div class = "grid-container-index">
@@ -15,13 +16,13 @@
     <div class="header">
         <nav>
           <ul class="navi">
-            <li class="navibutton"> <div class="active"><a href="index.php"class="naviobjekt"> Startseite</a></div></li>  <!--active Anzeige nur als TEst wie umsteztbar???-->
-          <li class="navibutton">   <a href="search_job.php"class="naviobjekt"> Job suchen </a></li>
-            <li class="navibutton"> <a href="offer_job.php"class="naviobjekt"> Anzeige erstellen</a></li>
+            <li class="navibutton"> <div class="active"><a href="index.php" class="naviobjekt"> Startseite</a></div></li>  <!--active Anzeige nur als TEst wie umsteztbar???-->
+          <li class="navibutton">   <a href="search_job.php" class="naviobjekt"> Job suchen </a></li>
+            <li class="navibutton"> <a href="offer_job.php" class="naviobjekt"> Anzeige erstellen</a></li>
           <li class="navibutton">   <a href="contact.php" class="naviobjekt">Kontakt </a></li>
             <li class="navibutton"> <a href="impressum.php" class="naviobjekt"> Impressum</a></li></ul>
           </div>
-
+        </nav>
 
 
             <div class="grid-item1">
