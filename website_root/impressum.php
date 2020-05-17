@@ -22,7 +22,7 @@
           </div>
 </nav>
 
-
+<div class = "grid-container-index">
     <!--Searchbox-->
   <h1>  Datenschutzbestimmungen</h1>
   At vero eos et accusam et justo duo dolores et ea rebum.
@@ -43,7 +43,9 @@
    sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
     no sea takimata sanctus est Lorem ipsum dolor sit amet.
     Beispieltext
+</div>
     <?php include "footer.html"; ?>
+
   </div>
   </body>
 </html>
