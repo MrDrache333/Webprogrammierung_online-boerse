@@ -17,22 +17,20 @@
           <li class="navibutton">   <a href="contact.php" class="naviobjekt">Kontakt </a></li>
             <li class="navibutton"> <a href="impressum.php" class="naviobjekt"> Impressum</a></li></ul>
     </div>
-      <div class = "grid-container-index">
-            <div class="grid-item1">
-              <a href="search_job.php"> <image src="images/auto.jpg" class="images" > </a></div>
-                  <div class="grid-item2">
-            <a href="search_job.php"> <image src="images/garten.jpg" class="images"> </a></div>
-                <div class="grid-item3">
-            <a href="search_job.php"> <image src="images/haus.jpg" class="images">  </a></div>
-                <div class="grid-item4">
-           <a href="search_job.php"> <image src="images/dienstleistungen.jpg" class="images"> </a></div>
-               <div class="grid-item5">
-            <a href="search_job.php">  <image src="images/technik.jpg"class="images" ></a></div>
-                <div class="grid-item6">
-           <a href="search_job.php"> <image src="images/fitness.jpg"class="images" > </a></div>
-               <div class="grid-item7">
-              <a href="search_job.php"> <image src="images/taxi.jpg" class="images"> </a></div>
-</div>
-  <?php include "footer.html"; ?>
+    <div class="content">
+      <form class="searchBox">
+          Wonach suchen Sie ? <input type="text" placeholder="z.B. Programmierer"></input>
+            <select>
+              <option disabled selected value="">Kategorie</option>
+              <option value="">Vollzeit</option>
+              <option value="">Teilzeit</option>
+              <option value="">Freiberufler</option>
+              <option value="">Praktikum</option>
+              <option value="">Befristet</option>
+            </select>
+            <input type="submit" value="Suchen">
+      </form>
+    </div>
+        <?php include "footer.html"; ?>
   </body>
 </html>

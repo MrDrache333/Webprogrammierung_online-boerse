@@ -24,8 +24,6 @@
     <!--Searchbox-->
 <div class = "grid-farbe">
     <form>
-
-
       <div>
         <div>
         Wonach suchen Sie ? <input type="text" placeholder="z.B. Programmierer"></input>
