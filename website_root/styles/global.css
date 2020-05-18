@@ -15,11 +15,13 @@
   background: #222831;
   color: rgba(255, 255, 255, 0.7);
   grid-area: footer;
+  align-content: center;
 }
 
 .footer-row{
   display: flex;
   flex-wrap: wrap;
+  align-content: center;
 }
 .grid-farbe{
 padding:10px;
@@ -35,8 +37,9 @@ background-color: #c4d7e7;
   float: left;
   flex-grow: 1;
   text-align: center;
+  align-content: center;
   flex-wrap: wrap;
-  width: 25%;
+  width: 200px;
 }
 
 .list-unstyled {
