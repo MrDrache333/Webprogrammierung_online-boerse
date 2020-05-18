@@ -14,13 +14,36 @@
   background-size: cover;
   margin-top: 0;
   max-width: 100%;
-  height: 1500px;
+  height: 100vh;
 }
 
 .searchBox{
-  margin-top: 30%;
-  margin-left: 50%;
-  background-color: #FFFFFF;
+  top: 50vh;
+  max-width: 750px;
+  margin-left: 10%;
+  margin-right: 10%;
+  position: relative;
+  padding: 30px;
+  font-size: 20px;
+  font-family: sans-serif;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.searchBox-input {
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+}
+
+.searchBox-select{
+
+}
+
+.searchBox-button{
+  padding: 20px 30px 20px 30px;
+  text-align: center;
+  background-color: #ABB9FA;
   border-radius: 8px;
 }
 
@@ -128,6 +151,7 @@ background-color: #c4d7e7;
 
 .kefedologo{
   max-width: 40%;
+  min-width: 200px;
 
   height: auto;
 
@@ -146,6 +170,11 @@ border-radius: 8px;
 background-color: #A2B3F8
 
 }
+.button-anmelden:hover{
+  background-color: #c4d7e7
+  color: white;
+}
+
 /* Navi Leiste*/
 
 .navileiste{
@@ -169,10 +198,10 @@ background-color: #A2B3F8
     float: left;
 }
 
-@media screen and (max-width:800px){
+@media screen and (max-width:600px){
   .navibutton{
 
-width:400px;
+width:100%;
 
   }
 }
