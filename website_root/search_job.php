@@ -28,7 +28,7 @@
 
       <div>
         <div>
-          <input type="text" placeholder="z.B. Programmierer"></input>
+        Wonach suchen Sie ? <input type="text" placeholder="z.B. Programmierer"></input>
         </div>
         <div>
           <select>
@@ -44,7 +44,7 @@
           <input type="submit" value="Suchen">
         </div>
       </div>
-     
+
     </form>
 
   </div>

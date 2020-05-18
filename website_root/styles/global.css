@@ -72,7 +72,7 @@ background-color: #c4d7e7;
 
 .grid-container-index {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 600px 400px 600px;
   padding:10px;
   margin-left: 0;
 
@@ -107,8 +107,9 @@ background-color: #c4d7e7;
 }
 
 .kefedologo{
-  width: 400px;
-  height: 200px;
+  max-width: 80%;
+
+  height: auto;
 
 }
 
@@ -147,13 +148,20 @@ background-color: #A2B3F8
 .navibutton{
     float: left;
 }
+
+@media screen and (max-width:800px){
+  .navibutton{
+width:600px;
+
+  }
+}
+
 .naviobjekt {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
-    text-decoration: none;
-    border-right: 1px solid white;
+
 }
 .navibutton :last-child {
     border-right: none;}
