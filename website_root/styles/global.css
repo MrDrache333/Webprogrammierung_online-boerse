@@ -7,23 +7,6 @@
     box-sizing: border-box;
 }
 
-.content{
-  background-image: url("../images/background.jpg");
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: cover;
-  margin-top: 0;
-  max-width: 100%;
-  height: 1500px;
-}
-
-.searchBox{
-  margin-top: 30%;
-  margin-left: 50%;
-  background-color: #FFFFFF;
-  border-radius: 8px;
-}
-
 .footer {
   display: block;
   position: relative;
@@ -171,8 +154,8 @@ background-color: #A2B3F8
 
 @media screen and (max-width:800px){
   .navibutton{
-
-width:400px;
+    maxwidth:800px;
+float: center;
 
   }
 }

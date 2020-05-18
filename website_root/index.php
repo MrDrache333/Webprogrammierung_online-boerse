@@ -18,8 +18,10 @@
             <li class="navibutton"> <a href="impressum.php" class="naviobjekt"> Impressum</a></li></ul>
     </div>
     <div class="content">
-      <form class="searchBox">
+      <div class="searchBox">
+
           Wonach suchen Sie ? <input type="text" placeholder="z.B. Programmierer"></input>
+          <div class="test">
             <select>
               <option disabled selected value="">Kategorie</option>
               <option value="">Vollzeit</option>
@@ -29,7 +31,8 @@
               <option value="">Befristet</option>
             </select>
             <input type="submit" value="Suchen">
-      </form>
+            <div>
+      </div>
     </div>
         <?php include "footer.html"; ?>
   </body>
