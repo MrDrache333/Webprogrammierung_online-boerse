@@ -110,7 +110,7 @@ background-color: #c4d7e7;
 }
 
 .kefedologo{
-  max-width: 80%;
+  max-width: 40%;
 
   height: auto;
 
@@ -154,7 +154,8 @@ background-color: #A2B3F8
 
 @media screen and (max-width:800px){
   .navibutton{
-width:600px;
+    
+width:400px;
 
   }
 }
