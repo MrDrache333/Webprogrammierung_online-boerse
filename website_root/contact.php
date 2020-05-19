@@ -21,24 +21,71 @@
 
     <!--Kontaktformular-->
 <div class = "grid-farbe">
+<h1>Kontaktinformationen</h1>
+      <div class="container">
+          <div class="contact-row">
 
-    <section>
-      <div>
-        <h2>Kontakt</h2>
-        <p><span>Adresse:</span>Ammerländer Heerstraße 114-118, 26129 Oldenburg</p>
-        <p><span>Telefon:</span><a href="tel://1234567920"> +012-3456789</a></p>
-        <p><span>Email:</span><a href="mailto:info@kefedo.de">info@kefedo.de</a></p>
-        <p><span>Website</span><a href="#">kefedo.de</a></p>
-        <form action="#" >
-          <input type="text" placeholder="Dein Name">
-          <input type="email" placeholder="Deine E-Mail">
-          <input type="text" placeholder="Betreff">
-          <textarea name="Was möchtest du uns noch sagen" id="massagefield" cols="30" rows="7" placeholder="Nachricht"></textarea>
-          <input type="submit" value="Send Message" >
-        </form>
+              <div class="contact-col">
+                  <div>
+
+                      <h2 class="footer-h2">Adresse:</h2>
+                      <p>Ammerländer Heerstraße 114-118, 26129 Oldenburg</p>
+                      <ul class="list-unstyled">
+                          <li class="footer-li"><input type="text" placeholder="Dein Name" ></li>
+                          <li class="footer-li"><input type="email" placeholder="Deine E-Mail"></li>
+                          <li class="footer-li"> <input type="text" placeholder="Betreff"><a href="#" class="footer-link"></li>
+                          <li class="footer-li"><textarea name="Was möchtest du uns noch sagen" id="massagefield" cols="20" rows="7" placeholder="Nachricht"></textarea>  </li>
+
+                          <li class="footer-li"><a href="#"><span><input type="submit" value="absenden" ></span></a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="contact-col">
+                  <div>
+
+                      <h2 class="footer-h2">Telefon: </h2>
+                        <p><a href="tel://1234567920"> +012-3456789</a></p>
+                      <ul class="list-unstyled">
+                          <li class="footer-li"></li>
+                          <li class="footer-li"></li>
+                          <li class="footer-li"></li>
+                          <li class="footer-li"></li>
+                      </ul>
+                  </div>
+              </div>
+
+              <div class="contact-col">
+                  <div>
+                      <h2 class="footer-h2">Email:</h2>
+                      <p><a href="mailto:info@kefedo.de">info@kefedo.de</a></p>
+                      <ul class="list-unstyled">
+                          <li class="footer-li"> </li>
+                          <li class="footer-li"></li>
+
+                          <li class="footer-li"></li>
+                          <li class="footer-li"></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="contact-col">
+                  <div>
+                      <h2 class="footer-h2">Website:</h2>
+                        <p><a href="#">kefedo.de</a></p>
+                      <div>
+                          <ul class="list-unstyled">
+
+                              <li class="footer-li"></li>
+                              <li class="footer-li"></li>
+                          </ul>
+
+                  </div>
+              </div>
+              </div>
+          </div>
       </div>
-    </section>
-  </div>
+    </form>
+      </div>
+
     <!--icludes footer -->
     <?php include "footer.html"; ?>
   </body>

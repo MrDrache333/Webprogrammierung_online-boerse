@@ -32,11 +32,32 @@
 }
  .searchBox-select{
 }
+
  .searchBox-button{
      padding: 20px 30px 20px 30px;
      text-align: center;
      background-color: #ABB9FA;
      border-radius: 8px;
+}
+
+.contact-row{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+
+}
+
+.contact-col {
+    float: left;
+    flex-grow: 1;
+    text-align: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 200px;
+}
+
+.contact-li {
+    padding-bottom: 1rem !important;
 }
  .footer {
      display: block;
