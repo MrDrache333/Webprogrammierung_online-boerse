@@ -25,7 +25,7 @@
 
 <!--Kontaktformular-->
   <div class="content">
-    <h1 Kontaktieren Sie uns!</h1>
+    <div class="footer-li"> Kontaktieren Sie uns!</div>
     <div class="container">
       <div class="contact-row">
         <div>
@@ -54,10 +54,6 @@
                     <h2 class="contact-h2">Telefon: </h2>
                     <p><a href="tel://1234567920"> +012-3456789</a></p>
                     <ul class="list-unstyled">
-                        <li class="contact-li"></li>
-                        <li class="contact-li"></li>
-                        <li class="contact-li"></li>
-                        <li class="contact-li"></li>
                     </ul>
                 </div>
             </div>
@@ -66,27 +62,10 @@
                     <h2 class="contact-h2">Email:</h2>
                     <p><a href="mailto:info@kefedo.de">info@kefedo.de</a></p>
                     <ul class="list-unstyled">
-                        <li class="contact-li"></li>
-                        <li class="contact-li"></li>
-                        <li class="contact-li"></li>
-                        <li class="contact-li"></li>
                     </ul>
                 </div>
             </div>
-            <div class="contact-col">
-                <div>
-                    <h2 class="contact-h2">Website:</h2>
-                    <p><a href="#">kefedo.de</a></p>
-                    <div>
-                        <ul class="list-unstyled">
 
-                            <li class="contact-li"></li>
-                            <li class="contact-li"></li>
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
   </div>
         </div>
     </div>
