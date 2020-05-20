@@ -18,14 +18,20 @@
     height: 100vh;
 }
 
+.searchBox-grid {
+    display: grid;
+    margin: auto;
+}
+
 .searchBox {
     display: flex;
     flex-wrap: wrap;
     top: 45%;
-    max-width: 1000px;
+    min-width: 400px;
+    max-width: 600px;
     margin: auto;
     position: relative;
-    padding: 30px;
+    padding: 20px;
     font-size: 20px;
     font-family: sans-serif;
     background-color: white;
@@ -100,43 +106,27 @@
     border-radius: 8px;
     padding: 10px;
     text-align: center;
+    min-width: 350px;
 }
 
 .searchBox-item {
-    flex-wrap: wrap;
-    display: flex;
+    grid-row: auto;
+    grid-column-end: 2;
     margin: 5px auto 5px auto;
 }
 
 .searchBox-text {
+    display: grid;
     min-width: 200px;
     margin: auto;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 24px;
 }
 
-.searchBox-input-plz {
-    max-width: 150px;
-}
-
-select {
-    appearance: none;
-    outline: 0;
-    box-shadow: none;
-    border: 0 !important;
-    background: #c4d7e7 none;
-}
-
-.searchBox-select {
-    background: #c4d7e7;
-    overflow: hidden;
-    border-radius: .25em;
-}
-
-
 .searchBox-button {
-    display: block;
+    display: flex;
     width: 150px;
+    height: 63px;
     min-width: 130px;
     max-width: 150px;
     overflow: hidden;
@@ -168,10 +158,11 @@ select {
     position: absolute;
     top: 0;
     right: 0;
-    width: 200%;
+    width: 300px;
     height: 100%;
     bottom: auto;
     margin: auto;
+    opacity: 0.4;
     z-index: -1;
     background: radial-gradient(50px circle at top center, rgba(100, 100, 255, .5) 30%, rgba(255, 255, 255, 0));
     transition: all 0s ease-out 0s;
@@ -181,24 +172,17 @@ select {
 
 @keyframes searchBox-button-gradient-move {
     0% {
-        transform: translatex(0px);
-    }
-    25% {
-        transform: translatex(100px);
-        opacity: 0.3;
+        transform: translatex(-50px);
+        background: radial-gradient(50px circle at center, rgba(100, 100, 255, .5) 30%, rgba(255, 255, 255, 0));
     }
     50% {
-        transform: translatex(100px);
-        opacity: 0.3;
+        transform: translatex(200px);
+        opacity: 0.4;
         background: radial-gradient(50px circle at center, rgba(50, 50, 50, .5) 30%, rgba(255, 255, 255, 0));
     }
-    75% {
-        transform: translatex(-100px);
-        opacity: 0.3;
-    }
     100% {
-        opacity: 0.3;
-        transform: translatex(-100px);
+        opacity: 1;
+        transform: translatex(-50px);
         background: radial-gradient(50px circle at center, rgba(100, 100, 255, .5) 30%, rgba(255, 255, 255, 0));
     }
 }

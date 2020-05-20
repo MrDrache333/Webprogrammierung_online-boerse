@@ -22,18 +22,11 @@
 </div>
 <div class="content">
     <form class="searchBox">
-        <p class="searchBox-text">Wonach suchen Sie ?</p> <input class="searchBox-input searchBox-item" type="text"
-                                                                 placeholder="z.B. Programmierer"/>
-        <select class="searchBox-select searchBox-item">
-            <option disabled selected value="">Kategorie</option>
-            <option value="">Vollzeit</option>
-            <option value="">Teilzeit</option>
-            <option value="">Freiberufler</option>
-            <option value="">Praktikum</option>
-            <option value="">Befristet</option>
-        </select>
-
-        <input class="searchBox-input searchBox-input-plz searchBox-item" type="text" placeholder="Postleitzahl"/>
+        <div class="searchBox-grid">
+            <p class="searchBox-text">Wonach suchen Sie ?</p>
+            <input class="searchBox-input searchBox-item" type="text" placeholder="Was? (z.B. Beruf oder Stichwort)"/>
+            <input class="searchBox-input searchBox-item" type="text" placeholder="Wo? (z.B. PLZ oder Ort)"/>
+        </div>
         <a href="#" class="searchBox-button searchBox-button-text searchBox-item"><span
                     class="searchBox-button-gradient"></span>Suchen</a>
     </form>
