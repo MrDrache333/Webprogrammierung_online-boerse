@@ -30,7 +30,7 @@
             <div class="contact-row">
 
                 <div class="contact-col">
-                    <div>
+
 
                         <h2 class="footer-h2">Datenschutzbestimmungen</h2>
                         <p> At vero eos et accusam et justo duo dolores et ea rebum.
@@ -42,12 +42,12 @@
                             no sea takimata sanctus est Lorem ipsum dolor sit amet.
                         </p>
 
-                    </div>
+
                 </div>
 
 
                 <div class="contact-col">
-                    <div>
+
                         <h2 class="footer-h2">Nutzungsbedingungen</h2>
                         <p>At vero eos et accusam et justo duo dolores et ea rebum.
                             Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -57,10 +57,10 @@
                             gubergren,
                             no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 
-                    </div>
+
                 </div>
                 <div class="contact-col">
-                    <div>
+
                         <h2 class="footer-h2">Impressum</h2>
                         <p>At vero eos et accusam et justo duo dolores et ea rebum.
                             Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
@@ -71,7 +71,6 @@
                             no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                         <div>
 
-                        </div>
                     </div>
                 </div>
             </div>

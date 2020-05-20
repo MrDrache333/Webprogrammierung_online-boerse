@@ -190,7 +190,7 @@
 .contact-row {
     display: flex;
     flex-wrap: wrap;
-    align-content: center;
+    align-content: left;
 
 }
 
@@ -201,6 +201,8 @@
     align-content: center;
     flex-wrap: wrap;
     width: 200px;
+  
+    margin: 30px;
 }
 
 .contact-li {
