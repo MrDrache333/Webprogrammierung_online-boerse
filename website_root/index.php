@@ -22,8 +22,9 @@
 </div>
 <div class="content">
     <form class="searchBox">
-        Wonach suchen Sie ? <input class="searchBox-input" type="text" placeholder="z.B. Programmierer"></input>
-        <select class="searchBox-select">
+        <p class="searchBox-text">Wonach suchen Sie ?</p> <input class="searchBox-input searchBox-item" type="text"
+                                                                 placeholder="z.B. Programmierer"/>
+        <select class="searchBox-select searchBox-item">
             <option disabled selected value="">Kategorie</option>
             <option value="">Vollzeit</option>
             <option value="">Teilzeit</option>
@@ -31,8 +32,10 @@
             <option value="">Praktikum</option>
             <option value="">Befristet</option>
         </select>
-        </label>
-        <input class="searchBox-button" type="submit" value="Suchen">
+
+        <input class="searchBox-input searchBox-input-plz searchBox-item" type="text" placeholder="Postleitzahl"/>
+        <a href="#" class="searchBox-button searchBox-button-text searchBox-item"><span
+                    class="searchBox-button-gradient"></span>Suchen</a>
     </form>
 </div>
 <?php include "footer.html"; ?>
