@@ -1,46 +1,52 @@
 .div {
-     display: block;
-}
- *, ::before, ::after {
-     -webkit-box-sizing: border-box;
-     box-sizing: border-box;
-}
- .content{
-     background-image: url("../images/background.jpg");
-     background-repeat: no-repeat;
-     background-position: top;
-     background-size: cover;
-     margin-top: 0;
-     width: 100%;
-     height: 100vh;
-}
- .searchBox{
-     top: 50vh;
-     max-width: 800px;
-     margin: auto;
-     position: relative;
-     padding: 30px;
-     font-size: 20px;
-     font-family: sans-serif;
-     background-color: white;
-     border-radius: 8px;
-}
- .searchBox-input {
-     border-radius: 8px;
-     padding: 10px;
-     text-align: center;
-}
- .searchBox-select{
+    display: block;
 }
 
- .searchBox-button{
-     padding: 20px 30px 20px 30px;
-     text-align: center;
-     background-color: #ABB9FA;
-     border-radius: 8px;
+*, ::before, ::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-.contact-row{
+.content {
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    margin-top: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.searchBox {
+    top: 50vh;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    padding: 30px;
+    font-size: 20px;
+    font-family: sans-serif;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.searchBox-input {
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+}
+
+.searchBox-select {
+}
+
+
+.searchBox-button {
+    padding: 20px 30px 20px 30px;
+    text-align: center;
+    background-color: #ABB9FA;
+    border-radius: 8px;
+}
+
+.contact-row {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -59,117 +65,137 @@
 .contact-li {
     padding-bottom: 1rem !important;
 }
- .footer {
-     display: block;
-     position: relative;
-     font-size: 16px;
-     padding: 7em 0;
-     background: #222831;
-     color: rgba(255, 255, 255, 0.7);
-     grid-area: footer;
-     align-content: center;
+
+.footer {
+    display: block;
+    position: relative;
+    font-size: 16px;
+    padding: 7em 0;
+    background: #222831;
+    color: rgba(255, 255, 255, 0.7);
+    grid-area: footer;
+    align-content: center;
 }
- .footer-row{
-     display: flex;
-     flex-wrap: wrap;
-     align-content: center;
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
 }
- .grid-farbe{
-     padding:10px;
-     background-color: #c4d7e7;
+
+.grid-farbe {
+    padding: 10px;
+    background-color: #c4d7e7;
 }
- .text {
-     color: #fff;
-     text-decoration: none;
+
+.text {
+    color: #fff;
+    text-decoration: none;
 }
- .footer-col {
-     float: left;
-     flex-grow: 1;
-     text-align: center;
-     align-content: center;
-     flex-wrap: wrap;
-     width: 200px;
+
+.footer-col {
+    float: left;
+    flex-grow: 1;
+    text-align: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 200px;
 }
- .list-unstyled {
-     padding-left: 0;
-     list-style: none;
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
 }
- .footer-li {
-     padding-bottom: 1rem !important;
+
+.footer-li {
+    padding-bottom: 1rem !important;
 }
- .container {
-     width: 100%;
-     padding-right: 15px;
-     padding-left: 15px;
-     margin-right: auto;
-     margin-left: auto;
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
- .footer-h2 {
-     font-family: inherit;
-     font-weight: normal;
-     color: #fff;
-     margin-bottom: 40px;
-     font-size: 20px;
-     font-weight: 400;
+
+.footer-h2 {
+    font-family: inherit;
+    color: #fff;
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: 400;
 }
- .footer-link {
-     color: rgba(255, 255, 255, 0.4);
-     text-decoration: none;
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
 }
- .grid-container-index {
-     display: grid;
-     grid-template-columns: 600px 400px 600px;
-     padding:10px;
-     margin-left: 0;
-     background-color: #c4d7e7;
+
+.grid-container-index {
+    display: grid;
+    grid-template-columns: 600px 400px 600px;
+    padding: 10px;
+    margin-left: 0;
+    background-color: #c4d7e7;
 }
- .headerrahmen{
-     display: grid;
-     grid-template-columns: auto auto auto;
-     padding:10px;
+
+.headerrahmen {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
 }
- .button-header{
-     grid-column-start: 3;
-     grid-column-end: 4;
+
+.button-header {
+    grid-column-start: 3;
+    grid-column-end: 4;
 }
- .grid-container-index > div {
-     text-align: center;
-     padding:20px 0;
-     font-size: 30px
+
+.grid-container-index > div {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px
 }
- .images {
-     width: 300px;
-     height: 300px;
+
+.images {
+    width: 300px;
+    height: 300px;
 }
- .kefedologo{
-     max-width: 40%;
-     min-width: 200px;
-     height: auto;
+
+.kefedologo {
+    max-width: 40%;
+    min-width: 200px;
+    height: auto;
 }
- .grid-item7{
-     grid-column-start: 2;
-     grid-column-end: 3;
+
+.grid-item7 {
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
- .button-anmelden{
-     border-radius: 8px;
-     background-color: #A2B3F8;
+
+.button-anmelden {
+    border-radius: 8px;
+    background-color: #A2B3F8;
 }
- .button-anmelden:hover{
-     background-color: #7F7F7F;
-     color: white;
+
+.button-anmelden:hover {
+    background-color: #7F7F7F;
+    color: white;
 }
+
 /* Navi Leiste*/
- .navileiste{
-     grid-column-start: 1;
-     grid-column-end: 4;
-     background-color: #c4d7e7;
+.navileiste {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    background-color: #c4d7e7;
 }
- .navi {
-     list-style-type: none;
-     margin: 0;
-     padding: 0;
-     overflow: hidden;
-     background-color: #7f7f7f;
+
+.navi {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #7f7f7f;
     /* position: fixed;
     */
     /*möglichkeit die leiste fix immer im Bild zu haben */
@@ -177,28 +203,34 @@
      width: 100%;
     */
 }
- .navibutton{
-     float: left;
+
+.navibutton {
+    float: left;
 }
- @media screen and (max-width:600px){
-     .navibutton{
-         width:100%;
+
+@media screen and (max-width: 600px) {
+    .navibutton {
+        width: 100%;
     }
 }
- .naviobjekt {
-     display: block;
-     color: white;
-     text-align: center;
-     padding: 14px 16px;
+
+.naviobjekt {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
 }
- .navibutton :last-child {
-     border-right: none;
+
+.navibutton :last-child {
+    border-right: none;
 }
- .naviobjekt:hover {
-     background-color: #222831;
-     text-decoration: none;
-     color: #A2B3F8;
+
+.naviobjekt:hover {
+    background-color: #222831;
+    text-decoration: none;
+    color: #A2B3F8;
 }
- .active {
-     background-color: #222831;
+
+.active {
+    background-color: #222831;
 }
