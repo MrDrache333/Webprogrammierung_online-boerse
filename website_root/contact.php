@@ -24,9 +24,23 @@
 </div>
 
 <!--Kontaktformular-->
-<div class="grid-farbe">
-    <h1>Kontaktinformationen</h1>
+  <div class="content">
+    <h1 class = "contact-li">Kontaktieren Sie uns!</h1>
     <div class="container">
+      <div class="contact-row">
+        <div>
+          <ul class="list-unstyled">
+              <li class="contact-li"><input type="text" placeholder="Dein Name"></li>
+              <li class="contact-li"><input type="email" placeholder="Deine E-Mail"></li>
+              <li class="focontactoter-li"><input type="text" placeholder="Betreff"><a href="#" class="footer-link">
+              </li>
+              <li class="contact-li"><textarea name="Nachricht" id="massagefield"
+                                              cols="20" rows="7" placeholder="Was möchtest du uns noch sagen?"></textarea></li>
+
+              <li class="contact-li"><a href="#"><span><input type="submit" value="Absenden"></span></a></li>
+          </ul>
+        </div>
+      </div>
         <div class="contact-row">
 
             <div class="contact-col">
@@ -34,16 +48,9 @@
 
                     <h2 class="contact-h2">Adresse:</h2>
                     <p>Ammerländer Heerstraße 114-118, 26129 Oldenburg</p>
-                    <ul class="list-unstyled">
-                        <li class="contact-li"><input type="text" placeholder="Dein Name"></li>
-                        <li class="contact-li"><input type="email" placeholder="Deine E-Mail"></li>
-                        <li class="focontactoter-li"><input type="text" placeholder="Betreff"><a href="#" class="footer-link">
-                        </li>
-                        <li class="contact-li"><textarea name="Was möchtest du uns noch sagen" id="massagefield"
-                                                        cols="20" rows="7" placeholder="Nachricht"></textarea></li>
 
-                        <li class="contact-li"><a href="#"><span><input type="submit" value="absenden"></span></a></li>
-                    </ul>
+
+
                 </div>
             </div>
             <div class="contact-col">
@@ -67,7 +74,6 @@
                     <ul class="list-unstyled">
                         <li class="contact-li"></li>
                         <li class="contact-li"></li>
-
                         <li class="contact-li"></li>
                         <li class="contact-li"></li>
                     </ul>
@@ -87,10 +93,14 @@
                     </div>
                 </div>
             </div>
+
+  </div>
+
+
         </div>
     </div>
     </form>
-</div>
+
 
 <!--icludes footer -->
 <?php include "footer.html"; ?>
