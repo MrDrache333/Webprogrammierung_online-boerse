@@ -14,8 +14,8 @@
         <ul class="navi">
             <li class="navibutton"><a href="index.php" class="naviobjekt"> Startseite</a></li>
             <!--active Anzeige nur als TEst wie umsteztbar???-->
-
-            <li class="navibutton"><a href="profil.php" class="naviobjekt"> Mein Profil</a></li>
+<li class="navibutton">
+          <div class="active"> <a href="profil.php" class="naviobjekt"> Mein Profil</a></div></li>
             <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
             <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
         </ul>
