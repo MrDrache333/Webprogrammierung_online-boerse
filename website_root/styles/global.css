@@ -21,6 +21,7 @@
 .searchBox-grid {
     display: grid;
     margin: auto;
+    padding: 10px 0 10px 0;
 }
 
 .searchBox {
@@ -29,6 +30,7 @@
     top: 45%;
     min-width: 400px;
     max-width: 600px;
+    align-items: center;
     margin: auto;
     position: relative;
     padding: 20px;
@@ -44,54 +46,6 @@
 }
 
 @keyframes fadein {
-    from {
-        opacity: 0;
-        transform: translateY(300px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-}
-
-/* Firefox < 16 */
-@-moz-keyframes fadein {
-    from {
-        opacity: 0;
-        transform: translateY(300px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-}
-
-/* Safari, Chrome and Opera > 12.1 */
-@-webkit-keyframes fadein {
-    from {
-        opacity: 0;
-        transform: translateY(300px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-}
-
-/* Internet Explorer */
-@-ms-keyframes fadein {
-    from {
-        opacity: 0;
-        transform: translateY(300px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-}
-
-/* Opera < 12.1 */
-@-o-keyframes fadein {
     from {
         opacity: 0;
         transform: translateY(300px);
@@ -118,15 +72,16 @@
 .searchBox-text {
     display: grid;
     min-width: 200px;
+    padding-bottom: 15px;
     margin: auto;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 24px;
+    font-size: 26px;
 }
 
 .searchBox-button {
     display: flex;
     width: 150px;
-    height: 63px;
+    height: 64px;
     min-width: 130px;
     max-width: 150px;
     overflow: hidden;
@@ -145,9 +100,9 @@
 }
 
 .searchBox-button-text {
-    text-align: center;
+    align-items: center;
+    padding-left: 30px;
     border-radius: 50px;
-    padding: 13px;
     color: black;
     background: #c4d7e7;
     transition: all 0.2s ease-out 0s;
@@ -170,7 +125,7 @@
     animation: 18s linear 0s infinite searchBox-button-gradient-move;
 }
 
-@keyframes searchBox-button-gradient-move {
+@-webkit-keyframes searchBox-button-gradient-move {
     0% {
         transform: translatex(-50px);
         background: radial-gradient(50px circle at center, rgba(100, 100, 255, .5) 30%, rgba(255, 255, 255, 0));
@@ -358,9 +313,13 @@
     float: left;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
     .navibutton {
         width: 100%;
+    }
+
+    .content {
+        padding: 0;
     }
 }
 
