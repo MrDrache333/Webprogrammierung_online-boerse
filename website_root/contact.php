@@ -32,56 +32,56 @@
             <div class="contact-col">
                 <div>
 
-                    <h2 class="footer-h2">Adresse:</h2>
+                    <h2 class="contact-h2">Adresse:</h2>
                     <p>Ammerländer Heerstraße 114-118, 26129 Oldenburg</p>
                     <ul class="list-unstyled">
-                        <li class="footer-li"><input type="text" placeholder="Dein Name"></li>
-                        <li class="footer-li"><input type="email" placeholder="Deine E-Mail"></li>
-                        <li class="footer-li"><input type="text" placeholder="Betreff"><a href="#" class="footer-link">
+                        <li class="contact-li"><input type="text" placeholder="Dein Name"></li>
+                        <li class="contact-li"><input type="email" placeholder="Deine E-Mail"></li>
+                        <li class="focontactoter-li"><input type="text" placeholder="Betreff"><a href="#" class="footer-link">
                         </li>
-                        <li class="footer-li"><textarea name="Was möchtest du uns noch sagen" id="massagefield"
+                        <li class="contact-li"><textarea name="Was möchtest du uns noch sagen" id="massagefield"
                                                         cols="20" rows="7" placeholder="Nachricht"></textarea></li>
 
-                        <li class="footer-li"><a href="#"><span><input type="submit" value="absenden"></span></a></li>
+                        <li class="contact-li"><a href="#"><span><input type="submit" value="absenden"></span></a></li>
                     </ul>
                 </div>
             </div>
             <div class="contact-col">
                 <div>
 
-                    <h2 class="footer-h2">Telefon: </h2>
+                    <h2 class="contact-h2">Telefon: </h2>
                     <p><a href="tel://1234567920"> +012-3456789</a></p>
                     <ul class="list-unstyled">
-                        <li class="footer-li"></li>
-                        <li class="footer-li"></li>
-                        <li class="footer-li"></li>
-                        <li class="footer-li"></li>
+                        <li class="contact-li"></li>
+                        <li class="contact-li"></li>
+                        <li class="contact-li"></li>
+                        <li class="contact-li"></li>
                     </ul>
                 </div>
             </div>
 
             <div class="contact-col">
                 <div>
-                    <h2 class="footer-h2">Email:</h2>
+                    <h2 class="contact-h2">Email:</h2>
                     <p><a href="mailto:info@kefedo.de">info@kefedo.de</a></p>
                     <ul class="list-unstyled">
-                        <li class="footer-li"></li>
-                        <li class="footer-li"></li>
+                        <li class="contact-li"></li>
+                        <li class="contact-li"></li>
 
-                        <li class="footer-li"></li>
-                        <li class="footer-li"></li>
+                        <li class="contact-li"></li>
+                        <li class="contact-li"></li>
                     </ul>
                 </div>
             </div>
             <div class="contact-col">
                 <div>
-                    <h2 class="footer-h2">Website:</h2>
+                    <h2 class="contact-h2">Website:</h2>
                     <p><a href="#">kefedo.de</a></p>
                     <div>
                         <ul class="list-unstyled">
 
-                            <li class="footer-li"></li>
-                            <li class="footer-li"></li>
+                            <li class="contact-li"></li>
+                            <li class="contact-li"></li>
                         </ul>
 
                     </div>
