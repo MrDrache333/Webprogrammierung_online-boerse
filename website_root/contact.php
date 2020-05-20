@@ -25,14 +25,14 @@
 
 <!--Kontaktformular-->
   <div class="content">
-    <h1 class = "contact-li">Kontaktieren Sie uns!</h1>
+    <h1 Kontaktieren Sie uns!</h1>
     <div class="container">
       <div class="contact-row">
         <div>
           <ul class="list-unstyled">
               <li class="contact-li"><input type="text" placeholder="Dein Name"></li>
               <li class="contact-li"><input type="email" placeholder="Deine E-Mail"></li>
-              <li class="focontactoter-li"><input type="text" placeholder="Betreff"><a href="#" class="footer-link">
+              <li class="contact-li"><input type="text" placeholder="Betreff"><a href="#" class="footer-link">
               </li>
               <li class="contact-li"><textarea name="Nachricht" id="massagefield"
                                               cols="20" rows="7" placeholder="Was möchtest du uns noch sagen?"></textarea></li>
@@ -45,17 +45,12 @@
 
             <div class="contact-col">
                 <div>
-
                     <h2 class="contact-h2">Adresse:</h2>
                     <p>Ammerländer Heerstraße 114-118, 26129 Oldenburg</p>
-
-
-
                 </div>
             </div>
             <div class="contact-col">
                 <div>
-
                     <h2 class="contact-h2">Telefon: </h2>
                     <p><a href="tel://1234567920"> +012-3456789</a></p>
                     <ul class="list-unstyled">
@@ -66,7 +61,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="contact-col">
                 <div>
                     <h2 class="contact-h2">Email:</h2>
@@ -93,15 +87,9 @@
                     </div>
                 </div>
             </div>
-
   </div>
-
-
         </div>
     </div>
-    </form>
-
-
 <!--icludes footer -->
 <?php include "footer.html"; ?>
 </body>

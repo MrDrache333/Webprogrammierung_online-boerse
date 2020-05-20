@@ -206,14 +206,26 @@
 }
 .contact-h2{
   font-family: inherit;
-  color: white;
+  color: black;
   margin-bottom: 40px;
   font-size: 20px;
   font-weight: 400;
 }
 
 .contact-li {
-    padding-bottom: 1rem !important;
+  color:white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: white;
+  border:2px solid #CC6666;
+  transition: all 0.3s;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+  outline:0;
 }
 
 .footer {
