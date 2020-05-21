@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+textarea:focus, input:focus {
+    outline: none;
+}
+
 .content {
     background-image: url("../images/background.jpg");
     background-repeat: no-repeat;
