@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/profile.css">
+
 
     <title>KEFEDO-Profil</title>
 </head>
@@ -14,57 +16,96 @@
         <ul class="navi">
             <li class="navibutton"><a href="index.php" class="naviobjekt"> Startseite</a></li>
             <!--active Anzeige nur als TEst wie umsteztbar???-->
-<li class="navibutton">
-          <div class="active"> <a href="profil.php" class="naviobjekt"> Mein Profil</a></div></li>
+            <li class="navibutton">
+                <div class="active"><a href="profil.php" class="naviobjekt"> Mein Profil</a></div>
+            </li>
             <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
             <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
         </ul>
 
     </nav>
 </div>
-<div class="grid-farbe">
-<!--Searchbox-->
 <h1> Mein Profil</h1>
 <div class="container">
-    <div class="contact-row">
-
-        <div class="contact-col">
-            <div>
-
-                <h2 class="footer-h2">Meine Daten</h2>
-                <ul class="list-unstyled">
-                    <li class="footer-li">Vorname: <input type="text" placeholder="Max"></li>
-                    <li class="footer-li">Nachname: <input type="text" placeholder="Mustermann"></li>
-                    <li class="footer-li">Email: <input type="text" placeholder="max.mustermann@123.de"></li>
-                    <li class="footer-li">Straße: <input type="text" placeholder="Musterstraße 12"></li>
-                    <li class="footer-li">Postleizahl: <input type="text" placeholder="12345 Musterstadt"></li>
-                      <li class="footer-li"> <input type="submit" value="Daten sichern"><input type="submit" value="Konto löschen"></li>
-                </ul>
-
+    <div class="profile-container">
+        <div class="profile-content">
+            <div class="profile-form">
+                <form method="POST" class="profile-form" id="profile-form">
+                    <div class="form-col">
+                        <h2>Meine Informationen</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Vorname :</label>
+                                <input type="text" name="name" id="name" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="father_name">Nachname :</label>
+                                <input type="text" name="father_name" id="father_name" required/>
+                            </div>
+                        </div>
+                        <div class="form-radio">
+                            <label for="gender" class="radio-label">Geschlecht :</label>
+                            <div class="form-radio-item">
+                                <input type="radio" name="gender" id="male" checked>
+                                <label for="male">Männlich</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" name="gender" id="female">
+                                <label for="female">Weiblich</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" name="gender" id="apache">
+                                <label for="apache">Apache Kampfhubschrauber</label>
+                                <span class="check"></span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="state">Land:</label>
+                                <input type="text" name="state" id="state">
+                            </div>
+                            <div class="form-group">
+                                <label for="city">Stadt:</label>
+                                <input type="text" name="city" id="city">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="street">Straße:</label>
+                                <input type="text" name="street" id="street">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-Mail Adresse :</label>
+                                <input type="email" name="email" id="email"/>
+                            </div>
+                        </div>
+                        <div class="form-submit">
+                            <input type="submit" value="Zurücksetzen" class="submit" name="reset" id="reset"/>
+                            <input type="submit" value="Speichern" class="submit" name="submit" id="submit"/>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <h2>Mein Profilbild</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <img src="images/profile_template.png" alt="Profilbild-Template">
+                            </div>
+                        </div>
+                        <div class="form-submit">
+                            <input type="submit" value="Profilbild löschen" class="submit" name="reset_pb"
+                                   id="reset_pb"/>
+                            <input type="submit" value="Hochladen" class="submit" name="submit_pb" id="submit_pb"/>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-
-
-        <div class="contact-col">
-            <div>
-                <h2 class="footer-h2">Meine Anzeigen</h2>
-                <p>At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                    invidunt ut labore et dolore magna aliquyam erat,
-                    sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-                    gubergren,
-                    no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-            </div>
-        </div>
-
     </div>
 </div>
-</form>
-</div>
-
-
 </div><?php include "footer.html"; ?>
 </body>
 </html>
