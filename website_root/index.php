@@ -24,7 +24,7 @@
     <form class="searchBox">
         <div class="searchBox-grid">
             <p class="searchBox-text">Wonach suchen Sie ?</p>
-            <input autofocus class="searchBox-input searchBox-item" type="text"
+            <input class="searchBox-input searchBox-item" type="text"
                    placeholder="Was? (z.B. Beruf oder Stichwort)"/>
             <input class="searchBox-input searchBox-item" type="text" placeholder="Wo? (z.B. PLZ oder Ort)"/>
         </div>

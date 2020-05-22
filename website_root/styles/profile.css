@@ -130,11 +130,6 @@ input[type=radio]:checked ~ .check::before {
     background: #A2B3F8;
 }
 
-.form-submit {
-    text-align: right;
-    padding-top: 27px;
-}
-
 input {
     display: block;
     max-width: 300px;
@@ -143,17 +138,6 @@ input {
     box-sizing: border-box;
     font-weight: 500;
     font-size: 13px;
-}
-
-.submit {
-    width: 140px;
-    height: 40px;
-    display: inline-block;
-    font-weight: 400;
-    font-size: 13px;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
 }
 
 .check {

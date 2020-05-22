@@ -16,6 +16,25 @@ input {
     font-size: 13px;
 }
 
+#submit_contact {
+    background: #A2B3F8;
+    color: #fff;
+}
+
+#submit_contact:hover {
+    background-color: #A2B3F8;
+}
+
+.submit {
+    width: 140px;
+    height: 40px;
+    display: flex;
+    font-weight: 400;
+    font-size: 13px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
 
 h2 {
     line-height: 1.66;
@@ -169,8 +188,24 @@ textarea:focus, input:focus {
 .contact-row {
     display: flex;
     flex-wrap: wrap;
-    align-content: left;
+    padding-bottom: 20px;
+    position: relative;
 
+}
+
+.form-submit {
+    text-align: right;
+    padding-top: 27px;
+}
+
+textarea {
+    display: block;
+    max-width: 500px;
+    border: 1px solid #ebebeb;
+    padding: 11px 20px;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 13px;
 }
 
 .contact-col {
@@ -258,6 +293,10 @@ textarea:focus, input:focus {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+}
+
+.contact-container {
+    padding-bottom: 15px;
 }
 
 .footer-h2 {

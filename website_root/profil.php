@@ -32,6 +32,19 @@
             <div class="profile-form">
                 <form method="POST" class="profile-form" id="profile-form">
                     <div class="form-col">
+                        <h2>Mein Profilbild</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <img src="images/profile_template.png" alt="Profilbild-Template">
+                            </div>
+                        </div>
+                        <div class="form-submit">
+                            <input type="submit" value="Profilbild löschen" class="submit" name="reset_pb"
+                                   id="reset_pb"/>
+                            <input type="submit" value="Hochladen" class="submit" name="submit_pb" id="submit_pb"/>
+                        </div>
+                    </div>
+                    <div class="form-col">
                         <h2>Meine Informationen</h2>
                         <div class="form-row">
                             <div class="form-group">
@@ -86,19 +99,6 @@
                         <div class="form-submit">
                             <input type="submit" value="Zurücksetzen" class="submit" name="reset" id="reset"/>
                             <input type="submit" value="Speichern" class="submit" name="submit" id="submit"/>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <h2>Mein Profilbild</h2>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <img src="images/profile_template.png" alt="Profilbild-Template">
-                            </div>
-                        </div>
-                        <div class="form-submit">
-                            <input type="submit" value="Profilbild löschen" class="submit" name="reset_pb"
-                                   id="reset_pb"/>
-                            <input type="submit" value="Hochladen" class="submit" name="submit_pb" id="submit_pb"/>
                         </div>
                     </div>
                 </form>
