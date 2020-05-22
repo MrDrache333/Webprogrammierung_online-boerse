@@ -30,8 +30,8 @@
     <div class="profile-container">
         <div class="profile-content">
             <div class="profile-form">
-                <form method="POST" class="profile-form" id="profile-form">
-                    <div class="form-col">
+                <div class="form-col">
+                    <form method="POST" class="profile-form" id="profile-form">
                         <h2>Mein Profilbild</h2>
                         <div class="form-row">
                             <div class="form-group">
@@ -43,8 +43,10 @@
                                    id="reset_pb"/>
                             <input type="submit" value="Hochladen" class="submit" name="submit_pb" id="submit_pb"/>
                         </div>
-                    </div>
-                    <div class="form-col">
+                    </form>
+                </div>
+                <div class="form-col">
+                    <form method="POST" class="profile-form" id="profile-form-image">
                         <h2>Meine Informationen</h2>
                         <div class="form-row">
                             <div class="form-group">
@@ -100,8 +102,8 @@
                             <input type="submit" value="Zurücksetzen" class="submit" name="reset" id="reset"/>
                             <input type="submit" value="Speichern" class="submit" name="submit" id="submit"/>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
