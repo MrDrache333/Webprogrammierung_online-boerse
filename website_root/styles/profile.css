@@ -42,29 +42,50 @@ input:-webkit-autofill {
     clear: both;
 }
 
+.form-radio-item-group {
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .profile-container {
     width: 90%;
     max-width: 100%;
     position: relative;
-    margin: 0 auto;
-    background: #fff;
+    margin: auto;
+    background: transparent;
     padding: 20px;
 }
 
 .profile-img, .profile-form {
-    width: 100%;
+    width: 50%;
 }
 
 .profile-img {
     margin-bottom: -7px;
+    border-color: grey;
+    border-width: 2px;
 }
 
 .profile-form {
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    float: left;
 }
 
 .form-row {
     margin: 0;
+}
+
+.form-col {
+    padding: 1em;
+    float: left;
+    min-width: 300px;
+    max-width: 50%;
+    flex-grow: 2;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .form-row .form-group {
@@ -184,23 +205,4 @@ input {
 
 #submit:hover, #submit_pb:hover {
     background-color: #A2B3F8;
-}
-
-@media screen and (max-width: 480px) {
-    .form-radio {
-        flex-direction: column;
-        -moz-flex-direction: column;
-        -webkit-flex-direction: column;
-        -o-flex-direction: column;
-        -ms-flex-direction: column;
-    }
-
-    .submit {
-        width: 100%;
-    }
-
-    #reset {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
 }

@@ -26,7 +26,7 @@
 <!--Kontaktformular-->
 <div class="content">
     <div class="container contact-container">
-        <h2>Kontaktieren Sie uns!</h2>
+        <h2>Was liegt Ihnen noch auf dem Herzen?</h2>
         <form method="POST" class="contact-form" id="contact-form">
             <div class="contact-row">
                 <input type="text" name="Vorname" id="firstname" placeholder="Dein Name" required autofocus>
