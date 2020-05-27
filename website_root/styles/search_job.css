@@ -1,0 +1,113 @@
+
+.content {
+    padding: 10px .5% 10px .5%;
+    margin: 0;
+}
+
+.jobs-content {
+    background: rgba(100, 100, 100, 0.8);
+    border-radius: 8px;
+    padding: 10px;
+    animation: fadein .5s;
+}
+
+.jobs-content-dynamic {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.jobs-result {
+    flex-wrap: wrap;
+    overflow: hidden;
+    flex-grow: 100;
+    padding-left: 10px;
+    margin-right: 0;
+    padding-top: 15px;
+}
+
+article {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: auto;
+    margin-right: 0;
+    margin-bottom: 5px;
+    min-width: 300px;
+    height: 200px;
+    padding: 15px;
+}
+
+article:hover {
+    background-color: rgba(240, 240, 240, 0.9);
+    border-left: .2666666667rem solid #020e25;
+    padding-left: 11px;
+    border-bottom: .1rem solid grey;
+    border-top: .1rem solid grey;
+    border-right: .1rem solid grey;
+}
+
+.result-h3 {
+    border-bottom: 0;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 1px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.searchBox {
+    background: inherit;
+    animation: inherit;
+    max-width: 1200px;
+    padding: 10px;
+}
+
+.searchBox-text {
+    color: white;
+}
+
+.jobs-filter {
+    max-width: 300px;
+    flex-wrap: wrap;
+}
+
+.filter-container {
+    padding: 5px;
+}
+
+.filter-fieldset {
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1.33rem;
+    border: 0;
+    margin-top: 10px;
+    display: block;
+    box-sizing: border-box;
+}
+
+.filter-h3 {
+    border-bottom: 0;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.26;
+}
+
+input[type=checkbox], input[type=radio] {
+    position: relative;
+    width: 1.3333333333rem;
+    height: 1.3333333333rem;
+    margin: 0;
+    display: inline-block;
+}
+
+label {
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
