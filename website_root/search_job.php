@@ -25,29 +25,24 @@
 
 </div>
 <!--Searchbox-->
-<div class="grid-farbe">
-    <form>
-        <div>
-            <div>
-                Wonach suchen Sie ? <input type="text" placeholder="z.B. Programmierer"></input>
+<div class="content">
+    <div class="container">
+        <div class="jobs-content">
+            <div class="jobs-search">
+                <form>
+
+                </form>
             </div>
-            <div>
-                <select>
-                    <option disabled selected value="">Kategorie</option>
-                    <option value="">Vollzeit</option>
-                    <option value="">Teilzeit</option>
-                    <option value="">Freiberufler</option>
-                    <option value="">Praktikum</option>
-                    <option value="">Befristet</option>
-                </select>
+            <div class="jobs-filter">
+                <form>
+
+                </form>
             </div>
-            <div>
-                <input type="submit" value="Suchen">
+            <div class="jobs-result">
+
             </div>
         </div>
-
-    </form>
-
+    </div>
 </div>
 <?php include "footer.html"; ?>
 </body>
