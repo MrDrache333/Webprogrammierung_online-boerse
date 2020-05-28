@@ -133,7 +133,6 @@ label {
     font-size: 13px;
     padding-left: 25px;
     position: relative;
-    z-index: 9;
     display: block;
     cursor: pointer;
 }
@@ -170,7 +169,6 @@ input {
     width: 13px;
     top: 4px;
     left: 0;
-    z-index: 5;
     transition: border .25s linear;
 }
 

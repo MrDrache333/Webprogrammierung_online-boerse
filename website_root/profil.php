@@ -4,7 +4,6 @@
     <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/profile.css">
-    <link rel="stylesheet" type="text/css" href="styles/login.css">
 
 
     <title>KEFEDO-Profil</title>
