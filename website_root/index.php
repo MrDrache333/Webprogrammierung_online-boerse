@@ -25,9 +25,12 @@
     <form class="searchBox">
         <div class="searchBox-grid">
             <p class="searchBox-text">Wonach suchen Sie ?</p>
-            <input class="searchBox-input searchBox-item" type="text"
+            <label for="searchBox-what" hidden>Was? (z.B. Beruf oder Stichwort)</label>
+            <input id="searchBox-what" class="searchBox-input searchBox-item" type="text"
                    placeholder="Was? (z.B. Beruf oder Stichwort)"/>
-            <input class="searchBox-input searchBox-item" type="text" placeholder="Wo? (z.B. PLZ oder Ort)"/>
+            <label for="searchBox-where" hidden>Wo? (z.B. PLZ oder Ort)</label>
+            <input id="searchBox-where" class="searchBox-input searchBox-item" type="text"
+                   placeholder="Wo? (z.B. PLZ oder Ort)"/>
         </div>
         <a href="search_job.php" class="searchBox-button searchBox-button-text searchBox-item"><span
                     class="searchBox-button-gradient"></span>Suchen</a>

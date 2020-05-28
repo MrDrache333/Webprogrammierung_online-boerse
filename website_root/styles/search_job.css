@@ -1,4 +1,8 @@
 
+/**{
+    border: .1rem solid red;
+}
+*/
 .content {
     padding: 10px .5% 10px .5%;
     margin: 0;
@@ -29,20 +33,69 @@
 article {
     background-color: rgba(255, 255, 255, 0.9);
     width: auto;
-    margin-right: 0;
     margin-bottom: 5px;
     min-width: 300px;
-    height: 200px;
     padding: 15px;
+    display: grid;
 }
 
 article:hover {
     background-color: rgba(240, 240, 240, 0.9);
+    border: .1rem solid grey;
     border-left: .2666666667rem solid #020e25;
     padding-left: 11px;
-    border-bottom: .1rem solid grey;
-    border-top: .1rem solid grey;
-    border-right: .1rem solid grey;
+    padding-top: 14px;
+}
+
+.article-content {
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-grow: 100;
+}
+
+.article-left {
+    padding-right: 10px;
+}
+
+.article-right {
+    margin-top: 50px;
+    float: right;
+}
+
+.article-info-row {
+    display: flex;
+    padding: 5px;
+}
+
+.article-info-group {
+    display: grid;
+}
+
+.article-info-type {
+    width: 150px;
+}
+
+.article-company {
+    margin: auto;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.article-company-logo {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+}
+
+.article-company-name {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-right: 0;
+    padding-left: 10px;
+    font-size: 1.26rem;
 }
 
 .result-h3 {
@@ -54,6 +107,24 @@ article:hover {
     padding-bottom: 1px;
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+.article-link {
+    padding-top: 10px;
+    flex-grow: 100;
+    color: #b30920;
+    text-decoration: none;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.article-link:hover {
+    color: black;
+}
+
+.result-h3-sub {
+    color: rgb(55, 55, 55);
 }
 
 .searchBox {
@@ -68,8 +139,12 @@ article:hover {
 }
 
 .jobs-filter {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
     max-width: 300px;
     flex-wrap: wrap;
+    height: max-content;
 }
 
 .filter-container {
@@ -110,4 +185,10 @@ label {
     font-family: Roboto, sans-serif;
     font-weight: 400;
     font-size: 1.2rem;
+}
+
+@media screen and (max-width: 955px) {
+    .article-content {
+        margin: auto;
+    }
 }
