@@ -29,20 +29,29 @@
 <!--Kontaktformular-->
 <div class="content">
     <div class="container contact-container">
-        <h2>Was liegt Ihnen noch auf dem Herzen?</h2>
+        <h3>Was liegt Ihnen noch auf dem Herzen?</h3>
         <form method="POST" class="contact-form" id="contact-form">
-            <div class="contact-row">
-                <input type="text" name="Vorname" id="firstname" placeholder="Dein Name" required autofocus>
+
+              Dein Name:<br>
+                <div class="contact-row">
+
+                <input type="text" name="Vorname" id="firstname" placeholder="Max Mustermann" required autofocus>
             </div>
+              Deine E-Mail:
             <div class="contact-row">
-                <input type="email" name="email" id="email" placeholder="Deine E-Mail" required autofocus>
+
+                <input class"emailfeld" type="email" name="email" id="email" placeholder="Max.mustermann@web.de" required autofocus>
             </div>
+            Betreff:
             <div class="contact-row">
-                <input type="text" name="subject" id="subject" placeholder="Betreff" required autofocus>
+
+                <input type="text" name="subject" id="subject" placeholder="Tolle Seite" required autofocus>
             </div>
+                Was möchtest du uns mitteilen:<br>
             <div class="contact-row">
+
                   <textarea name="message" id="messagearea"
-                            cols="50" rows="7" placeholder="Was möchtest du uns mitteilen?"></textarea>
+                            cols="50" rows="7" placeholder="Ihr habt ne tolle Seite"></textarea>
             </div>
             <div class="form-submit">
                 <input type="submit" value="Senden" class="submit" name="submit" id="submit_contact"/>

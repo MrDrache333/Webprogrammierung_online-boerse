@@ -55,6 +55,7 @@ input:-webkit-autofill {
     margin: auto;
     background: transparent;
     padding: 20px;
+
 }
 
 .profile-img, .profile-form {
@@ -97,6 +98,12 @@ input:-webkit-autofill {
     margin-bottom: 23px;
     min-width: 300px;
     position: relative;
+}
+.profilemail{
+margin-top: 11px;
+
+
+
 }
 
 input:focus, select:focus {

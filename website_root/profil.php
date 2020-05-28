@@ -20,14 +20,17 @@
             <li class="navibutton">
                 <div class="active"><a href="profil.php" class="naviobjekt"> Mein Profil</a></div>
             </li>
+            <li class="navibutton"><a href="ads.php" class="naviobjekt">Meine Anzeigen </a></li>
             <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
             <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
         </ul>
 
     </nav>
 </div>
-<h1> Mein Profil</h1>
+  <div class="grid-farbe">
 <div class="container">
+
+  <h1> Mein Profil</h1>
     <div class="profile-container">
         <div class="profile-content">
             <div class="profile-form">
@@ -99,7 +102,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="email">E-Mail Adresse :</label>
-                                <input type="email" name="email" id="email"/>
+                                <input class="profilemail"type="email" name="email" id="email"/>
                             </div>
                         </div>
                         <div class="form-submit">
@@ -111,6 +114,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </div><?php include "footer.html"; ?>
 </body>

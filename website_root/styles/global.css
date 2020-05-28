@@ -39,6 +39,17 @@ h2 {
     font-size: 20px;
     text-transform: uppercase;
     margin: 0 0 32px;
+
+}
+h3{
+    line-height: 1.66;
+    padding: 0;
+    font-weight: 700;
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 0 0 32px;
+
 }
 
 textarea:focus, input:focus {
@@ -116,6 +127,7 @@ textarea:focus, input:focus {
 
 .contact-container {
     padding-bottom: 15px;
+    color:white;
 }
 
 .footer-h2 {
