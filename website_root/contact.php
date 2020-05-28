@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/contact.css">
     <link rel="stylesheet" type="text/css" href="styles/login.css">
 
     <title>KEFEDO-Kontakt</title>

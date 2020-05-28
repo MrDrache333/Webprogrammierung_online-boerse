@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" type="text/css" href="styles/login.css">
+    <link rel="stylesheet" type="text/css" href="styles/searchBox.css">
     <link rel="stylesheet" type="text/css" href="styles/search_job.css">
 
     <title>KEFEDO-Job-suchen</title>
