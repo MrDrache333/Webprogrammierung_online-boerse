@@ -425,6 +425,12 @@ textarea:focus, input:focus {
     }
 }
 
+@media screen and (max-width: 900px) {
+    .loginModal-content {
+        width: 100%;
+    }
+}
+
 .naviobjekt {
     display: block;
     color: white;
