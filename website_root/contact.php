@@ -4,7 +4,6 @@
     <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/contact.css">
-    <link rel="stylesheet" type="text/css" href="styles/login.css">
 
     <title>KEFEDO-Kontakt</title>
 
@@ -32,22 +31,22 @@
         <h3>Was liegt Ihnen noch auf dem Herzen?</h3>
         <form method="POST" class="contact-form" id="contact-form">
 
-              Dein Name:<br>
-                <div class="contact-row">
+            Dein Name:<br>
+            <div class="contact-row">
 
                 <input type="text" name="Vorname" id="firstname" placeholder="Max Mustermann" required autofocus>
             </div>
-              Deine E-Mail:
+            Deine E-Mail:
             <div class="contact-row">
-
-                <input class"emailfeld" type="email" name="email" id="email" placeholder="Max.mustermann@web.de" required autofocus>
+                <input class"emailfeld" type="email" name="email" id="email" placeholder="Max.mustermann@web.de"
+                required autofocus>
             </div>
             Betreff:
             <div class="contact-row">
 
                 <input type="text" name="subject" id="subject" placeholder="Tolle Seite" required autofocus>
             </div>
-                Was möchtest du uns mitteilen:<br>
+            Was möchtest du uns mitteilen:<br>
             <div class="contact-row">
 
                   <textarea name="message" id="messagearea"

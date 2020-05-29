@@ -3,29 +3,50 @@
         <a href="index.php"><img alt="Logo" class="kefedologo" src="images/logo.png"></a>
     </div>
     <div>
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+      <button onclick="document.getElementById('login-modal').style.display='block'" style="width:auto;">Login</button>
 
-<div id="id01" class="modal">
-
-  <form class="modal-content animate" action="/index.php" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="images/profile_template.png" alt="Avatar" class="avatar">
+<div id="login-modal" class="loginModal">
+<!-- Login form-->
+  <form class="loginModal-content loginAnimate" action="/index.php" method="post">
+    <div class="loginImgcontainer">
+      <span onclick="document.getElementById('login-modal').style.display='none'" class="loginClose" title="Close Modal">&times;</span>
+      <img src="images/profile_template.png" alt="Avatar" class="loginAvatar">
     </div>
 
-    <div class="container">
-      <p><label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+    <div class="loginContainer">
+      <p><label for="uname"><b>Benutzername</b></label>
+      <input type="username" placeholder="Benutzername eingeben" name="uname" required>
+      </p>
+      <p>  <label for="psw"><b>Passwort</b></label>
+      <input type="password" placeholder="Passwort eingeben" name="psw" required>
+      </p>
+      <button type="submit">Login</button>
+    </div>
+
+    <div class="loginContainer" display="flex" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('login-modal').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+  <!-- Register form-->
+  <form class="loginModal-content loginAnimate" action="/index.php" method="post">
+    <div class="loginImgcontainer">
+      <span onclick="document.getElementById('login-modal').style.display='none'" class="loginClose" title="Close Modal">&times;</span>
+      <img src="images/profile_template.png" alt="Avatar" class="loginAvatar">
+    </div>
+
+    <div class="loginContainer">
+      <p><label for="uname"><b>Benutzername</b></label>
+      <input type="username" placeholder="Benutzername eingeben" name="uname" required>
 </p>
-    <p>  <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+    <p>  <label for="psw"><b>Passwort</b></label>
+      <input type="password" placeholder="Passwort eingeben" name="psw" required>
 </p>
       <button type="submit">Login</button>
-
     </div>
 
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+    <div class="loginContainer" display="flex" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('login-modal').style.display='none'" class="cancelbtn">Cancel</button>
       <span class="psw">Forgot <a href="#">password?</a></span>
     </div>
   </form>
