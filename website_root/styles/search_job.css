@@ -1,4 +1,3 @@
-
 /**{
     border: .1rem solid red;
 }
@@ -36,7 +35,7 @@ article {
     background-color: rgba(255, 255, 255, 0.9);
     width: auto;
     margin-bottom: 5px;
-    min-width: 300px;
+    min-width: 200px;
     padding: 15px;
     display: grid;
 }
@@ -107,6 +106,7 @@ article:hover {
 }
 
 .result-h3 {
+    color: #0b0b0b;
     border-bottom: 0;
     margin: 0;
     font-family: Roboto, sans-serif;
@@ -150,6 +150,7 @@ article:hover {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
+    width: 300px;
     max-width: 300px;
     flex-wrap: wrap;
     height: max-content;
@@ -185,6 +186,7 @@ article:hover {
 }
 
 .filter-h3 {
+    color: #0b0b0b;
     border-bottom: 0;
     margin: 0;
     font-family: Roboto, sans-serif;
@@ -225,4 +227,36 @@ label {
         margin-top: 0;
         padding: 0;
     }
+}
+
+@media screen and (max-width: 450px) {
+    .content {
+        padding: 0;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .filter-container {
+        padding: 0;
+    }
+
+    .filter-fieldset {
+        padding: 5px;
+    }
+
+    .jobs-filter {
+        padding: 0;
+        width: 100%;
+    }
+
+    .jobs-content {
+        padding: 0;
+    }
+
+    .jobs-result {
+        padding-left: 0;
+    }
+
 }

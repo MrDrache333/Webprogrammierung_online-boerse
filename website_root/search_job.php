@@ -83,7 +83,7 @@
                                 </div>
                             </fieldset>
                             <fieldset class="filter-fieldset">
-                                <h3 class="filter-h3">Arbeitszeitmodell</h3>
+                                <h3 class="filter-h3">Arbeitszeit</h3>
                                 <div class="filter-row">
                                     <input type="checkbox" id="f-time-1">
                                     <label class="filter-cb-label" for="f-time-1">Vollzeit</label>
