@@ -50,8 +50,7 @@
   <div class="card">
     <h2>Verkäufer/-in (m/w/d) <br>
     (Fachverkäufer/-in - Lebensmittelhandwerk)</h2>
-      <img  class="fakeimg"src="images/company_placeholder.png"
-           alt="Firmenlogo">
+      <img  class="fakeimg"src="images/company_placeholder.png" alt="Firmenlogo">
     <div class="beschreibung">
   Hier könnte ihre Werbung stehen.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
@@ -85,7 +84,19 @@
       <h2>Nachrichten</h2>
 
     <div class="card">
-hallo wir sind freunde
+<div class=" nachricht">
+
+  <img  class="fakeimg"src="images/company_placeholder.png" alt="Firmenlogo">
+
+<div class="nachrichtenbes">
+
+<h5>Verkäufer/-in (m/w/d)</h5>
+Ich möchte mich auf die Stelle bewerben. Anbei finden sie meine Unterlagen.
+Geben sie mir bitte Rückmelduung, wenn sie weiter Fragen haben. Vielen Dank.
+
+</div>
+</div>
+
 
     </div>
     </div>
