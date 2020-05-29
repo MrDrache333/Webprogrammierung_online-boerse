@@ -52,14 +52,10 @@ input:-webkit-autofill {
     width: 90%;
     max-width: 100%;
     position: relative;
-    margin: auto;
+    margin: 0 auto;
     background: transparent;
     padding: 20px;
 
-}
-
-.profile-img, .profile-form {
-    width: 50%;
 }
 
 .profile-img {
@@ -69,10 +65,9 @@ input:-webkit-autofill {
 }
 
 .profile-form {
-    width: 100%;
-    display: flex;
     flex-wrap: wrap;
     float: left;
+    margin: auto;
 }
 
 .form-row {
@@ -99,11 +94,9 @@ input:-webkit-autofill {
     min-width: 300px;
     position: relative;
 }
-.profilemail{
-margin-top: 11px;
 
-
-
+.profilemail {
+    margin-top: 11px;
 }
 
 input:focus, select:focus {
