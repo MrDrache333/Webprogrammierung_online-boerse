@@ -258,7 +258,7 @@ textarea:focus, input:focus {
     background-position: top;
     background-size: cover;
     margin-top: 0;
-    padding: 50px 10% 50px 10%;
+    padding: 40vh 10% 50px 10%;
     width: 100%;
     min-height: 100vh;
 }
