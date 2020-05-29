@@ -83,7 +83,7 @@ input:-webkit-autofill {
     padding: 1em;
     float: left;
     min-width: 300px;
-    max-width: 50%;
+    max-width: 600px;
     flex-grow: 2;
     display: flex;
     flex-wrap: wrap;

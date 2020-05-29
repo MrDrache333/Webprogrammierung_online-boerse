@@ -349,13 +349,8 @@ textarea:focus, input:focus {
 
 .headerrahmen {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     padding: 10px;
-}
-
-.button-header {
-    grid-column-start: 3;
-    grid-column-end: 4;
 }
 
 .grid-container-index > div {
@@ -369,8 +364,21 @@ textarea:focus, input:focus {
     height: 300px;
 }
 
+.loginbutton > button {
+    float: right;
+    margin-left: auto;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
+.loginbutton {
+    float: right;
+    margin-right: 0;
+    align-items: end;
+}
+
 .kefedologo {
-    max-width: 40%;
+    max-width: 300px;
     min-width: 200px;
     height: auto;
 }
