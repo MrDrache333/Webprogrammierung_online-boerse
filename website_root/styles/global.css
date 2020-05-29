@@ -268,6 +268,11 @@ textarea:focus, input:focus {
     padding-top: 27px;
 }
 
+.formulare {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .footer {
     display: block;
     position: relative;
