@@ -181,8 +181,8 @@ span.psw {
 
 /* Add Zoom Animation */
 .loginAnimate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
+    -webkit-animation: animatezoom 1.5s;
+    animation: animatezoom 1.5s
 }
 
 @-webkit-keyframes loginAnimatezoom {

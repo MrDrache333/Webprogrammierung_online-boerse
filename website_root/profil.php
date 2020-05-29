@@ -19,37 +19,37 @@
             <li class="navibutton">
                 <div class="active"><a href="profil.php" class="naviobjekt"> Mein Profil</a></div>
             </li>
-            <li class="navibutton"><a href="ads.php" class="naviobjekt">Meine Anzeigen </a></li>
+            <li class="navibutton"><a href="messages.php" class="naviobjekt">Meine Anzeigen </a></li>
             <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
             <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
         </ul>
 
     </nav>
 </div>
-  <div class="grid-farbe">
-<div class="container">
+<div class="grid-farbe">
+    <div class="container">
 
-  <h1> Mein Profil</h1>
-    <div class="profile-container">
-        <div class="profile-content">
-            <div class="profile-form">
-                <div class="form-col">
-                    <form method="POST" class="profile-form" id="profile-form">
-                        <h2>Mein Profilbild</h2>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <img src="images/profile_template.png" alt="Profilbild-Template" id="pb_image">
+        <h1> Mein Profil</h1>
+        <div class="profile-container">
+            <div class="profile-content">
+                <div class="profile-form">
+                    <div class="form-col">
+                        <form method="POST" class="profile-form" id="profile-form">
+                            <h2>Mein Profilbild</h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <img src="images/profile_template.png" alt="Profilbild-Template" id="pb_image">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-submit">
-                            <input type="submit" value="Profilbild löschen" class="submit" name="reset_pb"
-                                   id="reset_pb"/>
-                            <input type="submit" value="Hochladen" class="submit" name="submit_pb" id="submit_pb"/>
-                        </div>
-                    </form>
-                </div>
-                <div class="form-col">
-                    <form method="POST" class="profile-form" id="profile-form-image">
+                            <div class="form-submit">
+                                <input type="submit" value="Profilbild löschen" class="submit" name="reset_pb"
+                                       id="reset_pb"/>
+                                <input type="submit" value="Hochladen" class="submit" name="submit_pb" id="submit_pb"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-col">
+                        <form method="POST" class="profile-form" id="profile-form-image">
                         <h2>Meine Informationen</h2>
                         <div class="form-row">
                             <div class="form-group">
