@@ -34,7 +34,7 @@
                 <input type="text" name="Vorname" id="firstname" placeholder="Dein Name" required autofocus>
             </div>
             <div class="contact-row">
-                <input type="email" name="email" id="email" placeholder="Deine E-Mail" required autofocus>
+                <input type="contact-email" name="email" id="email" placeholder="Deine E-Mail" required autofocus>
             </div>
             <div class="contact-row">
                 <input type="text" name="subject" id="subject" placeholder="Betreff" required autofocus>
