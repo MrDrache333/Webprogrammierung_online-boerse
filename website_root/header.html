@@ -3,61 +3,80 @@
         <a href="index.php"><img alt="Logo" class="kefedologo" src="images/logo.png"></a>
     </div>
     <div>
-      <button onclick="document.getElementById('login-modal').style.display='block'" style="width:auto;">Einloggen oder Registrieren</button>
+        <button onclick="document.getElementById('login-modal').style.display='block'" style="width:auto;">Einloggen
+            oder Registrieren
+        </button>
 
-<div id="login-modal" class="loginModal">
-    <span onclick="document.getElementById('login-modal').style.display='none'" class="loginClose" title="Close Modal">&times;</span>
+        <div class="loginModal" id="login-modal">
+            <span class="loginClose" onclick="document.getElementById('login-modal').style.display='none'"
+                  title="Close Modal">&times;</span>
 
-    <!-- Login form-->
-    <form class="loginModal-content loginAnimate" action="/index.php" method="post">
-        <h2>Login</h2>
-        <div class="loginImgcontainer">
-      <img src="images/profile_template.png" alt="Avatar" class="loginAvatar">
-    </div>
+            <!-- Login form-->
+            <form action="/index.php" class="loginModal-content loginAnimate" method="post">
+                <h2>Login</h2>
+                <div class="loginImgcontainer">
+                    <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
+                </div>
 
-    <div class="loginContainer">
-      <p><label for="loginEmail"><b>Email</b></label>
-      <input id="loginEmail" type="loginEmail" placeholder="Email eingeben" name="loginEmail" required>
-      </p>
-      <p>  <label for="loginPassword"><b>Passwort</b></label>
-      <input id="loginPassword" type="loginPassword" placeholder="Passwort eingeben" name="loginPassword" required>
-      </p>
-      <button type="submit">Login</button>
-    </div>
+                <div class="loginContainer">
+                    <p><label for="loginEmail"><b>Email</b></label>
+                        <input class="loginInput" id="loginEmail" name="loginEmail" placeholder="Email eingeben"
+                               required
+                               type="email">
+                    </p>
+                    <p><label for="loginPassword"><b>Passwort</b></label>
+                        <input class="loginInput" id="loginPassword" name="loginPassword"
+                               placeholder="Passwort eingeben"
+                               required type="password">
+                    </p>
+                    <button type="submit">Login</button>
+                </div>
 
-    <div class="loginContainer" >
-      <button type="button" onclick="document.getElementById('login-modal').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw"> <a href="#">Passwort vergessen?</a></span>
-    </div>
-  </form>
-  <!-- Register form-->
-  <form class="loginModal-content loginAnimate" action="/index.php" method="post">
-      <h2>Registrieren</h2>
-      <div class="loginImgcontainer">
-      <img src="images/profile_template.png" alt="Avatar" class="loginAvatar">
-    </div>
+                <div class="loginContainer">
+                    <button class="cancelbtn" onclick="document.getElementById('login-modal').style.display='none'"
+                            type="button">Cancel
+                    </button>
+                    <span class="psw"> <a href="#">Passwort vergessen?</a></span>
+                </div>
+            </form>
+            <!-- Register form-->
+            <form action="/index.php" class="loginModal-content loginAnimate" method="post">
+                <h2>Registrieren</h2>
+                <div class="loginImgcontainer">
+                    <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
+                </div>
 
-    <div class="loginContainer">
-      <p><label for="loginPrename"><b>Vorname</b></label>
-          <input id="loginPrename" type="text" placeholder="Vorname eingeben" name="loginPrename" required>    </p>
+                <div class="loginContainer">
+                    <p><label for="loginPrename"><b>Vorname</b></label>
+                        <input class="loginInput" id="loginPrename" name="loginPrename" placeholder="Vorname eingeben"
+                               required
+                               type="text"></p>
 
-        <p><label for="loginLastname"><b>Nachname</b></label>
-        <input id="loginLastname" type="text" placeholder="Nachname eingeben" name="loginLastname" required>
-        </p>
-        <p><label for="registerEmail"><b>Email-Adresse</b></label>
-        <input id="registerEmail" type="email" placeholder="Nachname eingeben" name="registerEmail" required>
-        </p>
-        <p>  <label for="newPassword"><b>Passwort</b></label>
-      <input id="newPassword" type="newPassword" placeholder="Passwort eingeben" name="newPassword" required>
-       </p>
-      <button type="submit">Registrieren</button>
-    </div>
+                    <p><label for="loginLastname"><b>Nachname</b></label>
+                        <input class="loginInput" id="loginLastname" name="loginLastname"
+                               placeholder="Nachname eingeben" required
+                               type="text">
+                    </p>
+                    <p><label for="registerEmail"><b>Email-Adresse</b></label>
+                        <input class="loginInput" id="registerEmail" name="registerEmail"
+                               placeholder="Nachname eingeben" required
+                               type="email">
+                    </p>
+                    <p><label for="newPassword"><b>Passwort</b></label>
+                        <input class="loginInput" id="newPassword" name="newPassword" placeholder="Passwort eingeben"
+                               required
+                               type="password">
+                    </p>
+                    <button type="submit">Registrieren</button>
+                </div>
 
-    <div class="loginContainer" >
-      <button  onclick="document.getElementById('login-modal').style.display='none'" class="cancelbtn">Cancel</button>
-    </div>
-  </form>
-</div>
+                <div class="loginContainer">
+                    <button class="cancelbtn" onclick="document.getElementById('login-modal').style.display='none'">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <!-- Script with the click, which kills the Modal<script>
