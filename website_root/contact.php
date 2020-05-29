@@ -9,7 +9,7 @@
 
 </head>
 <body>
-<!--icludes header -->
+<!--includes header -->
 <?php include "header.html"; ?>
 <div class="header">
     <nav>

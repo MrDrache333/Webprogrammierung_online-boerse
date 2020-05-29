@@ -116,3 +116,18 @@
         background: radial-gradient(50px circle at center, rgba(100, 100, 255, .5) 30%, rgba(255, 255, 255, 0));
     }
 }
+
+@media screen and (max-width: 450px) {
+    .searchBox {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .searchBox-input {
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
+    }
+
+}
