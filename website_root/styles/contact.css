@@ -15,6 +15,10 @@
 
 }
 
+.content {
+    padding: 50px 10% 50px 10%;
+}
+
 .contact-col {
     flex-grow: 1;
     text-align: center;
