@@ -3,22 +3,22 @@
         <a href="index.php"><img alt="Logo" class="kefedologo" src="images/logo.png"></a>
     </div>
     <div>
-      <button onclick="document.getElementById('login-modal').style.display='block'" style="width:auto;">Login</button>
+      <button onclick="document.getElementById('login-modal').style.display='block'" style="width:auto;">Einloggen oder Registrieren</button>
 
 <div id="login-modal" class="loginModal">
-<!-- Login form-->
+    <span onclick="document.getElementById('login-modal').style.display='none'" class="loginClose" title="Close Modal">&times;</span>
+    <!-- Login form-->
   <form class="loginModal-content loginAnimate" action="/index.php" method="post">
     <div class="loginImgcontainer">
-      <span onclick="document.getElementById('login-modal').style.display='none'" class="loginClose" title="Close Modal">&times;</span>
       <img src="images/profile_template.png" alt="Avatar" class="loginAvatar">
     </div>
 
     <div class="loginContainer">
-      <p><label for="uname"><b>Benutzername</b></label>
-      <input type="username" placeholder="Benutzername eingeben" name="uname" required>
+      <p><label for="loginEmail"><b>Email</b></label>
+      <input type="loginEmail" placeholder="Email eingeben" name="loginEmail" required>
       </p>
-      <p>  <label for="psw"><b>Passwort</b></label>
-      <input type="password" placeholder="Passwort eingeben" name="psw" required>
+      <p>  <label for="loginPassword"><b>Passwort</b></label>
+      <input type="loginPassword" placeholder="Passwort eingeben" name="loginPassword" required>
       </p>
       <button type="submit">Login</button>
     </div>
@@ -31,16 +31,22 @@
   <!-- Register form-->
   <form class="loginModal-content loginAnimate" action="/index.php" method="post">
     <div class="loginImgcontainer">
-      <span onclick="document.getElementById('login-modal').style.display='none'" class="loginClose" title="Close Modal">&times;</span>
       <img src="images/profile_template.png" alt="Avatar" class="loginAvatar">
     </div>
 
     <div class="loginContainer">
-      <p><label for="uname"><b>Benutzername</b></label>
-      <input type="username" placeholder="Benutzername eingeben" name="uname" required>
-</p>
-    <p>  <label for="psw"><b>Passwort</b></label>
-      <input type="password" placeholder="Passwort eingeben" name="psw" required>
+      <p><label for="loginPrename"><b>Vorname</b></label>
+          <input type="loginPrename" placeholder="Vorname eingeben" name="uname" required>    </p>
+
+        <p><label for="loginLastname"><b>Nachname</b></label>
+        <input type="loginLastname" placeholder="Nachname eingeben" name="uname" required>
+    </p>
+        <p><label for="registerEmail"><b>Email-Adresse</b></label>
+        <input type="registerEmail" placeholder="Nachname eingeben" name="uname" required>
+    </p>
+
+    <p>  <label for="newPassword"><b>Passwort</b></label>
+      <input type="newPassword" placeholder="Passwort eingeben" name="psw" required>
 </p>
       <button type="submit">Login</button>
     </div>
@@ -53,7 +59,7 @@
 </div>
     </div>
 </div>
-<!--<script>
+<!-- Script with the click, which kills the Modal<script>
 // Get the modal
 var modal = document.getElementById('id01');
 
