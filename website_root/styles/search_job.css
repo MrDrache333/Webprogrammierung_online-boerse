@@ -224,8 +224,18 @@ label {
     }
 
     .article-right {
-        margin-top: 0;
         padding: 0;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .article-right {
+        margin-top: 0;
+    }
+
+    .searchBox-input {
+        min-width: 200px;
     }
 }
 
