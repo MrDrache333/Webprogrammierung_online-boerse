@@ -4,13 +4,73 @@
 }
 */
 
-.content {
-    padding: 10px .5% 10px .5%;
-    margin: 0;
+
+
+/* Header/Blog Title */
+
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+  float: left;
+  width: 50%;
 }
-.nachrichten{
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 50%;
+  padding-left: 20px;
 }
-.anzeigen{
+
+
+.fakeimg {
+  width: 15%;
+  padding: 20px;
+  float: left;
+  min-width: 20px
+}
+.ads_button{
+color:black;
+text-decoration: none;
+
+
+}
+.infos{
+display: flex;
+justify-content: space-between;
+
+
+}
+
+.frei{
+
+
+}
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+
+  }
 
 
 
