@@ -61,7 +61,7 @@ button:hover {
     font-weight: bold;
 }
 /* Full-width input fields of Login */
-input[type=loginEmail], input[type=loginPassword] {
+input[type=loginEmail], input[type=loginPassword],input[loginPrename],input[loginLastname],input[registerEmail],input[newPassword] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;

@@ -17,17 +17,17 @@
 
     <div class="loginContainer">
       <p><label for="loginEmail"><b>Email</b></label>
-      <input type="loginEmail" placeholder="Email eingeben" name="loginEmail" required>
+      <input id="loginEmail" type="loginEmail" placeholder="Email eingeben" name="loginEmail" required>
       </p>
       <p>  <label for="loginPassword"><b>Passwort</b></label>
-      <input type="loginPassword" placeholder="Passwort eingeben" name="loginPassword" required>
+      <input id="loginPassword" type="loginPassword" placeholder="Passwort eingeben" name="loginPassword" required>
       </p>
       <button type="submit">Login</button>
     </div>
 
-    <div class="loginContainer" style="background-color:#f1f1f1">
+    <div class="loginContainer" >
       <button type="button" onclick="document.getElementById('login-modal').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
+      <span class="psw"> <a href="#">Passwort vergessen?</a></span>
     </div>
   </form>
   <!-- Register form-->
@@ -39,24 +39,22 @@
 
     <div class="loginContainer">
       <p><label for="loginPrename"><b>Vorname</b></label>
-          <input type="loginPrename" placeholder="Vorname eingeben" name="loginPrename" required>    </p>
+          <input id="loginPrename" type="text" placeholder="Vorname eingeben" name="loginPrename" required>    </p>
 
         <p><label for="loginLastname"><b>Nachname</b></label>
-        <input type="loginLastname" placeholder="Nachname eingeben" name="loginLastname" required>
-    </p>
+        <input id="loginLastname" type="text" placeholder="Nachname eingeben" name="loginLastname" required>
+        </p>
         <p><label for="registerEmail"><b>Email-Adresse</b></label>
-        <input type="registerEmail" placeholder="Nachname eingeben" name="registerEmail" required>
-    </p>
-
-    <p>  <label for="newPassword"><b>Passwort</b></label>
-      <input type="newPassword" placeholder="Passwort eingeben" name="newPassword" required>
-    </p>
+        <input id="registerEmail" type="email" placeholder="Nachname eingeben" name="registerEmail" required>
+        </p>
+        <p>  <label for="newPassword"><b>Passwort</b></label>
+      <input id="newPassword" type="newPassword" placeholder="Passwort eingeben" name="newPassword" required>
+       </p>
       <button type="submit">Registrieren</button>
     </div>
 
-    <div class="loginContainer" display="flex" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('login-modal').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
+    <div class="loginContainer" >
+      <button  onclick="document.getElementById('login-modal').style.display='none'" class="cancelbtn">Cancel</button>
     </div>
   </form>
 </div>
