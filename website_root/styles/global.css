@@ -16,13 +16,13 @@ input {
     display: block;
     max-width: 100%;
     border: 1px solid #ebebeb;
-    padding: 11px 20px;
+    padding: 12px 20px;
     box-sizing: border-box;
     font-weight: 500;
     font-size: 13px;
 }
-/* Full-width input fields of Login */
-input[type=email], input[type=password] {
+/* Full-width input fields of Login and Registration */
+input[type=loginEmail], input[type=loginPassword], input[loginPrename] input[loginLastname] input[registerEmail] input[newPassword] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -118,10 +118,10 @@ img.loginAvatar{
 .loginContainer{
   padding-left: 16px;
   padding-right: 16px;
-  width: 100px;
+  width: 100%;
 
 }
-span.psw{
+span.loginPassword{
   float: right;
   padding-top: 16px;
 }
@@ -143,8 +143,6 @@ span.psw{
 /* Modal Content/Box */
 .loginModal-content {
   float: left;
-  display: flex;
-  flex-wrap: wrap;
   padding: 50px;
   background-color: #fefefe;
   margin: 5%  auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
