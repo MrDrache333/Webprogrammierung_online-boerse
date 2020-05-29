@@ -20,22 +20,82 @@
             <li class="navibutton">
               <a href="profil.php" class="naviobjekt"> Mein Profil</a>
             </li>
-            <div class="active"> <li class="navibutton"> <a href="ads.php" class="naviobjekt"> Meine Anzeigen </a></li></div>
+             <li class="navibutton"> <div class="active"><a href="ads.php" class="naviobjekt"> Meine Anzeigen </a></div></li>
             <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
             <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
         </ul>
 
     </nav>
 </div>
-    <div class="grid-farbe">
-
-            <div class "nachrichten">
-<h3> Meine NAchrichten</h3>
+<div class="grid-farbe">
 
 
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>Verkäufer/-in (m/w/d) <br>
+      (Fachverkäufer/-in - Lebensmittelhandwerk)</h2>
+        <img  class="fakeimg"src="images/company_placeholder.png"
+             alt="Firmenlogo">
+      <div class="beschreibung">
+    Hier könnte ihre Werbung stehen.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+    </div>
+    <div class="infos">
+    <div class="erstellt">  <h5>erstellt am: 08.12.2020   </div>
+    <div class="frei">  <h5> Frei ab: 12.12.2020</h5>    </div>
+    <div class="frei"><a href="" class="ads_button" ><h5>bearbeiten</h5>     </a>      </div>
+      <div class="frei"><a href="" class="ads_button"><h5>löschen</h5>     </a>   </div>
+  </div>
+  </div>
+  <div class="card">
+    <h2>Verkäufer/-in (m/w/d) <br>
+    (Fachverkäufer/-in - Lebensmittelhandwerk)</h2>
+      <img  class="fakeimg"src="images/company_placeholder.png"
+           alt="Firmenlogo">
+    <div class="beschreibung">
+  Hier könnte ihre Werbung stehen.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+  </div>
+  <div class="infos">
+  <div class="frei">  <h5>erstellt am: 08.12.2020   </div>
+  <div class="frei">  <h5> Frei ab: 12.12.2020</h5>    </div>
+  <div class="frei"><a href="" class="ads_button" ><h5>bearbeiten</h5>     </a>      </div>
+    <div class="frei"><a href="" class="ads_button"><h5>löschen</h5>     </a>   </div>
 </div>
-<div class="anzeigen">
-<h3> Meine Anzeigen</h3>
+</div>
+    <div class="card">
+      <h2>Verkäufer/-in (m/w/d) <br>
+      (Fachverkäufer/-in - Lebensmittelhandwerk)</h2>
+        <img  class="fakeimg"src="images/company_placeholder.png"
+             alt="Firmenlogo">
+      <div class="beschreibung">
+    Hier könnte ihre Werbung stehen.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+    </div>
+    <div class="infos">
+    <div class="erstellt">  <h5>erstellt am: 08.12.2020   </div>
+    <div class="frei">  <h5> Frei ab: 12.12.2020</h5>    </div>
+    <div class="frei"><a href="" class="ads_button" ><h5>bearbeiten</h5>     </a>      </div>
+      <div class="frei"><a href="" class="ads_button"><h5>löschen</h5>     </a>   </div>
+  </div>
+  </div>
+</div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>Nachrichten</h2>
+
+    <div class="card">
+hallo wir sind freunde
+
+    </div>
+    </div>
+
+
+    </div>
+  </div>
+</div>
+
 
 </div>
 
