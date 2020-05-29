@@ -348,9 +348,12 @@ textarea:focus, input:focus {
 }
 
 .headerrahmen {
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     padding: 10px;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .grid-container-index > div {
@@ -377,10 +380,13 @@ textarea:focus, input:focus {
     align-items: end;
 }
 
+.logo {
+    flex-grow: 100;
+}
+
 .kefedologo {
-    max-width: 300px;
+    max-width: 250px;
     min-width: 200px;
-    height: auto;
 }
 
 .grid-item7 {
@@ -423,13 +429,22 @@ textarea:focus, input:focus {
     float: left;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 520px) {
     .navibutton {
         width: 100%;
     }
 
     .content {
         padding: 0;
+    }
+
+    .loginbutton {
+        margin: 0 auto;
+    }
+
+    .logo {
+        margin: 0 auto;
+        flex-grow: inherit;
     }
 }
 

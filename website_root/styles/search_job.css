@@ -15,6 +15,10 @@
     animation: fadein .5s;
 }
 
+.searchBox-input {
+    min-width: 100%;
+}
+
 .jobs-content-dynamic {
     display: flex;
     flex-wrap: wrap;
@@ -232,10 +236,6 @@ label {
 
     .article-right {
         margin-top: 0;
-    }
-
-    .searchBox-input {
-        min-width: 200px;
     }
 }
 
