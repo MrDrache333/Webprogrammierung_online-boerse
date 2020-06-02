@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/global.css">
-    <link rel="stylesheet" type="text/css" href="styles/searchBox.css">
-
-    <title>KEFEDO-Startseite</title>
-</head>
-<body>
-<?php include "header.html"; ?>
+<?php include "header.php"; ?>
 <div class="header">
     <ul class="navi">
         <li class="navibutton">
@@ -36,5 +26,4 @@
     </form>
 </div>
 <?php include "footer.html"; ?>
-</body>
-</html>
+

@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="de" dir="ltr">
-<head>
-    <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/messages.css">
-
-
-    <title>KEFEDO-Profil</title>
-</head>
-<body>
 <!--Header einbinden-->
-<?php include "header.html"; ?>
+<?php include "header.php"; ?>
 <div class="header">
     <nav>
         <ul class="navi">
@@ -135,5 +124,4 @@
 
 
 <?php include "footer.html"; ?>
-</body>
-</html>
+

@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="de" dir="ltr">
-<head>
-    <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" type="text/css" href="styles/searchBox.css">
-    <link rel="stylesheet" type="text/css" href="styles/search_job.css">
-
-    <title>KEFEDO-Job-suchen</title>
-</head>
-<body>
 <!--Header einbinden-->
-<?php include "header.html"; ?>
+<?php include "header.php"; ?>
 <div class="header">
     <ul class="navi">
         <li class="navibutton"><a href="index.php" class="naviobjekt"> Startseite</a></li>
@@ -443,6 +432,4 @@
     </div>
 </div>
 <?php include "footer.html"; ?>
-</body>
 
-</html>

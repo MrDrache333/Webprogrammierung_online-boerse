@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/contact.css">
-
-    <title>KEFEDO-Impressum</title>
-</head>
-<body>
-<div class="grid-container">
     <!--Header einbinden-->
-    <?php include "header.html"; ?>
+    <?php include "header.php"; ?>
     <div class="navileiste">
         <ul class="navi">
             <li class="navibutton"><a href="index.php" class="naviobjekt"> Startseite</a></li>
@@ -62,5 +51,4 @@
     </div>
 </div>
 <?php include "footer.html"; ?>
-</body>
-</html>
+
