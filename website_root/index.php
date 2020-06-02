@@ -11,7 +11,7 @@
     </ul>
 </div>
 <div class="content">
-    <form class="searchBox">
+    <form class="searchBox" method="post" id="index-searchBox">
         <div class="searchBox-grid">
             <p class="searchBox-text">Wonach suchen Sie ?</p>
             <label for="searchBox-what" hidden>Was? (z.B. Beruf oder Stichwort)</label>

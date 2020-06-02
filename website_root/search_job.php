@@ -17,7 +17,7 @@
     <div class="container">
         <div class="jobs-content">
             <div class="jobs-search">
-                <form class="searchBox">
+                <form class="searchBox" method="POST" id="searchjob-searchBox">
                     <p class="searchBox-text">Wonach suchen Sie ?</p>
                     <label for="searchBox-what" hidden>Was? (z.B. Beruf oder Stichwort)</label>
                     <input id="searchBox-what" class="searchBox-input searchBox-item" type="text"
@@ -32,7 +32,7 @@
             <hr>
             <div class="jobs-content-dynamic">
                 <div class="jobs-filter">
-                    <form>
+                    <form method="post" id="searchjob-filter">
                         <div class="filter-container">
                             <fieldset class="filter-fieldset">
                                 <h3 class="filter-h3">Angebotsart</h3>
@@ -95,15 +95,16 @@
                     </form>
                 </div>
                 <div class="jobs-result">
-                    <article role="article">
+                    <article role="article" id="ARTICLE-ID">
                         <div class="article-content">
                             <div class="article-left">
                                 <div class="article-head">
-                                    <h3 class="result-h3" role="heading">Verkäufer/-in (m/w/d)</h3>
-                                    <span class="result-h3-sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
+                                    <h3 class="result-h3" role="heading" id="article_head">Verkäufer/-in (m/w/d)</h3>
+                                    <span class="result-h3-sub" id="article_sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
                                 </div>
                                 <div class="article-company">
-                                    <img class="article-company-logo" src="images/company_placeholder.png"
+                                    <img class="article-company-logo" id="article-logo"
+                                         src="images/company_placeholder.png"
                                          alt="Firmenlogo">
                                     <span class="article-company-name">Beispielfirma GmbH</span>
                                 </div>
@@ -111,32 +112,35 @@
                             <div class="article-right">
                                 <div class="article-info-row">
                                     <div class="article-info-type">Veröffentlichung:</div>
-                                    <span class="article-info-value">28.05.2020</span>
+                                    <span class="article-info-value" id="article_releaseDate">28.05.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Frei ab:</div>
-                                    <span class="article-info-value">01.06.2020</span>
+                                    <span class="article-info-value" id="article_freeAt">01.06.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Standort:</div>
                                     <div class="article-info-group">
-                                        <span class="article-info-value">Musterstraße 1</span>
-                                        <span class="article-info-value">123456 Musterstadt</span>
+                                        <span class="article-info-value"
+                                              id="article_address_street">Musterstraße 1</span>
+                                        <span class="article-info-value"
+                                              id="article_address_plz">123456 Musterstadt</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="article-link" href="#">Mehr Informationen</a>
+                        <a class="article-link" id="article_link" href="#">Mehr Informationen</a>
                     </article>
-                    <article role="article">
+                    <article role="article" id="ARTICLE-ID">
                         <div class="article-content">
                             <div class="article-left">
                                 <div class="article-head">
-                                    <h3 class="result-h3" role="heading">Verkäufer/-in (m/w/d)</h3>
-                                    <span class="result-h3-sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
+                                    <h3 class="result-h3" role="heading" id="article_head">Verkäufer/-in (m/w/d)</h3>
+                                    <span class="result-h3-sub" id="article_sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
                                 </div>
                                 <div class="article-company">
-                                    <img class="article-company-logo" src="images/company_placeholder.png"
+                                    <img class="article-company-logo" id="article-logo"
+                                         src="images/company_placeholder.png"
                                          alt="Firmenlogo">
                                     <span class="article-company-name">Beispielfirma GmbH</span>
                                 </div>
@@ -144,32 +148,35 @@
                             <div class="article-right">
                                 <div class="article-info-row">
                                     <div class="article-info-type">Veröffentlichung:</div>
-                                    <span class="article-info-value">28.05.2020</span>
+                                    <span class="article-info-value" id="article_releaseDate">28.05.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Frei ab:</div>
-                                    <span class="article-info-value">01.06.2020</span>
+                                    <span class="article-info-value" id="article_freeAt">01.06.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Standort:</div>
                                     <div class="article-info-group">
-                                        <span class="article-info-value">Musterstraße 1</span>
-                                        <span class="article-info-value">123456 Musterstadt</span>
+                                        <span class="article-info-value"
+                                              id="article_address_street">Musterstraße 1</span>
+                                        <span class="article-info-value"
+                                              id="article_address_plz">123456 Musterstadt</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="article-link" href="#">Mehr Informationen</a>
+                        <a class="article-link" id="article_link" href="#">Mehr Informationen</a>
                     </article>
-                    <article role="article">
+                    <article role="article" id="ARTICLE-ID">
                         <div class="article-content">
                             <div class="article-left">
                                 <div class="article-head">
-                                    <h3 class="result-h3" role="heading">Verkäufer/-in (m/w/d)</h3>
-                                    <span class="result-h3-sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
+                                    <h3 class="result-h3" role="heading" id="article_head">Verkäufer/-in (m/w/d)</h3>
+                                    <span class="result-h3-sub" id="article_sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
                                 </div>
                                 <div class="article-company">
-                                    <img class="article-company-logo" src="images/company_placeholder.png"
+                                    <img class="article-company-logo" id="article-logo"
+                                         src="images/company_placeholder.png"
                                          alt="Firmenlogo">
                                     <span class="article-company-name">Beispielfirma GmbH</span>
                                 </div>
@@ -177,32 +184,35 @@
                             <div class="article-right">
                                 <div class="article-info-row">
                                     <div class="article-info-type">Veröffentlichung:</div>
-                                    <span class="article-info-value">28.05.2020</span>
+                                    <span class="article-info-value" id="article_releaseDate">28.05.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Frei ab:</div>
-                                    <span class="article-info-value">01.06.2020</span>
+                                    <span class="article-info-value" id="article_freeAt">01.06.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Standort:</div>
                                     <div class="article-info-group">
-                                        <span class="article-info-value">Musterstraße 1</span>
-                                        <span class="article-info-value">123456 Musterstadt</span>
+                                        <span class="article-info-value"
+                                              id="article_address_street">Musterstraße 1</span>
+                                        <span class="article-info-value"
+                                              id="article_address_plz">123456 Musterstadt</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="article-link" href="#">Mehr Informationen</a>
+                        <a class="article-link" id="article_link" href="#">Mehr Informationen</a>
                     </article>
-                    <article role="article">
+                    <article role="article" id="ARTICLE-ID">
                         <div class="article-content">
                             <div class="article-left">
                                 <div class="article-head">
-                                    <h3 class="result-h3" role="heading">Verkäufer/-in (m/w/d)</h3>
-                                    <span class="result-h3-sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
+                                    <h3 class="result-h3" role="heading" id="article_head">Verkäufer/-in (m/w/d)</h3>
+                                    <span class="result-h3-sub" id="article_sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
                                 </div>
                                 <div class="article-company">
-                                    <img class="article-company-logo" src="images/company_placeholder.png"
+                                    <img class="article-company-logo" id="article-logo"
+                                         src="images/company_placeholder.png"
                                          alt="Firmenlogo">
                                     <span class="article-company-name">Beispielfirma GmbH</span>
                                 </div>
@@ -210,32 +220,35 @@
                             <div class="article-right">
                                 <div class="article-info-row">
                                     <div class="article-info-type">Veröffentlichung:</div>
-                                    <span class="article-info-value">28.05.2020</span>
+                                    <span class="article-info-value" id="article_releaseDate">28.05.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Frei ab:</div>
-                                    <span class="article-info-value">01.06.2020</span>
+                                    <span class="article-info-value" id="article_freeAt">01.06.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Standort:</div>
                                     <div class="article-info-group">
-                                        <span class="article-info-value">Musterstraße 1</span>
-                                        <span class="article-info-value">123456 Musterstadt</span>
+                                        <span class="article-info-value"
+                                              id="article_address_street">Musterstraße 1</span>
+                                        <span class="article-info-value"
+                                              id="article_address_plz">123456 Musterstadt</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="article-link" href="#">Mehr Informationen</a>
+                        <a class="article-link" id="article_link" href="#">Mehr Informationen</a>
                     </article>
-                    <article role="article">
+                    <article role="article" id="ARTICLE-ID">
                         <div class="article-content">
                             <div class="article-left">
                                 <div class="article-head">
-                                    <h3 class="result-h3" role="heading">Verkäufer/-in (m/w/d)</h3>
-                                    <span class="result-h3-sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
+                                    <h3 class="result-h3" role="heading" id="article_head">Verkäufer/-in (m/w/d)</h3>
+                                    <span class="result-h3-sub" id="article_sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
                                 </div>
                                 <div class="article-company">
-                                    <img class="article-company-logo" src="images/company_placeholder.png"
+                                    <img class="article-company-logo" id="article-logo"
+                                         src="images/company_placeholder.png"
                                          alt="Firmenlogo">
                                     <span class="article-company-name">Beispielfirma GmbH</span>
                                 </div>
@@ -243,32 +256,35 @@
                             <div class="article-right">
                                 <div class="article-info-row">
                                     <div class="article-info-type">Veröffentlichung:</div>
-                                    <span class="article-info-value">28.05.2020</span>
+                                    <span class="article-info-value" id="article_releaseDate">28.05.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Frei ab:</div>
-                                    <span class="article-info-value">01.06.2020</span>
+                                    <span class="article-info-value" id="article_freeAt">01.06.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Standort:</div>
                                     <div class="article-info-group">
-                                        <span class="article-info-value">Musterstraße 1</span>
-                                        <span class="article-info-value">123456 Musterstadt</span>
+                                        <span class="article-info-value"
+                                              id="article_address_street">Musterstraße 1</span>
+                                        <span class="article-info-value"
+                                              id="article_address_plz">123456 Musterstadt</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="article-link" href="#">Mehr Informationen</a>
+                        <a class="article-link" id="article_link" href="#">Mehr Informationen</a>
                     </article>
-                    <article role="article">
+                    <article role="article" id="ARTICLE-ID">
                         <div class="article-content">
                             <div class="article-left">
                                 <div class="article-head">
-                                    <h3 class="result-h3" role="heading">Verkäufer/-in (m/w/d)</h3>
-                                    <span class="result-h3-sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
+                                    <h3 class="result-h3" role="heading" id="article_head">Verkäufer/-in (m/w/d)</h3>
+                                    <span class="result-h3-sub" id="article_sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
                                 </div>
                                 <div class="article-company">
-                                    <img class="article-company-logo" src="images/company_placeholder.png"
+                                    <img class="article-company-logo" id="article-logo"
+                                         src="images/company_placeholder.png"
                                          alt="Firmenlogo">
                                     <span class="article-company-name">Beispielfirma GmbH</span>
                                 </div>
@@ -276,32 +292,35 @@
                             <div class="article-right">
                                 <div class="article-info-row">
                                     <div class="article-info-type">Veröffentlichung:</div>
-                                    <span class="article-info-value">28.05.2020</span>
+                                    <span class="article-info-value" id="article_releaseDate">28.05.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Frei ab:</div>
-                                    <span class="article-info-value">01.06.2020</span>
+                                    <span class="article-info-value" id="article_freeAt">01.06.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Standort:</div>
                                     <div class="article-info-group">
-                                        <span class="article-info-value">Musterstraße 1</span>
-                                        <span class="article-info-value">123456 Musterstadt</span>
+                                        <span class="article-info-value"
+                                              id="article_address_street">Musterstraße 1</span>
+                                        <span class="article-info-value"
+                                              id="article_address_plz">123456 Musterstadt</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="article-link" href="#">Mehr Informationen</a>
+                        <a class="article-link" id="article_link" href="#">Mehr Informationen</a>
                     </article>
-                    <article role="article">
+                    <article role="article" id="ARTICLE-ID">
                         <div class="article-content">
                             <div class="article-left">
                                 <div class="article-head">
-                                    <h3 class="result-h3" role="heading">Verkäufer/-in (m/w/d)</h3>
-                                    <span class="result-h3-sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
+                                    <h3 class="result-h3" role="heading" id="article_head">Verkäufer/-in (m/w/d)</h3>
+                                    <span class="result-h3-sub" id="article_sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
                                 </div>
                                 <div class="article-company">
-                                    <img class="article-company-logo" src="images/company_placeholder.png"
+                                    <img class="article-company-logo" id="article-logo"
+                                         src="images/company_placeholder.png"
                                          alt="Firmenlogo">
                                     <span class="article-company-name">Beispielfirma GmbH</span>
                                 </div>
@@ -309,32 +328,35 @@
                             <div class="article-right">
                                 <div class="article-info-row">
                                     <div class="article-info-type">Veröffentlichung:</div>
-                                    <span class="article-info-value">28.05.2020</span>
+                                    <span class="article-info-value" id="article_releaseDate">28.05.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Frei ab:</div>
-                                    <span class="article-info-value">01.06.2020</span>
+                                    <span class="article-info-value" id="article_freeAt">01.06.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Standort:</div>
                                     <div class="article-info-group">
-                                        <span class="article-info-value">Musterstraße 1</span>
-                                        <span class="article-info-value">123456 Musterstadt</span>
+                                        <span class="article-info-value"
+                                              id="article_address_street">Musterstraße 1</span>
+                                        <span class="article-info-value"
+                                              id="article_address_plz">123456 Musterstadt</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="article-link" href="#">Mehr Informationen</a>
+                        <a class="article-link" id="article_link" href="#">Mehr Informationen</a>
                     </article>
-                    <article role="article">
+                    <article role="article" id="ARTICLE-ID">
                         <div class="article-content">
                             <div class="article-left">
                                 <div class="article-head">
-                                    <h3 class="result-h3" role="heading">Verkäufer/-in (m/w/d)</h3>
-                                    <span class="result-h3-sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
+                                    <h3 class="result-h3" role="heading" id="article_head">Verkäufer/-in (m/w/d)</h3>
+                                    <span class="result-h3-sub" id="article_sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
                                 </div>
                                 <div class="article-company">
-                                    <img class="article-company-logo" src="images/company_placeholder.png"
+                                    <img class="article-company-logo" id="article-logo"
+                                         src="images/company_placeholder.png"
                                          alt="Firmenlogo">
                                     <span class="article-company-name">Beispielfirma GmbH</span>
                                 </div>
@@ -342,90 +364,25 @@
                             <div class="article-right">
                                 <div class="article-info-row">
                                     <div class="article-info-type">Veröffentlichung:</div>
-                                    <span class="article-info-value">28.05.2020</span>
+                                    <span class="article-info-value" id="article_releaseDate">28.05.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Frei ab:</div>
-                                    <span class="article-info-value">01.06.2020</span>
+                                    <span class="article-info-value" id="article_freeAt">01.06.2020</span>
                                 </div>
                                 <div class="article-info-row">
                                     <div class="article-info-type">Standort:</div>
                                     <div class="article-info-group">
-                                        <span class="article-info-value">Musterstraße 1</span>
-                                        <span class="article-info-value">123456 Musterstadt</span>
+                                        <span class="article-info-value"
+                                              id="article_address_street">Musterstraße 1</span>
+                                        <span class="article-info-value"
+                                              id="article_address_plz">123456 Musterstadt</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <a class="article-link" href="#">Mehr Informationen</a>
+                        <a class="article-link" id="article_link" href="#">Mehr Informationen</a>
                     </article>
-                    <article role="article">
-                        <div class="article-content">
-                            <div class="article-left">
-                                <div class="article-head">
-                                    <h3 class="result-h3" role="heading">Verkäufer/-in (m/w/d)</h3>
-                                    <span class="result-h3-sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
-                                </div>
-                                <div class="article-company">
-                                    <img class="article-company-logo" src="images/company_placeholder.png"
-                                         alt="Firmenlogo">
-                                    <span class="article-company-name">Beispielfirma GmbH</span>
-                                </div>
-                            </div>
-                            <div class="article-right">
-                                <div class="article-info-row">
-                                    <div class="article-info-type">Veröffentlichung:</div>
-                                    <span class="article-info-value">28.05.2020</span>
-                                </div>
-                                <div class="article-info-row">
-                                    <div class="article-info-type">Frei ab:</div>
-                                    <span class="article-info-value">01.06.2020</span>
-                                </div>
-                                <div class="article-info-row">
-                                    <div class="article-info-type">Standort:</div>
-                                    <div class="article-info-group">
-                                        <span class="article-info-value">Musterstraße 1</span>
-                                        <span class="article-info-value">123456 Musterstadt</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="article-link" href="#">Mehr Informationen</a>
-                    </article>
-                    <article role="article">
-                        <div class="article-content">
-                            <div class="article-left">
-                                <div class="article-head">
-                                    <h3 class="result-h3" role="heading">Verkäufer/-in (m/w/d)</h3>
-                                    <span class="result-h3-sub">(Fachverkäufer/-in - Lebensmittelhandwerk)</span>
-                                </div>
-                                <div class="article-company">
-                                    <img class="article-company-logo" src="images/company_placeholder.png"
-                                         alt="Firmenlogo">
-                                    <span class="article-company-name">Beispielfirma GmbH</span>
-                                </div>
-                            </div>
-                            <div class="article-right">
-                                <div class="article-info-row">
-                                    <div class="article-info-type">Veröffentlichung:</div>
-                                    <span class="article-info-value">28.05.2020</span>
-                                </div>
-                                <div class="article-info-row">
-                                    <div class="article-info-type">Frei ab:</div>
-                                    <span class="article-info-value">01.06.2020</span>
-                                </div>
-                                <div class="article-info-row">
-                                    <div class="article-info-type">Standort:</div>
-                                    <div class="article-info-group">
-                                        <span class="article-info-value">Musterstraße 1</span>
-                                        <span class="article-info-value">123456 Musterstadt</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="article-link" href="#">Mehr Informationen</a>
-                    </article>
-
                 </div>
             </div>
         </div>

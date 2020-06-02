@@ -1,24 +1,27 @@
 <?php
 
 
+/**
+ * Class User
+ */
 class User
 {
- private $name;
- private $lastname;
- private $email;
- private $password;
+    private $name;
+    private $lastname;
+    private $email;
+    private $password;
 
     /**
      * User constructor.
      * @param $name
-     * @param $lastname
+     * @param $lastName
      * @param $email
      * @param $password
      */
-    public function __construct($name, $lastname, $email, $password)
+    public function __construct($name, $lastName, $email, $password)
     {
         $this->name = $name;
-        $this->lastname = $lastname;
+        $this->lastname = $lastName;
         $this->email = $email;
         $this->password = $password;
     }
@@ -32,9 +35,9 @@ class User
     }
 
     /**
-     * @param mixed $prename
+     * @param mixed $name
      */
-    public function setName($name)
+    public function setName($name): void
     {
         $this->name = $name;
     }
@@ -48,11 +51,11 @@ class User
     }
 
     /**
-     * @param mixed $lastname
+     * @param mixed $lastName
      */
-    public function setLastname($lastname)
+    public function setLastname($lastName): void
     {
-        $this->lastname = $lastname;
+        $this->lastname = $lastName;
     }
 
     /**
@@ -66,7 +69,7 @@ class User
     /**
      * @param mixed $email
      */
-    public function setEmail($email)
+    public function setEmail($email): void
     {
         $this->email = $email;
     }
@@ -82,10 +85,8 @@ class User
     /**
      * @param mixed $password
      */
-    public function setPassword($password)
+    public function setPassword($password): void
     {
         $this->password = $password;
     }
-
-
 }

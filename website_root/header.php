@@ -47,7 +47,7 @@ session_start(); ?>
 
                 <div class="formulare">
                     <!-- Login form-->
-                    <form action="/login.php" class="loginModal-content loginAnimate" method="post">
+                    <form action="login.php" class="loginModal-content loginAnimate" method="post">
                         <h2>Login</h2>
                         <div class="loginImgcontainer">
                             <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
