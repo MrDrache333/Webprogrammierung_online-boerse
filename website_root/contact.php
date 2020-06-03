@@ -14,6 +14,7 @@
         </ul>
 </div>
 
+
 <!--Kontaktformular-->
 <div class="content">
     <div class="container contact-container">
@@ -23,12 +24,12 @@
             Dein Name:<br>
             <div class="contact-row">
 
-                <input type="text" name="Vorname" id="firstname" placeholder="Max Mustermann" required autofocus>
+                <input type="text" name="name" id="firstname" placeholder="Max Mustermann" required autofocus>
             </div>
             Deine E-Mail:
             <div class="contact-row">
-                <input class"emailfeld" type="email" name="email" id="email" placeholder="Max.mustermann@web.de"
-                required autofocus>
+                <input class="emailfeld" type="email" name="email" id="email" placeholder="Max.mustermann@web.de"
+                       required autofocus>
             </div>
             Betreff:
             <div class="contact-row">
@@ -43,10 +44,40 @@
             </div>
             <div class="form-submit">
                 <input type="submit" value="Senden" class="submit" name="submit" id="submit_contact"/>
+                <input type="reset" value="Löschen" class="submit" name="delete" id="submit_contact"/>
+
             </div>
+
+            <?php
+            $submit = $_POST["submit"];
+            date_default_timezone_set("Europe/Berlin");
+            $timestamp = time();
+            $absendermail = $_POST["email"];
+            $empfaenger = "dominik.luebben@uni-oldenburg.de";
+            $absendername = $_POST["name"];
+            $betreff = $_POST["subject"];
+            $text = "Die Person" . $absendername . "schireb um" . $timestamp . "folgendes:" . $_POST["message"];
+
+
+            if (isset($_POST["submit"])) {
+                if (mail($empfaenger, $betreff, $text, "From: $absendername <$absendermail>")) {
+
+                    echo "Email wurde erfolgreich versendet.";
+
+                } else {
+
+                    echo "Ihre Anfrage konnte nicht gesendet werden!";
+
+                }
+            }
+            ?>
+
+
         </form>
     </div>
 </div>
+
+
 <!--icludes footer -->
 <?php include "footer.html"; ?>
 
