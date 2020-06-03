@@ -40,9 +40,9 @@ if (isset($_GET['searchjob-searchBox'])) {
                                     <div class=\"article-info-type\">Standort:</div>
                                     <div class=\"article-info-group\">
                                         <span class=\"article-info-value\"
-                                              id=\"article_address_street\">Musterstraße 1</span>
+                                              id=\"article_address_street\">" . $row['street'] . " " . $row['number'] . "</span>
                                         <span class=\"article-info-value\"
-                                              id=\"article_address_plz\">123456 Musterstadt</span>
+                                              id=\"article_address_plz\">" . $row['plz'] . " " . $row['town'] . "</span>
                                     </div>
                                 </div>
                             </div>

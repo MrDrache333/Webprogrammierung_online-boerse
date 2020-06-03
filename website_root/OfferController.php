@@ -67,15 +67,14 @@ class OfferController implements OfferDAO
     /** @noinspection NotOptimalIfConditionsInspection */
     public function search($what, $where)
     {
-        $command = "";
         if ($what !== "" && $where !== "") {
-            //TODO
+            $command = "SELECT * FROM offers, address WHERE (title like '%" . $what . "%' OR subtitle like '%" . $what . "%' OR description like '%" . $what . "%') AND (plz like '%" . $where . "%' OR town like '%" . $where . "%') AND offers.id = address.id";
         } elseif ($what !== "") {
-            $command = "SELECT * FROM offers WHERE (title like '%" . $what . "%' OR subtitle like '%" . $what . "%' OR description like '%" . $what . "%') ";
+            $command = "SELECT * FROM offers, address WHERE (title like '%" . $what . "%' OR subtitle like '%" . $what . "%' OR description like '%" . $what . "%') AND offers.id = address.id";
         } elseif ($where !== "") {
-            //TODO
+            $command = "SELECT * FROM offers, address WHERE (plz like '%" . $where . "%' OR town like '%" . $where . "%') AND offers.id = address.id";
         } else
-            $command = "SELECT * FROM offers";
+            $command = "SELECT * FROM offers, address WHERE offers.id = address.id";
 
         return $this->database->execute($command);
     }
