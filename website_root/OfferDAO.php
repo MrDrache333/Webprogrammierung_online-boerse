@@ -6,6 +6,12 @@
  */
 interface OfferDAO
 {
+    /**
+     * @param $what
+     * @param $where
+     * @return mixed
+     */
+    public function search($what, $where);
 
     /**
      * @param Offer $offer

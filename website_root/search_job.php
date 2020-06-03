@@ -17,13 +17,14 @@
     <div class="container">
         <div class="jobs-content">
             <div class="jobs-search">
-                <form class="searchBox" method="POST" id="searchjob-searchBox">
+                <form class="searchBox" method="POST" name="searchjob-searchBox">
                     <p class="searchBox-text">Wonach suchen Sie ?</p>
                     <label for="searchBox-what" hidden>Was? (z.B. Beruf oder Stichwort)</label>
-                    <input id="searchBox-what" class="searchBox-input searchBox-item" type="text"
+                    <input id="searchBox-what" name="searchBox-what" class="searchBox-input searchBox-item" type="text"
                            placeholder="Was? (z.B. Beruf oder Stichwort)"/>
                     <label for="searchBox-where" hidden>Wo? (z.B. PLZ oder Ort)</label>
-                    <input id="searchBox-where" class="searchBox-input searchBox-item" type="text"
+                    <input id="searchBox-where" name="searchBox-where" class="searchBox-input searchBox-item"
+                           type="text"
                            placeholder="Wo? (z.B. PLZ oder Ort)"/>
                     <a href="search_job.php" class="searchBox-button searchBox-button-text searchBox-item"><span
                                 class="searchBox-button-gradient"></span>Suchen</a>
@@ -32,7 +33,7 @@
             <hr>
             <div class="jobs-content-dynamic">
                 <div class="jobs-filter">
-                    <form method="post" id="searchjob-filter">
+                    <form method="post" name="searchjob-filter">
                         <div class="filter-container">
                             <fieldset class="filter-fieldset">
                                 <h3 class="filter-h3">Angebotsart</h3>
@@ -95,6 +96,7 @@
                     </form>
                 </div>
                 <div class="jobs-result">
+                    <?php include 'search.php'; ?>
                     <article role="article" id="ARTICLE-ID">
                         <div class="article-content">
                             <div class="article-left">

@@ -37,7 +37,7 @@ session_start(); ?>
             <a href="index.php"><img alt="Logo" class="kefedologo" src="images/logo.png"></a>
         </div>
 
-        <?php if (isset($_COOKIE["loggedin"]) and $_COOKIE["loggedin"] == true) {
+        <?php if (isset($_COOKIE["loggedin"]) and $_COOKIE["loggedin"] === "true") {
             ?>
             <div class="loginbutton">
                 <form action="login.php" method="post">
