@@ -26,7 +26,9 @@ session_start(); ?>
     <?php if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI'])) { ?>
         <link rel="stylesheet" type="text/css" href="styles/messages.css">
     <?php } ?>
-
+    <?php if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <link rel="stylesheet" type="text/css" href="styles/new_offer.css">
+    <?php } ?>
 
     <title>KEFEDO-Startseite</title>
 </head>
