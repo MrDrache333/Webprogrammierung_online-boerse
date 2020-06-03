@@ -100,22 +100,22 @@
                                 <input type="text" name="street" id="street">
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">E-Mail Adresse :</label>
-                                <input class="profilemail"type="email" name="email" id="email"/>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">E-Mail Adresse :</label>
+                                    <input class="profilemail" type="email" name="email" id="email"/>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-submit">
-                            <input type="submit" value="Zurücksetzen" class="submit" name="reset" id="reset"/>
-                            <input type="submit" value="Speichern" class="submit" name="submit" id="submit"/>
-                        </div>
-                    </form>
+                            <div class="form-submit">
+                                <input type="reset" value="Zurücksetzen" class="submit" name="reset" id="reset"/>
+                                <input type="submit" value="Speichern" class="submit" name="submit" id="submit"/>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 </div><?php include "footer.html"; ?>
 

@@ -12,14 +12,14 @@
                 <div class="active"><a href="messages.php" class="naviobjekt"> Meine Anzeigen </a></div>
             </li>
             <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
-            <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
+            <li class="navibutton"></li>
         </ul>
 
     </nav>
 </div>
 <div class="grid-farbe">
 
-
+    <a href="new_offer.php" class="naviobjekt">Neue Anzeige erstellen</a>
     <div class="row">
         <div class="leftcolumn">
             <div class="card">
