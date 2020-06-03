@@ -1,6 +1,7 @@
 <?php
-include("User.php");
-include("Database.php");
+require "User.php";
+require "UserDAO.php";
+require "Database.php";
 
 /**
  * Class UserController
@@ -38,6 +39,17 @@ class UserController implements UserDAO
             $user->getPassword() .
             ")";
         return $this->database->execute($command) !== null;
+    }
+
+    /**
+     * @param $email String Mailadresse des Benutzers
+     * @param $password String Password des Benutzers
+     * @return bool
+     */
+    function login($email, $password)
+    {
+        $command = "select * from user where email like '" . $email . "' and password like '" . $password . "'";
+        return $this->database->execute($command);
     }
 
     /**

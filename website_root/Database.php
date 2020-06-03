@@ -41,9 +41,10 @@ class Database
     public function connect()
     {
         // Create connection
-        $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+        $this->conn = new mysqli();
+        $this->conn->connect($this->servername, $this->username, $this->password, $this->dbname, 3307);
         // Check connection
-        if ($this->conn->connect_error) {
+        if (!$this->conn) {
             die("Connection failed: " . $this->conn->connect_error);
         }
     }
