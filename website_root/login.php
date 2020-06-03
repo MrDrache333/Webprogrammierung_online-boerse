@@ -19,4 +19,3 @@ if (isset($_POST["loginSubmit"])) {
     session_destroy();
     header("Location: index.php");
 }
-
