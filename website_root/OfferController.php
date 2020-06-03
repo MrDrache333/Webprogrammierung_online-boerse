@@ -1,6 +1,8 @@
 <?php
 include 'Offer.php';
 require 'OfferDAO.php';
+require 'AddressController.php';
+require 'Database.php';
 
 class OfferController implements OfferDAO
 {
@@ -8,7 +10,7 @@ class OfferController implements OfferDAO
      * @var Database Datenbank
      */
     private $database;
-    private AddressController $addressController;
+    private $addressController;
 
     /**
      * OfferController constructor.
@@ -62,8 +64,19 @@ class OfferController implements OfferDAO
         // TODO: Implement update() method.
     }
 
+    /** @noinspection NotOptimalIfConditionsInspection */
     public function search($what, $where)
     {
-        // TODO: Implement search() method.
+        $command = "";
+        if ($what !== "" && $where !== "") {
+            //TODO
+        } elseif ($what !== "") {
+            $command = "SELECT * FROM offers WHERE (title like '%" . $what . "%' OR subtitle like '%" . $what . "%' OR description like '%" . $what . "%') ";
+        } elseif ($where !== "") {
+            //TODO
+        } else
+            $command = "SELECT * FROM offers";
+
+        return $this->database->execute($command);
     }
 }

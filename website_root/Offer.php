@@ -8,7 +8,7 @@ class Offer
     private $subTitle;
     private $description;
     private $logo;
-    private Address $address;
+    private $address;
     private $created;
     private $free;
 
