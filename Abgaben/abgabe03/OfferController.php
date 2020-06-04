@@ -52,7 +52,7 @@ class OfferController implements OfferDAO
      */
     public function delete($id)
     {
-        $command = "DELETE FROM offers WHERE id = '" . $id . "'";
+        $command = "DELETE FROM offers WHERE id like '" . $id . "'";
         return $this->database->execute($command);
     }
 
