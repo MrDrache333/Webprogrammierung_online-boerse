@@ -46,16 +46,18 @@
                             <div class="form-submit">
                                 <input type="submit" value="Profilbild löschen" class="submit" name="reset_pb"
                                        id="reset_pb"/>
-                                <input type="submit" value="Hochladen" class="submit" name="submit_pb" id="submit_pb"/>
+                                <input type="file" name="fileToUpload" id="fileToUpload"/>
+                                <input type="submit" value="Bild hochladen" name="submit" class="submit"/>
+
                             </div>
                         </form>
                     </div>
                     <div class="form-col">
                         <form method="POST" class="profile-form" id="profile-form-image">
-                        <h2>Meine Informationen</h2>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Vorname :</label>
+                            <h2>Meine Informationen</h2>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Vorname :</label>
                                 <input type="text" name="name" id="name" placeholder="" required/>
                             </div>
                             <div class="form-group">

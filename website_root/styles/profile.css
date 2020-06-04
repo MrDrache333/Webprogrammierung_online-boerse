@@ -26,6 +26,11 @@ img {
     flex-direction: column;
 }
 
+.submit {
+    background: black;
+
+}
+
 figure {
     margin: 0;
 }
