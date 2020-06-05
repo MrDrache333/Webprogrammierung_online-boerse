@@ -91,9 +91,13 @@ if (!headers_sent()) {
                                         onclick="document.getElementById('login-modal').style.display='none'"
                                         type="button">Cancel
                                 </button>
-                                <span class="psw"> <a href="#">Passwort vergessen?</a></span>
+                                <span class="psw">
+                                    <button name="pwforget" type="submit">Passwort vergessen</button>
+                                     </span>
                             </div>
                         </form>
+
+
                         <!-- Register form-->
                         <form action="/login.php" class="loginModal-content loginAnimate" method="post">
                             <h2>Registrieren</h2>

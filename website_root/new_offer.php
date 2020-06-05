@@ -40,9 +40,16 @@
                     <form method="POST" class="new_offer-form" id="new_offer-form">
                         <label for="titel">Titel :</label>
                         <input type="text" name="titel" id="titel" placeholder="Verkäufer/in" required/>
-
                         <label for="subtitetl">Untertitel :</label>
                         <input type="text" name="subtitel" id="subtitel" placeholder="Einzelhandel" required/>
+                        <label for="position">Straße:</label>
+                        <input type="text" name="straße" id="straße" placeholder="Musterstraße"/>
+                        <label for="position">Hausnummer :</label>
+                        <input type="text" name="hausnummer" id="hausnummer" placeholder="1234"/>
+                        <label for="position">Ort:</label>
+                        <input type="text" name="ort" id="ort" placeholder="Musterhausen"/>
+                        <label for="position">Postleitzahl:</label>
+                        <input type="text" name="plz" id="plz" placeholder="12345"/>
                         <label for="position">Standort:</label>
                         <input type="text" name="straße" id="straße" placeholder="Straße"/>
                         <input type="text" name="hausnummer" id="hausnummer" placeholder="Hsnr."/>

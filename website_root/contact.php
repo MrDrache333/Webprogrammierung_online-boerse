@@ -47,7 +47,7 @@
             Betreff:
             <div class="contact-row">
 
-                <input type="text" name="subject" id="subject" placeholder="Tolle Seite" required autofocus>
+                <input type="text" name="subject" placeholder="Tolle Seite" required autofocus>
             </div>
             Was möchtest du uns mitteilen:<br>
             <div class="contact-row">
