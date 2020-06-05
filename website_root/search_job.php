@@ -43,7 +43,7 @@
                            type="text"
                            placeholder="Wo? (z.B. PLZ oder Ort)"/>
                     <button href="search_job.php" class="searchBox-button searchBox-button-text searchBox-item"
-                            type="sumbit" name="searchjob-searchBox"><span
+                            type="submit" name="searchjob-searchBox"><span
                                 class="searchBox-button-gradient"></span>Suchen
                     </button>
                 </form>
@@ -51,63 +51,66 @@
             <hr>
             <div class="jobs-content-dynamic">
                 <div class="jobs-filter">
-                    <form method="post" name="searchjob-filter">
+                    <form method="GET" name="searchjob-filter">
                         <div class="filter-container">
+                            <fieldset class="filter-fieldset">
+                                <button href="#" type="submit" name="searchjob-filter">Filter anwenden</button>
+                            </fieldset>
                             <fieldset class="filter-fieldset">
                                 <h3 class="filter-h3">Angebotsart</h3>
                                 <div class="filter-row">
-                                    <input type="radio" id="f-type-1" name="type">
-                                    <label class="filter-cb-label" for="f-type-1">Arbeit</label>
+                                    <input type="radio" id="f_type_0" name="type" value="0">
+                                    <label class="filter-cb-label" for="f_type_0">Arbeit</label>
                                 </div>
                                 <div class="filter-row">
-                                    <input type="radio" id="f-type-2" name="type">
-                                    <label class="filter-cb-label" for="f-type-2">Ausbildung</label>
+                                    <input type="radio" id="f_type_1" name="type" value="1">
+                                    <label class="filter-cb-label" for="f_type_1">Ausbildung</label>
                                 </div>
                                 <div class="filter-row">
-                                    <input type="radio" id="f-type-3" name="type">
-                                    <label class="filter-cb-label" for="f-type-3">Praktikum</label>
+                                    <input type="radio" id="f_type_2" name="type" value="2">
+                                    <label class="filter-cb-label" for="f_type_2">Praktikum</label>
                                 </div>
                                 <div class="filter-row">
-                                    <input type="radio" id="f-type-4" name="type">
-                                    <label class="filter-cb-label" for="f-type-4">Selbstständigkeit</label>
+                                    <input type="radio" id="f_type_3" name="type" value="3">
+                                    <label class="filter-cb-label" for="f_type_3">Selbstständigkeit</label>
                                 </div>
                             </fieldset>
                             <fieldset class="filter-fieldset">
                                 <h3 class="filter-h3">Befristung</h3>
                                 <div class="filter-row">
-                                    <input type="checkbox" id="f-duration-1">
-                                    <label class="filter-cb-label" for="f-duration-1">Befristet</label>
+                                    <input type="checkbox" id="f_duration_0" name="duration" value="0">
+                                    <label class="filter-cb-label" for="f_duration_0">Befristet</label>
                                 </div>
                                 <div class="filter-row">
-                                    <input type="checkbox" id="f-duration-2">
-                                    <label class="filter-cb-label" for="f-duration-2">Unbefristet</label>
+                                    <input type="checkbox" id="f_duration_1" name="duration" value="1">
+                                    <label class="filter-cb-label" for="f_duration_1">Unbefristet</label>
                                 </div>
                                 <div class="filter-row">
-                                    <input type="checkbox" id="f-duration-3">
-                                    <label class="filter-cb-label" for="f-duration-3">Keine Angabe</label>
+                                    <input type="checkbox" id="f_duration_2" name="duration" value="2">
+                                    <label class="filter-cb-label" for="f_duration_2">Keine Angabe</label>
                                 </div>
                             </fieldset>
                             <fieldset class="filter-fieldset">
                                 <h3 class="filter-h3">Arbeitszeit</h3>
                                 <div class="filter-row">
-                                    <input type="checkbox" id="f-time-1">
-                                    <label class="filter-cb-label" for="f-time-1">Vollzeit</label>
+                                    <input type="checkbox" id="f_time_0" name="time" value="0">
+                                    <label class="filter-cb-label" for="f_time_0">Vollzeit</label>
                                 </div>
                                 <div class="filter-row">
-                                    <input type="checkbox" id="f-time-2">
-                                    <label class="filter-cb-label" for="f-time-2">Teilzeit</label>
+                                    <input type="checkbox" id="f_time_1" name="time" value="1">
+                                    <label class="filter-cb-label" for="f_time_1">Teilzeit</label>
                                 </div>
                                 <div class="filter-row">
-                                    <input type="checkbox" id="f-time-3">
-                                    <label class="filter-cb-label" for="f-time-3">Schicht</label>
+                                    <input type="checkbox" id="f_time_2" name="time" value="2">
+                                    <label class="filter-cb-label" for="f_time_2">Schicht</label>
                                 </div>
                                 <div class="filter-row">
-                                    <input type="checkbox" id="f-time-4">
-                                    <label class="filter-cb-label" for="f-time-4">Heim- / Telearbeit</label>
+                                    <input type="checkbox" id="f_time_3" name="time" value="3">
+                                    <label class="filter-cb-label" for="f_time_3">Heim- / Telearbeit</label>
                                 </div>
                                 <div class="filter-row">
-                                    <input type="checkbox" id="f-time-5">
-                                    <label class="filter-cb-label" for="f-time-5">Minijob</label>
+                                    <input type="checkbox" id="f_time_4" name="time" value="4">
+                                    <label class="filter-cb-label" for="f_time_4">Minijob</label>
                                 </div>
                             </fieldset>
                         </div>

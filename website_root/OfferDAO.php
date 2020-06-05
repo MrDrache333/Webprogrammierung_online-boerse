@@ -9,9 +9,12 @@ interface OfferDAO
     /**
      * @param $what
      * @param $where
+     * @param $type
+     * @param $duration
+     * @param $time
      * @return mixed
      */
-    public function search($what, $where);
+    public function search($what, $where, $type, $duration, $time);
 
     /**
      * @param Offer $offer

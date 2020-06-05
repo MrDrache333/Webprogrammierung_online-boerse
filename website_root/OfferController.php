@@ -65,17 +65,27 @@ class OfferController implements OfferDAO
     }
 
     /** @noinspection NotOptimalIfConditionsInspection */
-    public function search($what, $where)
+    public function search($what, $where, $type, $duration, $time)
     {
-        if ($what !== "" && $where !== "") {
-            $command = "SELECT * FROM offers, address WHERE (title like '%" . $what . "%' OR subtitle like '%" . $what . "%' OR description like '%" . $what . "%') AND (plz like '%" . $where . "%' OR town like '%" . $where . "%') AND offers.id = address.id";
-        } elseif ($what !== "") {
-            $command = "SELECT * FROM offers, address WHERE (title like '%" . $what . "%' OR subtitle like '%" . $what . "%' OR description like '%" . $what . "%') AND offers.id = address.id";
-        } elseif ($where !== "") {
-            $command = "SELECT * FROM offers, address WHERE (plz like '%" . $where . "%' OR town like '%" . $where . "%') AND offers.id = address.id";
-        } else
-            $command = "SELECT * FROM offers, address WHERE offers.id = address.id";
+        $command = "SELECT * FROM offers, address WHERE offers.id = address.id";
+        if ($what !== "") {
+            $command .= " AND (title like '%" . $what . "%' OR subtitle like '%" . $what . "%' OR description like '%" . $what . "%')";
+        }
+        if ($where !== "") {
+            $command .= " AND (plz like '%" . $where . "%' OR town like '%" . $where . "%')";
+        }
+        if ($type !== null) {
+            $command .= " AND offerType=" . $type;
+        }
+        if ($duration !== null) {
+            $command .= " AND duration=" . $duration;
+        }
+        if ($time !== null) {
+            $command .= " AND workModel=" . $time;
+        }
 
         return $this->database->execute($command);
     }
+
+
 }

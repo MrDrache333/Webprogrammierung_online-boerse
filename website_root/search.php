@@ -1,27 +1,46 @@
 <?php
 require 'OfferController.php';
-if (isset($_GET['searchjob-searchBox']) or isset($_POST['index-searchBox'])) {
+if (isset($_GET['searchjob-searchBox']) || isset($_POST['index-searchBox'])) {
     $what = "";
     $where = "";
-    if (isset($_GET['searchjob-searchBox'])) {
+    if (isset($_GET['searchBox-what'])) {
+        $what = $_GET['searchBox-what'];
+    }
+    if (isset($_GET['searchBox-where'])) {
+        $where = $_GET['searchBox-where'];
+    }
 
-        if (isset($_GET['searchBox-what'])) {
-            $what = $_GET['searchBox-what'];
-        }
-        if (isset($_GET['searchBox-where'])) {
-            $where = $_GET['searchBox-where'];
-        }
-    } elseif (isset($_POST['index-searchBox'])) {
-
-        if (isset($_POST['searchBox-what'])) {
-            $what = $_POST['searchBox-what'];
-        }
-        if (isset($_POST['searchBox-where'])) {
-            $where = $_POST['searchBox-where'];
-        }
+    if (isset($_POST['searchBox-what'])) {
+        $what = $_POST['searchBox-what'];
+    }
+    if (isset($_POST['searchBox-where'])) {
+        $where = $_POST['searchBox-where'];
     }
     $offerController = new OfferController();
-    $result = $offerController->search($what, $where);
+    $result = $offerController->search($what, $where, null, null, null);
+    displayResults($result);
+} elseif (isset($_GET['searchjob-filter'])) {
+    $type = $_GET['type'];
+    $duration = $_GET['duration'];
+    $time = $_GET['time'];
+    if (($type >= 0 && $type <= 3) && ($duration >= 0 && $duration <= 2) && ($type >= 0 && $type <= 4)) {
+
+        $where = "";
+        $what = "";
+        /*
+        if (isset($_COOKIE['lastSearch_what'],$_COOKIE['lastSearch_where'])){
+            $where=$_COOKIE['lastSearch_where'];
+            $what=$_COOKIE['lastSearch_what'];
+        }
+        */
+        $offerController = new OfferController();
+        $result = $offerController->search($what, $where, $type, $duration, $time);
+        displayResults($result);
+    }
+}
+
+function displayResults($result)
+{
     if ($result !== null) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $html = "<article role=\"article\" id=\"" . $row['id'] . "\">

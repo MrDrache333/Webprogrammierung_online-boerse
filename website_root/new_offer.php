@@ -46,8 +46,8 @@
                         <label for="position">Standort:</label>
                         <input type="text" name="straße" id="straße" placeholder="Straße"/>
                         <input type="text" name="hausnummer" id="hausnummer" placeholder="Hsnr."/>
-                        <input type="text" name="ort" id="ort" placeholder="Ort."/> <input type="text" name="plz"
-                                                                                           id="plz" placeholder="PLZ"/>
+                        <input type="text" name="ort" id="ort" placeholder="Ort."/><input type="text" name="plz"
+                                                                                          id="plz" placeholder="PLZ"/>
                         <label for="free">Frei ab :</label>
                         <input type="text" name="free" id="free" placeholder="15.01.2021"/>
                         <label for="street">Beschreibung :<br></label>
