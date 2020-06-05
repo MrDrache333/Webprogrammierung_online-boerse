@@ -4,6 +4,9 @@ require 'OfferDAO.php';
 require 'AddressController.php';
 require 'Database.php';
 
+/**
+ * Class OfferController
+ */
 class OfferController implements OfferDAO
 {
     /**
@@ -64,7 +67,6 @@ class OfferController implements OfferDAO
         // TODO: Implement update() method.
     }
 
-    /** @noinspection NotOptimalIfConditionsInspection */
     public function search($what, $where, $type, $duration, $time)
     {
         $command = "SELECT * FROM offers, address WHERE offers.id = address.id";

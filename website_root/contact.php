@@ -12,14 +12,7 @@
 
                 <li class="navibutton"><a href="profil.php" class="naviobjekt">Mein Profil</a></li>
                 <li class="navibutton"><a href="messages.php" class="naviobjekt">Meine Anzeigen </a></li>
-            <?php } else {
-                ?>
-
-                <li class="navibutton"><a href="contact.php" class="naviobjekt">Mein Profil</a></li>
-
-
-            <?php }
-            ?>
+            <?php } ?>
             <li class="navibutton">
                 <div class="active"><a href="contact.php" class="naviobjekt">Kontakt </a></div>
             </li>

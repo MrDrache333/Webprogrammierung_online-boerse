@@ -3,7 +3,7 @@
     <ul class="navi">
 
         <?php
-        if (isset($_COOKIE["loggedin"]) and $_COOKIE["loggedin"] === "true") { ?>
+        if (isset($_COOKIE["loggedin"]) && $_COOKIE["loggedin"] === "true") { ?>
 
             <li class="navibutton">
                 <div class="active"><a href="index.php" class="naviobjekt"> Startseite</a></div>
@@ -15,7 +15,6 @@
             <li class="navibutton">
                 <div class="active"><a href="index.php" class="naviobjekt"> Startseite</a></div>
             </li>
-            <li class="navibutton"><a href="index.php" class="naviobjekt"> Mein Profil</a></li>
         <?php }
         ?>
         <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
