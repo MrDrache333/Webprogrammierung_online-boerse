@@ -91,15 +91,16 @@ if (!headers_sent()) {
                                         onclick="document.getElementById('login-modal').style.display='none'"
                                         type="button">Cancel
                                 </button>
-                                <span class="psw">
-                                    <button name="pwforget" type="submit">Passwort vergessen</button>
-                                     </span>
-                            </div>
                         </form>
 
+                        <span class="psw">
+                                    <button name="pwforget" type="submit">Passwort vergessen</button>
+                                     </span>
+                    </div>
 
-                        <!-- Register form-->
-                        <form action="/login.php" class="loginModal-content loginAnimate" method="post">
+
+                    <!-- Register form-->
+                    <form action="/login.php" class="loginModal-content loginAnimate" method="post">
                             <h2>Registrieren</h2>
                             <div class="loginImgcontainer">
                                 <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
