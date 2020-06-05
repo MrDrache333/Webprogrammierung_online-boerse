@@ -16,15 +16,12 @@
             </li>
             <li class="navibutton"><a href="messages.php" class="naviobjekt">Meine Anzeigen </a></li>
 
-            <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
         <?php } ?>
         <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
         <li class="navibutton">
             <div class="active"><a href="impressum.php" class="naviobjekt">Impressum</a></div>
         </li>
     </ul>
-
-
 </div>
 <div class="grid-farbe">
     <h1>Impressum</h1>
