@@ -27,18 +27,18 @@
     </ul>
 </div>
 <div class="content">
-    <form class="searchBox" method="post" action="search_job.php">
+    <form class="searchBox" method="POST" action="search_job.php">
         <div class="searchBox-grid">
             <p class="searchBox-text">Wonach suchen Sie ?</p>
             <label for="searchBox-what" hidden>Was? (z.B. Beruf oder Stichwort)</label>
-            <input id="searchBox-what" class="searchBox-input searchBox-item" type="text"
+            <input id="searchBox-what" name="searchBox-what" class="searchBox-input searchBox-item" type="text"
                    placeholder="Was? (z.B. Beruf oder Stichwort)"/>
             <label for="searchBox-where" hidden>Wo? (z.B. PLZ oder Ort)</label>
-            <input id="searchBox-where" class="searchBox-input searchBox-item" type="text"
+            <input id="searchBox-where" name="searchBox-where" class="searchBox-input searchBox-item" type="text"
                    placeholder="Wo? (z.B. PLZ oder Ort)"/>
         </div>
         <button href="search_job.php" class="searchBox-button searchBox-button-text searchBox-item"
-                type="sumbit" name="searchjob-searchBox"><span
+                type="sumbit" name="index-searchBox"><span
                     class="searchBox-button-gradient"></span>Suchen
         </button>
     </form>

@@ -1,13 +1,24 @@
 <?php
 require 'OfferController.php';
-if (isset($_GET['searchjob-searchBox'])) {
+if (isset($_GET['searchjob-searchBox']) or isset($_POST['index-searchBox'])) {
     $what = "";
     $where = "";
-    if (isset($_GET['searchBox-what'])) {
-        $what = $_GET['searchBox-what'];
-    }
-    if (isset($_GET['searchBox-where'])) {
-        $where = $_GET['searchBox-where'];
+    if (isset($_GET['searchjob-searchBox'])) {
+
+        if (isset($_GET['searchBox-what'])) {
+            $what = $_GET['searchBox-what'];
+        }
+        if (isset($_GET['searchBox-where'])) {
+            $where = $_GET['searchBox-where'];
+        }
+    } elseif (isset($_POST['index-searchBox'])) {
+
+        if (isset($_POST['searchBox-what'])) {
+            $what = $_POST['searchBox-what'];
+        }
+        if (isset($_POST['searchBox-where'])) {
+            $where = $_POST['searchBox-where'];
+        }
     }
     $offerController = new OfferController();
     $result = $offerController->search($what, $where);
