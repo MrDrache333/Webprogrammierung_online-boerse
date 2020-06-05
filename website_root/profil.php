@@ -107,7 +107,7 @@
                                     <label for="email">E-Mail Adresse :</label>
                                     <input class="profilemail" type="email" name="email" id="email"/>
                                 </div>
-                                s
+
                             </div>
                             <div class="form-submit">
                                 <input type="reset" value="Zurücksetzen" class="submit" name="reset" id="reset"/>
