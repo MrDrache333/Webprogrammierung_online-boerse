@@ -11,23 +11,16 @@
                     <a href="profil.php" class="naviobjekt"> Mein Profil</a>
                 </li>
                 <li class="navibutton"><a href="messages.php" class="naviobjekt">Meine Anzeigen </a></li>
-
-
                 <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
                 <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
             </ul>
-
         </nav>
     </div>
     <div class="grid-farbe">
-
-
         <div class="row">
             <h1> Neue Anzeige</h1>
             <div class="leftcolumn">
                 <div class="card">
-
-
                     <form method="POST" class="new_offer-form" id="new_offer-form">
                         <h2>Mein Produktbild</h2>
 
@@ -38,11 +31,9 @@
                             <input type="submit" value="Upload Image" name="submit">
                         </div>
                     </form>
-
                     <form method="POST" class="new_offer-form" id="new_offer-form"></form>
                 </div>
             </div>
-
             <div class="rightcolumn">
                 <div class="card">
                     <h2>Meine Informationen</h2>
@@ -57,10 +48,8 @@
                         <input type="text" name="hausnummer" id="hausnummer" placeholder="Hsnr."/>
                         <input type="text" name="ort" id="ort" placeholder="Ort."/> <input type="text" name="plz"
                                                                                            id="plz" placeholder="PLZ"/>
-
                         <label for="free">Frei ab :</label>
                         <input type="text" name="free" id="free" placeholder="15.01.2021"/>
-
                         <label for="street">Beschreibung :<br></label>
                         <textarea name="beschreibung" id="beschreibung" cols="50" rows="7"
                                   placeholder="Was über den Beruf zu sagen ist."></textarea>
