@@ -11,7 +11,7 @@ interface UserDAO
      * Finds the User by its mail
      * @param String $email
      */
-    public function findUserByMail(string $email);
+    public function findUserByMail($email);
 
     /**
      *Update the user details

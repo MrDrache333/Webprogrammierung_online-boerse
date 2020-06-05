@@ -56,7 +56,7 @@ class UserController implements UserDAO
      * @param String $email Die Mail-Adresse des Nutzers
      * @return bool Erfolgreich?
      */
-    function findUserByMail($email)
+    public function findUserByMail($email)
     {
         $command = "select * from user where email like '" . $email . "'";
         return $this->database->execute($command) !== null;
