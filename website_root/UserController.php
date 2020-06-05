@@ -78,7 +78,7 @@ class UserController implements UserDAO
      */
     function delete($user)
     {
-        $command = "delete from user where email like '" . $user->getEmail() . "'";
+        $command = "delete from user where email='" . $user->getEmail() . "'";
         return $this->database->execute($command) !== null;
     }
 }

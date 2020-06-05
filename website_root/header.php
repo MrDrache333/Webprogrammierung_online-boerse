@@ -1,10 +1,11 @@
 <?php
-
-ini_set("session.use_cookies", 1); // 1 using cookies
-ini_set("session.use_only_cookies", 0);
-ini_set("session.use_trans_sid", 1); // 1 using GET and when cookies are disabled
-
-session_start(); ?>
+if (!headers_sent()) {
+    ini_set("session.use_cookies", 1); // 1 using cookies
+    ini_set("session.use_only_cookies", 0);
+    ini_set("session.use_trans_sid", 1); // 1 using GET and when cookies are disabled
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="de">
 <head>
