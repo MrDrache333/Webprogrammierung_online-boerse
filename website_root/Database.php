@@ -38,15 +38,13 @@ class Database
     /**
      *  Versucht eine Verbindung zur Datenbank herzustellen
      */
-    public function connect()
+    public function connect(): ?bool
     {
         // Create connection
         $this->conn = new mysqli();
         $this->conn->connect($this->servername, $this->username, $this->password, $this->dbname, 3307);
         // Check connection
-        if (!$this->conn) {
-            die("Connection failed: " . $this->conn->connect_error);
-        }
+        return (bool)$this->conn;
     }
 
     /**
@@ -56,8 +54,13 @@ class Database
     public function execute($command)
     {
         if ($this->conn !== null) {
-            return $this->conn->query($command);
-        } else
+            try {
+                return $this->conn->query($command);
+            } catch (Exception $e) {
+                return null;
+            }
+        } else {
             return null;
+        }
     }
 }

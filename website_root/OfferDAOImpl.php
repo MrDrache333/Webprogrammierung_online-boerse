@@ -4,6 +4,9 @@ require 'OfferDAO.php';
 require 'AddressDAOImpl.php';
 require 'Database.php';
 
+/**
+ * Class OfferDAOImpl
+ */
 class OfferDAOImpl implements OfferDAO
 {
 
@@ -11,10 +14,13 @@ class OfferDAOImpl implements OfferDAO
      * @var Database Datenbank
      */
     private $database;
+    /**
+     * @var AddressDAOImpl
+     */
     private $addressDAOImpl;
 
     /**
-     * OfferController constructor.
+     * OfferDAOImpl constructor.
      */
     public function __construct()
     {
@@ -22,16 +28,12 @@ class OfferDAOImpl implements OfferDAO
         $this->database = new Database();
         try {
             $this->database->connect();
-        } catch (\mysql_xdevapi\Exception $e) {
-            print $e->getMessage();
+        } catch (Exception $e) {
         }
+
         $this->addressDAOImpl = new AddressDAOImpl($this->database);
     }
 
-
-    /**
-     * @inheritDoc
-     */
     public function create(Offer $offer)
     {
         $this->addressController->create($offer->getAddress());
@@ -48,18 +50,12 @@ class OfferDAOImpl implements OfferDAO
         return $this->database->execute($command) !== null;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function delete($id)
     {
         $command = "DELETE FROM offers WHERE id = '" . $id . "'";
         return $this->database->execute($command);
     }
 
-    /**
-     * @inheritDoc
-     */
     public function update(Offer $offer)
     {
         // TODO: Implement update() method.
@@ -67,23 +63,30 @@ class OfferDAOImpl implements OfferDAO
 
     public function search($what, $where, $type, $duration, $time)
     {
+        //Standardfilter erstellen
         $command = "SELECT * FROM offers, address WHERE offers.id = address.id";
+        //Wenn nach einem begriff gesucht werden soll
         if ($what !== "") {
             $command .= " AND (title like '%" . $what . "%' OR subtitle like '%" . $what . "%' OR description like '%" . $what . "%')";
         }
+        //Wenn nach einem Ort gesucht werden soll
         if ($where !== "") {
             $command .= " AND (plz like '%" . $where . "%' OR town like '%" . $where . "%')";
         }
+        //Wenn nach einem bestimmten Arbeitstyp gesucht werden soll
         if ($type !== null) {
             $command .= " AND offerType=" . $type;
         }
+        //Wenn nach einer bestimmten Befristung gesucht werden soll
         if ($duration !== null) {
             $command .= " AND duration=" . $duration;
         }
+        //wenn nach einem bestimmten Arbeitszeitmodel gesucht werden soll
         if ($time !== null) {
             $command .= " AND workModel=" . $time;
         }
 
+        //Datenbank abfragen und Ergebnis zurückgeben
         return $this->database->execute($command);
     }
 
