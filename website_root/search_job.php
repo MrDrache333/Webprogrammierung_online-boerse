@@ -61,22 +61,22 @@
                                 <h3 class="filter-h3">Angebotsart</h3>
                                 <div class="filter-row">
                                     <input type="radio" id="f_type_0" name="type"
-                                           value=0 <?php echo ($_GET['type'] ?? "") === 0 ? "checked" : "" ?>>
+                                           value=0 <?php echo ($_GET['type'] ?? "") === "0" ? "checked" : "" ?>>
                                     <label class="filter-cb-label" for="f_type_0">Arbeit</label>
                                 </div>
                                 <div class="filter-row">
                                     <input type="radio" id="f_type_1" name="type"
-                                           value=1 <?php echo ($_GET['type'] ?? "") === 1 ? "checked" : "" ?>>
+                                           value=1 <?php echo ($_GET['type'] ?? "") === "1" ? "checked" : "" ?>>
                                     <label class="filter-cb-label" for="f_type_1">Ausbildung</label>
                                 </div>
                                 <div class="filter-row">
                                     <input type="radio" id="f_type_2" name="type"
-                                           value=2 <?php echo ($_GET['type'] ?? "") === 2 ? "checked" : "" ?>>
+                                           value=2 <?php echo ($_GET['type'] ?? "") === "2" ? "checked" : "" ?>>
                                     <label class="filter-cb-label" for="f_type_2">Praktikum</label>
                                 </div>
                                 <div class="filter-row">
                                     <input type="radio" id="f_type_3" name="type"
-                                           value=3 <?php echo ($_GET['type'] ?? "") === 3 ? "checked" : "" ?>>
+                                           value=3 <?php echo ($_GET['type'] ?? "") === "3" ? "checked" : "" ?>>
                                     <label class="filter-cb-label" for="f_type_3">Selbstständigkeit</label>
                                 </div>
                             </fieldset>
@@ -84,17 +84,17 @@
                                 <h3 class="filter-h3">Befristung</h3>
                                 <div class="filter-row">
                                     <input type="radio" id="f_duration_0" name="duration"
-                                           value=0 <?php echo ($_GET['duration'] ?? "") === 0 ? "checked" : "" ?>>
+                                           value=0 <?php echo ($_GET['duration'] ?? "") === "0" ? "checked" : "" ?>>
                                     <label class="filter-cb-label" for="f_duration_0">Befristet</label>
                                 </div>
                                 <div class="filter-row">
                                     <input type="radio" id="f_duration_1" name="duration"
-                                           value=1 <?php echo ($_GET['duration'] ?? "") === 1 ? "checked" : "" ?>>
+                                           value=1 <?php echo ($_GET['duration'] ?? "") === "1" ? "checked" : "" ?>>
                                     <label class="filter-cb-label" for="f_duration_1">Unbefristet</label>
                                 </div>
                                 <div class="filter-row">
                                     <input type="radio" id="f_duration_2" name="duration"
-                                           value=2 <?php echo ($_GET['duration'] ?? "") === 2 ? "checked" : "" ?>>
+                                           value=2 <?php echo ($_GET['duration'] ?? "") === "2" ? "checked" : "" ?>>
                                     <label class="filter-cb-label" for="f_duration_2">Keine Angabe</label>
                                 </div>
                             </fieldset>
@@ -102,27 +102,27 @@
                                 <h3 class="filter-h3">Arbeitszeit</h3>
                                 <div class="filter-row">
                                     <input type="radio" id="f_time_0" name="time"
-                                           value=0 <?php echo ($_GET['time'] ?? "") === 0 ? "checked" : "" ?>>
+                                           value=0 <?php echo ($_GET['time'] ?? "") === "0" ? "checked" : "" ?>>
                                     <label class="filter-cb-label" for="f_time_0">Vollzeit</label>
                                 </div>
                                 <div class="filter-row">
                                     <input type="radio" id="f_time_1" name="time"
-                                           value=1 <?php echo ($_GET['time'] ?? "") === 1 ? "checked" : "" ?>>
+                                           value=1 <?php echo ($_GET['time'] ?? "") === "1" ? "checked" : "" ?>>
                                     <label class="filter-cb-label" for="f_time_1">Teilzeit</label>
                                 </div>
                                 <div class="filter-row">
                                     <input type="radio" id="f_time_2" name="time"
-                                           value=2 <?php echo ($_GET['time'] ?? "") === 2 ? "checked" : "" ?>>
+                                           value=2 <?php echo ($_GET['time'] ?? "") === "2" ? "checked" : "" ?>>
                                     <label class="filter-cb-label" for="f_time_2">Schicht</label>
                                 </div>
                                 <div class="filter-row">
                                     <input type="radio" id="f_time_3" name="time"
-                                           value=3 <?php echo ($_GET['time'] ?? "") === 3 ? "checked" : "" ?>>
+                                           value=3 <?php echo ($_GET['time'] ?? "") === "3" ? "checked" : "" ?>>
                                     <label class="filter-cb-label" for="f_time_3">Heim- / Telearbeit</label>
                                 </div>
                                 <div class="filter-row">
                                     <input type="radio" id="f_time_4" name="time"
-                                           value=4 <?php echo ($_GET['time'] ?? "") === 4 ? "checked" : "" ?>>
+                                           value=4 <?php echo ($_GET['time'] ?? "") === "4" ? "checked" : "" ?>>
                                     <label class="filter-cb-label" for="f_time_4">Minijob</label>
                                 </div>
                             </fieldset>
