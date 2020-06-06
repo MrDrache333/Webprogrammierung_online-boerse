@@ -1,19 +1,17 @@
 <?php
-include 'Offer.php';
+require 'Offer.php';
 require 'OfferDAO.php';
-require 'AddressController.php';
+require 'AddressDAOImpl.php';
 require 'Database.php';
 
-/**
- * Class OfferController
- */
-class OfferController implements OfferDAO
+class OfferDAOImpl implements OfferDAO
 {
+
     /**
      * @var Database Datenbank
      */
     private $database;
-    private $addressController;
+    private $addressDAOImpl;
 
     /**
      * OfferController constructor.
@@ -27,7 +25,7 @@ class OfferController implements OfferDAO
         } catch (\mysql_xdevapi\Exception $e) {
             print $e->getMessage();
         }
-        $this->addressController = new AddressController($this->database);
+        $this->addressDAOImpl = new AddressDAOImpl($this->database);
     }
 
 

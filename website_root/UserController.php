@@ -66,7 +66,7 @@ class UserController implements UserDAO
      * @param User $user Der zuaktualisierende Benutzer
      * @return bool Erfolgreich?
      */
-    function update($user)
+    public function update($user)
     {
         return true;
         // TODO: Implement update() method.
@@ -76,7 +76,7 @@ class UserController implements UserDAO
      * @param User $user Der zu löschende Nutzer
      * @return bool Erfolgreich?
      */
-    function delete($user)
+    public function delete($user)
     {
         $command = "delete from user where email='" . $user->getEmail() . "'";
         return $this->database->execute($command) !== null;

@@ -1,10 +1,8 @@
 <?php
-if (!headers_sent()) {
-    ini_set("session.use_cookies", 1); // 1 using cookies
-    ini_set("session.use_only_cookies", 0);
-    ini_set("session.use_trans_sid", 1); // 1 using GET and when cookies are disabled
-    session_start();
-}
+ini_set("session.use_cookies", 1); // 1 using cookies
+ini_set("session.use_only_cookies", 0);
+ini_set("session.use_trans_sid", 1); // 1 using GET and when cookies are disabled
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -52,110 +50,110 @@ if (!headers_sent()) {
             </div>
             <?php
         } else {
-            ?>
-            <div class="loginbutton">
-                <button onclick="document.getElementById('login-modal').style.display='block'" style="width:auto;">
-                    Einloggen
-                    oder Registrieren
-                </button>
-            </div>
-            <div>
-                <div class="loginModal" id="login-modal">
+        ?>
+        <div class="loginbutton">
+            <button onclick="document.getElementById('login-modal').style.display='block'" style="width:auto;">
+                Einloggen
+                oder Registrieren
+            </button>
+        </div>
+        <div>
+            <div class="loginModal" id="login-modal">
             <span class="loginClose" onclick="document.getElementById('login-modal').style.display='none'"
                   title="Close Modal">&times;</span>
 
-                    <div class="formulare">
-                        <!-- Login form-->
-                        <form action="login.php" class="loginModal-content loginAnimate" method="post">
-                            <h2>Login</h2>
-                            <div class="loginImgcontainer">
-                                <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
-                            </div>
+                <div class="formulare">
+                    <!-- Login form-->
+                    <form action="login.php" class="loginModal-content loginAnimate" method="post">
+                        <h2>Login</h2>
+                        <div class="loginImgcontainer">
+                            <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
+                        </div>
 
-                            <div class="loginContainer">
-                                <p><label for="email"><b>Email</b></label>
-                                    <input class="loginInput" id="email" name="email" placeholder="Email eingeben"
-                                           required
-                                           type="email">
-                                </p>
-                                <p><label for="password"><b>Passwort</b></label>
-                                    <input class="loginInput" id="password" name="password"
-                                           placeholder="Passwort eingeben"
-                                           required type="password">
-                                </p>
-                                <button href="profil.php" name="loginSubmit" type="submit">Login</button>
-                            </div>
+                        <div class="loginContainer">
+                            <p><label for="email"><b>Email</b></label>
+                                <input class="loginInput" id="email" name="email" placeholder="Email eingeben"
+                                       required
+                                       type="email">
+                            </p>
+                            <p><label for="password"><b>Passwort</b></label>
+                                <input class="loginInput" id="password" name="password"
+                                       placeholder="Passwort eingeben"
+                                       required type="password">
+                            </p>
+                            <button href="profil.php" name="loginSubmit" type="submit">Login</button>
+                        </div>
 
-                            <div class="loginContainer">
-                                <button class="cancelbtn"
-                                        onclick="document.getElementById('login-modal').style.display='none'"
-                                        type="button">Cancel
-                                </button>
-                        </form>
+                        <div class="loginContainer">
+                            <button class="cancelbtn"
+                                    onclick="document.getElementById('login-modal').style.display='none'"
+                                    type="button">Cancel
+                            </button>
+                    </form>
 
-                        <span class="psw">
+                    <span class="psw">
                                     <button name="pwforget" type="submit">Passwort vergessen</button>
                                      </span>
-                    </div>
-
-
-                    <!-- Register form-->
-                    <form action="/login.php" class="loginModal-content loginAnimate" method="post">
-                            <h2>Registrieren</h2>
-                            <div class="loginImgcontainer">
-                                <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
-                            </div>
-
-                            <div class="loginContainer">
-                                <p><label for="name"><b>Vorname</b></label>
-                                    <input class="loginInput" id="name" name="loginPrename"
-                                           placeholder="Vorname eingeben"
-                                           required
-                                           type="text"></p>
-
-                                <p><label for="lastname"><b>Nachname</b></label>
-                                    <input class="loginInput" id="lastname" name="loginLastname"
-                                           placeholder="Nachname eingeben" required
-                                           type="text">
-                                </p>
-                                <p><label for="registerEmail"><b>Email-Adresse</b></label>
-                                    <input class="loginInput" id="registerEmail" name="registerEmail"
-                                           placeholder="Nachname eingeben" required
-                                           type="email">
-                                </p>
-                                <p><label for="newPassword"><b>Passwort</b></label>
-                                    <input class="loginInput" id="newPassword" name="newPassword"
-                                           placeholder="Passwort eingeben"
-                                           required
-                                           type="password">
-                                </p>
-                                <button name="registerButton" type="submit">Registrieren</button>
-                            </div>
-
-                            <div class="loginContainer">
-                                <button class="cancelbtn"
-                                        onclick="document.getElementById('login-modal').style.display='none'">
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
-                    </div>
                 </div>
+
+
+                <!-- Register form-->
+                <form action="/login.php" class="loginModal-content loginAnimate" method="post">
+                    <h2>Registrieren</h2>
+                    <div class="loginImgcontainer">
+                        <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
+                    </div>
+
+                    <div class="loginContainer">
+                        <p><label for="name"><b>Vorname</b></label>
+                            <input class="loginInput" id="name" name="loginPrename"
+                                   placeholder="Vorname eingeben"
+                                   required
+                                   type="text"></p>
+
+                        <p><label for="lastname"><b>Nachname</b></label>
+                            <input class="loginInput" id="lastname" name="loginLastname"
+                                   placeholder="Nachname eingeben" required
+                                   type="text">
+                        </p>
+                        <p><label for="registerEmail"><b>Email-Adresse</b></label>
+                            <input class="loginInput" id="registerEmail" name="registerEmail"
+                                   placeholder="Nachname eingeben" required
+                                   type="email">
+                        </p>
+                        <p><label for="newPassword"><b>Passwort</b></label>
+                            <input class="loginInput" id="newPassword" name="newPassword"
+                                   placeholder="Passwort eingeben"
+                                   required
+                                   type="password">
+                        </p>
+                        <button name="registerButton" type="submit">Registrieren</button>
+                    </div>
+
+                    <div class="loginContainer">
+                        <button class="cancelbtn"
+                                onclick="document.getElementById('login-modal').style.display='none'">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
             </div>
-            <?php
-        }
-        ?>
-
+        </div>
     </div>
-
-    <!-- Script with the click, which kills the Modal<script>
-    // Get the modal
-    var modal = document.getElementById('id01');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
+    <?php
     }
-    </script>-->
+    ?>
+
+</div>
+
+<!-- Script with the click, which kills the Modal<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>-->

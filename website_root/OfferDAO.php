@@ -7,23 +7,23 @@
 interface OfferDAO
 {
     /**
-     * @param $what
-     * @param $where
-     * @param $type
-     * @param $duration
-     * @param $time
+     * @param String $what Suchbegriff
+     * @param String $where PLZ oder Ort
+     * @param int $type JobTyp
+     * @param int $duration Beschäftigungsdauer
+     * @param int $time Arbeitszeitmodell
      * @return mixed
      */
     public function search($what, $where, $type, $duration, $time);
 
     /**
-     * @param Offer $offer
+     * @param Offer $offer Angebot
      * @return mixed
      */
     public function create(Offer $offer);
 
     /**
-     * @param $id
+     * @param int $id Angebotsid
      * @return mixed
      */
     public function delete($id);

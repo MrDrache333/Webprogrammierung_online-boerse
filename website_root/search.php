@@ -1,40 +1,25 @@
 <?php
-require 'OfferController.php';
-if (isset($_GET['searchjob-searchBox']) || isset($_POST['index-searchBox'])) {
-    $what = "";
-    $where = "";
-    if (isset($_GET['searchBox-what'])) {
-        $what = $_GET['searchBox-what'];
-    }
-    if (isset($_GET['searchBox-where'])) {
-        $where = $_GET['searchBox-where'];
-    }
+require 'OfferDAOImpl.php';
+if (isset($_GET['what']) || isset($_POST['where'])) {
+    $what = $_GET['what'] ?? "";
+    $where = $_GET['where'] ?? "";
 
-    if (isset($_POST['searchBox-what'])) {
-        $what = $_POST['searchBox-what'];
-    }
-    if (isset($_POST['searchBox-where'])) {
-        $where = $_POST['searchBox-where'];
-    }
-    $offerController = new OfferController();
-    $result = $offerController->search($what, $where, null, null, null);
+    $_SESSION['ls_what'] = $what;
+    $_SESSION['ls_where'] = $where;
+    $OfferDAOImpl = new OfferDAOImpl();
+    $result = $OfferDAOImpl->search($what, $where, null, null, null);
     displayResults($result);
-} elseif (isset($_GET['searchjob-filter'])) {
-    $type = $_GET['type'];
-    $duration = $_GET['duration'];
-    $time = $_GET['time'];
-    if (($type >= 0 && $type <= 3) && ($duration >= 0 && $duration <= 2) && ($type >= 0 && $type <= 4)) {
+} elseif (isset($_GET['type']) || isset($_GET['duration']) || isset($_GET['time']) || isset($_SESSION['ls_what']) || isset($_SESSION['ls_where'])) {
+    $type = $_GET['type'] ?? null;
+    $duration = $_GET['duration'] ?? null;
+    $time = $_GET['time'] ?? null;
+    if (($type >= 0 && $type <= 3) && ($duration >= 0 && $duration <= 2) && ($time >= 0 && $time <= 4)) {
 
-        $where = "";
-        $what = "";
-        /*
-        if (isset($_COOKIE['lastSearch_what'],$_COOKIE['lastSearch_where'])){
-            $where=$_COOKIE['lastSearch_where'];
-            $what=$_COOKIE['lastSearch_what'];
-        }
-        */
-        $offerController = new OfferController();
-        $result = $offerController->search($what, $where, $type, $duration, $time);
+        $where = $_SESSION['ls_where'] ?? "";
+        $what = $_SESSION['ls_what'] ?? "";
+
+        $OfferDAOImpl = new OfferDAOImpl();
+        $result = $OfferDAOImpl->search($what, $where, $type, $duration, $time);
         displayResults($result);
     }
 }

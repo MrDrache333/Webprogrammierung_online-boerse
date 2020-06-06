@@ -1,4 +1,3 @@
-<!--Header einbinden-->
 <?php include "header.php"; ?>
 <div class="header">
     <nav>

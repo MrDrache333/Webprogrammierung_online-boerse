@@ -2,7 +2,7 @@
 include 'Address.php';
 require 'AddressDAO.php';
 
-class AddressController implements AddressDAO
+class AddressDAOImpl implements AddressDAO
 {
     /**
      * @var Database Datenbank
