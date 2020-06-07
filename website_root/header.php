@@ -10,7 +10,7 @@ session_start();
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/global.css">
-    <?php if (preg_match("/index\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+    <?php if (($_SERVER['REQUEST_URI'] === '/') || preg_match("/index\.php/i", $_SERVER['REQUEST_URI'])) { ?>
         <link rel="stylesheet" type="text/css" href="styles/searchBox.css">
     <?php } ?>
     <?php if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI'])) { ?>
