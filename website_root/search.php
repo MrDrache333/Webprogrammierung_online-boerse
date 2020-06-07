@@ -1,5 +1,5 @@
 <?php
-require 'OfferDAOImpl.php';
+include_once 'php/classes.php';
 //Normale Suche (Startseite oder searchJob)
 if (isset($_GET['what']) || isset($_GET['where'])) {
     //Suchbegriffe übernehmen oder leer setzen

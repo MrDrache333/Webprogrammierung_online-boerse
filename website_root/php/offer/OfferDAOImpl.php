@@ -1,8 +1,4 @@
 <?php
-require 'Offer.php';
-require 'OfferDAO.php';
-require 'AddressDAOImpl.php';
-require 'Database.php';
 
 /**
  * Class OfferDAOImpl
@@ -36,8 +32,8 @@ class OfferDAOImpl implements OfferDAO
 
     public function create(Offer $offer)
     {
-        $this->addressController->create($offer->getAddress());
-        $addressId = $this->addressController->findAddressId($offer->getAddress());
+        $this->addressDAOImpl->create($offer->getAddress());
+        $addressId = $this->addressDAOImpl->findAddressId($offer->getAddress());
         $command = "insert into offers values (" .
             $offer->getTitle() . "," .
             $offer->getSubTitle() . "," .

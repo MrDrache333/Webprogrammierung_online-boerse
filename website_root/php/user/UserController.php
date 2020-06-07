@@ -1,7 +1,4 @@
 <?php
-require "User.php";
-require "UserDAO.php";
-require "Database.php";
 
 /**
  * Class UserController

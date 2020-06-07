@@ -1,6 +1,4 @@
 <?php
-include 'Address.php';
-require 'AddressDAO.php';
 
 class AddressDAOImpl implements AddressDAO
 {
