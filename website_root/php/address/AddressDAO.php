@@ -1,5 +1,6 @@
 <?php
 
+namespace php\address;
 
 /**
  * Interface AddressDAO

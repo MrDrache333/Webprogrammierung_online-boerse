@@ -1,5 +1,9 @@
 <?php
 
+namespace php\offer;
+
+use php\address\Address;
+
 class Offer
 {
 

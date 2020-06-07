@@ -1,4 +1,7 @@
 <?php
+
+use php\user\UserController;
+
 include_once 'php/classes.php';
 if (isset($_POST["loginSubmit"])) {
     if (isset($_POST["email"]) && (isset($_POST["password"]))) {

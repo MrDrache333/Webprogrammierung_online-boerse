@@ -1,4 +1,7 @@
 <?php
+
+use php\offer\OfferDAOImpl;
+
 include_once 'php/classes.php';
 //Normale Suche (Startseite oder searchJob)
 if (isset($_GET['what']) || isset($_GET['where'])) {

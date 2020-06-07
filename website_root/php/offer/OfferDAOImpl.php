@@ -1,5 +1,12 @@
 <?php
 
+namespace php\offer;
+
+use Exception;
+use php\address\AddressDAOImpl;
+use php\database\Database;
+use php\database\DatabaseController;
+
 /**
  * Class OfferDAOImpl
  */
@@ -21,7 +28,8 @@ class OfferDAOImpl implements OfferDAO
     public function __construct()
     {
 
-        $this->database = new Database();
+        $databaseController = new DatabaseController();
+        $this->database = $databaseController::getDatabase();
         try {
             $this->database->connect();
         } catch (Exception $e) {

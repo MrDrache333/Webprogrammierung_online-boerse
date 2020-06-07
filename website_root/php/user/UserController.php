@@ -1,5 +1,11 @@
 <?php
 
+namespace php\user;
+
+use Exception;
+use php\database\Database;
+use php\database\DatabaseController;
+
 /**
  * Class UserController
  */
@@ -15,10 +21,11 @@ class UserController implements UserDAO
      */
     public function __construct()
     {
-        $this->database = new Database();
+        $databaseController = new DatabaseController();
+        $this->database = $databaseController::getDatabase();
         try {
             $this->database->connect();
-        } catch (\mysql_xdevapi\Exception $e) {
+        } catch (Exception $e) {
             print $e->getMessage();
         }
     }

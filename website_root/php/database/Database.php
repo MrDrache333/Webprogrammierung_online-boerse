@@ -1,66 +1,37 @@
 <?php
 
+namespace php\database;
+
 /**
- * Class Database
+ * Interface Database
+ * @package php\database
  */
-class Database
+interface Database
 {
+    /**
+     * @return bool|null
+     */
+    public function exists(): ?bool;
 
     /**
-     * @var string Der Servername
+     * @return bool|null
      */
-    private $servername = "kog-nas.synology.me";
-    /**
-     * @var string Der Benutzername der Datenbank
-     */
-    private $username = "WP_admin";
-    /**
-     * @var string Das Benutzerpassword
-     */
-    private $password = "Webprogrammierung_2020";
-    /**
-     * @var string Die zu verwendene Datenbank
-     */
-    private $dbname = "Webprogrammierung";
+    public function create(): ?bool;
 
     /**
-     * @var Die Verbindung zur Datenbank
+     * @return bool|null
      */
-    private $conn;
+    public function connect(): ?bool;
 
     /**
-     * Database constructor.
+     * @return bool|null
      */
-    public function __construct()
-    {
-    }
+    public function disconnect(): ?bool;
 
     /**
-     *  Versucht eine Verbindung zur Datenbank herzustellen
+     * @param $command
+     * @return bool|mixed
      */
-    public function connect(): ?bool
-    {
-        // Create connection
-        $this->conn = new mysqli();
-        $this->conn->connect($this->servername, $this->username, $this->password, $this->dbname, 3307);
-        // Check connection
-        return (bool)$this->conn;
-    }
+    public function execute($command);
 
-    /**
-     * @param $command String Der auszuführende Befehl
-     * @return mixed Rückgabe des Befehls, oder null beim Fehler
-     */
-    public function execute($command)
-    {
-        if ($this->conn !== null) {
-            try {
-                return $this->conn->query($command);
-            } catch (Exception $e) {
-                return null;
-            }
-        } else {
-            return null;
-        }
-    }
 }

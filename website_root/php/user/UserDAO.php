@@ -1,4 +1,7 @@
 <?php
+
+namespace php\user;
+
 interface UserDAO
 {
     /**

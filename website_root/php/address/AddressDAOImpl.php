@@ -1,5 +1,9 @@
 <?php
 
+namespace php\address;
+
+use php\database\Database;
+
 class AddressDAOImpl implements AddressDAO
 {
     /**
@@ -9,6 +13,7 @@ class AddressDAOImpl implements AddressDAO
 
     /**
      * OfferController constructor.
+     * @param Database $database
      */
     public function __construct(Database $database)
     {
