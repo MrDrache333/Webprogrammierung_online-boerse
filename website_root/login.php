@@ -31,6 +31,18 @@ if (isset($_POST["loginSubmit"])) {
     setcookie("loggedin", "false", time() - 60 * 60 * 24);
     header("Location: index.php");
     session_destroy();
+
+} else if(isset($_POST["registerSubmit"])){
+    $prename = htmlspecialchars($_POST["loginPrename"]);
+    $lastname = htmlspecialchars($_POST["loginLastname"]);
+    $loginEmail = htmlspecialchars($_POST["registerEmail"]);
+    $loginPassword = htmlspecialchars($_POST["newPassword"]);
+$toRegisterUser = new User(loginPrename,loginLastname,registerEmail,newPassword);
+$controller = new UserController();
+$result =$controller-> create($toRegisterUser);
+
+
+
 }
 
 

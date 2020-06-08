@@ -9,7 +9,7 @@ use php\database\DatabaseController;
 /**
  * Class UserController
  */
-class UserController implements UserDAO
+class UserDAOImpl implements UserDAO
 {
     /**
      * @var Database Datenbank
@@ -85,4 +85,5 @@ class UserController implements UserDAO
         $command = "delete from user where email='" . $user->getEmail() . "'";
         return $this->database->execute($command) !== null;
     }
+
 }
