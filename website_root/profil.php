@@ -29,10 +29,10 @@
 
 
             use php\user\User;
-            use php\user\UserController;
+            use php\user\UserDAOImpl;
 
             include_once 'php/classes.php';
-            $u = new UserController();
+            $u = new UserDAOImpl();
             $email = $_COOKIE["email"];
             if (isset($_POST["submit"])) {
                 $name = $_POST["name"];
@@ -46,8 +46,9 @@
             }
             if (isset($_POST["profilloeschen"])) {
                 /*$delete=$u->delete($email);*/
-                echo "test";
-
+                setcookie("loggedin", "false", time() - 60 * 60 * 24);
+                header("Location: index.php");
+                session_destroy();
             }
             $user = $u->findUserByMail($email);
 
@@ -110,11 +111,11 @@
                                         <label for="male">Männlich</label>
                                         <span class="check"></span>
                                     </div>
-                                <div class="form-radio-item">
-                                    <input type="radio" name="gender" id="female">
-                                    <label for="female">Weiblich</label>
-                                    <span class="check"></span>
-                                </div>
+                                    <div class="form-radio-item">
+                                        <input type="radio" name="gender" id="female">
+                                        <label for="female">Weiblich</label>
+                                        <span class="check"></span>
+                                    </div>
                                     <div class="form-radio-item">
                                         <input type="radio" name="gender" id="divers">
                                         <label for="divers">Divers</label>
