@@ -44,15 +44,14 @@
                 $test = $u->update($user);
 
             }
+            if (isset($_POST["profilloeschen"])) {
+                /*$delete=$u->delete($email);*/
+                echo "test";
+
+            }
             $user = $u->findUserByMail($email);
 
 
-            /*$delete=$u->delete("keno.oelrichs.garcia@uni-oldenburg.de");*/
-            /* $update=$u->prepare("Update user Set prename =?, surname=?,password=? WHERE email =? LIMIT1");
-             $update->bind_param('ssss',$prename,$surname,$email);
-             if($update->exeute()){
-                 echo "datensatz geändert";
-             }*/
             ?>
 
             <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
@@ -129,38 +128,38 @@
                                    <div class="form-group">
                                        <label for="state">altes Passwort:</label>
                                        <input type="text" name="state" id="state">
-                                   </div>
-                                   <div class="form-group">
-                                       <label for="city">neues Passwort:</label>
-                                       <input type="text" name="city" id="city">
-                                   </div>
-                               </div>
-                                   <div class="form-row">
-                                       <div class="form-group">
-                                           <label for="street">neus Passwort wiederholen</label>
-                                           <input type="text" name="street" id="street">
-                                       </div>
                                    </div>-->
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="email">E-Mail Adresse :</label>
-                                    <input class="profilemail" type="email" name="email" id="email"
-                                           value="<?php echo $user->getEmail(); ?>"/>
-                                </div>
-
+                            <div class="form-group">
+                                <label for="city">neues Passwort:</label>
+                                <input type="text" name="city" id="city">
                             </div>
-                            <div class="form-submit">
-                                <input type="reset" value="Zurücksetzen" class="submit" name="reset" id="reset"/>
-                                <input type="submit" value="Speichern" class="submit" name="submit" id="submit"/>
-
-
-                            </div>
-                        </form>
                     </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="street">neus Passwort wiederholen</label>
+                            <input type="text" name="street" id="street">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">E-Mail Adresse :</label>
+                            <input class="profilemail" type="email" name="email" id="email"
+                                   value="<?php echo $user->getEmail(); ?>"/>
+                        </div>
+
+                    </div>
+
+                    <input type="submit" value="Profil löschen" class="submit" name="profilloeschen" id="submit"/>
+                    <input type="submit" value="Speichern" class="submit" name="submit" id="submit"/>
                 </div>
+
             </div>
+            </form>
         </div>
     </div>
+</div>
+</div>
+</div>
 </div>
 </div><?php include "footer.html"; ?>
 
