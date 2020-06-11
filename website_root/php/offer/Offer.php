@@ -15,28 +15,18 @@ class Offer
     private $address;
     private $created;
     private $free;
+    private $companyName;
+    private $offerType;
+    private $duration;
+    private $workModel;
+    private $creator;
+
 
     /**
-     * Offer constructor.
-     * @param $id
-     * @param $title
-     * @param $subTitle
-     * @param $description
-     * @param $logo
-     * @param Address $address
-     * @param $created
-     * @param $free
+     * Offer constructor
      */
-    public function __construct($id, $title, $subTitle, $description, $logo, Address $address, $created, $free)
+    public function __construct()
     {
-        $this->id = $id;
-        $this->title = $title;
-        $this->subTitle = $subTitle;
-        $this->description = $description;
-        $this->logo = $logo;
-        $this->address = $address;
-        $this->created = $created;
-        $this->free = $free;
     }
 
     /**
@@ -166,4 +156,86 @@ class Offer
     {
         $this->free = $free;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCompanyName()
+    {
+        return $this->companyName;
+    }
+
+    /**
+     * @param mixed $companyName
+     */
+    public function setCompanyName($companyName): void
+    {
+        $this->companyName = $companyName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOfferType()
+    {
+        return $this->offerType;
+    }
+
+    /**
+     * @param mixed $offerType
+     */
+    public function setOfferType($offerType): void
+    {
+        $this->offerType = $offerType;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * @param mixed $duration
+     */
+    public function setDuration($duration): void
+    {
+        $this->duration = $duration;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWorkModel()
+    {
+        return $this->workModel;
+    }
+
+    /**
+     * @param mixed $workModel
+     */
+    public function setWorkModel($workModel): void
+    {
+        $this->workModel = $workModel;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreator()
+    {
+        return $this->creator;
+    }
+
+    /**
+     * @param mixed $creator
+     */
+    public function setCreator($creator): void
+    {
+        $this->creator = $creator;
+    }
+
+
 }

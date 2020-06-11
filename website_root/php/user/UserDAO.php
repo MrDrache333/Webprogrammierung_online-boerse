@@ -18,12 +18,10 @@ interface UserDAO
 
     /**
      *Update the user details
-     * @param String $prename
-     * @param String $surname
-     * @param String $email
+     * @param User $user
      * @return mixed
      */
-    public function update($prename, $surname, $email);
+    public function update($user);
 
     /**
      *Deletes the user
@@ -32,10 +30,10 @@ interface UserDAO
     public function delete(User $user);
 
     /**
-     *Update the user passwort
-     * @param String $pw
+     *Update the user password
+     * @param String $newPassword
      * @param String $email
      * @return mixed
      */
-    public function passwort($pw, $email);
+    public function updatePassword($newPassword, $email);
 }

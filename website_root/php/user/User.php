@@ -7,56 +7,82 @@ namespace php\user;
  */
 class User
 {
-    private $name;
-    private $lastname;
+    private $id;
+    private $prename;
+    private $surname;
     private $email;
     private $password;
+    private $gender;
 
     /**
      * User constructor.
-     * @param $name
-     * @param $lastName
-     * @param $email
-     * @param $password
      */
-    public function __construct($name, $lastName, $email, $password)
+    public function __construct()
     {
-        $this->name = $name;
-        $this->lastname = $lastName;
-        $this->email = $email;
-        $this->password = $password;
     }
 
     /**
      * @return mixed
      */
-    public function getName()
+    public function getId()
     {
-        return $this->name;
+        return $this->id;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $id
      */
-    public function setName($name): void
+    public function setId($id): void
     {
-        $this->name = $name;
+        $this->id = $id;
     }
 
     /**
      * @return mixed
      */
-    public function getLastname()
+    public function getGender()
     {
-        return $this->lastname;
+        return $this->gender;
+    }
+
+    /**
+     * @param mixed $gender
+     */
+    public function setGender($gender): void
+    {
+        $this->gender = $gender;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPrename()
+    {
+        return $this->prename;
+    }
+
+    /**
+     * @param mixed $prename
+     */
+    public function setPrename($prename): void
+    {
+        $this->prename = $prename;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSurname()
+    {
+        return $this->surname;
     }
 
     /**
      * @param mixed $lastName
      */
-    public function setLastname($lastName): void
+    public function setSurname($lastName): void
     {
-        $this->lastname = $lastName;
+        $this->surname = $lastName;
     }
 
     /**

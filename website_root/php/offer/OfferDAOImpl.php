@@ -68,7 +68,7 @@ class OfferDAOImpl implements OfferDAO
     public function search($what, $where, $type, $duration, $time)
     {
         //Standardfilter erstellen
-        $command = "SELECT * FROM offers, address WHERE offers.id = address.id";
+        $command = "SELECT * FROM offers, address WHERE offers.address = address.id";
         //Wenn nach einem begriff gesucht werden soll
         if ($what !== "") {
             $command .= " AND (title like '%" . $what . "%' OR subtitle like '%" . $what . "%' OR description like '%" . $what . "%')";
@@ -91,7 +91,8 @@ class OfferDAOImpl implements OfferDAO
         }
 
         //Datenbank abfragen und Ergebnis zurückgeben
-        return $this->database->execute($command);
+        //TODO Sachen machen, dass die DTO verwendet wird :)
+        return OfferHelper::getOffersFromSQLResult($this->database->execute($command));
     }
 
 

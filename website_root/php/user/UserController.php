@@ -38,45 +38,45 @@ class UserController implements UserDAO
     {
         $command = "insert into user values (" .
             $user->getEmail() . "," .
-            $user->getName() . "," .
-            $user->getLastname() . "," .
+            $user->getPrename() . "," .
+            $user->getSurname() . "," .
             $user->getPassword() .
             ")";
-        return $this->database->execute($command) !== null;
+        //TODO Implement Me
+        return false;
     }
 
     /**
      * @param $email String Mailadresse des Benutzers
      * @param $password String Password des Benutzers
-     * @return bool
+     * @return User
      */
-    function login($email, $password)
+    public function login($email, $password): User
     {
         $command = "select * from user where email like '" . $email . "' and password like '" . $password . "'";
-        return $this->database->execute($command);
+        return UserHelper::getUsersFromSQLResult($this->database->execute($command));
     }
 
     /**
      * @param String $email Die Mail-Adresse des Nutzers
-     * @return bool Erfolgreich?
+     * @return User|null
      */
-    public function findUserByMail($email)
+    public function findUserByMail($email): User
     {
-        $command = "select * from user where email like '" . $email . "'";
-        return $this->database->execute($command);
+        $command = "select * from user where email = '" . $email . "'";
+        return UserHelper::getUsersFromSQLResult($this->database->execute($command));
     }
 
     /**
      * @param User $user Der zuaktualisierende Benutzer
      * @return bool Erfolgreich?
      */
-    public function update($prename, $surname, $email)
+    public function update($user)
     {
         /* $command = "UPDATE user Set email '" . $email . "'prename'" . $prename . "'surname'" . $surname . "'";
          return $this->database->execute($command);*/
-        $command = "UPDATE user SET prename='" . $prename . "', surname='" . $surname . "' WHERE email='" . $email . "'";
+        $command = "UPDATE user SET prename='" . $user->getPrename() . "', surname='" . $user->getSurname() . "' WHERE email='" . $user->getEmail() . "'";
         return $this->database->execute($command);
-        // TODO: Implement update() method.
     }
 
     /**
@@ -90,12 +90,11 @@ class UserController implements UserDAO
     }
 
 
-    public function passwort($pw, $email)
+    public function updatePassword($newPassword, $email)
     {
         /* $command = "UPDATE user Set email '" . $email . "'prename'" . $prename . "'surname'" . $surname . "'";
          return $this->database->execute($command);*/
-        $command = "UPDATE user SET password='" . $pw . "' WHERE email='" . $email . "'";
+        $command = "UPDATE user SET password='" . $newPassword . "' WHERE email='" . $email . "'";
         return $this->database->execute($command);
-        // TODO: Implement update() method.
     }
 }

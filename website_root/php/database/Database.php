@@ -30,7 +30,7 @@ interface Database
 
     /**
      * @param $command
-     * @return bool|mixed
+     * @return mixed
      */
     public function execute($command);
 

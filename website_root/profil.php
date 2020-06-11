@@ -28,6 +28,7 @@
             <?php
 
 
+            use php\user\User;
             use php\user\UserController;
 
             include_once 'php/classes.php';
@@ -36,14 +37,14 @@
             if (isset($_POST["submit"])) {
                 $name = $_POST["name"];
                 $name2 = $_POST["father_name"];
-                $test = $u->update($name, $name2, $email);
+                $user = new User();
+                $user->setEmail($email);
+                $user->setPrename($name);
+                $user->setSurname($name2);
+                $test = $u->update($user);
 
             }
-            $result = $u->findUserByMail($email);
-            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-            $prename = $row['prename'];
-            $email = $row['email'];
-            $surname = $row['surname'];
+            $user = $u->findUserByMail($email);
 
 
             /*$delete=$u->delete("keno.oelrichs.garcia@uni-oldenburg.de");*/
@@ -91,14 +92,15 @@
                                 <div class="form-group">
                                     <label for="name">Vorname :</label>
 
-                                    <input type="text" name="name" id="name" value="<?php echo $prename; ?>" required/>
+                                    <input type="text" name="name" id="name" value="<?php echo $user->getPrename(); ?>"
+                                           required/>
 
 
                                 </div>
                                 <div class="form-group">
                                     <label for="father_name">Nachname :</label>
                                     <input type="text" name="father_name" id="fahter_name"
-                                           value="<?php echo $surname; ?>" required/>
+                                           value="<?php echo $user->getSurname(); ?>" required/>
                                 </div>
                             </div>
                             <div class="form-radio">
@@ -143,7 +145,7 @@
                                 <div class="form-group">
                                     <label for="email">E-Mail Adresse :</label>
                                     <input class="profilemail" type="email" name="email" id="email"
-                                           value="<?php echo $email; ?>"/>
+                                           value="<?php echo $user->getEmail(); ?>"/>
                                 </div>
 
                             </div>
