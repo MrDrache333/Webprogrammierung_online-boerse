@@ -71,7 +71,7 @@ $text = "Sie " . $empfaenger . " haben um " . $time .
 //Passwrot vergessen ausgeführt und Mail versendet zu Nutzer.
 //muss in den Header verstehe aber Fenjas Datei nicht
 
-$u = new UserController();
+$u = new UserDAOImpl();
 if (isset($_POST["pwforget"])) {
     if (mail($empfaenger, $betreff, $text, "From: $absendername <$absendermail>")) {
         echo "Email wurde erfolgreich versendet.";

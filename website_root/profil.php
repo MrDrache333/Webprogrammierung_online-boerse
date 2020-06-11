@@ -1,6 +1,39 @@
+<?php
+
+
+use php\user\User;
+use php\user\UserDAOImpl;
+
+include_once 'php/classes.php';
+$u = new UserDAOImpl();
+$email = $_COOKIE["email"];
+if (isset($_POST["submit"])) {
+    $name = $_POST["name"];
+    $name2 = $_POST["father_name"];
+    $user = new User();
+    $user->setEmail($email);
+    $user->setPrename($name);
+    $user->setSurname($name2);
+    $test = $u->update($user);
+
+}
+if (isset($_POST["profilloeschen"])) {
+    /*$delete=$u->delete($email);
+    setcookie("loggedin", "false", time() - 60 * 60 * 24);
+    header("Location: index.php");
+    session_destroy();*/
+    echo ".phpversion";
+
+}
+$user = $u->findUserByMail($email);
+
+
+?>
+
 <?php include "header.php"; ?>
 
 <div class="header">
+
     <nav>
         <ul class="navi">
             <li class="navibutton">
@@ -22,38 +55,6 @@
             <?php }
             ?>
 
-
-
-
-            <?php
-
-
-            use php\user\User;
-            use php\user\UserDAOImpl;
-
-            include_once 'php/classes.php';
-            $u = new UserDAOImpl();
-            $email = $_COOKIE["email"];
-            if (isset($_POST["submit"])) {
-                $name = $_POST["name"];
-                $name2 = $_POST["father_name"];
-                $user = new User();
-                $user->setEmail($email);
-                $user->setPrename($name);
-                $user->setSurname($name2);
-                $test = $u->update($user);
-
-            }
-            if (isset($_POST["profilloeschen"])) {
-                /*$delete=$u->delete($email);*/
-                setcookie("loggedin", "false", time() - 60 * 60 * 24);
-                header("Location: index.php");
-                session_destroy();
-            }
-            $user = $u->findUserByMail($email);
-
-
-            ?>
 
             <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
             <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
