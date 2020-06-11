@@ -62,10 +62,10 @@ class MariaDBDatabase implements Database
             try {
                 return $this->conn->query($command);
             } catch (Exception $e) {
-                return false;
+                return null;
             }
         } else {
-            return false;
+            return null;
         }
     }
 

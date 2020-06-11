@@ -11,11 +11,10 @@ if (isset($_POST["loginSubmit"])) {
         $password = htmlspecialchars($_POST["password"]);
 
         $controller = new UserController();
-        $result = $controller->login($email, $password);
-        $user = $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $user = $controller->login($email, $password);
         if ($user !== null) {
             setcookie("email", $email, time() + 60 * 60 * 24);
-            setcookie("username", $user['prename'] . " " . $user['surname'], time() + 60 * 60 * 24);
+            setcookie("username", $user->getPrename() . " " . $user->getSurname(), time() + 60 * 60 * 24);
             setcookie("loggedin", "true", time() + 60 * 60 * 24);
             header("Location: profil.php");
         } else {
@@ -59,11 +58,16 @@ $text = "Sie " . $empfaenger . " haben um " . $time .
 
 //Passwrot vergessen ausgeführt und Mail versendet zu Nutzer.
 //muss in den Header verstehe aber Fenjas Datei nicht
-//Passwort muss in Datenbank angepasst werden
+
+$u = new UserController();
 if (isset($_POST["pwforget"])) {
     if (mail($empfaenger, $betreff, $text, "From: $absendername <$absendermail>")) {
         echo "Email wurde erfolgreich versendet.";
         echo $text;
+
+
+        $email = $_COOKIE["email"];
+        $test = $u->updatePassword($pw, $email);
     } else {
         echo "Ihre Anfrage konnte nicht gesendet werden!";
     }
@@ -77,9 +81,9 @@ function GeneratePassword($length = 12)
     $chars_for_pw .= "0123456789";
 
     $chars_for_pw .= "abcdefghijklmnopqrstuvwxyz";
-    srand((double)microtime() * 1000000);
+    mt_srand((double)microtime() * 1000000);
     for ($i = 0; $i < $length; $i++) {
-        $number = rand(0, strlen($chars_for_pw));
+        $number = random_int(0, strlen($chars_for_pw));
         $char_control .= $chars_for_pw[$number];
     }
 

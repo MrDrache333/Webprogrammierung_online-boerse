@@ -1,4 +1,5 @@
 <?php include "header.php"; ?>
+
 <div class="header">
     <nav>
         <ul class="navi">
@@ -9,6 +10,7 @@
                 <div class="active"><a href="profil.php" class="naviobjekt"> Mein Profil</a></div>
             </li>
             <?php
+
             if (isset($_COOKIE["loggedin"]) and $_COOKIE["loggedin"] === "true") { ?>
 
 
@@ -20,6 +22,38 @@
             <?php }
             ?>
 
+
+
+
+            <?php
+
+
+            use php\user\User;
+            use php\user\UserController;
+
+            include_once 'php/classes.php';
+            $u = new UserController();
+            $email = $_COOKIE["email"];
+            if (isset($_POST["submit"])) {
+                $name = $_POST["name"];
+                $name2 = $_POST["father_name"];
+                $user = new User();
+                $user->setEmail($email);
+                $user->setPrename($name);
+                $user->setSurname($name2);
+                $test = $u->update($user);
+
+            }
+            $user = $u->findUserByMail($email);
+
+
+            /*$delete=$u->delete("keno.oelrichs.garcia@uni-oldenburg.de");*/
+            /* $update=$u->prepare("Update user Set prename =?, surname=?,password=? WHERE email =? LIMIT1");
+             $update->bind_param('ssss',$prename,$surname,$email);
+             if($update->exeute()){
+                 echo "datensatz geändert";
+             }*/
+            ?>
 
             <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
             <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
@@ -57,60 +91,69 @@
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="name">Vorname :</label>
-                                <input type="text" name="name" id="name" placeholder="" required/>
-                            </div>
-                            <div class="form-group">
-                                <label for="father_name">Nachname :</label>
-                                <input type="text" name="father_name" id="father_name" required/>
-                            </div>
-                        </div>
-                        <div class="form-radio">
-                            <label for="gender" class="radio-label">Geschlecht :</label>
-                            <div class="form-radio-item-group">
-                                <div class="form-radio-item">
-                                    <input type="radio" name="gender" id="male" checked>
-                                    <label for="male">Männlich</label>
-                                    <span class="check"></span>
+
+                                    <input type="text" name="name" id="name" value="<?php echo $user->getPrename(); ?>"
+                                           required/>
+
+
                                 </div>
+                                <div class="form-group">
+                                    <label for="father_name">Nachname :</label>
+                                    <input type="text" name="father_name" id="fahter_name"
+                                           value="<?php echo $user->getSurname(); ?>" required/>
+                                </div>
+                            </div>
+                            <div class="form-radio">
+                                <label for="gender" class="radio-label">Geschlecht :</label>
+                                <div class="form-radio-item-group">
+                                    <div class="form-radio-item">
+                                        <input type="radio" name="gender" id="male" checked>
+                                        <label for="male">Männlich</label>
+                                        <span class="check"></span>
+                                    </div>
                                 <div class="form-radio-item">
                                     <input type="radio" name="gender" id="female">
                                     <label for="female">Weiblich</label>
                                     <span class="check"></span>
                                 </div>
-                                <div class="form-radio-item">
-                                    <input type="radio" name="gender" id="divers">
-                                    <label for="divers">Divers</label>
-                                    <span class="check"></span>
+                                    <div class="form-radio-item">
+                                        <input type="radio" name="gender" id="divers">
+                                        <label for="divers">Divers</label>
+                                        <span class="check"></span>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="state">Land:</label>
-                                <input type="text" name="state" id="state">
                             </div>
-                            <div class="form-group">
-                                <label for="city">Stadt:</label>
-                                <input type="text" name="city" id="city">
-                            </div>
-                        </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="street">Straße:</label>
-                                    <input type="text" name="street" id="street">
-                                </div>
-                            </div>
+                            <!-- Möglich für Passwort vergessen-->
+                            <!--   <div class="form-row">
+                                   <div class="form-group">
+                                       <label for="state">altes Passwort:</label>
+                                       <input type="text" name="state" id="state">
+                                   </div>
+                                   <div class="form-group">
+                                       <label for="city">neues Passwort:</label>
+                                       <input type="text" name="city" id="city">
+                                   </div>
+                               </div>
+                                   <div class="form-row">
+                                       <div class="form-group">
+                                           <label for="street">neus Passwort wiederholen</label>
+                                           <input type="text" name="street" id="street">
+                                       </div>
+                                   </div>-->
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="email">E-Mail Adresse :</label>
-                                    <input class="profilemail" type="email" name="email" id="email"/>
+                                    <input class="profilemail" type="email" name="email" id="email"
+                                           value="<?php echo $user->getEmail(); ?>"/>
                                 </div>
 
                             </div>
                             <div class="form-submit">
                                 <input type="reset" value="Zurücksetzen" class="submit" name="reset" id="reset"/>
                                 <input type="submit" value="Speichern" class="submit" name="submit" id="submit"/>
+
+
                             </div>
                         </form>
                     </div>

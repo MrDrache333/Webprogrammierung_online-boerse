@@ -1,5 +1,6 @@
 <?php
 
+use php\offer\Offer;
 use php\offer\OfferDAOImpl;
 
 include_once 'php/classes.php';
@@ -39,45 +40,45 @@ if (isset($_GET['what']) || isset($_GET['where'])) {
 }
 
 /**
- * @param mysqli_result $result Ergebnisse der Datenbankabfrage
+ * @param Offer[] $result Ergebnisse der Datenbankabfrage
  */
 function displayResults($result)
 {
 
-    if ($result !== null && !is_bool($result)) {
+    if ($result !== null) {
         $count = 0;
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        foreach ($result as $offer) {
             $count++;
-            $html = "<article role=\"article\" id=\"" . $row['id'] . "\">
+            $html = "<article role=\"article\" id=\"" . $offer->getId() . "\">
                         <div class=\"article-content\">
                             <div class=\"article-left\">
                                 <div class=\"article-head\">
-                                    <h3 class=\"result-h3\" role=\"heading\" id=\"article_head\">" . $row['title'] . "</h3>
-                                    <span class=\"result-h3-sub\" id=\"article_sub\">" . $row['subtitle'] . "</span>
+                                    <h3 class=\"result-h3\" role=\"heading\" id=\"article_head\">" . $offer->getTitle() . "</h3>
+                                    <span class=\"result-h3-sub\" id=\"article_sub\">" . $offer->getSubTitle() . "</span>
                                 </div>
                                 <div class=\"article-company\">
                                     <img class=\"article-company-logo\" id=\"article-logo\"
                                          src=\"images/company_placeholder.png\"
                                          alt=\"Firmenlogo\">
-                                    <span class=\"article-company-name\">" . $row['companyName'] . "</span>
+                                    <span class=\"article-company-name\">" . $offer->getCompanyName() . "</span>
                                 </div>
                             </div>
                             <div class=\"article-right\">
                                 <div class=\"article-info-row\">
                                     <div class=\"article-info-type\">Veröffentlichung:</div>
-                                    <span class=\"article-info-value\" id=\"article_releaseDate\">" . $row['created'] . "</span>
+                                    <span class=\"article-info-value\" id=\"article_releaseDate\">" . $offer->getCreated() . "</span>
                                 </div>
                                 <div class=\"article-info-row\">
                                     <div class=\"article-info-type\">Frei ab:</div>
-                                    <span class=\"article-info-value\" id=\"article_freeAt\">" . $row['free'] . "</span>
+                                    <span class=\"article-info-value\" id=\"article_freeAt\">" . $offer->getFree() . "</span>
                                 </div>
                                 <div class=\"article-info-row\">
                                     <div class=\"article-info-type\">Standort:</div>
                                     <div class=\"article-info-group\">
                                         <span class=\"article-info-value\"
-                                              id=\"article_address_street\">" . $row['street'] . " " . $row['number'] . "</span>
+                                              id=\"article_address_street\">" . $offer->getAddress()->getStreet() . " " . $offer->getAddress()->getNumber() . "</span>
                                         <span class=\"article-info-value\"
-                                              id=\"article_address_plz\">" . $row['plz'] . " " . $row['town'] . "</span>
+                                              id=\"article_address_plz\">" . $offer->getAddress()->getPlz() . " " . $offer->getAddress()->getTown() . "</span>
                                     </div>
                                 </div>
                             </div>
