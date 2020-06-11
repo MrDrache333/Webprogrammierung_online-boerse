@@ -1,3 +1,29 @@
+<?php
+use php\user\User;
+use php\user\UserDAOImpl;
+
+include_once 'php/classes.php';
+$u = new UserDAOImpl();
+$email = $_COOKIE["email"];
+$user = $u->findUserByMail($email);
+if (isset($_POST["submit"])) {
+    $name = $_POST["name"];
+    $name2 = $_POST["father_name"];
+    $user = new User();
+    $user->setEmail($email);
+    $user->setPrename($name);
+    $user->setSurname($name2);
+    $test = $u->update($user);
+
+}
+if (isset($_POST["profilloeschen"])) {
+    /*$delete=$u->delete($email);*/
+    setcookie("loggedin", "false", time() - 60 * 60 * 24);
+    session_destroy();
+    header("Location: index.php");
+exit;
+}
+?>
 <?php include "header.php"; ?>
 
 <div class="header">
@@ -12,53 +38,14 @@
             <?php
 
             if (isset($_COOKIE["loggedin"]) and $_COOKIE["loggedin"] === "true") { ?>
-
-
                 <li class="navibutton"><a href="messages.php" class="naviobjekt">Meine Anzeigen </a></li>
             <?php } else {
                 ?>
-
-
             <?php }
             ?>
-
-
-
-
-            <?php
-
-
-            use php\user\User;
-            use php\user\UserDAOImpl;
-
-            include_once 'php/classes.php';
-            $u = new UserDAOImpl();
-            $email = $_COOKIE["email"];
-            if (isset($_POST["submit"])) {
-                $name = $_POST["name"];
-                $name2 = $_POST["father_name"];
-                $user = new User();
-                $user->setEmail($email);
-                $user->setPrename($name);
-                $user->setSurname($name2);
-                $test = $u->update($user);
-
-            }
-            if (isset($_POST["profilloeschen"])) {
-                /*$delete=$u->delete($email);*/
-                setcookie("loggedin", "false", time() - 60 * 60 * 24);
-                header("Location: index.php");
-                session_destroy();
-            }
-            $user = $u->findUserByMail($email);
-
-
-            ?>
-
             <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
             <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
         </ul>
-
     </nav>
 </div>
 <div class="grid-farbe">
@@ -81,7 +68,6 @@
                                        id="reset_pb"/>
                                 <input type="file" name="fileToUpload" id="fileToUpload"/>
                                 <input type="submit" value="Bild hochladen" name="submit" class="submit"/>
-
                             </div>
                         </form>
                     </div>
@@ -91,11 +77,8 @@
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="name">Vorname :</label>
-
                                     <input type="text" name="name" id="name" value="<?php echo $user->getPrename(); ?>"
                                            required/>
-
-
                                 </div>
                                 <div class="form-group">
                                     <label for="father_name">Nachname :</label>
@@ -149,11 +132,9 @@
                         </div>
 
                     </div>
-
                     <input type="submit" value="Profil löschen" class="submit" name="profilloeschen" id="submit"/>
                     <input type="submit" value="Speichern" class="submit" name="submit" id="submit"/>
                 </div>
-
             </div>
             </form>
         </div>

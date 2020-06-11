@@ -7,7 +7,7 @@ use php\database\Database;
 use php\database\DatabaseController;
 
 /**
- * Class UserController
+ * Class UserDAOImpl
  */
 class UserDAOImpl implements UserDAO
 {
