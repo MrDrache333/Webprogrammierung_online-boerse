@@ -18,13 +18,24 @@ interface UserDAO
 
     /**
      *Update the user details
-     * @param User $user
+     * @param String $prename
+     * @param String $surname
+     * @param String $email
+     * @return mixed
      */
-    public function update(User $user);
+    public function update($prename, $surname, $email);
 
     /**
      *Deletes the user
      * @param User $user
      */
     public function delete(User $user);
+
+    /**
+     *Update the user passwort
+     * @param String $pw
+     * @param String $email
+     * @return mixed
+     */
+    public function passwort($pw, $email);
 }

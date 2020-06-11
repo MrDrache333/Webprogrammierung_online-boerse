@@ -27,16 +27,31 @@
 
             <?php
 
+
             use php\user\UserController;
 
             include_once 'php/classes.php';
             $u = new UserController();
             $email = $_COOKIE["email"];
+            if (isset($_POST["submit"])) {
+                $name = $_POST["name"];
+                $name2 = $_POST["father_name"];
+                $test = $u->update($name, $name2, $email);
+
+            }
             $result = $u->findUserByMail($email);
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             $prename = $row['prename'];
             $email = $row['email'];
             $surname = $row['surname'];
+
+
+            /*$delete=$u->delete("keno.oelrichs.garcia@uni-oldenburg.de");*/
+            /* $update=$u->prepare("Update user Set prename =?, surname=?,password=? WHERE email =? LIMIT1");
+             $update->bind_param('ssss',$prename,$surname,$email);
+             if($update->exeute()){
+                 echo "datensatz geändert";
+             }*/
             ?>
 
             <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
@@ -82,7 +97,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="father_name">Nachname :</label>
-                                    <input type="text" name="father_name" id="father_name"
+                                    <input type="text" name="father_name" id="fahter_name"
                                            value="<?php echo $surname; ?>" required/>
                                 </div>
                             </div>

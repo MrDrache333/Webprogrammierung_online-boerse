@@ -70,9 +70,12 @@ class UserController implements UserDAO
      * @param User $user Der zuaktualisierende Benutzer
      * @return bool Erfolgreich?
      */
-    public function update($user)
+    public function update($prename, $surname, $email)
     {
-        return true;
+        /* $command = "UPDATE user Set email '" . $email . "'prename'" . $prename . "'surname'" . $surname . "'";
+         return $this->database->execute($command);*/
+        $command = "UPDATE user SET prename='" . $prename . "', surname='" . $surname . "' WHERE email='" . $email . "'";
+        return $this->database->execute($command);
         // TODO: Implement update() method.
     }
 
@@ -82,7 +85,17 @@ class UserController implements UserDAO
      */
     public function delete($user)
     {
-        $command = "delete from user where email='" . $user->getEmail() . "'";
+        $command = "delete from user where email='" . $user . "'";
         return $this->database->execute($command) !== null;
+    }
+
+
+    public function passwort($pw, $email)
+    {
+        /* $command = "UPDATE user Set email '" . $email . "'prename'" . $prename . "'surname'" . $surname . "'";
+         return $this->database->execute($command);*/
+        $command = "UPDATE user SET password='" . $pw . "' WHERE email='" . $email . "'";
+        return $this->database->execute($command);
+        // TODO: Implement update() method.
     }
 }
