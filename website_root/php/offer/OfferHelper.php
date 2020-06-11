@@ -21,7 +21,7 @@ class OfferHelper
     public static function getOffersFromSQLResult($result): ?array
     {
         $offers = [];
-        if ($result !== null) {
+        if ($result !== null && !is_bool($result)) {
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 $offer = self::getOfferFromSQLResultRow($row);
                 if ($offer !== null) {
@@ -44,7 +44,7 @@ class OfferHelper
      * @param $result array The SQL-Result Row-Array
      * @return Offer|null
      */
-    public static function getOfferFromSQLResultRow($result): ?Offer
+    private static function getOfferFromSQLResultRow($result): ?Offer
     {
         $offer = new Offer();
         $offer->setId($result['id'] ?? null);

@@ -20,7 +20,7 @@ class UserHelper
     public static function getUsersFromSQLResult($result)
     {
         $users = [];
-        if ($result !== null) {
+        if ($result !== null && !is_bool($result)) {
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                 $user = self::getUserFromSQLResultRow($row);
                 if ($user !== null) {
@@ -43,7 +43,7 @@ class UserHelper
      * @param $result array The SQL-Result Row-Array
      * @return User|null
      */
-    public static function getUserFromSQLResultRow($result): ?User
+    private static function getUserFromSQLResultRow($result): ?User
     {
         $user = new User();
         $user->setId($result['id'] ?? null);

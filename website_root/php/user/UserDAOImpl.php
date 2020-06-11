@@ -37,21 +37,23 @@ class UserDAOImpl implements UserDAO
     function create(User $user)
     {
         $command = "insert into user values (" .
-            $user->getEmail() . "," .
-            $user->getPrename() . "," .
-            $user->getSurname() . "," .
-            $user->getPassword() .
-            ")";
-        //TODO Implement Me
-        return false;
+            0 . ",'" .
+            ($user->getEmail()) . "','" .
+            ($user->getPrename()) . "','" .
+            ($user->getSurname()) . "','" .
+            ($user->getPassword()) . "','" .
+            ($user->getGender()) .
+            "')";
+        $command = str_replace("''", "null", $command);
+        return UserHelper::getUsersFromSQLResult($this->database->execute($command)) === null;
     }
 
     /**
      * @param $email String Mailadresse des Benutzers
      * @param $password String Password des Benutzers
-     * @return User
+     * @return User|null
      */
-    public function login($email, $password): User
+    public function login($email, $password)
     {
         $command = "select * from user where email like '" . $email . "' and password like '" . $password . "'";
         return UserHelper::getUsersFromSQLResult($this->database->execute($command));
@@ -61,9 +63,9 @@ class UserDAOImpl implements UserDAO
      * @param String $email Die Mail-Adresse des Nutzers
      * @return User|null
      */
-    public function findUserByMail($email): User
+    public function findUserByMail($email)
     {
-        $command = "select * from user where email = '" . $email . "'";
+        $command = "select * from user where email='" . $email . "'";
         return UserHelper::getUsersFromSQLResult($this->database->execute($command));
     }
 

@@ -1,4 +1,6 @@
+<?php include "header.php"; ?>
 <?php
+
 use php\user\User;
 use php\user\UserDAOImpl;
 
@@ -20,12 +22,9 @@ if (isset($_POST["profilloeschen"])) {
     setcookie("loggedin", "false", time() - 60 * 60 * 24);
     session_destroy();
     header("Location: index.php");
-exit;
+    exit;
 }
 ?>
-
-<?php include "header.php"; ?>
-
 <div class="header">
     <nav>
         <ul class="navi">
