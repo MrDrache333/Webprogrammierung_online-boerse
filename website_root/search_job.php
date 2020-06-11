@@ -13,11 +13,9 @@
             ?>
             <li class="navibutton">
                 <div class="active"><a href="index.php" class="naviobjekt"> Startseite</a></div>
-            </li>
-            <li class="navibutton"><a href="index.php" class="naviobjekt"> Mein Profil</a></li>
 
 
-        <?php }
+                <?php }
         ?>
 
 
