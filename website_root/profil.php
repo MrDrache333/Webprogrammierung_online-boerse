@@ -14,7 +14,6 @@ if (isset($_POST["submit"])) {
     $user->setPrename($name);
     $user->setSurname($name2);
     $test = $u->update($user);
-
 }
 if (isset($_POST["profilloeschen"])) {
     /*$delete=$u->delete($email);*/
@@ -24,6 +23,7 @@ if (isset($_POST["profilloeschen"])) {
 exit;
 }
 ?>
+
 <?php include "header.php"; ?>
 
 <div class="header">
