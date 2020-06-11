@@ -1,6 +1,7 @@
 <?php
 
-use php\user\UserController;
+
+use php\user\UserDAOImpl;
 
 include_once 'php/classes.php';
 if (isset($_POST["loginSubmit"])) {
@@ -10,7 +11,7 @@ if (isset($_POST["loginSubmit"])) {
         $_SESSION["email"] = $email;
         $password = htmlspecialchars($_POST["password"]);
 
-        $controller = new UserController();
+        $controller = new UserDAOImpl();
         $user = $controller->login($email, $password);
         if ($user !== null) {
             setcookie("email", $email, time() + 60 * 60 * 24);
@@ -30,6 +31,29 @@ if (isset($_POST["loginSubmit"])) {
     setcookie("loggedin", "false", time() - 60 * 60 * 24);
     header("Location: index.php");
     session_destroy();
+
+} else if(isset($_POST["registerSubmit"])){
+    if(isset($_POST["loginPrename"],$_POST["loginLastname"],$_POST["registerEmail"],$_POST["newPassword"])) {
+        $prename = htmlspecialchars($_POST["loginPrename"]);
+        $lastname = htmlspecialchars($_POST["loginLastname"]);
+        $loginEmail = htmlspecialchars($_POST["registerEmail"]);
+        $loginPassword = htmlspecialchars($_POST["newPassword"]);
+
+        if (preg_match('[a-zA-Z]{3,30}', $prename) && preg_match('[a-zA-Z]{3,30}', $lastname) &&
+            filter_var($loginEmail, FILTER_VALIDATE_EMAIL)&&preg_match('([A-Z]|[a-z]|[0-9])*{5-30}',$loginPassword)) {
+            $controller = new UserDAOImpl();
+            if($controller->findUserByMail($loginEmail)){
+
+            }
+           else{
+               $toRegisterUser = new User(loginPrename, loginLastname, registerEmail, newPassword);
+               $result = $controller->create($toRegisterUser);
+           }
+        }
+    }else{
+
+    }
+
 }
 
 

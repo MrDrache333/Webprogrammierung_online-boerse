@@ -11,5 +11,6 @@ include 'offer/OfferHelper.php';
 include 'offer/OfferDAOImpl.php';
 include 'user/User.php';
 include 'user/UserDAO.php';
+include 'user/UserDAOImpl.php';
+
 include 'user/UserHelper.php';
-include 'user/UserController.php';

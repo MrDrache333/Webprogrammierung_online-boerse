@@ -9,7 +9,7 @@ use php\database\DatabaseController;
 /**
  * Class UserController
  */
-class UserController implements UserDAO
+class UserDAOImpl implements UserDAO
 {
     /**
      * @var Database Datenbank

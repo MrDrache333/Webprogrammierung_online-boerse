@@ -128,7 +128,7 @@ session_start();
                                    required
                                    type="password">
                         </p>
-                        <button name="registerButton" type="submit">Registrieren</button>
+                        <button name="registerSubmit" type="submit">Registrieren</button>
                     </div>
 
                     <div class="loginContainer">
