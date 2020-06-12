@@ -1,6 +1,5 @@
 <?php
 
-
 use php\user\User;
 use php\user\UserDAOImpl;
 
