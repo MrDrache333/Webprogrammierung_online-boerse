@@ -40,30 +40,41 @@ class OfferDAOImpl implements OfferDAO
 
     public function create(Offer $offer)
     {
-        $address = $this->addressDAOImpl->create($offer->getAddress());
-        if ($address !== null) {
-            $address = $this->addressDAOImpl->findAddressId($offer->getAddress());
+        /*
+         * ERRORCODES
+         * 1 = Fehler beim Eintragen der Addresse in die Datenbank
+         * 2 = Fehler beim Finden der Addresse in der Datenbank
+         * 3 = Fehler beim EIntragen der Anzeige in die Datenbank
+         */
+        $address = $this->addressDAOImpl->findAddressId($offer->getAddress());
+        if ($address === null || sizeof($address) === 0) {
+            $address = $this->addressDAOImpl->create($offer->getAddress());
             if ($address !== null) {
-                $offer->getAddress()->setId($address->getId());
-                $command = "insert into offers values (" .
-                    0 . ",'" .
-                    ($offer->getTitle()) . "','" .
-                    ($offer->getSubTitle()) . "','" .
-                    ($offer->getDescription()) . "','" .
-                    ($offer->getLogo()) . "'," .
-                    ($offer->getAddress()->getId()) . ",'" .
-                    ($offer->getCreated()) . "','" .
-                    ($offer->getFree()) . "'," .
-                    ($offer->getOfferType()) . "," .
-                    ($offer->getDuration()) . "," .
-                    ($offer->getWorkModel()) . ",'" .
-                    ($offer->getCreator()) .
-                    "')";
-                $command = str_replace(array(",,", "''"), array(",null,", "null"), $command);
-                return $this->database->execute($command) !== null;
+                $address = $this->addressDAOImpl->findAddressId($offer->getAddress());
+            } else {
+                return 1;
             }
         }
-        return false;
+        if ($address !== null) {
+            $offer->getAddress()->setId($address->getId());
+            $command = "insert into offers values (" .
+                0 . ",'" .
+                ($offer->getTitle()) . "','" .
+                ($offer->getSubTitle()) . "','" .
+                ($offer->getDescription()) . "','" .
+                ($offer->getLogo()) . "'," .
+                ($offer->getAddress()->getId()) . ",'" .
+                ($offer->getCreated()) . "','" .
+                ($offer->getFree()) . "'," .
+                ($offer->getOfferType()) . "," .
+                ($offer->getDuration()) . "," .
+                ($offer->getWorkModel()) . ",'" .
+                ($offer->getCreator()) .
+                "')";
+            $command = str_replace(array(",,", "''"), array(",null,", "null"), $command);
+            return ($this->database->execute($command) !== null) ? true : 3;
+        }
+        return 2;
     }
 
     public function delete($id)

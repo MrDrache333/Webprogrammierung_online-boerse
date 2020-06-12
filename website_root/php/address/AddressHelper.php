@@ -27,9 +27,6 @@ class AddressHelper
                     $addresses[] = $address;
                 }
             }
-            if (sizeof($addresses) === 1) {
-                return current($addresses);
-            }
             if (sizeof($addresses) === 0) {
                 return null;
             }
@@ -45,18 +42,17 @@ class AddressHelper
      */
     private static function getaddressFromSQLResultRow($result): ?address
     {
-        $address = new address();
-        $address->setId($result['id'] ?? null);
-        if ($address->getId() === null) {
+        if ($result['id'] === null) {
             return null;
         }
-        $address->setState($result['state'] ?? null);
-        $address->setTown($result['town'] ?? null);
-        $address->setStreet($result['street'] ?? null);
-        $address->setNumber($result['number'] ?? null);
-        $address->setPlz($result['plz'] ?? null);
-
-        return $address;
+        return new address(
+            $result['id'] ?? null,
+            $result['state'] ?? null,
+            $result['town'] ?? null,
+            $result['street'] ?? null,
+            $result['number'] ?? null,
+            $result['plz'] ?? null
+        );
     }
 
 }
