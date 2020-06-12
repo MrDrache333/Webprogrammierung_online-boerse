@@ -65,6 +65,16 @@ class OfferDAOImpl implements OfferDAO
         // TODO: Implement update() method.
     }
 
+    public function getOwnOffers($user)
+    {
+
+        if ($user->getId() === null) return null;
+        //Standardfilter erstellen
+        $command = "SELECT * FROM offers, address WHERE offers.address = address.id AND creator=" . $user->getId();
+        //Datenbank abfragen und Ergebnis zurückgeben
+        return OfferHelper::getOffersFromSQLResult($this->database->execute($command));
+    }
+
     public function search($what, $where, $type, $duration, $time)
     {
         //Standardfilter erstellen
@@ -91,7 +101,6 @@ class OfferDAOImpl implements OfferDAO
         }
 
         //Datenbank abfragen und Ergebnis zurückgeben
-        //TODO Sachen machen, dass die DTO verwendet wird :)
         return OfferHelper::getOffersFromSQLResult($this->database->execute($command));
     }
 
