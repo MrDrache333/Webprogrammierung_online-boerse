@@ -1,4 +1,41 @@
 <?php include "header.php"; ?>
+
+<?php
+
+use php\address\Address;
+use php\offer\Offer;
+use php\offer\OfferDAOImpl;
+
+include_once 'php/classes.php';
+$OfferDao = new OfferDAOImpl();
+$AddressDAO = $OfferDao->getAddressDAOImpl();
+
+$email = $_COOKIE["email"];
+
+
+if (isset($_POST["submit_offer"])) {
+    echo "test";
+    $titel = $_POST["titel"];
+    $subtitle = $_POST["subtitel"];
+    $straße = $_POST["straße"];
+    $hausnummer = $_POST["hausnummer"];
+    $ort = $_POST["ort"];
+    $plz = $_POST["plz"];
+    $free = $_POST["free"];
+    $beschreibung = $_POST["beschreibung"];
+
+    $address = new Address(1, "test", "jever", "abcstrarße", "32", "26441");
+    $offer = new Offer();
+    $offer->setAddress($address);
+    $offer->setTitle("test");
+    $offer->setSubTitle("test");
+    $offer->setFree("test");
+    $offer->setCompanyName("test");
+    $offer->setDescription("test");
+    $result = $OfferDao->create($offer);
+    echo $result;
+}
+?>
 <form action="upload.php" method="post" enctype="multipart/form-data">
     <div class="header">
         <nav>
@@ -57,10 +94,11 @@
                                   placeholder="Was über den Beruf zu sagen ist."></textarea>
 
                         <div class="form-submit">
-                            <input type="submit" value="Anzeige veröffentlichen" class="button_offer" name="reset_pb"
-                                   id="reset_pb"/>
+                            <input type="submit" value="Anzeige veröffentlichen" class="button_offer"
+                                   name="submit_offer"
+                                   id="submit_offer"/>
                             <input type="reset" value="Zurücksetzen" class="button_offer" name="submit_pb"
-                                   id="submit_pb"/>
+                                   id="reset_offer"/>
                         </div>
 
                     </form>
