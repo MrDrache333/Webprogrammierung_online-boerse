@@ -40,18 +40,30 @@ class OfferDAOImpl implements OfferDAO
 
     public function create(Offer $offer)
     {
-        $this->addressDAOImpl->create($offer->getAddress());
-        $addressId = $this->addressDAOImpl->findAddressId($offer->getAddress());
-        $command = "insert into offers values (" .
-            $offer->getTitle() . "," .
-            $offer->getSubTitle() . "," .
-            $offer->getDescription() . "," .
-            $offer->getLogo() . "," .
-            $offer->$addressId . "," .
-            $offer->getCreated() . "," .
-            $offer->getFree() . "," .
-            ")";
-        return $this->database->execute($command) !== null;
+        $address = $this->addressDAOImpl->create($offer->getAddress());
+        if ($address !== null) {
+            $address = $this->addressDAOImpl->findAddressId($offer->getAddress());
+            if ($address !== null) {
+                $offer->getAddress()->setId($address->getId());
+                $command = "insert into offers values (" .
+                    0 . ",'" .
+                    ($offer->getTitle()) . "','" .
+                    ($offer->getSubTitle()) . "','" .
+                    ($offer->getDescription()) . "','" .
+                    ($offer->getLogo()) . "'," .
+                    ($offer->getAddress()->getId()) . ",'" .
+                    ($offer->getCreated()) . "','" .
+                    ($offer->getFree()) . "'," .
+                    ($offer->getOfferType()) . "," .
+                    ($offer->getDuration()) . "," .
+                    ($offer->getWorkModel()) . ",'" .
+                    ($offer->getCreator()) .
+                    "')";
+                $command = str_replace(array(",,", "''"), array(",null,", "null"), $command);
+                return $this->database->execute($command) !== null;
+            }
+        }
+        return false;
     }
 
     public function delete($id)

@@ -1,0 +1,62 @@
+<?php
+
+
+namespace php\address;
+
+use mysqli_result;
+
+/**
+ * Helpermethods to Convert between Formats etc.
+ * @package php\address
+ */
+class AddressHelper
+{
+
+    /**
+     * Converts an entire SQL-Result-Set to a Address-Array
+     * @param $result mysqli_result The SQL-Result
+     * @return Address|array|null
+     */
+    public static function getAddressFromSQLResult($result)
+    {
+        $addresses = [];
+        if ($result !== null && !is_bool($result)) {
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                $address = self::getaddressFromSQLResultRow($row);
+                if ($address !== null) {
+                    $addresses[] = $address;
+                }
+            }
+            if (sizeof($addresses) === 1) {
+                return current($addresses);
+            }
+            if (sizeof($addresses) === 0) {
+                return null;
+            }
+            return $addresses;
+        }
+        return null;
+    }
+
+    /**
+     * Converts one SQL-Result-Row to a address-Object
+     * @param $result array The SQL-Result Row-Array
+     * @return Address|null
+     */
+    private static function getaddressFromSQLResultRow($result): ?address
+    {
+        $address = new address();
+        $address->setId($result['id'] ?? null);
+        if ($address->getId() === null) {
+            return null;
+        }
+        $address->setState($result['state'] ?? null);
+        $address->setTown($result['town'] ?? null);
+        $address->setStreet($result['street'] ?? null);
+        $address->setNumber($result['number'] ?? null);
+        $address->setPlz($result['plz'] ?? null);
+
+        return $address;
+    }
+
+}
