@@ -32,7 +32,7 @@ class OfferHelper
                 return current($offers);
             }
             if (sizeof($offers) === 0) {
-                return null;
+                return $offers;
             }
             return $offers;
         }
