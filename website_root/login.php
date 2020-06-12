@@ -102,6 +102,7 @@ if (isset($_POST["loginSubmit"])) {
 
 
             $email = $_COOKIE["email"];
+            echo $email;
             $test = $u->updatePassword($pw, $email);
         } else {
             echo "Ihre Anfrage konnte nicht gesendet werden!";

@@ -61,7 +61,13 @@ class OfferDAOImpl implements OfferDAO
                     "')";
                 $command = str_replace(array(",,", "''"), array(",null,", "null"), $command);
                 return $this->database->execute($command) !== null;
+            } else {
+
+                echo "Fehler beim finden in der Datenbank";
             }
+        } else {
+            echo "Fehler beim erstellen der Ardesse";
+
         }
         return false;
     }
