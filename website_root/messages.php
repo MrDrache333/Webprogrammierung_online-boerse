@@ -1,4 +1,12 @@
-<?php include "header.php"; ?>
+<?php
+include "header.php";
+include_once 'php/classes.php';
+
+use php\offer\Offer;
+use php\offer\OfferDAOImpl;
+use php\user\UserDAOImpl;
+
+?>
 <div class="header">
     <nav>
         <ul class="navi">
@@ -22,106 +30,84 @@
     </div>
     <div class="row">
         <div class="leftcolumn">
-            <div class="card">
-                <div class="anzeigen-inhalt">
-                    <h2>Verkäufer/-in (m/w/d) <br>
-                        (Fachverkäufer/-in - Lebensmittelhandwerk)</h2>
-                    <img class="fakeimg" src="images/company_placeholder.png" alt="Firmenlogo">
-                    <div class="beschreibung">
-                        Hier könnte ihre Werbung stehen.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                        diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-                        takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-                        sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-                        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita
-                        kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            <?php
 
-                    </div>
-                </div>
-                <div class="infos">
-                    <div class="erstellt"><h5>erstellt am:<br> 08.12.2020</div>
-                    <div class="frei"><h5> Frei ab:<br>12.12.2020</h5></div>
-                    <div class="frei"><a href="" class="ads_button"><h5>bearbeiten</h5></a></div>
-                    <div class="frei"><a href="" class="ads_button"><h5>löschen</h5></a></div>
-                </div>
-            </div>
-            <div class="card">
-                <h2>Verkäufer/-in (m/w/d) <br>
-                    (Fachverkäufer/-in - Lebensmittelhandwerk)</h2>
-                <img class="fakeimg" src="images/company_placeholder.png" alt="Firmenlogo">
-                <div class="beschreibung">
-                    Hier könnte ihre Werbung stehen.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                    nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-                    eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                    est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                    nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-                    eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                    est Lorem ipsum dolor sit amet.
+            $email = $_COOKIE['email'] ?? null;
+            if ($email !== null) {
 
-                </div>
-                <div class="infos">
-                    <div class="frei"><h5>erstellt am: 08.12.2020</div>
-                    <div class="frei"><h5> Frei ab: 12.12.2020</h5></div>
-                    <div class="frei"><a href="" class="ads_button"><h5>bearbeiten</h5></a></div>
-                    <div class="frei"><a href="" class="ads_button"><h5>löschen</h5></a></div>
-                </div>
-            </div>
-            <div class="card">
-                <h2>Verkäufer/-in (m/w/d) <br>
-                    (Fachverkäufer/-in - Lebensmittelhandwerk)</h2>
-                <img class="fakeimg" src="images/company_placeholder.png"
-                     alt="Firmenlogo">
-                <div class="beschreibung">
-                    Hier könnte ihre Werbung stehen.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                    nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-                    eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                    est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                    nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero
-                    eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                    est Lorem ipsum dolor sit amet.
+                //User abfragen
+                $user = new UserDAOImpl();
+                $user = $user->findUserByMail($email);
+                if ($user !== null) {
+                    //In Datenbank nach Einträgen suchen
+                    $OfferDAOImpl = new OfferDAOImpl();
+                    $result = $OfferDAOImpl->getOwnOffers($user);
+                } else {
+                    $result = null;
+                }
+            }
+            //Einträge anzeigen
+            displayResults($result);
+            /**
+             * @param Offer[] $result Ergebnisse der Datenbankabfrage
+             */
+            function displayResults($result)
+            {
+                if ($result !== null) {
+                    $count = 0;
+                    foreach ($result as $offer) {
+                        $count++;
+                        $html = "<div class=\"card\">
+                                    <div class=\"anzeigen-inhalt\">
+                                        <h2>" . $offer->getTitle() . "<br>" . $offer->getSubTitle() . "</h2>
+                                        <img class=\"fakeimg\" src=\"images/company_placeholder.png\" alt=\"Firmenlogo\">
+                                        <div class=\"beschreibung\">
+                                            " . $offer->getDescription() . "
+                                        </div>
+                                    </div>
+                                    <div class=\"infos\">
+                                        <div class=\"erstellt\"><h5>erstellt am:<br>" . $offer->getCreated() . "</div>
+                                        <div class=\"frei\"><h5> Frei ab:<br>" . $offer->getFree() . "</h5></div>
+                                        <div class=\"frei\"><a href=\"\" class=\"ads_button\"><h5>bearbeiten</h5></a></div>
+                                        <div class=\"frei\"><a href=\"\" class=\"ads_button\"><h5>löschen</h5></a></div>
+                                    </div>
+                                </div>";
+                        echo $html . "\n";
+                    }
+                    if ($count === 0) {
+                        echo "<div style=\"background: radial-gradient(circle at center, white 0,rgba(255,255,255,0.9) 60%, rgba(255,255,255,0.5) 70%,transparent 90%); text-align: center; border-radius: 20px\">
+                        <img style=\"display: inline-block; max-width: 60%\" src=\"images/no_result.png\" alt=\"Keine eigenen Anzeigen<br>Erstelle welche mit einem Klick auf &quot;Anzeige Erstellen&quot;\">
+                    </div>";
+                    }
+                } else {
+                    echo "<div style=\"background: radial-gradient(circle at center, white 0,rgba(255,255,255,0.9) 60%,
+                         rgba(255,255,255,0.5) 70%,transparent 90%); text-align: center; border-radius: 20px\">
+                        <h1 style=\"padding-top: 10%\">Fehler beim Abrufen der Daten</h1>
+                        <img style=\"max-width: 60%; margin-top: -10%\" src=\"images/error.png\" alt=\"Fehler beim Abrufen der Daten\">
+                    </div>";
+                }
+            }
 
-                </div>
-                <div class="infos">
-                    <div class="erstellt"><h5>erstellt am: 08.12.2020</div>
-                    <div class="frei"><h5> Frei ab: 12.12.2020</h5></div>
-                    <div class="frei"><a href="" class="ads_button"><h5>bearbeiten</h5></a></div>
-                    <div class="frei"><a href="" class="ads_button"><h5>löschen</h5></a></div>
-                </div>
-            </div>
+            ?>
         </div>
         <div class="rightcolumn">
             <div class="card">
                 <h2>Nachrichten</h2>
-
                 <div class="card">
                     <div class=" nachricht">
-
                         <img class="fakeimg" src="images/company_placeholder.png" alt="Firmenlogo">
-
                         <div class="nachrichtenbes">
-
                             <h5>Verkäufer/-in (m/w/d)</h5>
                             Ich möchte mich auf die Stelle bewerben. Anbei finden sie meine Unterlagen.
                             Geben sie mir bitte Rückmelduung, wenn sie weiter Fragen haben. Vielen Dank.
-
                         </div>
                     </div>
-
-
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>
-
-
 </div>
-
-
 </div>
-
-
 <?php include "footer.html"; ?>
 

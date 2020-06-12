@@ -2,11 +2,20 @@
 
 namespace php\offer;
 
+use php\user\User;
+
 /**
  * Interface OfferDAO
  */
 interface OfferDAO
 {
+
+    /**
+     * @param User $user
+     * @return Offer[]|null
+     */
+    public function getOwnOffers($user);
+
     /**
      * @param String $what Suchbegriff
      * @param String $where PLZ oder Ort
