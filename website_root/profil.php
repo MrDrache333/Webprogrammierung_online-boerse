@@ -80,7 +80,7 @@ if (isset($_POST["profilloeschen"])) {
             <div class="profile-content">
                 <div class="profile-form">
                     <div class="form-col">
-                        <form method="POST" class="profile-form" id="profile-form">
+                        <form method="POST"  action="profil.php" class="profile-form" id="profile-form">
                             <h2>Mein Profilbild</h2>
                             <div class="form-row">
                                 <div class="form-group">
@@ -144,7 +144,7 @@ if (isset($_POST["profilloeschen"])) {
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="street">neus Passwort wiederholen</label>
+                                    <label for="street">neues Passwort wiederholen</label>
                                     <input type="password" name="pwwiederholen" id="pwwiederholen"/>
                                 </div>
                             </div>
