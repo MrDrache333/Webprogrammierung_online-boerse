@@ -55,12 +55,14 @@ class OfferDAOImpl implements OfferDAO
                 return 1;
             }
         }
+        $address = $address[0];
         if ($address !== null) {
             $offer->getAddress()->setId($address->getId());
             $command = "insert into offers values (" .
                 0 . ",'" .
                 ($offer->getTitle()) . "','" .
                 ($offer->getSubTitle()) . "','" .
+                ($offer->getCompanyName()) . "','" .
                 ($offer->getDescription()) . "','" .
                 ($offer->getLogo()) . "'," .
                 ($offer->getAddress()->getId()) . ",'" .
@@ -68,9 +70,9 @@ class OfferDAOImpl implements OfferDAO
                 ($offer->getFree()) . "'," .
                 ($offer->getOfferType()) . "," .
                 ($offer->getDuration()) . "," .
-                ($offer->getWorkModel()) . ",'" .
+                ($offer->getWorkModel()) . "," .
                 ($offer->getCreator()) .
-                "')";
+                ")";
             $command = str_replace(array(",,", "''"), array(",null,", "null"), $command);
             return ($this->database->execute($command) !== null) ? true : 3;
         }

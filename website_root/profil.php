@@ -10,6 +10,7 @@ $email = $_COOKIE["email"];
 $user = $u->findUserByMail($email);
 $pwaktuell = $user->getPassword();
 
+
 if (isset($_POST["submit"])) {
     $name = $_POST["name"];
     $name2 = $_POST["father_name"];

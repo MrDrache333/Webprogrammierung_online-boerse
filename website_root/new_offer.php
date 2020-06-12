@@ -5,16 +5,19 @@
 use php\address\Address;
 use php\offer\Offer;
 use php\offer\OfferDAOImpl;
+use php\user\UserDAOImpl;
 
 include_once 'php/classes.php';
 $OfferDao = new OfferDAOImpl();
+$UserDAO = new UserDAOImpl();
 $AddressDAO = $OfferDao->getAddressDAOImpl();
-
 $email = $_COOKIE["email"];
+$user = $UserDAO->findUserByMail($email);
+$idaktuelle = $user->getId();
 
 
 if (isset($_POST["submit_offer"])) {
-    echo "test";
+
     $titel = $_POST["titel"];
     $subtitle = $_POST["subtitel"];
     $straße = $_POST["straße"];
@@ -24,17 +27,23 @@ if (isset($_POST["submit_offer"])) {
     $free = $_POST["free"];
     $beschreibung = $_POST["beschreibung"];
 
-    $address = new Address(1, "test", "jever", "abcstrarße", "32", "26441");
+    $address = new Address(1, "Deutschland", $ort, $straße, $hausnummer, $plz);
     $offer = new Offer();
     $offer->setAddress($address);
-    $offer->setTitle("test");
-    $offer->setSubTitle("test");
-    $offer->setFree("test");
+    $offer->setTitle($titel);
+    $offer->setSubTitle($subtitle);
+    $offer->setFree(date($free));
     $offer->setCompanyName("test");
-    $offer->setDescription("test");
+    $offer->setDescription($beschreibung);
+    $offer->setCreated(date("Y-m-d"));
+    $offer->setDuration(1);
+    $offer->setOfferType(1);
+    $offer->setCreator($idaktuelle);
+    $offer->setWorkModel(1);
     $result = $OfferDao->create($offer);
-    echo $result;
+
 }
+
 ?>
 <form action="upload.php" method="post" enctype="multipart/form-data">
     <div class="header">
@@ -88,7 +97,7 @@ if (isset($_POST["submit_offer"])) {
                         <input type="text" name="plz" id="plz" placeholder="12345"/>
                         <label for="position">Standort:</label>
                         <label for="free">Frei ab :</label>
-                        <input type="text" name="free" id="free" placeholder="15.01.2021"/>
+                        <input type="text" name="free" id="free" placeholder="2021-01-01"/>
                         <label for="street">Beschreibung :<br></label>
                         <textarea name="beschreibung" id="beschreibung" cols="50" rows="7"
                                   placeholder="Was über den Beruf zu sagen ist."></textarea>
