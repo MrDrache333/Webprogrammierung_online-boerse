@@ -28,7 +28,8 @@ if (isset($_POST["loginSubmit"])) {
 
     }
 } else if (isset($_POST["logoutSubmit"])) {
-    setcookie("loggedin", "false", time() - 60 * 60 * 24);
+    setcookie("email", null, time() + 60 * 60 * 24);
+    setcookie("loggedin", "false", time() + 60 * 60 * 24);
     header("Location: index.php");
     session_destroy();
 
