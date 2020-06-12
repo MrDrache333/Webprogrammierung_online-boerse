@@ -116,5 +116,13 @@ class OfferDAOImpl implements OfferDAO
         return OfferHelper::getOffersFromSQLResult($this->database->execute($command));
     }
 
+    /**
+     * @return AddressDAOImpl
+     */
+    public function getAddressDAOImpl(): AddressDAOImpl
+    {
+        return $this->addressDAOImpl;
+    }
+
 
 }
