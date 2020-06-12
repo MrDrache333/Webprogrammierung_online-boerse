@@ -8,14 +8,39 @@ include_once 'php/classes.php';
 $u = new UserDAOImpl();
 $email = $_COOKIE["email"];
 $user = $u->findUserByMail($email);
+$pwaktuell = $user->getPassword();
+
 if (isset($_POST["submit"])) {
     $name = $_POST["name"];
     $name2 = $_POST["father_name"];
+
     $user = new User();
     $user->setEmail($email);
     $user->setPrename($name);
     $user->setSurname($name2);
+    $user->setPassword($pwaktuell);
     $test = $u->update($user);
+    $pw = $_POST["pwsetzen"];
+    $pwneu = $_POST["pwwiederholen"];
+    $pwalt = $_POST["altespw"];
+
+    if ($pwneu == $pw) {
+        if ($pwalt == $pwaktuell) {
+
+
+            $u->updatePassword($pwneu, $email);
+            echo "Ihr Passwort wurde erfolgreich geändert";
+
+        } else {
+            echo "Ihr altes Passwort ist nicht korrekt";
+        }
+
+    } else {
+        echo "Die Passwörter stimmen nicht überein. Wiederholen sie die Eingabe";
+
+    }
+
+
 }
 if (isset($_POST["profilloeschen"])) {
     /*$delete=$u->delete($email);*/
@@ -55,7 +80,7 @@ if (isset($_POST["profilloeschen"])) {
             <div class="profile-content">
                 <div class="profile-form">
                     <div class="form-col">
-                        <form method="POST" class="profile-form" id="profile-form">
+                        <form method="POST"  action="profil.php" class="profile-form" id="profile-form">
                             <h2>Mein Profilbild</h2>
                             <div class="form-row">
                                 <div class="form-group">
@@ -107,38 +132,40 @@ if (isset($_POST["profilloeschen"])) {
 
                             </div>
                             <!-- Möglich für Passwort vergessen-->
-                            <!--   <div class="form-row">
-                                   <div class="form-group">
-                                       <label for="state">altes Passwort:</label>
-                                       <input type="text" name="state" id="state">
-                                   </div>-->
-                            <div class="form-group">
-                                <label for="city">neues Passwort:</label>
-                                <input type="text" name="city" id="city">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="state">altes Passwort:</label>
+                                    <input type="password" name="altespw" id="altestpw">
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">neues Passwort:</label>
+                                    <input type="password" name="pwsetzen" id="pwsetzen"/>
+                                </div>
                             </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="street">neus Passwort wiederholen</label>
-                            <input type="text" name="street" id="street">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">E-Mail Adresse :</label>
-                            <input class="profilemail" type="email" name="email" id="email"
-                                   value="<?php echo $user->getEmail(); ?>"/>
-                        </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="street">neues Passwort wiederholen</label>
+                                    <input type="password" name="pwwiederholen" id="pwwiederholen"/>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email">E-Mail Adresse :</label>
+                                    <input class="profilemail" type="email" name="email" id="email"
+                                           value="<?php echo $user->getEmail(); ?>"/>
+                                </div>
 
+                            </div>
+
+                            <input type="submit" value="Profil löschen" class="submit" name="profilloeschen"
+                                   id="submit"/>
+                            <input type="submit" value="Speichern" class="submit" name="submit" id="submit"/>
                     </div>
-                    <input type="submit" value="Profil löschen" class="submit" name="profilloeschen" id="submit"/>
-                    <input type="submit" value="Speichern" class="submit" name="submit" id="submit"/>
                 </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
-</div>
 </div>
 </div>
 </div>
