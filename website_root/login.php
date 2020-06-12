@@ -49,7 +49,11 @@ if (isset($_POST["loginSubmit"])) {
             if ($controller->findUserByMail($loginEmail)) {
 
             } else {
-                $toRegisterUser = new User($prename, $lastname, $loginEmail, $loginPassword);
+                $toRegisterUser = new User();
+                $toRegisterUser->setEmail($loginEmail);
+                $toRegisterUser->setPrename($prename);
+                $toRegisterUser->setSurname($lastname);
+                $toRegisterUser->setPassword($loginPassword);
                 $result = $controller->create($toRegisterUser);
                 $controller->login($loginEmail, $loginPassword);
                 if ($toRegisterUser !== null) {
