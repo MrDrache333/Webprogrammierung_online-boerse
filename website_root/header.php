@@ -80,7 +80,8 @@ session_start();
                             <p><label for="password"><b>Passwort</b></label>
                                 <input class="loginInput" id="password" name="password"
                                        placeholder="Passwort eingeben"
-                                       required type="password">
+                                       required
+                                       type="password">
                             </p>
                             <button href="profil.php" name="loginSubmit" type="submit">Login</button>
                         </div>
@@ -90,11 +91,12 @@ session_start();
                                     onclick="document.getElementById('login-modal').style.display='none'"
                                     type="button">Cancel
                             </button>
-                    </form>
 
-                    <span class="psw">
+                        <span class="psw">
                                     <button name="pwforget" type="submit">Passwort vergessen</button>
                                      </span>
+                    </form>
+
                 </div>
 
 
