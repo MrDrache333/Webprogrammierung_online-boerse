@@ -12,7 +12,6 @@ class User
     private $surname;
     private $email;
     private $password;
-    private $gender;
 
     /**
      * User constructor.
@@ -37,21 +36,6 @@ class User
         $this->id = $id;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
-     * @param mixed $gender
-     */
-    public function setGender($gender): void
-    {
-        $this->gender = $gender;
-    }
 
     /**
      * @return mixed

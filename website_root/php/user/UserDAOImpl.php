@@ -41,8 +41,7 @@ class UserDAOImpl implements UserDAO
             ($user->getEmail()) . "','" .
             ($user->getPrename()) . "','" .
             ($user->getSurname()) . "','" .
-            ($user->getPassword()) . "','" .
-            ($user->getGender()) .
+            ($user->getPassword()) .
             "')";
         $command = str_replace("''", "null", $command);
         return UserHelper::getUsersFromSQLResult($this->database->execute($command)) === null;
