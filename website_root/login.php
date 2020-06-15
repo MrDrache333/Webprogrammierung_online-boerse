@@ -99,11 +99,7 @@ if (isset($_POST["loginSubmit"])) {
         if (mail($empfaenger, $betreff, $text, "From: $absendername <$absendermail>")) {
             echo "Email wurde erfolgreich versendet.";
             echo $text;
-
-
-            $email = $_COOKIE["email"];
-            echo $email;
-            $test = $u->updatePassword($pw, $email);
+            $test = $u->updatePassword($pw, $empfaenger);
         } else {
             echo "Ihre Anfrage konnte nicht gesendet werden!";
         }
