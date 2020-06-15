@@ -10,38 +10,80 @@ use php\user\UserDAOImpl;
 include_once 'php/classes.php';
 $OfferDao = new OfferDAOImpl();
 $UserDAO = new UserDAOImpl();
-$AddressDAO = $OfferDao->getAddressDAOImpl();
-$email = $_COOKIE["email"];
-$user = $UserDAO->findUserByMail($email);
-$idaktuelle = $user->getId();
+
 
 
 if (isset($_POST["submit_offer"])) {
 
-    $titel = $_POST["titel"];
-    $subtitle = $_POST["subtitel"];
-    $straße = $_POST["straße"];
-    $hausnummer = $_POST["hausnummer"];
-    $ort = $_POST["ort"];
-    $plz = $_POST["plz"];
-    $free = $_POST["free"];
-    $beschreibung = $_POST["beschreibung"];
+    if (isset($_POST["titel"], $_POST["subtitel"], $_POST["straße"], $_POST["hausnummer"], $_POST["ort"], $_POST["plz"], $_POST["free"], $_POST["beschreibung"], $_POST["companyname"])) {
+        $AddressDAO = $OfferDao->getAddressDAOImpl();
+        $email = $_COOKIE["email"];
+        $user = $UserDAO->findUserByMail($email);
+        $idaktuelle = $user->getId();
 
-    $address = new Address(1, "Deutschland", $ort, $straße, $hausnummer, $plz);
-    $offer = new Offer();
-    $offer->setAddress($address);
-    $offer->setTitle($titel);
-    $offer->setSubTitle($subtitle);
-    $offer->setFree(date($free));
-    $offer->setCompanyName("test");
-    $offer->setDescription($beschreibung);
-    $offer->setCreated(date("Y-m-d"));
-    $offer->setDuration(1);
-    $offer->setOfferType(1);
-    $offer->setCreator($idaktuelle);
-    $offer->setWorkModel(1);
-    $result = $OfferDao->create($offer);
+        $titel = htmlspecialchars($_POST["titel"]);
+        $subtitle = htmlspecialchars($_POST["subtitel"]);
+        $straße = htmlspecialchars($_POST["straße"]);
+        $hausnummer = htmlspecialchars($_POST["hausnummer"]);
+        $ort = htmlspecialchars($_POST["ort"]);
+        $plz = htmlspecialchars($_POST["plz"]);
+        $free = htmlspecialchars($_POST["free"]);
+        $beschreibung = htmlspecialchars($_POST["beschreibung"]);
+        $companyname = htmlspecialchars($_POST["companyname"]);
 
+        $arbeit = $_GET["arbeit"];
+        $ausbildung = $_GET["ausbildung"];
+        $art = $_POST['angebotsart'];
+        $befristung = $_POST['befristung'];
+        $arbeitszeit = $_POST['arbeitszeiten'];
+        if ($art == "arbeit") {
+            $art = 0;
+        } elseif ($art == "ausbildung") {
+            $art = 1;
+        } elseif ($art == "praktikum") {
+            $art = 2;
+        } else {
+            $art = 3;
+        }
+
+        if ($befristung == "befristet") {
+            $befristung = 0;
+        } elseif ($befristung == "unbefrsitet") {
+            $befristung = 1;
+        } else {
+            $befristung = 2;
+        }
+
+        if ($arbeitszeit == "vollzeit") {
+            $arbeitszeit = 0;
+        } elseif ($arbeitszeit == "teilzeit") {
+            $arbeitszeit = 1;
+        } elseif ($arbeitszeit == "schicht") {
+            $arbeitszeit = 2;
+        } elseif ($arbeitszeit == "heimarbeit") {
+            $arbeitszeit = 3;
+        } else {
+            $arbeitszeit = 4;
+        }
+
+
+        $address = new Address(1, "Deutschland", $ort, $straße, $hausnummer, $plz);
+        $offer = new Offer();
+        $offer->setAddress($address);
+        $offer->setTitle($titel);
+        $offer->setSubTitle($subtitle);
+        $offer->setFree(date($free));
+        $offer->setCompanyName($companyname);
+        $offer->setDescription($beschreibung);
+        $offer->setCreated(date("Y-m-d"));
+        $offer->setDuration($befristung);
+        $offer->setOfferType($art);
+        $offer->setCreator($idaktuelle);
+        $offer->setWorkModel($arbeitszeit);
+        $result = $OfferDao->create($offer);
+    } else {
+        echo "Alle Felder bitte ausfüllen";
+    }
 }
 
 ?>
@@ -69,6 +111,7 @@ if (isset($_POST["submit_offer"])) {
                     <form method="POST" class="new_offer-form" id="new_offer-form">
                         <h2>Mein Produktbild</h2>
 
+
                         <img src="images/company_placeholder.png" alt="Produktbild-Template" id="pb_image">
 
                         <div class="form-submit">
@@ -87,6 +130,8 @@ if (isset($_POST["submit_offer"])) {
                         <input type="text" name="titel" id="titel" placeholder="Verkäufer/in" required/>
                         <label for="subtitetl">Untertitel :</label>
                         <input type="text" name="subtitel" id="subtitel" placeholder="Einzelhandel" required/>
+                        <label for="subtitetl">Firmenname :</label>
+                        <input type="text" name="companyname" id="companyname" placeholder="Firmenname" required/>
                         <label for="position">Straße:</label>
                         <input type="text" name="straße" id="straße" placeholder="Musterstraße"/>
                         <label for="position">Hausnummer :</label>
@@ -98,6 +143,52 @@ if (isset($_POST["submit_offer"])) {
                         <label for="position">Standort:</label>
                         <label for="free">Frei ab :</label>
                         <input type="text" name="free" id="free" placeholder="2021-01-01"/>
+                        <div class="form-radio-item-group">
+                            <div class="form-radio-item">
+                                <input type="radio" name="angebotsart" value="arbeit" checked>
+                                <label for="male">Arbeit</label>
+                                <span class="check"></span>
+                                <input type="radio" name="angebotsart" value="ausbildung">
+                                <label for="female">Ausbildung</label>
+                                <span class="check"></span>
+                                <input type="radio" name="angebotsart" value="praktikum">
+                                <label for="divers">Praktikum</label>
+                                <span class="check"></span>
+                                <input type="radio" name="angebotsart" value="selbständigkeit">
+                                <label for="divers">Selbstständigkeit</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" name="befristung" value="befristet" checked>
+                                <label for="male">Befristet</label>
+                                <span class="check"></span>
+                                <input type="radio" name="befristung" value="unbefrsitet">
+                                <label for="female">Unbefristet</label>
+                                <span class="check"></span>
+                                <input type="radio" name="befristung" value="keine_angaben">
+                                <label for="divers">Keine Angaben</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" name="arbeitszeiten" value="vollzeit" checked>
+                                <label for="male">Vollzeit</label>
+                                <span class="check"></span>
+                                <input type="radio" name="arbeitszeiten" value="teilzeit">
+                                <label for="female">Teilzeit</label>
+                                <span class="check"></span>
+                                <input type="radio" name="arbeitszeiten" value="schicht">
+                                <label for="divers">Schicht</label>
+                                <span class="check"></span>
+                                <input type="radio" name="arbeitszeiten" value="heimarbeit">
+                                <label for="divers">Heim-/Telearbeit</label>
+                                <span class="check"></span>
+                                <input type="radio" name="arbeitszeiten" value="minijob">
+                                <label for="divers">Minijob</label>
+                                <span class="check"></span>
+                            </div>
+
+                        </div>
+
                         <label for="street">Beschreibung :<br></label>
                         <textarea name="beschreibung" id="beschreibung" cols="50" rows="7"
                                   placeholder="Was über den Beruf zu sagen ist."></textarea>
