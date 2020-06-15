@@ -44,7 +44,7 @@ if (isset($_POST["submit"])) {
 
 }
 if (isset($_POST["profilloeschen"])) {
-    /*$delete=$u->delete($email);*/
+    $delete = $u->delete($email);
     setcookie("loggedin", "false", time() - 60 * 60 * 24);
     session_destroy();
     header("Location: index.php");
@@ -81,7 +81,7 @@ if (isset($_POST["profilloeschen"])) {
             <div class="profile-content">
                 <div class="profile-form">
                     <div class="form-col">
-                        <form method="POST"  action="profil.php" class="profile-form" id="profile-form">
+                        <form method="POST" action="profil.php" class="profile-form" id="profile-form">
                             <h2>Mein Profilbild</h2>
                             <div class="form-row">
                                 <div class="form-group">
@@ -111,27 +111,7 @@ if (isset($_POST["profilloeschen"])) {
                                            value="<?php echo $user->getSurname(); ?>" required/>
                                 </div>
                             </div>
-                            <div class="form-radio">
-                                <label for="gender" class="radio-label">Geschlecht :</label>
-                                <div class="form-radio-item-group">
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="gender" id="male" checked>
-                                        <label for="male">Männlich</label>
-                                        <span class="check"></span>
-                                    </div>
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="gender" id="female">
-                                        <label for="female">Weiblich</label>
-                                        <span class="check"></span>
-                                    </div>
-                                    <div class="form-radio-item">
-                                        <input type="radio" name="gender" id="divers">
-                                        <label for="divers">Divers</label>
-                                        <span class="check"></span>
-                                    </div>
-                                </div>
 
-                            </div>
                             <!-- Möglich für Passwort vergessen-->
                             <div class="form-row">
                                 <div class="form-group">
