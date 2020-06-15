@@ -3,7 +3,7 @@
 
 namespace php\address;
 
-use mysqli_result;
+use PDORow;
 
 /**
  * Helpermethods to Convert between Formats etc.
@@ -14,14 +14,14 @@ class AddressHelper
 
     /**
      * Converts an entire SQL-Result-Set to a Address-Array
-     * @param $result mysqli_result The SQL-Result
+     * @param $result PDORow The SQL-Result
      * @return Address|array|null
      */
     public static function getAddressFromSQLResult($result)
     {
         $addresses = [];
-        if ($result !== null && !is_bool($result)) {
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        if ($result !== null) {
+            foreach ($result as $row) {
                 $address = self::getaddressFromSQLResultRow($row);
                 if ($address !== null) {
                     $addresses[] = $address;

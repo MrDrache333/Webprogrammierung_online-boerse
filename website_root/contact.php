@@ -54,17 +54,17 @@
             </div>
 
             <?php
-            $submit = $_POST["submit"];
-            date_default_timezone_set("Europe/Berlin");
-            $timestamp = time();
-            $absendermail = $_POST["email"];
-            $empfaenger = "dominik.luebben@uni-oldenburg.de";
-            $absendername = $_POST["name"];
-            $betreff = $_POST["subject"];
-            $text = "Die Person" . $absendername . "schireb um" . $timestamp . "folgendes:" . $_POST["message"];
-
-
             if (isset($_POST["submit"])) {
+
+                $submit = $_POST["submit"];
+                date_default_timezone_set("Europe/Berlin");
+                $timestamp = time();
+                $absendermail = $_POST["email"];
+                $empfaenger = "dominik.luebben@uni-oldenburg.de";
+                $absendername = $_POST["name"];
+                $betreff = $_POST["subject"];
+                $text = "Die Person" . $absendername . "schireb um" . $timestamp . "folgendes:" . $_POST["message"];
+
                 if (mail($empfaenger, $betreff, $text, "From: $absendername <$absendermail>")) {
 
                     echo "Email wurde erfolgreich versendet.";
@@ -76,8 +76,6 @@
                 }
             }
             ?>
-
-
         </form>
     </div>
 </div>

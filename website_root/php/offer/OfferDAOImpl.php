@@ -33,6 +33,7 @@ class OfferDAOImpl implements OfferDAO
         try {
             $this->database->connect();
         } catch (Exception $e) {
+            echo $e;
         }
 
         $this->addressDAOImpl = new AddressDAOImpl($this->database);

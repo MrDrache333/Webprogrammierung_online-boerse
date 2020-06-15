@@ -3,7 +3,7 @@
 
 namespace php\offer;
 
-use mysqli_result;
+use PDORow;
 use php\address\Address;
 
 /**
@@ -15,14 +15,14 @@ class OfferHelper
 
     /**
      * Converts an entire SQL-Result-Set to a Offer-Array
-     * @param $result mysqli_result The SQL-Result
+     * @param $result PDORow The SQL-Result
      * @return Offer|array|null
      */
     public static function getOffersFromSQLResult($result): ?array
     {
         $offers = [];
-        if ($result !== null && !is_bool($result)) {
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        if ($result !== null) {
+            foreach ($result as $row) {
                 $offer = self::getOfferFromSQLResultRow($row);
                 if ($offer !== null) {
                     $offers[] = $offer;

@@ -145,44 +145,44 @@ if (isset($_POST["submit_offer"])) {
                         <input type="text" name="free" id="free" placeholder="2021-01-01"/>
                         <div class="form-radio-item-group">
                             <div class="form-radio-item">
-                                <input type="radio" name="angebotsart" value="arbeit" checked>
+                                <input type="radio" name="angebotsart" value="0" checked>
                                 <label for="male">Arbeit</label>
                                 <span class="check"></span>
-                                <input type="radio" name="angebotsart" value="ausbildung">
+                                <input type="radio" name="angebotsart" value="1">
                                 <label for="female">Ausbildung</label>
                                 <span class="check"></span>
-                                <input type="radio" name="angebotsart" value="praktikum">
+                                <input type="radio" name="angebotsart" value="2">
                                 <label for="divers">Praktikum</label>
                                 <span class="check"></span>
-                                <input type="radio" name="angebotsart" value="selbständigkeit">
+                                <input type="radio" name="angebotsart" value="3">
                                 <label for="divers">Selbstständigkeit</label>
                                 <span class="check"></span>
                             </div>
                             <div class="form-radio-item">
-                                <input type="radio" name="befristung" value="befristet" checked>
+                                <input type="radio" name="befristung" value="0" checked>
                                 <label for="male">Befristet</label>
                                 <span class="check"></span>
-                                <input type="radio" name="befristung" value="unbefrsitet">
+                                <input type="radio" name="befristung" value="1">
                                 <label for="female">Unbefristet</label>
                                 <span class="check"></span>
-                                <input type="radio" name="befristung" value="keine_angaben">
+                                <input type="radio" name="befristung" value="2">
                                 <label for="divers">Keine Angaben</label>
                                 <span class="check"></span>
                             </div>
                             <div class="form-radio-item">
-                                <input type="radio" name="arbeitszeiten" value="vollzeit" checked>
+                                <input type="radio" name="arbeitszeiten" value="0" checked>
                                 <label for="male">Vollzeit</label>
                                 <span class="check"></span>
-                                <input type="radio" name="arbeitszeiten" value="teilzeit">
+                                <input type="radio" name="arbeitszeiten" value="1">
                                 <label for="female">Teilzeit</label>
                                 <span class="check"></span>
-                                <input type="radio" name="arbeitszeiten" value="schicht">
+                                <input type="radio" name="arbeitszeiten" value="2">
                                 <label for="divers">Schicht</label>
                                 <span class="check"></span>
-                                <input type="radio" name="arbeitszeiten" value="heimarbeit">
+                                <input type="radio" name="arbeitszeiten" value="3">
                                 <label for="divers">Heim-/Telearbeit</label>
                                 <span class="check"></span>
-                                <input type="radio" name="arbeitszeiten" value="minijob">
+                                <input type="radio" name="arbeitszeiten" value="4">
                                 <label for="divers">Minijob</label>
                                 <span class="check"></span>
                             </div>

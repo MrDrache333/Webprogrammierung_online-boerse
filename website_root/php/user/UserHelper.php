@@ -1,9 +1,9 @@
 <?php
 
 
-namespace php\User;
+namespace php\user;
 
-use mysqli_result;
+use PDORow;
 
 /**
  * Helpermethods to Convert between Formats etc.
@@ -14,14 +14,14 @@ class UserHelper
 
     /**
      * Converts an entire SQL-Result-Set to a User-Array
-     * @param $result mysqli_result The SQL-Result
+     * @param $result PDORow The SQL-Result
      * @return User|array|null
      */
     public static function getUsersFromSQLResult($result)
     {
         $users = [];
-        if ($result !== null && !is_bool($result)) {
-            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        if ($result !== null) {
+            foreach ($result as $row) {
                 $user = self::getUserFromSQLResultRow($row);
                 if ($user !== null) {
                     $users[] = $user;

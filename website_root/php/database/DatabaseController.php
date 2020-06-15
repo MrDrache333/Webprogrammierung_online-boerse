@@ -5,7 +5,7 @@ namespace php\database;
 class DatabaseController
 {
     //Zu nutzende Datenbank (SQLITE oder MARIADB)
-    private static $USED_TYPE = "MARIADB";
+    private static $USED_TYPE = "SQLITE";
 
     private static $database;
 

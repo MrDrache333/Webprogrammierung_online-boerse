@@ -3,9 +3,23 @@
 
 namespace php\database;
 
+use PDO;
+use PDOException;
 
 class SqliteDatabase implements Database
 {
+    /**
+     * @var PDO Verbindung zur Datenbank
+     */
+    private $conn;
+
+    /**
+     * SqliteDatabase constructor.
+     */
+    public function __construct()
+    {
+    }
+
 
     /**
      * @inheritDoc
@@ -20,7 +34,61 @@ class SqliteDatabase implements Database
      */
     public function create(): ?bool
     {
-        // TODO: Implement create() method.
+        $commands = [
+            "CREATE TABLE IF NOT EXISTS main.address (
+                            id INTEGER(11) NOT NULL,
+                            state VARCHAR(30) NOT NULL,
+                            town VARCHAR(30) NOT NULL,
+                            street VARCHAR(50) NOT NULL,
+                            number INTEGER(10) NOT NULL,
+                            plz INTEGER(10) NOT NULL,
+                            PRIMARY KEY (id)
+                            );",
+            "CREATE TABLE IF NOT EXISTS main.offers (
+                            id INTEGER(11) NOT NULL,
+                            title VARCHAR(50) NOT NULL,
+                            subtitle VARCHAR(50) NOT NULL,
+                            companyName VARCHAR(50) DEFAULT NULL,
+                            description VARCHAR(2000) DEFAULT NULL,
+                            logo VARCHAR(2000) DEFAULT NULL,
+                            address INTEGER(11) NOT NULL,
+                            created DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            free DATE DEFAULT NULL,
+                            offerType INTEGER(1) NOT NULL,
+                            duration INTEGER(1) DEFAULT NULL,
+                            workModel INTEGER(1) DEFAULT NULL,
+                            creator INTEGER(11) NOT NULL,
+                            PRIMARY KEY (id),
+                            FOREIGN KEY(address) REFERENCES address (id),
+                            FOREIGN KEY(creator) REFERENCES user (id)
+                            
+                            );",
+            "CREATE TABLE IF NOT EXISTS main.user (
+                            id INTEGER(11) NOT NULL,
+                            email VARCHAR(50) NOT NULL UNIQUE,
+                            prename VARCHAR(30) DEFAULT NULL,
+                            surname VARCHAR(50) DEFAULT NULL,
+                            password VARCHAR(30) DEFAULT NULL,
+                            PRIMARY KEY (id)
+                            );",
+        ];
+
+        foreach ($commands as $command) {
+            try {
+                $result = $this->conn->exec($command);
+                if ($result === false) {
+                    $errors = $this->conn->errorInfo();
+                    foreach ($errors as $error) {
+                        print $error;
+                    }
+                }
+            } catch (PDOException $e) {
+                print $e;
+                return false;
+            }
+
+        }
+        return true;
     }
 
     /**
@@ -28,7 +96,8 @@ class SqliteDatabase implements Database
      */
     public function connect(): ?bool
     {
-        // TODO: Implement connect() method.
+        $this->conn = new PDO('sqlite:DB.sqlite3') or die("Cannot open the Database");
+        return $this->create();
     }
 
     /**
@@ -36,7 +105,7 @@ class SqliteDatabase implements Database
      */
     public function disconnect(): ?bool
     {
-        // TODO: Implement disconnect() method.
+        $this->conn = null;
     }
 
     /**
@@ -44,6 +113,15 @@ class SqliteDatabase implements Database
      */
     public function execute($command)
     {
-        // TODO: Implement execute() method.
+        if ($this->conn !== null) {
+            try {
+                return $this->conn->query($command);
+            } catch (PDOException $e) {
+                print $e;
+                return null;
+            }
+        } else {
+            return null;
+        }
     }
 }
