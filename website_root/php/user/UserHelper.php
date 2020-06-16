@@ -4,6 +4,7 @@
 namespace php\user;
 
 use PDORow;
+use PDOStatement;
 
 /**
  * Helpermethods to Convert between Formats etc.
@@ -14,13 +15,13 @@ class UserHelper
 
     /**
      * Converts an entire SQL-Result-Set to a User-Array
-     * @param $result PDORow The SQL-Result
+     * @param $result PDOStatement
      * @return User|array|null
      */
     public static function getUsersFromSQLResult($result)
     {
         $users = [];
-        if ($result !== null) {
+        if ($result !== null && !is_bool($result)) {
             foreach ($result as $row) {
                 $user = self::getUserFromSQLResultRow($row);
                 if ($user !== null) {
@@ -40,7 +41,7 @@ class UserHelper
 
     /**
      * Converts one SQL-Result-Row to a User-Object
-     * @param $result array The SQL-Result Row-Array
+     * @param $result PDORow
      * @return User|null
      */
     private static function getUserFromSQLResultRow($result): ?User

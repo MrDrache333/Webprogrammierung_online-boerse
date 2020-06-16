@@ -25,8 +25,8 @@ class AddressDAOImpl implements AddressDAO
      */
     public function create(Address $address)
     {
-        $command = "insert into address values (" .
-            0 . ",'" .
+        $command = "insert into address(state, town, street, number, plz)  values (" .
+            "'" .
             ($address->getState()) . "','" .
             ($address->getTown()) . "','" .
             ($address->getStreet()) . "'," .
@@ -57,6 +57,6 @@ class AddressDAOImpl implements AddressDAO
     public function findAddressId(Address $address)
     {
         $command = "SELECT * FROM address WHERE state='" . $address->getState() . "' AND town='" . $address->getTown() . "' AND street='" . $address->getStreet() . "' AND number='" . $address->getNumber() . "'";
-        return AddressHelper::getAddressFromSQLResult($this->database->execute($command));
+        return AddressHelper::getAddressFromSQLResult($this->database->query($command));
     }
 }

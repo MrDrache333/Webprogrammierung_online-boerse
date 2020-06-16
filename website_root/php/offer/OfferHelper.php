@@ -4,6 +4,7 @@
 namespace php\offer;
 
 use PDORow;
+use PDOStatement;
 use php\address\Address;
 
 /**
@@ -15,13 +16,13 @@ class OfferHelper
 
     /**
      * Converts an entire SQL-Result-Set to a Offer-Array
-     * @param $result PDORow The SQL-Result
+     * @param $result PDOStatement The SQL-Result
      * @return Offer|array|null
      */
     public static function getOffersFromSQLResult($result): ?array
     {
         $offers = [];
-        if ($result !== null) {
+        if ($result !== null && !is_bool($result)) {
             foreach ($result as $row) {
                 $offer = self::getOfferFromSQLResultRow($row);
                 if ($offer !== null) {
@@ -38,7 +39,7 @@ class OfferHelper
 
     /**
      * Converts one SQL-Result-Row to a Offer-Object
-     * @param $result array The SQL-Result Row-Array
+     * @param $result PDORow The SQL-Result Row-Array
      * @return Offer|null
      */
     private static function getOfferFromSQLResultRow($result): ?Offer

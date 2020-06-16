@@ -59,8 +59,8 @@ class OfferDAOImpl implements OfferDAO
         $address = $address[0];
         if ($address !== null) {
             $offer->getAddress()->setId($address->getId());
-            $command = "insert into offers values (" .
-                0 . ",'" .
+            $command = "insert into offers(title, subtitle, companyName, description, logo, address, created, free, offerType, duration, workModel, creator) values (" .
+                "'" .
                 ($offer->getTitle()) . "','" .
                 ($offer->getSubTitle()) . "','" .
                 ($offer->getCompanyName()) . "','" .
@@ -98,7 +98,7 @@ class OfferDAOImpl implements OfferDAO
         //Standardfilter erstellen
         $command = "SELECT * FROM offers, address WHERE offers.address = address.id AND creator=" . $user->getId();
         //Datenbank abfragen und Ergebnis zurückgeben
-        return OfferHelper::getOffersFromSQLResult($this->database->execute($command));
+        return OfferHelper::getOffersFromSQLResult($this->database->query($command));
     }
 
     public function search($what, $where, $type, $duration, $time)
@@ -127,7 +127,7 @@ class OfferDAOImpl implements OfferDAO
         }
 
         //Datenbank abfragen und Ergebnis zurückgeben
-        return OfferHelper::getOffersFromSQLResult($this->database->execute($command));
+        return OfferHelper::getOffersFromSQLResult($this->database->query($command));
     }
 
     /**

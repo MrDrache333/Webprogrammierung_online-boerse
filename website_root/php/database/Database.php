@@ -34,4 +34,10 @@ interface Database
      */
     public function execute($command);
 
+    /**
+     * @param $command
+     * @return mixed
+     */
+    public function query($command);
+
 }

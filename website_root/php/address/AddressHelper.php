@@ -4,6 +4,7 @@
 namespace php\address;
 
 use PDORow;
+use PDOStatement;
 
 /**
  * Helpermethods to Convert between Formats etc.
@@ -14,13 +15,13 @@ class AddressHelper
 
     /**
      * Converts an entire SQL-Result-Set to a Address-Array
-     * @param $result PDORow The SQL-Result
+     * @param $result PDOStatement The SQL-Result
      * @return Address|array|null
      */
     public static function getAddressFromSQLResult($result)
     {
         $addresses = [];
-        if ($result !== null) {
+        if ($result !== null && !is_bool($result)) {
             foreach ($result as $row) {
                 $address = self::getaddressFromSQLResultRow($row);
                 if ($address !== null) {
@@ -37,7 +38,7 @@ class AddressHelper
 
     /**
      * Converts one SQL-Result-Row to a address-Object
-     * @param $result array The SQL-Result Row-Array
+     * @param $result PDORow The SQL-Result Row-Array
      * @return Address|null
      */
     private static function getaddressFromSQLResultRow($result): ?address

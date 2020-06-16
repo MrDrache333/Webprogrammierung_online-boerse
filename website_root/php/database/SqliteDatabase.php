@@ -36,40 +36,37 @@ class SqliteDatabase implements Database
     {
         $commands = [
             "CREATE TABLE IF NOT EXISTS main.address (
-                            id INTEGER(11) NOT NULL,
+                            id INTEGER NOT NULL PRIMARY KEY autoincrement,
                             state VARCHAR(30) NOT NULL,
                             town VARCHAR(30) NOT NULL,
                             street VARCHAR(50) NOT NULL,
                             number INTEGER(10) NOT NULL,
-                            plz INTEGER(10) NOT NULL,
-                            PRIMARY KEY (id)
+                            plz INTEGER(10) NOT NULL
                             );",
             "CREATE TABLE IF NOT EXISTS main.offers (
-                            id INTEGER(11) NOT NULL,
+                            id INTEGER NOT NULL PRIMARY KEY autoincrement,
                             title VARCHAR(50) NOT NULL,
                             subtitle VARCHAR(50) NOT NULL,
                             companyName VARCHAR(50) DEFAULT NULL,
                             description VARCHAR(2000) DEFAULT NULL,
                             logo VARCHAR(2000) DEFAULT NULL,
-                            address INTEGER(11) NOT NULL,
+                            address INTEGER NOT NULL,
                             created DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
                             free DATE DEFAULT NULL,
                             offerType INTEGER(1) NOT NULL,
                             duration INTEGER(1) DEFAULT NULL,
                             workModel INTEGER(1) DEFAULT NULL,
-                            creator INTEGER(11) NOT NULL,
-                            PRIMARY KEY (id),
+                            creator INTEGER NOT NULL,
                             FOREIGN KEY(address) REFERENCES address (id),
                             FOREIGN KEY(creator) REFERENCES user (id)
                             
                             );",
             "CREATE TABLE IF NOT EXISTS main.user (
-                            id INTEGER(11) NOT NULL,
+                            id INTEGER NOT NULL PRIMARY KEY autoincrement,
                             email VARCHAR(50) NOT NULL UNIQUE,
                             prename VARCHAR(30) DEFAULT NULL,
                             surname VARCHAR(50) DEFAULT NULL,
-                            password VARCHAR(30) DEFAULT NULL,
-                            PRIMARY KEY (id)
+                            password VARCHAR(30) DEFAULT NULL
                             );",
         ];
 
@@ -115,13 +112,34 @@ class SqliteDatabase implements Database
     {
         if ($this->conn !== null) {
             try {
+                $stm = $this->conn->prepare($command);
+                $this->conn->beginTransaction();
+                $result = $stm->execute();
+                $this->conn->commit();
+                return $result;
+            } catch (PDOException $e) {
+                print $e;
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function query($command)
+    {
+        if ($this->conn !== null) {
+            try {
                 return $this->conn->query($command);
             } catch (PDOException $e) {
                 print $e;
-                return null;
+                return false;
             }
         } else {
-            return null;
+            return false;
         }
     }
 }

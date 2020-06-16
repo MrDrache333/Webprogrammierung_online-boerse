@@ -83,4 +83,10 @@ class MariaDBDatabase implements Database
     {
         // TODO: Implement disconnect() method.
     }
+
+
+    public function query($command)
+    {
+        // TODO: Implement query() method.
+    }
 }

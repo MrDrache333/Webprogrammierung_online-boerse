@@ -36,14 +36,15 @@ class UserDAOImpl implements UserDAO
      */
     function create(User $user)
     {
-        $command = "insert into user values (" .
-            0 . ",'" .
+        $command = "insert into user(email, prename, surname, password) values (" .
+            "'" .
             ($user->getEmail()) . "','" .
             ($user->getPrename()) . "','" .
             ($user->getSurname()) . "','" .
             ($user->getPassword()) .
             "')";
         $command = str_replace("''", "null", $command);
+        var_dump($command);
         return UserHelper::getUsersFromSQLResult($this->database->execute($command)) === null;
     }
 
@@ -55,7 +56,7 @@ class UserDAOImpl implements UserDAO
     public function login($email, $password)
     {
         $command = "select * from user where email like '" . $email . "' and password like '" . $password . "'";
-        return UserHelper::getUsersFromSQLResult($this->database->execute($command));
+        return UserHelper::getUsersFromSQLResult($this->database->query($command));
     }
 
     /**
@@ -65,7 +66,7 @@ class UserDAOImpl implements UserDAO
     public function findUserByMail($email)
     {
         $command = "select * from user where email='" . $email . "'";
-        return UserHelper::getUsersFromSQLResult($this->database->execute($command));
+        return UserHelper::getUsersFromSQLResult($this->database->query($command));
     }
 
     /**
