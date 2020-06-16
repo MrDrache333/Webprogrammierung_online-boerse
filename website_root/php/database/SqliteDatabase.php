@@ -93,7 +93,7 @@ class SqliteDatabase implements Database
      */
     public function connect(): ?bool
     {
-        $this->conn = new PDO('sqlite:DB.sqlite3') or die("Cannot open the Database");
+        $this->conn = new PDO('sqlite:../DB.sqlite3') or die("Cannot open the Database");
         return $this->create();
     }
 
