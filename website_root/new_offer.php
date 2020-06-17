@@ -16,7 +16,6 @@ if (isset($_POST["bearbeiten_offer"])) {
     $id = $_POST["id_offer"];
     $offer = $OfferDao->getOfferByID($id);
 
-    $companyname = $offer->getTitle();
 }
 
 
@@ -135,12 +134,14 @@ if (isset($_POST["submit_offer"])) {
                     <form method="POST" class="new_offer-form" id="new_offer-form">
                         <label for="titel">Titel :</label>
                         <input type="text" name="titel" id="titel" placeholder="Verkäufer/in"
-                               value="<?php echo $companyname; ?>"
+                               value="<?php echo $offer->getTitle(); ?>"
                                required/>
                         <label for="subtitetl">Untertitel :</label>
-                        <input type="text" name="subtitel" id="subtitel" placeholder="Einzelhandel" required/>
+                        <input type="text" name="subtitel" id="subtitel" placeholder="Einzelhandel"
+                               value="<?php echo $offer->getSubTitle(); ?>" required/>
                         <label for="subtitetl">Firmenname :</label>
-                        <input type="text" name="companyname" id="companyname" placeholder="Firmenname" required/>
+                        <input type="text" name="companyname" id="companyname" placeholder="Firmenname"
+                               value="<?php echo $offer->getCompanyName(); ?>" required/>
                         <label for="position">Straße:</label>
                         <input type="text" name="straße" id="straße" placeholder="Musterstraße" required/>
                         <label for="position">Hausnummer :</label>
@@ -200,7 +201,8 @@ if (isset($_POST["submit_offer"])) {
 
                         <label for="street">Beschreibung :<br></label>
                         <textarea name="beschreibung" id="beschreibung" cols="50" rows="7"
-                                  placeholder="Was über den Beruf zu sagen ist." required></textarea>
+                                  placeholder="Was über den Beruf zu sagen ist."
+                                  value="<?php echo $offer->getDescription(); ?>" required></textarea>
 
                         <div class="form-submit">
                             <input type="submit" value="Anzeige veröffentlichen" class="button_offer"
