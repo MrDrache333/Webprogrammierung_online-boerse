@@ -98,14 +98,13 @@ if ($email !== null) {
                                     <div class=\"infos\">
                                         <div class=\"erstellt\"><h5>erstellt am:<br>" . $offer->getCreated() . "</div>
                                         <div class=\"frei\"><h5> Frei ab:<br>" . $offer->getFree() . "</h5></div>
-                                      
-                                        <div class=\"frei\"><a href=\"\" class=\"ads_button\" ><h5>bearbeiten</h5></a></div>
-                                        <div class=\"frei\">
+                                      </form>
+                                   <form method=\"POST\" action='new_offer.php' >  <input type=\"submit\" value=\"Anzeige bearbeiten\" class=\"submit\" name=\"bearbeiten_offer\" /> <input type='hidden' name='id_offer' value='$offer_id'></form> 
                                         <input type='hidden' name='id_offer' value='$offer_id'>
-                                    <input type=\"submit\" value=\"Profil löschen\" class=\"submit\" name=\"anzeigeloeschen\"
+                                    <input type=\"submit\" value=\"Anzeige löschen\" class=\"submit\" name=\"anzeigeloeschen\"
                                    id=\"submit\"/>
                                     </div>
-                                 </form>
+                                 
                                 </div>";
 
 

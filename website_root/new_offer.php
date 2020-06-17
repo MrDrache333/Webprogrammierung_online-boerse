@@ -12,6 +12,11 @@ $OfferDao = new OfferDAOImpl();
 $UserDAO = new UserDAOImpl();
 
 
+if (isset($_POST["bearbeiten_offer"])) {
+    $id = $_POST["id_offer"];
+
+}
+
 
 if (isset($_POST["submit_offer"])) {
 
@@ -127,7 +132,8 @@ if (isset($_POST["submit_offer"])) {
                     <h2>Meine Informationen</h2>
                     <form method="POST" class="new_offer-form" id="new_offer-form">
                         <label for="titel">Titel :</label>
-                        <input type="text" name="titel" id="titel" placeholder="Verkäufer/in" required/>
+                        <input type="text" name="titel" id="titel" placeholder="Verkäufer/in" value="<?php echo $id; ?>"
+                               required/>
                         <label for="subtitetl">Untertitel :</label>
                         <input type="text" name="subtitel" id="subtitel" placeholder="Einzelhandel" required/>
                         <label for="subtitetl">Firmenname :</label>
