@@ -6,6 +6,42 @@ use php\offer\Offer;
 use php\offer\OfferDAOImpl;
 use php\user\UserDAOImpl;
 
+$email = $_COOKIE['email'] ?? null;
+
+if ($email !== null) {
+
+    //User abfragen
+    $user = new UserDAOImpl();
+    $user = $user->findUserByMail($email);
+    if ($user !== null) {
+        //In Datenbank nach Einträgen suchen
+        $OfferDAOImpl = new OfferDAOImpl();
+        if (isset($_POST['anzeigeloeschen'])) {
+            $id = $_POST["id_offer"];
+            $ownoffer = $OfferDAOImpl->getOwnOffers($user);
+            if ($ownoffer != null) {
+
+                foreach ($ownoffer as $offer) {
+                    if ($offer->getId() == $id) {
+                        $OfferDAOImpl->delete($id);
+
+                    } else {
+                        echo "Sie löschen eine Anzeige die nicht Ihnen gehört. Dies ist nicht möglich.";
+                    }
+                }
+            } else {
+                echo "Sie besitzen keine Anzeigens.";
+            }
+
+
+        }
+        $result = $OfferDAOImpl->getOwnOffers($user);
+    } else {
+        $result = null;
+    }
+
+
+}
 ?>
 <div class="header">
     <nav>
@@ -32,30 +68,8 @@ use php\user\UserDAOImpl;
         <div class="leftcolumn">
             <?php
 
-            $email = $_COOKIE['email'] ?? null;
-            if ($email !== null) {
-
-                //User abfragen
-                $user = new UserDAOImpl();
-                $user = $user->findUserByMail($email);
-                if ($user !== null) {
-                    //In Datenbank nach Einträgen suchen
-                    $OfferDAOImpl = new OfferDAOImpl();
-                    $result = $OfferDAOImpl->getOwnOffers($user);
-                } else {
-                    $result = null;
-                }
 
 
-            }
-            if (isset($_POST['anzeigeloeschen'])) {
-                $versuch = $_POST['anzeigeloeschen'];
-                echo $versuch;
-
-                if ($_POST['anzeigeloeschen'] = 15) ;
-                $id = 1;
-                $OfferDAOImpl->delete($id);
-            }
             //Einträge anzeigen
             displayResults($result);
             /**
@@ -68,9 +82,9 @@ use php\user\UserDAOImpl;
                     $count = 0;
                     foreach ($result as $offer) {
 
-                        $test = $offer->getId();
-                        echo $test;
-                        echo $offer->getTitle();
+                        $offer_id = $offer->getId();
+
+
                         $count++;
                         $html = "<div class=\"card\">
                                     <div class=\"anzeigen-inhalt\">
@@ -87,7 +101,8 @@ use php\user\UserDAOImpl;
                                       
                                         <div class=\"frei\"><a href=\"\" class=\"ads_button\" ><h5>bearbeiten</h5></a></div>
                                         <div class=\"frei\">
-                                        <input type=\"submit\" value=\"Profil löschen\"id='$test' class=\"submit\" name=\"anzeigeloeschen\"
+                                        <input type='hidden' name='id_offer' value='$offer_id'>
+                                    <input type=\"submit\" value=\"Profil löschen\" class=\"submit\" name=\"anzeigeloeschen\"
                                    id=\"submit\"/>
                                     </div>
                                  </form>

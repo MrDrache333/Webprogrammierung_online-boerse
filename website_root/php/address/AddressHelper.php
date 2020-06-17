@@ -43,11 +43,11 @@ class AddressHelper
      */
     private static function getaddressFromSQLResultRow($result): ?address
     {
-        if ($result['id'] === null) {
+        if ($result['ID'] === null) {
             return null;
         }
         return new address(
-            $result['id'] ?? null,
+            $result['ID'] ?? null,
             $result['state'] ?? null,
             $result['town'] ?? null,
             $result['street'] ?? null,
