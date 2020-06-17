@@ -29,11 +29,8 @@ class OfferHelper
                     $offers[] = $offer;
                 }
             }
-            if (sizeof($offers) === 1) {
-                return current($offers);
-            }
             if (sizeof($offers) === 0) {
-                return null;
+                return $offers;
             }
             return $offers;
         }
