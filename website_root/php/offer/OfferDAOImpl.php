@@ -144,7 +144,7 @@ class OfferDAOImpl implements OfferDAO
      */
     public function getOfferByID($id)
     {
-        $command = "select * from user where id='" . $id . "'";
+        $command = "select * from offer where id='" . $id . "'";
         return OfferHelper::getOffersFromSQLResult($this->database->query($command));
     }
 }
