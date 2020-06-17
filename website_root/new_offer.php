@@ -87,7 +87,7 @@ if (isset($_POST["submit_offer"])) {
 }
 
 ?>
-<form action="upload.php" method="post" enctype="multipart/form-data">
+<form action="massages.php" method="post" enctype="multipart/form-data">
     <div class="header">
         <nav>
             <ul class="navi">
@@ -119,7 +119,7 @@ if (isset($_POST["submit_offer"])) {
                             <input type="submit" value="Upload Image" name="submit">
                         </div>
                     </form>
-                    <form method="POST" class="new_offer-form" id="new_offer-form"></form>
+                    <form method="POST" class="new_offer-form" id="new_offer-form" action="messages.php"></form>
                 </div>
             </div>
             <div class="rightcolumn">
@@ -133,16 +133,16 @@ if (isset($_POST["submit_offer"])) {
                         <label for="subtitetl">Firmenname :</label>
                         <input type="text" name="companyname" id="companyname" placeholder="Firmenname" required/>
                         <label for="position">Straße:</label>
-                        <input type="text" name="straße" id="straße" placeholder="Musterstraße"/>
+                        <input type="text" name="straße" id="straße" placeholder="Musterstraße" required/>
                         <label for="position">Hausnummer :</label>
-                        <input type="text" name="hausnummer" id="hausnummer" placeholder="1234"/>
+                        <input type="text" name="hausnummer" id="hausnummer" placeholder="1234" required/>
                         <label for="position">Ort:</label>
-                        <input type="text" name="ort" id="ort" placeholder="Musterhausen"/>
+                        <input type="text" name="ort" id="ort" placeholder="Musterhausen" required/>
                         <label for="position">Postleitzahl:</label>
-                        <input type="text" name="plz" id="plz" placeholder="12345"/>
+                        <input type="text" name="plz" id="plz" placeholder="12345" required/>
                         <label for="position">Standort:</label>
                         <label for="free">Frei ab :</label>
-                        <input type="text" name="free" id="free" placeholder="2021-01-01"/>
+                        <input type="text" name="free" id="free" placeholder="2021-01-01" required/>
                         <div class="form-radio-item-group">
                             <div class="form-radio-item">
                                 <input type="radio" name="angebotsart" value="0" checked>
@@ -191,7 +191,7 @@ if (isset($_POST["submit_offer"])) {
 
                         <label for="street">Beschreibung :<br></label>
                         <textarea name="beschreibung" id="beschreibung" cols="50" rows="7"
-                                  placeholder="Was über den Beruf zu sagen ist."></textarea>
+                                  placeholder="Was über den Beruf zu sagen ist." required></textarea>
 
                         <div class="form-submit">
                             <input type="submit" value="Anzeige veröffentlichen" class="button_offer"

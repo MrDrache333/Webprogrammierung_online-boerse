@@ -45,6 +45,16 @@ use php\user\UserDAOImpl;
                 } else {
                     $result = null;
                 }
+
+
+            }
+            if (isset($_POST['anzeigeloeschen'])) {
+                $versuch = $_POST['anzeigeloeschen'];
+                echo $versuch;
+
+                if ($_POST['anzeigeloeschen'] = 15) ;
+                $id = 1;
+                $OfferDAOImpl->delete($id);
             }
             //Einträge anzeigen
             displayResults($result);
@@ -54,8 +64,13 @@ use php\user\UserDAOImpl;
             function displayResults($result)
             {
                 if ($result !== null) {
+
                     $count = 0;
                     foreach ($result as $offer) {
+
+                        $test = $offer->getId();
+                        echo $test;
+                        echo $offer->getTitle();
                         $count++;
                         $html = "<div class=\"card\">
                                     <div class=\"anzeigen-inhalt\">
@@ -65,14 +80,23 @@ use php\user\UserDAOImpl;
                                             " . $offer->getDescription() . "
                                         </div>
                                     </div>
+                                    <form method=\"POST\"  class=\"profile-form\" id=\"profile-form\">
                                     <div class=\"infos\">
                                         <div class=\"erstellt\"><h5>erstellt am:<br>" . $offer->getCreated() . "</div>
                                         <div class=\"frei\"><h5> Frei ab:<br>" . $offer->getFree() . "</h5></div>
-                                        <div class=\"frei\"><a href=\"\" class=\"ads_button\"><h5>bearbeiten</h5></a></div>
-                                        <div class=\"frei\"><a href=\"\" class=\"ads_button\"><h5>löschen</h5></a></div>
+                                      
+                                        <div class=\"frei\"><a href=\"\" class=\"ads_button\" ><h5>bearbeiten</h5></a></div>
+                                        <div class=\"frei\">
+                                        <input type=\"submit\" value=\"Profil löschen\"id='$test' class=\"submit\" name=\"anzeigeloeschen\"
+                                   id=\"submit\"/>
                                     </div>
+                                 </form>
                                 </div>";
+
+
                         echo $html . "\n";
+
+
                     }
                     if ($count === 0) {
                         echo "<div style=\"background: radial-gradient(circle at center, white 0,rgba(255,255,255,0.9) 60%, rgba(255,255,255,0.5) 70%,transparent 90%); text-align: center; border-radius: 20px\">
