@@ -37,31 +37,6 @@ class OfferHelper
         return null;
     }
 
-    /**
-     * Converts an entire SQL-Result-Set to a Offer-Array
-     * @param $result PDOStatement The SQL-Result
-     * @return Offer|array|null
-     */
-    public static function getOffersFromSQLResult2($result)
-    {
-        $offers = [];
-        if ($result !== null && !is_bool($result)) {
-            foreach ($result as $row) {
-                $offer = self::getOfferFromSQLResultRow($row);
-                if ($offer !== null) {
-                    $offers[] = $offer;
-                }
-            }
-            if (sizeof($offers) === 1) {
-                return current($offers);
-            }
-            if (sizeof($offers) === 0) {
-                return null;
-            }
-            return $offers;
-        }
-        return null;
-    }
 
     /**
      * Converts one SQL-Result-Row to a Offer-Object

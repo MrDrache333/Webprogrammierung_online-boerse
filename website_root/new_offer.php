@@ -7,14 +7,21 @@ use php\offer\Offer;
 use php\offer\OfferDAOImpl;
 use php\user\UserDAOImpl;
 
+
 include_once 'php/classes.php';
 $OfferDao = new OfferDAOImpl();
 $UserDAO = new UserDAOImpl();
 
 
+
 if (isset($_POST["bearbeiten_offer"])) {
     $id = $_POST["id_offer"];
-    $offer = $OfferDao->getOfferByID($id);
+    $offer = current($OfferDao->getOfferByID($id));
+    $titel = $offer->getTitle();
+    $subtitle = $offer->getSubTitle();
+    $AddressObjekt = $offer->getAddress();
+    $companyname = $offer->getCompanyName();
+
 
 }
 
@@ -134,18 +141,20 @@ if (isset($_POST["submit_offer"])) {
                     <form method="POST" class="new_offer-form" id="new_offer-form">
                         <label for="titel">Titel :</label>
                         <input type="text" name="titel" id="titel" placeholder="Verkäufer/in"
-                               value="<?php echo $offer->getTitle(); ?>"
+                               value="<?php echo $titel; ?>"
                                required/>
                         <label for="subtitetl">Untertitel :</label>
                         <input type="text" name="subtitel" id="subtitel" placeholder="Einzelhandel"
-                               value="<?php echo $offer->getSubTitle(); ?>" required/>
+                               value="<?php echo $subtitle; ?>" required/>
                         <label for="subtitetl">Firmenname :</label>
                         <input type="text" name="companyname" id="companyname" placeholder="Firmenname"
-                               value="<?php echo $offer->getCompanyName(); ?>" required/>
+                               value="<?php echo $companyname; ?>" required/>
                         <label for="position">Straße:</label>
-                        <input type="text" name="straße" id="straße" placeholder="Musterstraße" required/>
+                        <input type="text" name="straße" id="straße" placeholder="Musterstraße"
+                               value="<?php echo $straße; ?>" required/>
                         <label for="position">Hausnummer :</label>
-                        <input type="text" name="hausnummer" id="hausnummer" placeholder="1234" required/>
+                        <input type="text" name="hausnummer" id="hausnummer" placeholder="1234"
+                               value="<?php echo $hsnr; ?>" required/>
                         <label for="position">Ort:</label>
                         <input type="text" name="ort" id="ort" placeholder="Musterhausen" required/>
                         <label for="position">Postleitzahl:</label>
@@ -201,8 +210,7 @@ if (isset($_POST["submit_offer"])) {
 
                         <label for="street">Beschreibung :<br></label>
                         <textarea name="beschreibung" id="beschreibung" cols="50" rows="7"
-                                  placeholder="Was über den Beruf zu sagen ist."
-                                  value="<?php echo $offer->getDescription(); ?>" required></textarea>
+                                  placeholder="Was über den Beruf zu sagen ist." required></textarea>
 
                         <div class="form-submit">
                             <input type="submit" value="Anzeige veröffentlichen" class="button_offer"
