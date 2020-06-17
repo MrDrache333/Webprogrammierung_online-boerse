@@ -72,10 +72,10 @@ if (isset($_POST["loginSubmit"])) {
                 header("Location: profil.php");
             }
         } else {
-            echo "User schon vorhanden";
+            echo "Fehler beim Erstellen des Benutzers";
         }
     } else {
-        echo "Keine gültigen Daten eingegeben";
+        echo "Es wurden keine gültigen Daten eingegeben";
     }
 }
 
@@ -91,6 +91,7 @@ else if (isset($_POST["pwforget"])) {
         $time = date('m/d/Y H:i:s', $timestamp);
         $empfaenger = $_POST["email"];
         $absendermail = "info@kefedo.com";
+        $absendername = "kefedo";
         $pw = GeneratePassword();
         $betreff = "Passwort zurücksetzten";
         $text = "Sie " . $empfaenger . " haben um " . $time .

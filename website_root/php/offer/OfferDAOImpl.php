@@ -138,5 +138,13 @@ class OfferDAOImpl implements OfferDAO
         return $this->addressDAOImpl;
     }
 
-
+    /**
+     * @param $id
+     * @return array|mixed|Offer|null
+     */
+    public function getOfferByID($id)
+    {
+        $command = "select * from user where id='" . $id . "'";
+        return OfferHelper::getOffersFromSQLResult($this->database->query($command));
+    }
 }
