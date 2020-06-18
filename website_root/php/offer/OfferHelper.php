@@ -52,7 +52,6 @@ class OfferHelper
         $offer->setSubTitle($result['subtitle'] ?? null);
         $offer->setCompanyName($result['companyName'] ?? null);
         $offer->setDescription($result['description'] ?? null);
-        $offer->setLogo($result['logo'] ?? null);
         $offer->setAddress(new Address(
             $result['address.id'] ?? null,
             $result['state'] ?? null,

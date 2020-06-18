@@ -49,7 +49,6 @@ class SqliteDatabase implements Database
                             subtitle VARCHAR(50) NOT NULL,
                             companyName VARCHAR(50) DEFAULT NULL,
                             description VARCHAR(2000) DEFAULT NULL,
-                            logo VARCHAR(2000) DEFAULT NULL,
                             address INTEGER NOT NULL,
                             created DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
                             free DATE DEFAULT NULL,

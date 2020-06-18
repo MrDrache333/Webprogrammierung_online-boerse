@@ -98,6 +98,15 @@ class Offer
      */
     public function getLogo()
     {
+        if (file_exists('images/logos/' . $this->getId() . '.png')) {
+            $this->setLogo('images/logos/' . $this->getId() . '.png');
+        } elseif (file_exists('images/logos/' . $this->getId() . '.jpg')) {
+            $this->setLogo('images/logos/' . $this->getId() . '.jpg');
+        } elseif (file_exists('images/logos/' . $this->getId() . '.jpeg')) {
+            $this->setLogo('images/logos/' . $this->getId() . '.jpeg');
+        } else {
+            $this->setLogo('images/company_placeholder.png');
+        }
         return $this->logo;
     }
 

@@ -59,13 +59,12 @@ class OfferDAOImpl implements OfferDAO
         $address = $address[0];
         if ($address !== null) {
             $offer->getAddress()->setId($address->getId());
-            $command = "insert into offers(title, subtitle, companyName, description, logo, address, created, free, offerType, duration, workModel, creator) values (" .
+            $command = "insert into offers(title, subtitle, companyName, description, address, created, free, offerType, duration, workModel, creator) values (" .
                 "'" .
                 ($offer->getTitle()) . "','" .
                 ($offer->getSubTitle()) . "','" .
                 ($offer->getCompanyName()) . "','" .
-                ($offer->getDescription()) . "','" .
-                ($offer->getLogo()) . "'," .
+                ($offer->getDescription()) . "'," .
                 ($offer->getAddress()->getId()) . ",'" .
                 ($offer->getCreated()) . "','" .
                 ($offer->getFree()) . "'," .

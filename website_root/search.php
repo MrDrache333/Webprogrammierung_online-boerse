@@ -58,7 +58,7 @@ function displayResults($result)
                                 </div>
                                 <div class=\"article-company\">
                                     <img class=\"article-company-logo\" id=\"article-logo\"
-                                         src=\"images/company_placeholder.png\"
+                                         src=\"" . $offer->getLogo() . "\"
                                          alt=\"Firmenlogo\">
                                     <span class=\"article-company-name\">" . $offer->getCompanyName() . "</span>
                                 </div>
