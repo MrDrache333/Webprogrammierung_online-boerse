@@ -16,7 +16,11 @@ $UserDAO = new UserDAOImpl();
 
 if (isset($_POST["bearbeiten_offer"])) {
     $id = $_POST["id_offer"];
-    $offer = current($OfferDao->getOfferByID($id));
+    $offer = $OfferDao->getOfferByID($id);
+    var_dump($offer);
+    if ($offer !== null) {
+        //TODO Was passiert, wenn kein Ergebnis zurückgegeben wurde?
+    }
     $titel = $offer->getTitle();
     $subtitle = $offer->getSubTitle();
     $AddressObjekt = $offer->getAddress();

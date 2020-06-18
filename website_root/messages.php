@@ -103,7 +103,7 @@ if ($email !== null) {
                                      <form method='post' action='new_offer.php'><input type=\"submit\" value=\"Bearbeiten\" class=\"submit\" name=\"bearbeiten_offer\"
                                    id=\"submit\"/> 
                                         <input type='hidden' name='id_offer' value='$offer_id'></form> 
-                                    <input type=\"submit\" value=\"Anezeige löschen\" class=\"submit\" name=\"anzeigeloeschen\"
+                                    <input type=\"submit\" value=\"Aneige löschen\" class=\"submit\" name=\"anzeigeloeschen\"
                                    id=\"submit\"/>
                                     </div>
                                  </form>

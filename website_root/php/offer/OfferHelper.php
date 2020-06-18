@@ -53,7 +53,7 @@ class OfferHelper
         $offer->setCompanyName($result['companyName'] ?? null);
         $offer->setDescription($result['description'] ?? null);
         $offer->setAddress(new Address(
-            $result['address.id'] ?? null,
+            $result['ID'] ?? null,
             $result['state'] ?? null,
             $result['town'] ?? null,
             $result['street'] ?? null,

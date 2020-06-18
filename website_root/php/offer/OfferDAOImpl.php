@@ -87,7 +87,7 @@ class OfferDAOImpl implements OfferDAO
 
     public function update($offer)
     {
-        $command = "UPDATE user SET titel='" . $offer->getTitle() . "', subtitel='" . $offer->getSubTitle() . "', companyname='" . $offer->getCompanyName() . "', description='" . $offer->getDescription() . "',logo='" . $offer->getLogo() . "',created='" . $offer->getCreated() . "',free='" . $offer->getFree() . "',offerType='" . $offer->getOfferType() . "',duration='" . $offer->getDuration() . "',workModel='" . $offer->getWorkModel() . "' WHERE email='" . $offer->getId() . "'";
+        $command = "UPDATE offers SET title='" . $offer->getTitle() . "', subtitle='" . $offer->getSubTitle() . "', companyname='" . $offer->getCompanyName() . "', description='" . $offer->getDescription() . "',logo='" . $offer->getLogo() . "',created='" . $offer->getCreated() . "',free='" . $offer->getFree() . "',offerType='" . $offer->getOfferType() . "',duration='" . $offer->getDuration() . "',workModel='" . $offer->getWorkModel() . "' WHERE email='" . $offer->getId() . "'";
         return $this->database->execute($command);
     }
 
@@ -139,12 +139,17 @@ class OfferDAOImpl implements OfferDAO
     }
 
     /**
+     * Gibt die Anzeige zurück, die unter der übergebenen ID übergeben wurde
      * @param $id
-     * @return array|mixed|Offer|null
+     * @return Offer|null
      */
-    public function getOfferByID($id)
+    public function getOfferByID($id): ?Offer
     {
-        $command = "SELECT * FROM offers WHERE id='" . $id . "'";
-        return OfferHelper::getOffersFromSQLResult($this->database->query($command));
+        $command = "SELECT * FROM offers, address WHERE offers.id='" . $id . "' AND offers.address = address.ID";
+        $offers = OfferHelper::getOffersFromSQLResult($this->database->query($command));
+        if (is_array($offers)) {
+            return current($offers);
+        }
+        return $offers;
     }
 }

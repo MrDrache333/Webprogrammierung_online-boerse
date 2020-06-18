@@ -42,7 +42,7 @@ class AddressDAOImpl implements AddressDAO
      */
     public function delete($id)
     {
-        $command = "DELETE FROM address WHERE id='" . $id . "'";
+        $command = "DELETE FROM address WHERE ID='" . $id . "'";
         return $this->database->execute($command);
     }
 
