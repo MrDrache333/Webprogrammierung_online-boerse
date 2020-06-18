@@ -85,9 +85,10 @@ class OfferDAOImpl implements OfferDAO
         return $this->database->execute($command);
     }
 
-    public function update(Offer $offer)
+    public function update($offer)
     {
-        // TODO: Implement update() method.
+        $command = "UPDATE user SET titel='" . $offer->getTitle() . "', subtitel='" . $offer->getSubTitle() . "', companyname='" . $offer->getCompanyName() . "', description='" . $offer->getDescription() . "',logo='" . $offer->getLogo() . "',created='" . $offer->getCreated() . "',free='" . $offer->getFree() . "',offerType='" . $offer->getOfferType() . "',duration='" . $offer->getDuration() . "',workModel='" . $offer->getWorkModel() . "' WHERE email='" . $offer->getId() . "'";
+        return $this->database->execute($command);
     }
 
     public function getOwnOffers($user)
