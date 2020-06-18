@@ -24,7 +24,7 @@ if (isset($_POST["submit"])) {
     $pw = $_POST["pwsetzen"];
     $pwneu = $_POST["pwwiederholen"];
     $pwalt = $_POST["altespw"];
-
+if ($pwalt != null) {
     if ($pwneu == $pw) {
         if ($pwalt == $pwaktuell) {
 
@@ -43,6 +43,7 @@ if (isset($_POST["submit"])) {
 
 
 }
+}
 if (isset($_POST["profilloeschen"])) {
     $delete = $u->delete($email);
     setcookie("loggedin", "false", time() - 60 * 60 * 24);
@@ -50,6 +51,16 @@ if (isset($_POST["profilloeschen"])) {
     header("Location: index.php");
     exit;
 }
+if (isset($_POST["pb_submit"])) {
+    if (move_uploaded_file($_FILES["fileToUpload"]
+    ["temp_name"], "/Applications/XAMPP/xamppfiles/htdocs/website_root/images")) {
+        echo "moved";
+    } else {
+        echo "neeeee";
+    }
+}
+
+
 ?>
 <div class="header">
     <nav>
@@ -92,7 +103,7 @@ if (isset($_POST["profilloeschen"])) {
                                 <input type="submit" value="Profilbild löschen" class="submit" name="reset_pb"
                                        id="reset_pb"/>
                                 <input type="file" name="fileToUpload" id="fileToUpload"/>
-                                <input type="submit" value="Bild hochladen" name="submit" class="submit"/>
+                                <input type="submit" value="Bild hochladen" name="pb_submit" class="submit"/>
                             </div>
                         </form>
                     </div>

@@ -54,6 +54,7 @@ class UserHelper
         $user->setSurname($result['surname'] ?? null);
         $user->setPassword($result['password'] ?? null);
 
+
         return $user;
     }
 
