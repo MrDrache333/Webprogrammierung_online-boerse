@@ -20,7 +20,7 @@ if (isset($_POST["loginSubmit"])) {
             header("Location: profil.php");
         } else {
             setcookie("loggedin", "false", time() + 60 * 60 * 24);
-            header("Location: index.php");
+            echo "Die Anmeldedaten sind falsch.";
         }
     } else {
         setcookie("loggedin", "false", time() + 60 * 60 * 24);
@@ -80,7 +80,7 @@ if (isset($_POST["loginSubmit"])) {
 }
 
 //Passwort vergessen ausgeführt und Mail versendet zu Nutzer.
-//muss in den Header verstehe aber Fenjas Datei nicht
+
 
 else if (isset($_POST["pwforget"])) {
     if (isset($_POST["email"])&& "email" != "") {
