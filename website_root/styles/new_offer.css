@@ -24,6 +24,11 @@
 
 }
 
+.radiobutton {
+  display: flex;
+
+}
+
 
 .fakeimg {
   width: 15%;
