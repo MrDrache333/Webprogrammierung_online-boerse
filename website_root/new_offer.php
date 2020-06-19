@@ -12,6 +12,7 @@ include_once 'php/classes.php';
 $OfferDao = new OfferDAOImpl();
 $UserDAO = new UserDAOImpl();
 
+
 if (isset($_POST["edit_offer"])) {
     $offer = new Offer();
     $offer->setTitle($_POST["titel"]);
