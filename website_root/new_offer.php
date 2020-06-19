@@ -113,8 +113,6 @@ if (isset($_POST["submit_offer"])) {
         $beschreibung = htmlspecialchars($_POST["beschreibung"]);
         $companyname = htmlspecialchars($_POST["companyname"]);
 
-        $arbeit = $_GET["arbeit"];
-        $ausbildung = $_GET["ausbildung"];
         $art = $_POST['angebotsart'];
         $befristung = $_POST['befristung'];
         $arbeitszeit = $_POST['arbeitszeiten'];
@@ -181,72 +179,74 @@ if (isset($_POST["submit_offer"])) {
                     <form method="POST" class="new_offer-form" id="new_offer-form">
                         <label for="titel">Titel :</label>
                         <input type="text" name="titel" id="titel" placeholder="Verkäufer/in"
-                               value="<?php echo $titel; ?>"
+                               value="<?php echo $titel ?? ""; ?>"
                                required/>
                         <label for="subtitetl">Untertitel :</label>
                         <input type="text" name="subtitel" id="subtitel" placeholder="Einzelhandel"
-                               value="<?php echo $subtitle; ?>" required/>
+                               value="<?php echo $subtitle ?? ""; ?>" required/>
                         <label for="subtitetl">Firmenname :</label>
                         <input type="text" name="companyname" id="companyname" placeholder="Firmenname"
-                               value="<?php echo $companyname; ?>" required/>
+                               value="<?php echo $companyname ?? ""; ?>" required/>
                         <label for="position">Straße:</label>
                         <input type="text" name="straße" id="straße" placeholder="Musterstraße"
-                               value="<?php echo $straße; ?>" required/>
+                               value="<?php echo $straße ?? ""; ?>" required/>
                         <label for="position">Hausnummer :</label>
                         <input type="text" name="hausnummer" id="hausnummer" placeholder="1234"
-                               value="<?php echo $hsnr; ?>" required/>
+                               value="<?php echo $hsnr ?? ""; ?>" required/>
                         <label for="position">Ort:</label>
-                        <input type="text" name="ort" id="ort" placeholder="Musterhausen" value="<?php echo $town; ?>"
+                        <input type="text" name="ort" id="ort" placeholder="Musterhausen"
+                               value="<?php echo $town ?? ""; ?>"
                                required/>
                         <label for="position">Postleitzahl:</label>
-                        <input type="text" name="plz" id="plz" placeholder="12345" value="<?php echo $plz; ?>"
+                        <input type="text" name="plz" id="plz" placeholder="12345" value="<?php echo $plz ?? ""; ?>"
                                required/>
                         <label for="position">Standort:</label>
                         <label for="free">Frei ab :</label>
-                        <input type="text" name="free" id="free" placeholder="2021-01-01" value="<?php echo $free; ?>"
+                        <input type="text" name="free" id="free" placeholder="2021-01-01"
+                               value="<?php echo $free ?? ""; ?>"
                                required/>
                         <br>
                         <div class="radiobutton">
-                            <input type="radio" name="angebotsart" value="0" <?php echo $angebotsart0; ?>>
+                            <input type="radio" name="angebotsart" value="0" <?php echo $angebotsart0 ?? ""; ?>>
                             <label for="male">Arbeit</label>
                             <span class="check"></span>
-                                <input type="radio" name="angebotsart" value="1"<?php echo $angebotsart1; ?>>
-                                <label for="female">Ausbildung</label>
-                                <span class="check"></span>
-                                <input type="radio" name="angebotsart" value="2"<?php echo $angebotsart2; ?>>
-                                <label for="divers">Praktikum</label>
-                                <span class="check"></span>
-                                <input type="radio" name="angebotsart" value="3"<?php echo $angebotsart3; ?>>
+                            <input type="radio" name="angebotsart" value="1"<?php echo $angebotsart1 ?? ""; ?>>
+                            <label for="female">Ausbildung</label>
+                            <span class="check"></span>
+                            <input type="radio" name="angebotsart" value="2"<?php echo $angebotsart2 ?? ""; ?>>
+                            <label for="divers">Praktikum</label>
+                            <span class="check"></span>
+                            <input type="radio" name="angebotsart" value="3"<?php echo $angebotsart3 ?? ""; ?>>
                             <label for="divers">Selbstständigkeit</label>
                             <span class="check"></span>
                         </div>
                         <br>
                         <div class="radiobutton">
-                            <input type="radio" name="befristung" value="0" <?php echo $befristung0; ?>>
-                                <label for="male">Befristet</label>
-                                <span class="check"></span>
-                                <input type="radio" name="befristung" value="1"<?php echo $befristung1; ?>>
-                                <label for="female">Unbefristet</label>
-                                <span class="check"></span>
-                                <input type="radio" name="befristung" value="2"<?php echo $befristung2; ?>>
+                            <input type="radio" name="befristung" value="0" <?php echo $befristung0 ?? ""; ?>>
+                            <label for="male">Befristet</label>
+                            <span class="check"></span>
+                            <input type="radio" name="befristung" value="1"<?php echo $befristung1 ?? ""; ?>>
+                            <label for="female">Unbefristet</label>
+                            <span class="check"></span>
+                            <input type="radio" name="befristung" value="2"<?php echo $befristung2 ?? ""; ?>>
                             <label for="divers">Keine Angaben</label>
                             <span class="check"></span>
                         </div>
                         <br>
                         <div class="radiobutton">
-                            <input type="radio" name="arbeitszeiten" value="0" <?php echo $arbeitszeit0; ?>>
-                                <label for="male">Vollzeit</label>
-                                <span class="check"></span>
-                                <input type="radio" name="arbeitszeiten" value="1"<?php echo $arbeitszeit1; ?>>
-                                <label for="female">Teilzeit</label>
-                                <span class="check"></span>
-                                <input type="radio" name="arbeitszeiten" value="2"<?php echo $arbeitszeit2; ?>>
-                                <label for="divers">Schicht</label>
-                                <span class="check"></span>
-                                <input type="radio" name="arbeitszeiten" value="3"<?php echo $arbeitszeit3; ?>>
-                                <label for="divers">Heim-/Telearbeit</label>
+                            <input type="radio" name="arbeitszeiten" value="0" <?php echo $arbeitszeit0 ?? ""; ?>>
+                            <label for="male">Vollzeit</label>
                             <span class="check"></span>
-                            <input type="radio" name="arbeitszeiten" value="4"<?php echo $arbeitszeit4; ?>>
+                            <input type="radio" name="arbeitszeiten" value="1"<?php echo $arbeitszeit1 ?? ""; ?>>
+                            <label for="female">Teilzeit</label>
+                            <span class="check"></span>
+                            <input type="radio" name="arbeitszeiten" value="2"<?php echo $arbeitszeit2 ?? ""; ?>>
+                            <label for="divers">Schicht</label>
+                            <span class="check"></span>
+                            <input type="radio" name="arbeitszeiten" value="3"<?php echo $arbeitszeit3 ?? ""; ?>>
+                            <label for="divers">Heim-/Telearbeit</label>
+                            <span class="check"></span>
+                            <input type="radio" name="arbeitszeiten" value="4"<?php echo $arbeitszeit4 ?? ""; ?>>
                             <label for="divers">Minijob</label>
                             <span class="check"></span>
                         </div>
@@ -256,7 +256,7 @@ if (isset($_POST["submit_offer"])) {
                         <label for="street">Beschreibung :<br></label>
                         <textarea name="beschreibung" id="beschreibung" cols="50" rows="7"
                                   placeholder="Was über den Beruf zu sagen ist."
-                                  required><?php echo $beschreibung; ?> </textarea>
+                                  required><?php echo $beschreibung ?? ""; ?> </textarea>
 
                         <div class="form-submit">
                             <?php if (isset($_POST["bearbeiten_offer"])) { ?>
