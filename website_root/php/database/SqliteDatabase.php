@@ -109,7 +109,6 @@ class SqliteDatabase implements Database
      */
     public function execute($command, $values)
     {
-        echo $command;
         if ($this->conn !== null && is_array($values) && is_string($command)) {
             try {
                 $stm = $this->conn->prepare($command);
