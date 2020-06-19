@@ -24,25 +24,25 @@ if (isset($_POST["submit"])) {
     $pw = $_POST["pwsetzen"];
     $pwneu = $_POST["pwwiederholen"];
     $pwalt = $_POST["altespw"];
-if ($pwalt != null) {
-    if ($pwneu == $pw) {
-        if (md5($pwalt) === $pwaktuell) {
+    if ($pwalt != null) {
+        if ($pwneu == $pw) {
+            if (md5($pwalt) === $pwaktuell) {
 
 
-            $u->updatePassword($pwneu, $email);
-            echo "Ihr Passwort wurde erfolgreich geändert";
+                $u->updatePassword($pwneu, $email);
+                echo "Ihr Passwort wurde erfolgreich geändert";
+
+            } else {
+                echo "Ihr altes Passwort ist nicht korrekt";
+            }
 
         } else {
-            echo "Ihr altes Passwort ist nicht korrekt";
+            echo "Die Passwörter stimmen nicht überein. Wiederholen sie die Eingabe";
+
         }
 
-    } else {
-        echo "Die Passwörter stimmen nicht überein. Wiederholen sie die Eingabe";
 
     }
-
-
-}
 }
 if (isset($_POST["profilloeschen"])) {
     $delete = $u->delete($email);
