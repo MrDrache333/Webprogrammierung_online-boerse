@@ -87,7 +87,7 @@ class OfferDAOImpl implements OfferDAO
 
     public function update($offer)
     {
-        $command = "UPDATE offers SET title='" . $offer->getTitle() . "', subtitle='" . $offer->getSubTitle() . "', companyname='" . $offer->getCompanyName() . "', description='" . $offer->getDescription() . "',logo='" . $offer->getLogo() . "',created='" . $offer->getCreated() . "',free='" . $offer->getFree() . "',offerType='" . $offer->getOfferType() . "',duration='" . $offer->getDuration() . "',workModel='" . $offer->getWorkModel() . "' WHERE email='" . $offer->getId() . "'";
+        $command = "UPDATE offers SET title='" . $offer->getTitle() . "', subtitle='" . $offer->getSubTitle() . "', companyname='" . $offer->getCompanyName() . "', description='" . $offer->getDescription() . "',created='" . $offer->getCreated() . "',free='" . $offer->getFree() . "',offerType='" . $offer->getOfferType() . "',duration='" . $offer->getDuration() . "',workModel='" . $offer->getWorkModel() . "' WHERE id='" . $offer->getId() . "'";
         return $this->database->execute($command);
     }
 

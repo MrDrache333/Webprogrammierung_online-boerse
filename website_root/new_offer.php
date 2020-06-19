@@ -12,12 +12,30 @@ include_once 'php/classes.php';
 $OfferDao = new OfferDAOImpl();
 $UserDAO = new UserDAOImpl();
 
+if (isset($_POST["edit_offer"])) {
+    $offer = new Offer();
+    $offer->setTitle($_POST["titel"]);
+    $offer->setSubTitle($_POST["subtitel"]);
+    $offer->setCompanyName($_POST["companyname"]);
+    $offer->setDescription($_POST["beschreibung"]);
 
+    $offer->setId(1);
+    /*$offer->setAddress($_POST["titel"]);*/
+
+    /*$offer->setCreated($_POST["titel"]);*/
+    $offer->setFree($_POST["free"]);
+    $offer->setOfferType($_POST["angebotsart"]);
+    $offer->setDuration($_POST["befristung"]);
+    $offer->setWorkModel($_POST["arbeitszeiten"]);
+    $OfferDao->update($offer);
+    var_dump($offer);
+
+}
 
 if (isset($_POST["bearbeiten_offer"])) {
     $id = $_POST["id_offer"];
     $offer = $OfferDao->getOfferByID($id);
-    var_dump($offer);
+
     if ($offer !== null) {
         //TODO Was passiert, wenn kein Ergebnis zurückgegeben wurde?
     }
@@ -178,7 +196,7 @@ if (isset($_POST["submit_offer"])) {
                         <input type="text" name="ort" id="ort" placeholder="Musterhausen" value="<?php echo $town; ?>"
                                required/>
                         <label for="position">Postleitzahl:</label>
-                        <input type="text" name="plz" id="plz" placeholder="12345" value="<?php echo $plz; ?> "
+                        <input type="text" name="plz" id="plz" placeholder="12345" value="<?php echo $plz; ?>"
                                required/>
                         <label for="position">Standort:</label>
                         <label for="free">Frei ab :</label>
@@ -187,8 +205,8 @@ if (isset($_POST["submit_offer"])) {
                         <br>
                         <div class="radiobutton">
                             <input type="radio" name="angebotsart" value="0" <?php echo $angebotsart0; ?>>
-                                <label for="male">Arbeit</label>
-                                <span class="check"></span>
+                            <label for="male">Arbeit</label>
+                            <span class="check"></span>
                                 <input type="radio" name="angebotsart" value="1"<?php echo $angebotsart1; ?>>
                                 <label for="female">Ausbildung</label>
                                 <span class="check"></span>
@@ -238,9 +256,19 @@ if (isset($_POST["submit_offer"])) {
                                   required></textarea>
 
                         <div class="form-submit">
-                            <input type="submit" value="Anzeige veröffentlichen" class="button_offer"
-                                   name="submit_offer"
-                                   id="submit_offer"/>
+                            <?php if (isset($_POST["bearbeiten_offer"])) { ?>
+                                <input type="submit" value="Bearbeitete Anzeige veröffentlichen" class="button_offer"
+                                       name="edit_offer"
+                                       id="submit_offer"/>
+
+                            <?php } else {
+                                ?>
+                                <input type="submit" value="Anzeige erstellen" class="button_offer"
+                                       name="submit_offer"
+                                       id="submit_offer"/>
+
+                            <?php } ?>
+
                             <input type="reset" value="Zurücksetzen" class="button_offer" name="submit_pb"
                                    id="reset_offer"/>
                         </div>
