@@ -70,7 +70,7 @@ if ($email !== null) {
 
 
 
-            //Einträge anzeigen
+            //Einträge anzeigen1
             displayResults($result);
             /**
              * @param Offer[] $result Ergebnisse der Datenbankabfrage
