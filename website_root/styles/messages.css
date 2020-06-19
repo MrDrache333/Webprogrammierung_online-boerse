@@ -25,10 +25,10 @@
 
 
 .fakeimg {
-  width: 15%;
-  padding: 20px;
+  padding: 10px;
   min-width: 100px;
-  float:left;
+  max-width: 100px;
+  float: left;
 }
 .ads_button{
 color: black;

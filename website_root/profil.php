@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
     $pwalt = $_POST["altespw"];
 if ($pwalt != null) {
     if ($pwneu == $pw) {
-        if ($pwalt == $pwaktuell) {
+        if (md5($pwalt) === $pwaktuell) {
 
 
             $u->updatePassword($pwneu, $email);

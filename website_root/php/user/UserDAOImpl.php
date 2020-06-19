@@ -37,7 +37,7 @@ class UserDAOImpl implements UserDAO
     function create(User $user)
     {
         $command = "insert into user(email, prename, surname, password) values (?,?,?,?)";
-        $values = [$user->getEmail(), $user->getPrename(), $user->getSurname(), $user->getPassword()];
+        $values = [$user->getEmail(), $user->getPrename(), $user->getSurname(), md5($user->getPassword())];
         return UserHelper::getUsersFromSQLResult($this->database->execute($command, $values)) === null;
     }
 
@@ -48,8 +48,8 @@ class UserDAOImpl implements UserDAO
      */
     public function login($email, $password)
     {
-        $command = "select * from user where email=? and password =?";
-        return UserHelper::getUsersFromSQLResult($this->database->execute($command, [$email, $password]));
+        $command = "select * from user where email=? and password=?";
+        return UserHelper::getUsersFromSQLResult($this->database->execute($command, [$email, md5($password)]));
     }
 
     /**
@@ -89,6 +89,6 @@ class UserDAOImpl implements UserDAO
     public function updatePassword($newPassword, $email)
     {
         $command = "UPDATE user SET password=? WHERE email=?";
-        return $this->database->execute($command, [$newPassword, $email]);
+        return $this->database->execute($command, [md5($newPassword), $email]);
     }
 }

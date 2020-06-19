@@ -65,7 +65,6 @@ if ($email !== null) {
         <a href="new_offer.php" class="button_new_offer">Neue Anzeige erstellen</a>
     </div>
     <div class="row">
-        <div class="leftcolumn">
             <?php
 
 
@@ -129,22 +128,6 @@ if ($email !== null) {
             }
 
             ?>
-        </div>
-        <div class="rightcolumn">
-            <div class="card">
-                <h2>Nachrichten</h2>
-                <div class="card">
-                    <div class=" nachricht">
-                        <img class="fakeimg" src="images/company_placeholder.png" alt="Firmenlogo">
-                        <div class="nachrichtenbes">
-                            <h5>Verkäufer/-in (m/w/d)</h5>
-                            Ich möchte mich auf die Stelle bewerben. Anbei finden sie meine Unterlagen.
-                            Geben sie mir bitte Rückmelduung, wenn sie weiter Fragen haben. Vielen Dank.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 </div>
