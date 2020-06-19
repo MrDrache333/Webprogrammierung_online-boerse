@@ -18,23 +18,25 @@ if (isset($_POST["edit_offer"])) {
     $offer->setSubTitle($_POST["subtitel"]);
     $offer->setCompanyName($_POST["companyname"]);
     $offer->setDescription($_POST["beschreibung"]);
-
-    $offer->setId(1);
+    $offerid = $_SESSION["offerid"];
+    $offer->setId($offerid);
+    setcookie("offerid", "false", time() + 60 * 60 * 24);
     /*$offer->setAddress($_POST["titel"]);*/
 
-    /*$offer->setCreated($_POST["titel"]);*/
+
     $offer->setFree($_POST["free"]);
     $offer->setOfferType($_POST["angebotsart"]);
     $offer->setDuration($_POST["befristung"]);
     $offer->setWorkModel($_POST["arbeitszeiten"]);
     $OfferDao->update($offer);
-    var_dump($offer);
+
 
 }
 
 if (isset($_POST["bearbeiten_offer"])) {
     $id = $_POST["id_offer"];
     $offer = $OfferDao->getOfferByID($id);
+    $_SESSION["offerid"] = $id;
 
     if ($offer !== null) {
         //TODO Was passiert, wenn kein Ergebnis zurückgegeben wurde?
@@ -52,6 +54,7 @@ if (isset($_POST["bearbeiten_offer"])) {
     $befristung = $offer->getDuration();
     $angebotsart = $offer->getOfferType();
     $arbeitszeit = $offer->getWorkModel();
+    $beschreibung = $offer->getDescription();
 
 
     if ($angebotsart == 0) {
@@ -242,8 +245,8 @@ if (isset($_POST["submit_offer"])) {
                                 <span class="check"></span>
                                 <input type="radio" name="arbeitszeiten" value="3"<?php echo $arbeitszeit3; ?>>
                                 <label for="divers">Heim-/Telearbeit</label>
-                                <span class="check"></span>
-                                <input type="radio" name="arbeitszeiten" value="4"<?php echo $arbeitszeit4; ?>>
+                            <span class="check"></span>
+                            <input type="radio" name="arbeitszeiten" value="4"<?php echo $arbeitszeit4; ?>>
                             <label for="divers">Minijob</label>
                             <span class="check"></span>
                         </div>
@@ -252,8 +255,8 @@ if (isset($_POST["submit_offer"])) {
 
                         <label for="street">Beschreibung :<br></label>
                         <textarea name="beschreibung" id="beschreibung" cols="50" rows="7"
-                                  placeholder="Was über den Beruf zu sagen ist." value="<?php echo $beschreibung; ?> "
-                                  required></textarea>
+                                  placeholder="Was über den Beruf zu sagen ist."
+                                  required><?php echo $beschreibung; ?> </textarea>
 
                         <div class="form-submit">
                             <?php if (isset($_POST["bearbeiten_offer"])) { ?>
