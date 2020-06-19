@@ -21,9 +21,9 @@ if (isset($_GET['what']) || isset($_GET['where'])) {
     //Wenn gefiltert wurde, oder die Seite neugeladen wurde
 } elseif (isset($_GET['type']) || isset($_GET['duration']) || isset($_GET['time']) || isset($_SESSION['ls_what']) || isset($_SESSION['ls_where'])) {
     //Filter laden, oder leeren
-    $type = htmlspecialchars($_GET['type']);
-    $duration = htmlspecialchars($_GET['duration']);
-    $time = htmlspecialchars($_GET['time']);
+    $type = $_GET['type'] ?? null;
+    $duration = $_GET['duration'] ?? null;
+    $time = $_GET['time'] ?? null;
     //Prüfen, ob gültige Filterwerte übergeben wurden
     if (($type >= 0 && $type <= 3) && ($duration >= 0 && $duration <= 2) && ($time >= 0 && $time <= 4)) {
 

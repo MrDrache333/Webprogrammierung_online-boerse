@@ -36,15 +36,9 @@ class UserDAOImpl implements UserDAO
      */
     function create(User $user)
     {
-        $command = "insert into user(email, prename, surname, password) values (" .
-            "'" .
-            ($user->getEmail()) . "','" .
-            ($user->getPrename()) . "','" .
-            ($user->getSurname()) . "','" .
-            ($user->getPassword()) .
-            "')";
-        $command = str_replace("''", "null", $command);
-        return UserHelper::getUsersFromSQLResult($this->database->execute($command)) === null;
+        $command = "insert into user(email, prename, surname, password) values (?,?,?,?)";
+        $values = [$user->getEmail(), $user->getPrename(), $user->getSurname(), $user->getPassword()];
+        return UserHelper::getUsersFromSQLResult($this->database->execute($command, $values)) === null;
     }
 
     /**
@@ -54,8 +48,8 @@ class UserDAOImpl implements UserDAO
      */
     public function login($email, $password)
     {
-        $command = "select * from user where email like '" . $email . "' and password like '" . $password . "'";
-        return UserHelper::getUsersFromSQLResult($this->database->query($command));
+        $command = "select * from user where email=? and password =?";
+        return UserHelper::getUsersFromSQLResult($this->database->execute($command, [$email, $password]));
     }
 
     /**
@@ -64,8 +58,8 @@ class UserDAOImpl implements UserDAO
      */
     public function findUserByMail($email)
     {
-        $command = "select * from user where email='" . $email . "'";
-        return UserHelper::getUsersFromSQLResult($this->database->query($command));
+        $command = "select * from user where email=?";
+        return UserHelper::getUsersFromSQLResult($this->database->execute($command, [$email]));
     }
 
     /**
@@ -76,26 +70,25 @@ class UserDAOImpl implements UserDAO
     {
         /* $command = "UPDATE user Set email '" . $email . "'prename'" . $prename . "'surname'" . $surname . "'";
          return $this->database->execute($command);*/
-        $command = "UPDATE user SET prename='" . $user->getPrename() . "', surname='" . $user->getSurname() . "' WHERE email='" . $user->getEmail() . "'";
-        return $this->database->execute($command);
+        $command = "UPDATE user SET prename=?, surname=? WHERE email=?";
+        $values = [$user->getPrename(), $user->getSurname(), $user->getEmail()];
+        return $this->database->execute($command, $values);
     }
 
     /**
-     * @param User $user Der zu löschende Nutzer
+     * @param $email String Mailadresse des Nutzers
      * @return bool Erfolgreich?
      */
-    public function delete($user)
+    public function delete($email)
     {
-        $command = "delete from user where email='" . $user . "'";
-        return $this->database->execute($command) !== null;
+        $command = "delete from user where email=?";
+        return $this->database->execute($command, [$email]) !== null;
     }
 
 
     public function updatePassword($newPassword, $email)
     {
-        /* $command = "UPDATE user Set email '" . $email . "'prename'" . $prename . "'surname'" . $surname . "'";
-         return $this->database->execute($command);*/
-        $command = "UPDATE user SET password='" . $newPassword . "' WHERE email='" . $email . "'";
-        return $this->database->execute($command);
+        $command = "UPDATE user SET password=? WHERE email=?";
+        return $this->database->execute($command, [$newPassword, $email]);
     }
 }

@@ -4,9 +4,6 @@ namespace php\database;
 
 class DatabaseController
 {
-    //Zu nutzende Datenbank (SQLITE oder MARIADB)
-    private static $USED_TYPE = "SQLITE";
-
     private static $database;
 
     /**
@@ -14,18 +11,13 @@ class DatabaseController
      */
     public function __construct()
     {
-
-        if (self::$USED_TYPE === "MARIADB") {
-            self::$database = new MariaDBDatabase();
-        } elseif (self::$USED_TYPE === "SQLITE") {
-            self::$database = new SqliteDatabase();
-        }
+        self::$database = new SqliteDatabase();
     }
 
     /**
-     * @return MariaDBDatabase|SqliteDatabase
+     * @return SqliteDatabase
      */
-    public static function getDatabase()
+    public static function getDatabase(): SqliteDatabase
     {
         return self::$database;
     }

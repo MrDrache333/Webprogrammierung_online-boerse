@@ -25,16 +25,9 @@ class AddressDAOImpl implements AddressDAO
      */
     public function create(Address $address)
     {
-        $command = "insert into address(state, town, street, number, plz)  values (" .
-            "'" .
-            ($address->getState()) . "','" .
-            ($address->getTown()) . "','" .
-            ($address->getStreet()) . "'," .
-            ($address->getNumber()) . ",'" .
-            ($address->getPlz()) .
-            "')";
-        $command = str_replace(array(",,", "''"), array(",null,", "null"), $command);
-        return $this->database->execute($command) !== null;
+        $command = "insert into address(state, town, street, number, plz)  values (?,?,?,?,?)";
+        $values = [$address->getState(), $address->getTown(), $address->getStreet(), $address->getNumber(), $address->getPlz()];
+        return $this->database->execute($command, $values) !== null;
     }
 
     /**
@@ -42,8 +35,8 @@ class AddressDAOImpl implements AddressDAO
      */
     public function delete($id)
     {
-        $command = "DELETE FROM address WHERE ID='" . $id . "'";
-        return $this->database->execute($command);
+        $command = "DELETE FROM address WHERE ID=?";
+        return $this->database->execute($command, [$id]);
     }
 
     /**
@@ -56,7 +49,8 @@ class AddressDAOImpl implements AddressDAO
 
     public function findAddressId(Address $address)
     {
-        $command = "SELECT * FROM address WHERE state='" . $address->getState() . "' AND town='" . $address->getTown() . "' AND street='" . $address->getStreet() . "' AND number='" . $address->getNumber() . "'";
-        return AddressHelper::getAddressFromSQLResult($this->database->query($command));
+        $command = "SELECT * FROM address WHERE state=? AND town=? AND street=? AND number=? AND plz=?";
+        $values = [$address->getState(), $address->getTown(), $address->getStreet(), $address->getNumber(), $address->getPlz()];
+        return AddressHelper::getAddressFromSQLResult($this->database->execute($command, $values));
     }
 }

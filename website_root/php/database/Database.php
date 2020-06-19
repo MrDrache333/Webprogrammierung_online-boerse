@@ -29,10 +29,11 @@ interface Database
     public function disconnect(): ?bool;
 
     /**
-     * @param $command
+     * @param $command String Auszuführender Befehl
+     * @param $values array Zu übergebene Parameter
      * @return mixed
      */
-    public function execute($command);
+    public function execute($command, $values);
 
     /**
      * @param $command

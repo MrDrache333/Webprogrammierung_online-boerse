@@ -107,15 +107,17 @@ class SqliteDatabase implements Database
     /**
      * @inheritDoc
      */
-    public function execute($command)
+    public function execute($command, $values)
     {
-        if ($this->conn !== null) {
+        echo $command;
+        if ($this->conn !== null && is_array($values) && is_string($command)) {
             try {
                 $stm = $this->conn->prepare($command);
-                $this->conn->beginTransaction();
-                $result = $stm->execute();
-                $this->conn->commit();
-                return $result;
+                for ($i = 1, $iMax = count($values); $i <= $iMax; $i++) {
+                    $stm->bindParam($i, $values[$i - 1]);
+                }
+                $stm->execute();
+                return $stm->fetchAll();
             } catch (PDOException $e) {
                 print $e;
                 return false;

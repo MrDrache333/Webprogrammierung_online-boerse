@@ -2,7 +2,6 @@
 include 'database/Database.php';
 include 'database/DatabaseController.php';
 include 'database/SqliteDatabase.php';
-include 'database/MariaDBDatabase.php';
 include 'address/Address.php';
 include 'address/AddressDAO.php';
 include 'address/AddressHelper.php';
