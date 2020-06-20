@@ -123,7 +123,7 @@ if (isset($_POST["pb_submit"])) {
                                 </div>
                             </div>
 
-                            <!-- Möglich für Passwort vergessen-->
+                            <!-- Möglich für Passwort vergessen1-->
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="state">altes Passwort:</label>
