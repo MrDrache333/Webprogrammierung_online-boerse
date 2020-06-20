@@ -17,6 +17,13 @@ list-type-ulli {
     padding: 0;
 }
 
+.delete {
+    background-color: red;
+    margin-top: 20px;
+    width: 140px;
+    height: 40px;
+}
+
 img {
     max-width: 80%;
     height: auto;
@@ -27,6 +34,8 @@ img {
 }
 
 .submit {
+    background: #A2B3F8;
+    color: #fff;
 
 
 }
@@ -202,11 +211,8 @@ input {
     color: #fff;
 }
 
-#submit, #submit_pb {
-    background: #A2B3F8;
-    color: #fff;
-}
 
 #submit:hover, #submit_pb:hover {
     background-color: #A2B3F8;
 }
+

@@ -24,7 +24,7 @@ if (isset($_POST["submit"])) {
     $pw = $_POST["pwsetzen"];
     $pwneu = $_POST["pwwiederholen"];
     $pwalt = $_POST["altespw"];
-    if ($pwalt != null) {
+    if ($pwalt != null && $pwneu != null) {
         if ($pwneu == $pw) {
             if (md5($pwalt) === $pwaktuell) {
 
@@ -149,9 +149,10 @@ if (isset($_POST["pb_submit"])) {
 
                             </div>
 
-                            <input type="submit" value="Profil löschen" class="submit" name="profilloeschen"
+
+                            <input type="submit" value="Speichern" class="submit" name="submit_pb" id="submit"/>
+                            <input type="submit" value="Profil löschen" class="delete" name="profilloeschen"
                                    id="submit"/>
-                            <input type="submit" value="Speichern" class="submit" name="submit" id="submit"/>
                     </div>
                 </div>
                 </form>
