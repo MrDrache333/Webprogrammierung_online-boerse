@@ -67,6 +67,15 @@ class SqliteDatabase implements Database
                             surname VARCHAR(50) DEFAULT NULL,
                             password VARCHAR(30) DEFAULT NULL
                             );",
+            "INSERT INTO user VALUES(0,'demo@demo.de','Max','Mustermann','" . md5('demo') . "')",
+            "INSERT INTO user VALUES(1,'demo2@demo.de','Maxime','Musterfrau','" . md5('demo') . "')",
+            "INSERT INTO address VALUES(0,'Deutschland','Musterstadt','Musterstraße',123,12345)",
+            "INSERT INTO address VALUES(1,'Deutschland','Musterstadt','Musterstraße',124,12345)",
+            "INSERT INTO address VALUES(2,'Deutschland','Musterstadt','Musterstraße',125,12345)",
+            "INSERT INTO offers VALUES(0,'Verkäuferin (m/w/d)','Einzelhandel','MusterFirma','Wir suchen in absehbarer Zeit eine neue Aushilfe im Einzelhandel der Musterfirma-Reihe. Ein gepflegtes Aussehen und ein freundlicher Umgangston sind erwünscht.',0,'2020-06-20','2020-07-01',1,2,2,0)",
+            "INSERT INTO offers VALUES(1,'Lagerist (m/w/d)','Baumarkt','YourCompany','Wir suchen in absehbarer Zeit eine neue Aushilfe im Lager einer unserer Großbaumärkte der YourCompany-Reihe. Ein gepflegtes Aussehen und ein freundlicher Umgangston sind erwünscht.',0,'2020-06-19','2020-07-15',2,2,3,0)",
+            "INSERT INTO offers VALUES(2,'Reinigungsfachkraft (m/w/d)','Hotel','SomeSoft GmbH','Wir suchen in absehbarer Zeit eine neue Aushilfe im Einzelhandel der SomeSoft-Reihe. Ein gepflegtes Aussehen und ein freundlicher Umgangston sind erwünscht.',1,'2020-06-21','2020-08-01',1,1,1,0)"
+
         ];
 
         foreach ($commands as $command) {
@@ -92,8 +101,13 @@ class SqliteDatabase implements Database
      */
     public function connect(): ?bool
     {
-        $this->conn = new PDO('sqlite:../DB.sqlite3') or die("Cannot open the Database");
-        return $this->create();
+        if (file_exists('../DB.sqlite3')) {
+            $this->conn = new PDO('sqlite:../DB.sqlite3') or die("Cannot open the Database");
+        } else {
+            $this->conn = new PDO('sqlite:../DB.sqlite3') or die("Cannot open the Database");
+            return $this->create();
+        }
+        return true;
     }
 
     /**
