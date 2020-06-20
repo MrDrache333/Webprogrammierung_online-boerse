@@ -188,7 +188,7 @@ if (isset($_POST["submit_offer"])) {
                     <form method="POST" class="new_offer-form" id="new_offer-form" action="messages.php"></form>
                 </div>
             </div>
-            <div class="rightcolumn">
+            <div class="middlecolumn">
                 <div class="card">
                     <h2>Meine Informationen</h2>
                     <form method="POST" class="new_offer-form" id="new_offer-form">
@@ -217,12 +217,17 @@ if (isset($_POST["submit_offer"])) {
                                required/>
                         <label for="position">Standort:</label>
                         <label for="free">Frei ab :</label>
-                        <input type="date" name="free" id="free" placeholder="2021-01-01"
+                        <input type="date" name="free" id="free" placeholder="2021-01-01" class="date_free"
                                value="<?php echo $free ?? ""; ?>"
                                required/>
                         <br>
-                        <div class="radiobutton">
-                            <input type="radio" name="angebotsart" value="0" <?php echo $angebotsart0 ?? ""; ?>>
+                </div>
+            </div>
+            <div class="rightcolumne">
+                <div class="card">
+                    Angebotsart:
+                    <div class="radiobutton">
+                        <input type="radio" name="angebotsart" value="0" <?php echo $angebotsart0 ?? ""; ?>>
                             <label for="male">Arbeit</label>
                             <span class="check"></span>
                             <input type="radio" name="angebotsart" value="1"<?php echo $angebotsart1 ?? ""; ?>>
@@ -232,24 +237,27 @@ if (isset($_POST["submit_offer"])) {
                             <label for="divers">Praktikum</label>
                             <span class="check"></span>
                             <input type="radio" name="angebotsart" value="3"<?php echo $angebotsart3 ?? ""; ?>>
-                            <label for="divers">Selbstständigkeit</label>
-                            <span class="check"></span>
-                        </div>
-                        <br>
-                        <div class="radiobutton">
-                            <input type="radio" name="befristung" value="0" <?php echo $befristung0 ?? ""; ?>>
+                        <label for="divers">Selbstständigkeit</label>
+                        <span class="check"></span>
+                    </div>
+                    <br>
+                    Befristung:
+                    <div class="radiobutton">
+                        <input type="radio" name="befristung" value="0" <?php echo $befristung0 ?? ""; ?>>
                             <label for="male">Befristet</label>
                             <span class="check"></span>
                             <input type="radio" name="befristung" value="1"<?php echo $befristung1 ?? ""; ?>>
                             <label for="female">Unbefristet</label>
                             <span class="check"></span>
                             <input type="radio" name="befristung" value="2"<?php echo $befristung2 ?? ""; ?>>
-                            <label for="divers">Keine Angaben</label>
-                            <span class="check"></span>
-                        </div>
-                        <br>
-                        <div class="radiobutton">
-                            <input type="radio" name="arbeitszeiten" value="0" <?php echo $arbeitszeit0 ?? ""; ?>>
+                        <label for="divers">Keine Angaben</label>
+                        <span class="check"></span>
+                    </div>
+                    <br>
+                    Arbeitszeit:
+
+                    <div class="radiobutton">
+                        <input type="radio" name="arbeitszeiten" value="0" <?php echo $arbeitszeit0 ?? ""; ?>>
                             <label for="male">Vollzeit</label>
                             <span class="check"></span>
                             <input type="radio" name="arbeitszeiten" value="1"<?php echo $arbeitszeit1 ?? ""; ?>>
@@ -287,8 +295,7 @@ if (isset($_POST["submit_offer"])) {
 
                             <?php } ?>
 
-                            <input type="reset" value="Zurücksetzen" class="button_offer" name="submit_pb"
-                                   id="reset_offer"/>
+
                         </div>
 
                     </form>

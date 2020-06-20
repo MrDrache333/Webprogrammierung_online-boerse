@@ -151,7 +151,7 @@ if (isset($_POST["pb_submit"])) {
 
 
                             <input type="submit" value="Speichern" class="submit" name="submit_pb" id="submit"/>
-                            <input type="submit" value="Profil löschen" class="delete" name="profilloeschen"
+                            <input type="submit" value="Profil löschen" class="delete " name="profilloeschen"
                                    id="submit"/>
                     </div>
                 </div>
