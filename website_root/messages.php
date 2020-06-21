@@ -9,11 +9,12 @@ use php\user\UserDAOImpl;
 $email = $_COOKIE['email'] ?? null;
 $eingelogt = $_COOKIE['loggedin'];
 if ($eingelogt != "true") {
-    $_SESSION["error"] = "loggout"
+    $_SESSION["error"] = "loggout";
     ?>
     <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
 } else {
     if ($email !== null) {
+
 
         //User abfragen
         $user = new UserDAOImpl();
@@ -48,6 +49,7 @@ if ($eingelogt != "true") {
 
     }
 }
+echo $_SESSION["error"];
 ?>
 <div class="header">
     <nav>

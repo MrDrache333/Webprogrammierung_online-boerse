@@ -14,33 +14,88 @@ $UserDAO = new UserDAOImpl();
 
 $eingelogt = $_COOKIE['loggedin'];
 if ($eingelogt != "true") {
-    $_SESSION["error"] = "loggout"
+    $_SESSION["error"] = "loggout";
     ?>
     <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
 } else {
 
     if (isset($_POST["edit_offer"])) {
         if ($eingelogt == "true") {
+
             $offer = new Offer();
-            $offer->setTitle($_POST["titel"]);
-            $offer->setSubTitle($_POST["subtitel"]);
-            $offer->setCompanyName($_POST["companyname"]);
-            $offer->setDescription($_POST["beschreibung"]);
-            $offerid = $_SESSION["offerid"];
-            $offer->setId($offerid);
-            setcookie("offerid", "false", time() + 60 * 60 * 24);
-            /*$offer->setAddress($_POST["titel"]);*/
+            $titel = $_POST["titel"];
+            $subtitle = $_POST["subtitel"];
+            $companyname = $_POST["companyname"];
+            $beschreibung = $_POST["beschreibung"];
+            $free = $_POST["free"];
+            $art = $_POST["angebotsart"];
+            $befristung = $_POST["befristung"];
+            $arbeitszeit = $_POST["arbeitszeiten"];
 
 
-            $offer->setFree($_POST["free"]);
-            $offer->setOfferType($_POST["angebotsart"]);
-            $offer->setDuration($_POST["befristung"]);
-            $offer->setWorkModel($_POST["arbeitszeiten"]);
-            $OfferDao->update($offer);
-            ?>
-            <script language="javascript" type="text/javascript"> document.location = "messages.php"; </script><?php
+            if (!preg_match('/[a-zA-Z]{3,50}/', $titel)) {
+                $_SESSION["error"] .= "Ihr Titel ist falsch.";
+            }
+            if (!preg_match('/[a-zA-Z]{3,50}/', $subtitle)) {
+                $_SESSION["error"] .= " Ihr Untertitel ist falsch.";
+            }
+            /*  if (!preg_match('/[a-zA-Z]{3,50}/', $straße)) {
+                  $_SESSION["error"] .= "Ihr Straße ist falsch.";
+              }
+              if (!preg_match('/[a-zA-Z0-9]{1,50}/', $hsnr)) {
+                  $_SESSION["error"] .= " Ihr Hausnummer ist falsch.";
+              }
+              if (!preg_match('/([a-zA-Z]){2,20}/', $ort)) {
+                  $_SESSION["error"] .= " Ihre Ort ist falsch.";
+              }
+              if (!preg_match('/([0-9]){5,5}/', $plz)) {
+                  $_SESSION["error"] .= " Ihre Postleitzahl ist falsch.";
+              }*/
+            if (!preg_match('/[0-9]{3,50}/', $free)) {
+                $_SESSION["error"] .= " Ihr Verfügbarkeitsdatumfrei ist falsch.";
+            }
+            if (!preg_match('/([a-zA-Z0-9]){5,20}/', $beschreibung)) {
+                $_SESSION["error"] .= " Ihre Beschreibung ist falsch. ";
+            }
+            if (!preg_match('/([a-zA-Z]){3,50}/', $companyname)) {
+                $_SESSION["error"] .= "Ihr Firmenname ist falsch. ";
+            }
+            if ($art == null) {
+                $_SESSION["error"] .= "Ihr Angebotsart ist nicht gesetzt. ";
+            }
+            if ($befristung == null) {
+                $_SESSION["error"] .= "Ihr Befristung ist nicht gesetzt. ";
+            }
+            if ($arbeitszeit == null) {
+                $_SESSION["error"] .= "Ihr Arbeitszeit ist nicht gesetzt. ";
+            }
+
+            if ($_SESSION["error"] == null) {
+
+                $offer->setTitle(htmlspecialchars($titel));
+                $offer->setSubTitle(htmlspecialchars($subtitle));
+                $offer->setCompanyName(htmlspecialchars($companyname));
+                $offer->setDescription(htmlspecialchars($beschreibung));
+                $offerid = $_SESSION["offerid"];
+                $offer->setId($offerid);
+                setcookie("offerid", "false", time() + 60 * 60 * 24);
+                /*$offer->setAddress($_POST["titel"]);*/
 
 
+                $offer->setFree(htmlspecialchars($free));
+                $offer->setOfferType($art);
+                $offer->setDuration($befristung);
+                $offer->setWorkModel($arbeitszeit);
+                $OfferDao->update($offer);
+
+                ?>
+                <script language="javascript" type="text/javascript"> document.location = "messages.php"; </script><?php
+
+
+            } else {
+                echo $_SESSION["error"];
+                unset($_SESSION["error"]);
+            }
         }
 }
 
@@ -62,7 +117,7 @@ if ($eingelogt != "true") {
             $hsnr = $AddressObjekt->getNumber();
             $plz = $AddressObjekt->getPlz();
             $country = $AddressObjekt->getState();
-            $town = $AddressObjekt->getTown();
+            $ort = $AddressObjekt->getTown();
             $free = $offer->getFree();
             $befristung = $offer->getDuration();
             $angebotsart = $offer->getOfferType();
@@ -121,42 +176,82 @@ if ($eingelogt != "true") {
                 $titel = htmlspecialchars($_POST["titel"]);
                 $subtitle = htmlspecialchars($_POST["subtitel"]);
                 $straße = htmlspecialchars($_POST["straße"]);
-                $hausnummer = htmlspecialchars($_POST["hausnummer"]);
+                $hsnr = htmlspecialchars($_POST["hausnummer"]);
                 $ort = htmlspecialchars($_POST["ort"]);
                 $plz = htmlspecialchars($_POST["plz"]);
                 $free = htmlspecialchars($_POST["free"]);
                 $beschreibung = htmlspecialchars($_POST["beschreibung"]);
                 $companyname = htmlspecialchars($_POST["companyname"]);
-
                 $art = $_POST['angebotsart'];
                 $befristung = $_POST['befristung'];
                 $arbeitszeit = $_POST['arbeitszeiten'];
 
+                if (!preg_match('/[a-zA-Z]{3,50}/', $titel)) {
+                    $_SESSION["error"] .= "Ihr Titel ist falsch.";
+                }
+                if (!preg_match('/[a-zA-Z]{3,50}/', $subtitle)) {
+                    $_SESSION["error"] .= " Ihr Untertitel ist falsch.";
+                }
+                if (!preg_match('/[a-zA-Z]{3,50}/', $straße)) {
+                    $_SESSION["error"] .= "Ihr Straße ist falsch.";
+                }
+                if (!preg_match('/[a-zA-Z0-9]{1,50}/', $hsnr)) {
+                    $_SESSION["error"] .= " Ihr Hausnummer ist falsch.";
+                }
+                if (!preg_match('/([a-zA-Z]){2,20}/', $ort)) {
+                    $_SESSION["error"] .= " Ihre Ort ist falsch.";
+                }
+                if (!preg_match('/([0-9]){5,5}/', $plz)) {
+                    $_SESSION["error"] .= " Ihre Postleitzahl ist falsch.";
+                }
+                if (!preg_match('/[0-9]{3,50}/', $free)) {
+                    $_SESSION["error"] .= " Ihr Verfügbarkeitsdatumfrei ist falsch.";
+                }
+                if (!preg_match('/([a-zA-Z0-9]){5,20}/', $beschreibung)) {
+                    $_SESSION["error"] .= " Ihre Beschreibung ist falsch. ";
+                }
+                if (!preg_match('/([a-zA-Z]){3,50}/', $companyname)) {
+                    $_SESSION["error"] .= "Ihr Firmenname ist falsch. ";
+                }
+                if ($art == null) {
+                    $_SESSION["error"] .= "Ihr Angebotsart ist nicht gesetzt. ";
+                }
+                if ($befristung == null) {
+                    $_SESSION["error"] .= "Ihr Befristung ist nicht gesetzt. ";
+                }
+                if ($arbeitszeit == null) {
+                    $_SESSION["error"] .= "Ihr Arbeitszeit ist nicht gesetzt. ";
+                }
 
-                $address = new Address(1, "Deutschland", $ort, $straße, $hausnummer, $plz);
-                $offer = new Offer();
-                $offer->setAddress($address);
-                $offer->setTitle($titel);
-                $offer->setSubTitle($subtitle);
-                $offer->setFree(date($free));
-                $offer->setCompanyName($companyname);
-                $offer->setDescription($beschreibung);
-                $offer->setCreated(date("Y-m-d"));
-                $offer->setDuration($befristung);
-                $offer->setOfferType($art);
-                $offer->setCreator($idaktuelle);
-                $offer->setWorkModel($arbeitszeit);
-                $result = $OfferDao->create($offer);
-                ?>
-                <script language="javascript" type="text/javascript"> document.location = "messages.php"; </script><?php
+                if ($_SESSION["error"] == null) {
+
+
+                    $address = new Address(1, "Deutschland", $ort, $straße, $hsnr, $plz);
+                    $offer = new Offer();
+                    $offer->setAddress($address);
+                    $offer->setTitle($titel);
+                    $offer->setSubTitle($subtitle);
+                    $offer->setFree(date($free));
+                    $offer->setCompanyName($companyname);
+                    $offer->setDescription($beschreibung);
+                    $offer->setCreated(date("Y-m-d"));
+                    $offer->setDuration($befristung);
+                    $offer->setOfferType($art);
+                    $offer->setCreator($idaktuelle);
+                    $offer->setWorkModel($arbeitszeit);
+                    $result = $OfferDao->create($offer);
+                    ?>
+                    <script language="javascript"
+                            type="text/javascript"> document.location = "messages.php"; </script><?php
+                } else {
+                    echo $_SESSION["error"];
+                    unset($_SESSION["error"]);
+                }
             } else {
                 echo "Alle Felder bitte ausfüllen";
             }
-        } else {
-            echo "Sie wurden zwischenzeitlich ausgeloggt";
-
-
         }
+        unset($_SESSION["error"]);
     }
 }
 
@@ -218,7 +313,7 @@ if ($eingelogt != "true") {
                                value="<?php echo $hsnr ?? ""; ?>" required/>
                         <label for="position">Ort:</label>
                         <input type="text" name="ort" id="ort" placeholder="Musterhausen"
-                               value="<?php echo $town ?? ""; ?>"
+                               value="<?php echo $ort ?? ""; ?>"
                                required/>
                         <label for="position">Postleitzahl:</label>
                         <input type="text" name="plz" id="plz" placeholder="12345" value="<?php echo $plz ?? ""; ?>"
