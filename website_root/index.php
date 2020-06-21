@@ -1,4 +1,11 @@
 <?php include "header.php"; ?>
+<?php if ($_SESSION["error"] == "loggout") {
+
+    echo "Sie wurden zwischenzeitlich ausgeloggt. Bitte Loggen Sie sich wieder ein um weiter zu verfahren.";
+    unset($_SESSION["error"]);
+} else {
+}
+?>
 <div class="header">
     <ul class="navi">
 
@@ -21,6 +28,7 @@
         <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
     </ul>
 </div>
+
 <div class="content">
     <form class="searchBox" method="GET" action="search_job.php">
         <div class="searchBox-grid">

@@ -14,6 +14,7 @@ $UserDAO = new UserDAOImpl();
 
 $eingelogt = $_COOKIE['loggedin'];
 if ($eingelogt != "true") {
+    $_SESSION["error"] = "loggout"
     ?>
     <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
 } else {
@@ -36,11 +37,11 @@ if ($eingelogt != "true") {
             $offer->setDuration($_POST["befristung"]);
             $offer->setWorkModel($_POST["arbeitszeiten"]);
             $OfferDao->update($offer);
+            ?>
+            <script language="javascript" type="text/javascript"> document.location = "messages.php"; </script><?php
 
 
-        } else {
-            echo "Sie wurden zwischenzeitlich ausgeloogt";
-}
+        }
 }
 
     if (isset($_POST["bearbeiten_offer"])) {
@@ -104,8 +105,6 @@ if ($eingelogt != "true") {
                 $arbeitszeit4 = "checked";
             }
 
-        } else {
-            echo "Sie wurden zwischenzeitlich ausgeloogt";
         }
 }
 
@@ -148,7 +147,8 @@ if ($eingelogt != "true") {
                 $offer->setCreator($idaktuelle);
                 $offer->setWorkModel($arbeitszeit);
                 $result = $OfferDao->create($offer);
-
+                ?>
+                <script language="javascript" type="text/javascript"> document.location = "messages.php"; </script><?php
             } else {
                 echo "Alle Felder bitte ausfüllen";
             }
