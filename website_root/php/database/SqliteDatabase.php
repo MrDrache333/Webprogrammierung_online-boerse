@@ -126,10 +126,7 @@ class SqliteDatabase implements Database
         if ($this->conn !== null && is_array($values) && is_string($command)) {
             try {
                 $stm = $this->conn->prepare($command);
-                for ($i = 1, $iMax = count($values); $i <= $iMax; $i++) {
-                    $stm->bindParam($i, $values[$i - 1]);
-                }
-                $stm->execute();
+                $stm->execute($values);
                 return $stm->fetchAll();
             } catch (PDOException $e) {
                 print $e;
