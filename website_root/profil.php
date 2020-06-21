@@ -5,11 +5,17 @@ use php\user\User;
 use php\user\UserDAOImpl;
 
 include_once 'php/classes.php';
-$u = new UserDAOImpl();
-$email = $_COOKIE["email"];
-$user = $u->findUserByMail($email);
-$pwaktuell = $user->getPassword();
 
+$eingelogt = $_COOKIE['loggedin'];
+if ($eingelogt != "true") {
+    ?>
+    <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
+} else {
+    $u = new UserDAOImpl();
+    $email = $_COOKIE["email"];
+    $user = $u->findUserByMail($email);
+    $pwaktuell = $user->getPassword();
+}
 
 if (isset($_POST["submit"])) {
     $name = $_POST["name"];

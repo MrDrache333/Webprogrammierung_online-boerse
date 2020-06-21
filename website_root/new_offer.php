@@ -12,143 +12,151 @@ include_once 'php/classes.php';
 $OfferDao = new OfferDAOImpl();
 $UserDAO = new UserDAOImpl();
 
-
-if (isset($_POST["edit_offer"])) {
-if ($_COOKIE[“loggedin“] == "true") {
-    $offer = new Offer();
-    $offer->setTitle($_POST["titel"]);
-    $offer->setSubTitle($_POST["subtitel"]);
-    $offer->setCompanyName($_POST["companyname"]);
-    $offer->setDescription($_POST["beschreibung"]);
-    $offerid = $_SESSION["offerid"];
-    $offer->setId($offerid);
-    setcookie("offerid", "false", time() + 60 * 60 * 24);
-    /*$offer->setAddress($_POST["titel"]);*/
-
-
-    $offer->setFree($_POST["free"]);
-    $offer->setOfferType($_POST["angebotsart"]);
-    $offer->setDuration($_POST["befristung"]);
-    $offer->setWorkModel($_POST["arbeitszeiten"]);
-    $OfferDao->update($offer);
-
-
+$eingelogt = $_COOKIE['loggedin'];
+if ($eingelogt != "true") {
+    ?>
+    <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
 } else {
-    echo "Sie wurden zwischenzeitlich ausgeloogt";
-}
-}
 
-if (isset($_POST["bearbeiten_offer"])) {
-    if ($_COOKIE[“loggedin“] == "true") {
-        $id = $_POST["id_offer"];
-        $offer = $OfferDao->getOfferByID($id);
-        $_SESSION["offerid"] = $id;
-
-        if ($offer !== null) {
-            //TODO Was passiert, wenn kein Ergebnis zurückgegeben wurde?
-        }
-        $titel = $offer->getTitle();
-        $subtitle = $offer->getSubTitle();
-        $AddressObjekt = $offer->getAddress();
-        $companyname = $offer->getCompanyName();
-        $straße = $AddressObjekt->getStreet();
-        $hsnr = $AddressObjekt->getNumber();
-        $plz = $AddressObjekt->getPlz();
-        $country = $AddressObjekt->getState();
-        $town = $AddressObjekt->getTown();
-        $free = $offer->getFree();
-        $befristung = $offer->getDuration();
-        $angebotsart = $offer->getOfferType();
-        $arbeitszeit = $offer->getWorkModel();
-        $beschreibung = $offer->getDescription();
-
-
-        if ($angebotsart == 0) {
-            $angebotsart0 = "checked";
-        } elseif ($angebotsart == 1) {
-            $angebotsart1 = "checked";
-        } elseif ($angebotsart == 2) {
-            $angebotsart2 = "checked";
-        } elseif ($angebotsart == 3) {
-            $angebotsart3 = "checked";
-        } else {
-            $angebotsart4 = "checked";
-        }
-
-        if ($befristung == 0) {
-            $befristung0 = "checked";
-        } elseif ($befristung == 1) {
-            $befristung1 = "checked";
-        } elseif ($befristung == 2) {
-            $befristung2 = "checked";
-        } else {
-            $befristung3 = "checked";
-        }
-
-
-        if ($arbeitszeit == 0) {
-            $arbeitszeit0 = "checked";
-        } elseif ($arbeitszeit == 1) {
-            $arbeitszeit1 = "checked";
-        } elseif ($arbeitszeit == 2) {
-            $arbeitszeit2 = "checked";
-        } elseif ($arbeitszeit == 3) {
-            $arbeitszeit3 = "checked";
-        } else {
-            $arbeitszeit4 = "checked";
-        }
-
-    } else {
-        echo "Sie wurden zwischenzeitlich ausgeloogt";
-    }
-}
-
-
-if (isset($_POST["submit_offer"])) {
-    if ($_COOKIE[“loggedin“] == "true") {
-
-        if (isset($_POST["titel"], $_POST["subtitel"], $_POST["straße"], $_POST["hausnummer"], $_POST["ort"], $_POST["plz"], $_POST["free"], $_POST["beschreibung"], $_POST["companyname"])) {
-            $AddressDAO = $OfferDao->getAddressDAOImpl();
-            $email = $_COOKIE["email"];
-            $user = $UserDAO->findUserByMail($email);
-            $idaktuelle = $user->getId();
-
-            $titel = htmlspecialchars($_POST["titel"]);
-            $subtitle = htmlspecialchars($_POST["subtitel"]);
-            $straße = htmlspecialchars($_POST["straße"]);
-            $hausnummer = htmlspecialchars($_POST["hausnummer"]);
-            $ort = htmlspecialchars($_POST["ort"]);
-            $plz = htmlspecialchars($_POST["plz"]);
-            $free = htmlspecialchars($_POST["free"]);
-            $beschreibung = htmlspecialchars($_POST["beschreibung"]);
-            $companyname = htmlspecialchars($_POST["companyname"]);
-
-            $art = $_POST['angebotsart'];
-            $befristung = $_POST['befristung'];
-            $arbeitszeit = $_POST['arbeitszeiten'];
-
-
-            $address = new Address(1, "Deutschland", $ort, $straße, $hausnummer, $plz);
+    if (isset($_POST["edit_offer"])) {
+        if ($eingelogt == "true") {
             $offer = new Offer();
-            $offer->setAddress($address);
-            $offer->setTitle($titel);
-            $offer->setSubTitle($subtitle);
-            $offer->setFree(date($free));
-            $offer->setCompanyName($companyname);
-            $offer->setDescription($beschreibung);
-            $offer->setCreated(date("Y-m-d"));
-            $offer->setDuration($befristung);
-            $offer->setOfferType($art);
-            $offer->setCreator($idaktuelle);
-            $offer->setWorkModel($arbeitszeit);
-            $result = $OfferDao->create($offer);
+            $offer->setTitle($_POST["titel"]);
+            $offer->setSubTitle($_POST["subtitel"]);
+            $offer->setCompanyName($_POST["companyname"]);
+            $offer->setDescription($_POST["beschreibung"]);
+            $offerid = $_SESSION["offerid"];
+            $offer->setId($offerid);
+            setcookie("offerid", "false", time() + 60 * 60 * 24);
+            /*$offer->setAddress($_POST["titel"]);*/
+
+
+            $offer->setFree($_POST["free"]);
+            $offer->setOfferType($_POST["angebotsart"]);
+            $offer->setDuration($_POST["befristung"]);
+            $offer->setWorkModel($_POST["arbeitszeiten"]);
+            $OfferDao->update($offer);
+
+
         } else {
-            echo "Alle Felder bitte ausfüllen";
+            echo "Sie wurden zwischenzeitlich ausgeloogt";
+}
+}
+
+    if (isset($_POST["bearbeiten_offer"])) {
+
+        if ($eingelogt == "true") {
+            $id = $_POST["id_offer"];
+            $offer = $OfferDao->getOfferByID($id);
+            $_SESSION["offerid"] = $id;
+
+            if ($offer !== null) {
+                //TODO Was passiert, wenn kein Ergebnis zurückgegeben wurde?
+            }
+            $titel = $offer->getTitle();
+            $subtitle = $offer->getSubTitle();
+            $AddressObjekt = $offer->getAddress();
+            $companyname = $offer->getCompanyName();
+            $straße = $AddressObjekt->getStreet();
+            $hsnr = $AddressObjekt->getNumber();
+            $plz = $AddressObjekt->getPlz();
+            $country = $AddressObjekt->getState();
+            $town = $AddressObjekt->getTown();
+            $free = $offer->getFree();
+            $befristung = $offer->getDuration();
+            $angebotsart = $offer->getOfferType();
+            $arbeitszeit = $offer->getWorkModel();
+            $beschreibung = $offer->getDescription();
+
+
+            if ($angebotsart == 0) {
+                $angebotsart0 = "checked";
+            } elseif ($angebotsart == 1) {
+                $angebotsart1 = "checked";
+            } elseif ($angebotsart == 2) {
+                $angebotsart2 = "checked";
+            } elseif ($angebotsart == 3) {
+                $angebotsart3 = "checked";
+            } else {
+                $angebotsart4 = "checked";
+            }
+
+            if ($befristung == 0) {
+                $befristung0 = "checked";
+            } elseif ($befristung == 1) {
+                $befristung1 = "checked";
+            } elseif ($befristung == 2) {
+                $befristung2 = "checked";
+            } else {
+                $befristung3 = "checked";
+            }
+
+
+            if ($arbeitszeit == 0) {
+                $arbeitszeit0 = "checked";
+            } elseif ($arbeitszeit == 1) {
+                $arbeitszeit1 = "checked";
+            } elseif ($arbeitszeit == 2) {
+                $arbeitszeit2 = "checked";
+            } elseif ($arbeitszeit == 3) {
+                $arbeitszeit3 = "checked";
+            } else {
+                $arbeitszeit4 = "checked";
+            }
+
+        } else {
+            echo "Sie wurden zwischenzeitlich ausgeloogt";
         }
-    } else {
-        echo "Sie wurden zwischenzeitlich ausgeloggt";
+}
 
 
+    if (isset($_POST["submit_offer"])) {
+        if ($eingelogt == "true") {
+
+            if (isset($_POST["titel"], $_POST["subtitel"], $_POST["straße"], $_POST["hausnummer"], $_POST["ort"], $_POST["plz"], $_POST["free"], $_POST["beschreibung"], $_POST["companyname"])) {
+                $AddressDAO = $OfferDao->getAddressDAOImpl();
+                $email = $_COOKIE["email"];
+                $user = $UserDAO->findUserByMail($email);
+                $idaktuelle = $user->getId();
+
+                $titel = htmlspecialchars($_POST["titel"]);
+                $subtitle = htmlspecialchars($_POST["subtitel"]);
+                $straße = htmlspecialchars($_POST["straße"]);
+                $hausnummer = htmlspecialchars($_POST["hausnummer"]);
+                $ort = htmlspecialchars($_POST["ort"]);
+                $plz = htmlspecialchars($_POST["plz"]);
+                $free = htmlspecialchars($_POST["free"]);
+                $beschreibung = htmlspecialchars($_POST["beschreibung"]);
+                $companyname = htmlspecialchars($_POST["companyname"]);
+
+                $art = $_POST['angebotsart'];
+                $befristung = $_POST['befristung'];
+                $arbeitszeit = $_POST['arbeitszeiten'];
+
+
+                $address = new Address(1, "Deutschland", $ort, $straße, $hausnummer, $plz);
+                $offer = new Offer();
+                $offer->setAddress($address);
+                $offer->setTitle($titel);
+                $offer->setSubTitle($subtitle);
+                $offer->setFree(date($free));
+                $offer->setCompanyName($companyname);
+                $offer->setDescription($beschreibung);
+                $offer->setCreated(date("Y-m-d"));
+                $offer->setDuration($befristung);
+                $offer->setOfferType($art);
+                $offer->setCreator($idaktuelle);
+                $offer->setWorkModel($arbeitszeit);
+                $result = $OfferDao->create($offer);
+
+            } else {
+                echo "Alle Felder bitte ausfüllen";
+            }
+        } else {
+            echo "Sie wurden zwischenzeitlich ausgeloggt";
+
+
+        }
     }
 }
 
