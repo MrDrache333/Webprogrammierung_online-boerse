@@ -96,7 +96,7 @@ echo $_SESSION["error"];
                         $html = "<div class=\"card\">
                                     <div class=\"anzeigen-inhalt\">
                                         <h2>" . $offer->getTitle() . "<br>" . $offer->getSubTitle() . "</h2>
-                                        <img class=\"fakeimg\" src=\"images/company_placeholder.png\" alt=\"Firmenlogo\">
+                                        <img class=\"fakeimg\" src=\"" . $offer->getLogo() . "\" alt=\"Firmenlogo\">
                                         <div class=\"beschreibung\">
                                             " . $offer->getDescription() . "
                                         </div>
