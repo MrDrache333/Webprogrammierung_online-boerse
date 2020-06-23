@@ -67,6 +67,16 @@ class SqliteDatabase implements Database
                             surname VARCHAR(50) DEFAULT NULL,
                             password VARCHAR(30) DEFAULT NULL
                             );",
+            "CREATE TABLE IF NOT EXISTS chatMessage(
+                            id INTEGER NOT NULL PRIMARY KEY autoincrement,
+                            sender INTEGER NOT NULL,
+                            receiver INTEGER NOT NULL,
+                            message VARCHAR(160) NOT NULL,
+                            time DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                            FOREIGN KEY(sender) REFERENCES user (id),
+                            FOREIGN KEY(receiver) REFERENCES user (id)
+                            
+            );",
             "INSERT INTO user VALUES(0,'demo@demo.de','Max','Mustermann','" . md5('demo') . "')",
             "INSERT INTO user VALUES(1,'demo2@demo.de','Maxime','Musterfrau','" . md5('demo') . "')",
             "INSERT INTO address VALUES(0,'Deutschland','Musterstadt','Musterstraße',123,12345)",
