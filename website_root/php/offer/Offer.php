@@ -98,7 +98,6 @@ class Offer
      */
     public function getLogo()
     {
-        echo $this->getId();
         if ($this->getId() === null) {
             return 'images/company_placeholder.png';
         }
