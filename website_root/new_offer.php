@@ -18,11 +18,9 @@ if ($eingelogt != "true") {
     ?>
     <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
 } else {
-
+    $offer = new Offer();
     if (isset($_POST["edit_offer"])) {
         if ($eingelogt == "true") {
-
-            $offer = new Offer();
             $titel = $_POST["titel"];
             $subtitle = $_POST["subtitel"];
             $companyname = $_POST["companyname"];
@@ -97,7 +95,7 @@ if ($eingelogt != "true") {
                 unset($_SESSION["error"]);
             }
         }
-}
+    }
 
     if (isset($_POST["bearbeiten_offer"])) {
 
@@ -161,7 +159,7 @@ if ($eingelogt != "true") {
             }
 
         }
-}
+    }
 
 
     if (isset($_POST["submit_offer"])) {
@@ -279,10 +277,8 @@ if ($eingelogt != "true") {
                 <div class="card">
                     <form method="POST" class="new_offer-form" id="new_offer-form">
                         <h2>Mein Produktbild</h2>
-
-
-                        <img src="images/company_placeholder.png" alt="Produktbild-Template" id="pb_image">
-
+                        <img src="<?php echo $offer->getLogo() ?>" alt="Produktbild-Template" id="pb_image"
+                             class="fakeimg">
                         <div class="form-submit">
                             <input type="file" name="fileToUpload" id="fileToUpload">
                             <input type="submit" value="Upload Image" name="submit">
@@ -331,15 +327,15 @@ if ($eingelogt != "true") {
                     Angebotsart:
                     <div class="radiobutton">
                         <input type="radio" name="angebotsart" value="0" <?php echo $angebotsart0 ?? ""; ?>>
-                            <label for="male">Arbeit</label>
-                            <span class="check"></span>
-                            <input type="radio" name="angebotsart" value="1"<?php echo $angebotsart1 ?? ""; ?>>
-                            <label for="female">Ausbildung</label>
-                            <span class="check"></span>
-                            <input type="radio" name="angebotsart" value="2"<?php echo $angebotsart2 ?? ""; ?>>
-                            <label for="divers">Praktikum</label>
-                            <span class="check"></span>
-                            <input type="radio" name="angebotsart" value="3"<?php echo $angebotsart3 ?? ""; ?>>
+                        <label for="male">Arbeit</label>
+                        <span class="check"></span>
+                        <input type="radio" name="angebotsart" value="1"<?php echo $angebotsart1 ?? ""; ?>>
+                        <label for="female">Ausbildung</label>
+                        <span class="check"></span>
+                        <input type="radio" name="angebotsart" value="2"<?php echo $angebotsart2 ?? ""; ?>>
+                        <label for="divers">Praktikum</label>
+                        <span class="check"></span>
+                        <input type="radio" name="angebotsart" value="3"<?php echo $angebotsart3 ?? ""; ?>>
                         <label for="divers">Selbstständigkeit</label>
                         <span class="check"></span>
                     </div>
@@ -347,12 +343,12 @@ if ($eingelogt != "true") {
                     Befristung:
                     <div class="radiobutton">
                         <input type="radio" name="befristung" value="0" <?php echo $befristung0 ?? ""; ?>>
-                            <label for="male">Befristet</label>
-                            <span class="check"></span>
-                            <input type="radio" name="befristung" value="1"<?php echo $befristung1 ?? ""; ?>>
-                            <label for="female">Unbefristet</label>
-                            <span class="check"></span>
-                            <input type="radio" name="befristung" value="2"<?php echo $befristung2 ?? ""; ?>>
+                        <label for="male">Befristet</label>
+                        <span class="check"></span>
+                        <input type="radio" name="befristung" value="1"<?php echo $befristung1 ?? ""; ?>>
+                        <label for="female">Unbefristet</label>
+                        <span class="check"></span>
+                        <input type="radio" name="befristung" value="2"<?php echo $befristung2 ?? ""; ?>>
                         <label for="divers">Keine Angaben</label>
                         <span class="check"></span>
                     </div>
@@ -361,53 +357,53 @@ if ($eingelogt != "true") {
 
                     <div class="radiobutton">
                         <input type="radio" name="arbeitszeiten" value="0" <?php echo $arbeitszeit0 ?? ""; ?>>
-                            <label for="male">Vollzeit</label>
-                            <span class="check"></span>
-                            <input type="radio" name="arbeitszeiten" value="1"<?php echo $arbeitszeit1 ?? ""; ?>>
-                            <label for="female">Teilzeit</label>
-                            <span class="check"></span>
-                            <input type="radio" name="arbeitszeiten" value="2"<?php echo $arbeitszeit2 ?? ""; ?>>
-                            <label for="divers">Schicht</label>
-                            <span class="check"></span>
-                            <input type="radio" name="arbeitszeiten" value="3"<?php echo $arbeitszeit3 ?? ""; ?>>
-                            <label for="divers">Heim-/Telearbeit</label>
-                            <span class="check"></span>
-                            <input type="radio" name="arbeitszeiten" value="4"<?php echo $arbeitszeit4 ?? ""; ?>>
-                            <label for="divers">Minijob</label>
-                            <span class="check"></span>
-                        </div>
+                        <label for="male">Vollzeit</label>
+                        <span class="check"></span>
+                        <input type="radio" name="arbeitszeiten" value="1"<?php echo $arbeitszeit1 ?? ""; ?>>
+                        <label for="female">Teilzeit</label>
+                        <span class="check"></span>
+                        <input type="radio" name="arbeitszeiten" value="2"<?php echo $arbeitszeit2 ?? ""; ?>>
+                        <label for="divers">Schicht</label>
+                        <span class="check"></span>
+                        <input type="radio" name="arbeitszeiten" value="3"<?php echo $arbeitszeit3 ?? ""; ?>>
+                        <label for="divers">Heim-/Telearbeit</label>
+                        <span class="check"></span>
+                        <input type="radio" name="arbeitszeiten" value="4"<?php echo $arbeitszeit4 ?? ""; ?>>
+                        <label for="divers">Minijob</label>
+                        <span class="check"></span>
+                    </div>
 
-                        <br>
+                    <br>
 
-                        <label for="street">Beschreibung :<br></label>
-                        <textarea name="beschreibung" id="beschreibung" cols="50" rows="7"
-                                  placeholder="Was über den Beruf zu sagen ist."
-                                  required><?php echo $beschreibung ?? ""; ?> </textarea>
+                    <label for="street">Beschreibung :<br></label>
+                    <textarea name="beschreibung" id="beschreibung" cols="50" rows="7"
+                              placeholder="Was über den Beruf zu sagen ist."
+                              required><?php echo $beschreibung ?? ""; ?> </textarea>
 
-                        <div class="form-submit">
-                            <?php if (isset($_POST["bearbeiten_offer"])) { ?>
-                                <input type="submit" value="Bearbeitete Anzeige veröffentlichen" class="button_offer"
-                                       name="edit_offer"
-                                       id="submit_offer"/>
+                    <div class="form-submit">
+                        <?php if (isset($_POST["bearbeiten_offer"])) { ?>
+                            <input type="submit" value="Bearbeitete Anzeige veröffentlichen" class="button_offer"
+                                   name="edit_offer"
+                                   id="submit_offer"/>
 
-                            <?php } else {
-                                ?>
-                                <input type="submit" value="Anzeige erstellen" class="button_offer"
-                                       name="submit_offer"
-                                       id="submit_offer"/>
+                        <?php } else {
+                            ?>
+                            <input type="submit" value="Anzeige erstellen" class="button_offer"
+                                   name="submit_offer"
+                                   id="submit_offer"/>
 
-                            <?php } ?>
+                        <?php } ?>
 
 
-                        </div>
+                    </div>
 
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+</form>
+</div>
+</div>
+</div>
+</div>
 
-    </div>
+</div>
 </form>
 
 

@@ -26,7 +26,7 @@ class SqliteDatabase implements Database
      */
     public function exists(): ?bool
     {
-        // TODO: Implement exists() method.
+        return file_exists('../DB.sqlite3');
     }
 
     /**
@@ -75,7 +75,6 @@ class SqliteDatabase implements Database
             "INSERT INTO offers VALUES(0,'Verkäuferin (m/w/d)','Einzelhandel','MusterFirma','Wir suchen in absehbarer Zeit eine neue Aushilfe im Einzelhandel der Musterfirma-Reihe. Ein gepflegtes Aussehen und ein freundlicher Umgangston sind erwünscht.',0,'2020-06-20','2020-07-01',1,2,2,0)",
             "INSERT INTO offers VALUES(1,'Lagerist (m/w/d)','Baumarkt','YourCompany','Wir suchen in absehbarer Zeit eine neue Aushilfe im Lager einer unserer Großbaumärkte der YourCompany-Reihe. Ein gepflegtes Aussehen und ein freundlicher Umgangston sind erwünscht.',0,'2020-06-19','2020-07-15',2,2,3,0)",
             "INSERT INTO offers VALUES(2,'Reinigungsfachkraft (m/w/d)','Hotel','SomeSoft GmbH','Wir suchen in absehbarer Zeit eine neue Aushilfe im Einzelhandel der SomeSoft-Reihe. Ein gepflegtes Aussehen und ein freundlicher Umgangston sind erwünscht.',1,'2020-06-21','2020-08-01',1,1,1,0)"
-
         ];
 
         foreach ($commands as $command) {
@@ -101,7 +100,7 @@ class SqliteDatabase implements Database
      */
     public function connect(): ?bool
     {
-        if (file_exists('../DB.sqlite3')) {
+        if ($this->exists()) {
             $this->conn = new PDO('sqlite:../DB.sqlite3') or die("Cannot open the Database");
         } else {
             $this->conn = new PDO('sqlite:../DB.sqlite3') or die("Cannot open the Database");

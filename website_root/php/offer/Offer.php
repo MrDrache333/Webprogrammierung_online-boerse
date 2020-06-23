@@ -98,16 +98,19 @@ class Offer
      */
     public function getLogo()
     {
-        if (file_exists('images/logos/' . $this->getId() . '.png')) {
-            $this->setLogo('images/logos/' . $this->getId() . '.png');
-        } elseif (file_exists('images/logos/' . $this->getId() . '.jpg')) {
-            $this->setLogo('images/logos/' . $this->getId() . '.jpg');
-        } elseif (file_exists('images/logos/' . $this->getId() . '.jpeg')) {
-            $this->setLogo('images/logos/' . $this->getId() . '.jpeg');
-        } else {
-            $this->setLogo('images/company_placeholder.png');
+        if ($this->getId() === null) {
+            return 'images/company_placeholder.png';
         }
-        return $this->logo;
+        if (file_exists('images/logos/' . $this->getId() . '.png')) {
+            return 'images/logos/' . $this->getId() . '.png';
+        }
+        if (file_exists('images/logos/' . $this->getId() . '.jpg')) {
+            return 'images/logos/' . $this->getId() . '.jpg';
+        }
+        if (file_exists('images/logos/' . $this->getId() . '.jpeg')) {
+            return 'images/logos/' . $this->getId() . '.jpeg';
+        }
+        return 'images/company_placeholder.png';
     }
 
     /**
