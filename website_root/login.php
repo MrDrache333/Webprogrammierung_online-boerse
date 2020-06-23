@@ -66,6 +66,7 @@ if (isset($_POST["loginSubmit"])) {
             if (($user = $controller->findUserByMail($loginEmail)) === null) {
                 echo "Fehler beim erstellen des Benutzers";
             } else {
+
                 setcookie("email", $toRegisterUser->getEmail(), time() + 60 * 60 * 24);
                 setcookie("username", $toRegisterUser->getPrename() . " " . $toRegisterUser->getSurname(), time() + 60 * 60 * 24);
                 setcookie("loggedin", "true", time() + 60 * 60 * 24);
