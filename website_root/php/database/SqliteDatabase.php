@@ -36,7 +36,7 @@ class SqliteDatabase implements Database
     {
         $commands = [
             "CREATE TABLE IF NOT EXISTS main.address (
-                            id INTEGER NOT NULL PRIMARY KEY autoincrement,
+                            ID INTEGER NOT NULL PRIMARY KEY autoincrement,
                             state VARCHAR(30) NOT NULL,
                             town VARCHAR(30) NOT NULL,
                             street VARCHAR(50) NOT NULL,
