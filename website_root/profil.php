@@ -19,7 +19,7 @@ if ($eingelogt != "true") {
     $pwaktuell = $user->getPassword();
 }
 
-if (isset($_POST["submit"])) {
+if (isset($_POST["submit_pb"])) {
     $name = $_POST["name"];
     $name2 = $_POST["father_name"];
 
