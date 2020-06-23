@@ -100,4 +100,16 @@ class User
     {
         $this->password = $password;
     }
+    public function getProfilePhoto(){
+        if (file_exists('images/profilImages/' . $this->getId() . '.png')) {
+            return ('images/profilImages/' . $this->getId() . '.png');
+        } elseif (file_exists('images/profilImages/' . $this->getId() . '.jpg')) {
+          return ('images/profilImages/' . $this->getId() . '.jpg');
+        } elseif (file_exists('images/profilImages/' . $this->getId() . '.jpeg')) {
+            return('images/profilImages/' . $this->getId() . '.jpeg');
+        } else {
+            return  ('images/profile_template.png');
+        }
+
+    }
 }

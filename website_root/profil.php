@@ -8,7 +8,7 @@ include_once 'php/classes.php';
 
 $eingelogt = $_COOKIE['loggedin'];
 if ($eingelogt != "true") {
-   $_SESSION["error"] = "loggout"
+    $_SESSION["error"] = "loggout"
     ?>
     <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
 
@@ -59,12 +59,53 @@ if (isset($_POST["profilloeschen"])) {
     header("Location: index.php");
     exit;
 }
+//Change profile picture
 if (isset($_POST["pb_submit"])) {
-    if (move_uploaded_file($_FILES["fileToUpload"]
-    ["temp_name"], "/Applications/XAMPP/xamppfiles/htdocs/website_root/images")) {
-        echo "moved";
+
+    $imageTarget_dir = "images/profilImages/";
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($imageTarget_dir . basename($_FILES["fileToUpload"]["name"]), PATHINFO_EXTENSION));
+    $imageTarget_file = $imageTarget_dir . $user->getId() . "." . $imageFileType;
+    // Check if image file is a actual image or fake image
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if ($check !== false) {
+        $uploadOk = 1;
     } else {
-        echo "neeeee";
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+// Check file size
+    if ($_FILES["fileToUpload"]["size"] > 10000000000) {
+        echo "Sorry, your image is too large.";
+        $uploadOk = 0;
+    }
+// Allow certain file formats
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif") {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+    }
+// Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+    } else {
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
+
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
+
+
+}
+if (isset($_POST['reset_pb'])) {
+    echo "Bild löschen";
+    $imageTarget_file = $user->getProfilePhoto();
+    if (file_exists($imageTarget_file)) {
+        unlink($imageTarget_file);
+    } else {
+        echo 'Could not delete ' . $imageTarget_file . ', file does not exist';
     }
 }
 
@@ -100,11 +141,13 @@ if (isset($_POST["pb_submit"])) {
             <div class="profile-content">
                 <div class="profile-form">
                     <div class="form-col">
-                        <form method="POST" action="profil.php" class="profile-form" id="profile-form">
+                        <form enctype="multipart/form-data" method="POST" action="profil.php" class="profile-form"
+                              id="profile-form">
                             <h2>Mein Profilbild</h2>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <img src="images/profile_template.png" alt="Profilbild-Template" id="pb_image">
+                                    <img src="<?php echo($user->getProfilePhoto()) ?>" alt="Profilbild-Template"
+                                         id="pb_image">
                                 </div>
                             </div>
                             <div class="form-submit">
