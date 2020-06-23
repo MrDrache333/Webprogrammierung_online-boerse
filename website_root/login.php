@@ -12,8 +12,9 @@ if (isset($_POST["loginSubmit"])) {
         $password = htmlspecialchars($_POST["password"]);
 
         $controller = new UserDAOImpl();
-        $user = $controller->login($email, $password);
-        if ($user !== null) {
+        $user = $controller->findUserByMail($email);
+
+        if ($user !== null && password_verify($password, $user->getPassword())) {
             setcookie("email", $email, time() + 60 * 60 * 24);
             setcookie("username", $user->getPrename() . " " . $user->getSurname(), time() + 60 * 60 * 24);
             setcookie("loggedin", "true", time() + 60 * 60 * 24);
@@ -61,12 +62,11 @@ if (isset($_POST["loginSubmit"])) {
             $toRegisterUser->setPrename($prename);
             $toRegisterUser->setSurname($lastname);
             $toRegisterUser->setEmail($loginEmail);
-            $toRegisterUser->setPassword($loginPassword);
+            $toRegisterUser->setPassword(password_hash($loginPassword, PASSWORD_DEFAULT));
             $result = $controller->create($toRegisterUser);
             if (($user = $controller->findUserByMail($loginEmail)) === null) {
                 echo "Fehler beim erstellen des Benutzers";
             } else {
-
                 setcookie("email", $toRegisterUser->getEmail(), time() + 60 * 60 * 24);
                 setcookie("username", $toRegisterUser->getPrename() . " " . $toRegisterUser->getSurname(), time() + 60 * 60 * 24);
                 setcookie("loggedin", "true", time() + 60 * 60 * 24);

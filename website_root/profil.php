@@ -34,10 +34,10 @@ if (isset($_POST["submit_pb"])) {
     $pwalt = $_POST["altespw"];
     if ($pwalt != null && $pwneu != null) {
         if ($pwneu == $pw) {
-            if (md5($pwalt) === $pwaktuell) {
+            if (password_verify($pwalt, $pwaktuell)) {
 
 
-                $u->updatePassword($pwneu, $email);
+                $u->updatePassword(password_hash($pwneu, PASSWORD_DEFAULT), $email);
                 echo "Ihr Passwort wurde erfolgreich geändert";
 
             } else {

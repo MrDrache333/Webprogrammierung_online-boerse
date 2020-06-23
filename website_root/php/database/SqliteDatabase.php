@@ -77,8 +77,8 @@ class SqliteDatabase implements Database
                             FOREIGN KEY(receiver) REFERENCES user (id)
                             
             );",
-            "INSERT INTO user VALUES(0,'demo@demo.de','Max','Mustermann','" . md5('demo') . "')",
-            "INSERT INTO user VALUES(1,'demo2@demo.de','Maxime','Musterfrau','" . md5('demo') . "')",
+            "INSERT INTO user VALUES(0,'demo@demo.de','Max','Mustermann','" . password_hash('demo', PASSWORD_DEFAULT) . "')",
+            "INSERT INTO user VALUES(1,'demo2@demo.de','Maxime','Musterfrau','" . password_hash('demo', PASSWORD_DEFAULT) . "')",
             "INSERT INTO address VALUES(0,'Deutschland','Musterstadt','Musterstraße',123,12345)",
             "INSERT INTO address VALUES(1,'Deutschland','Musterstadt','Musterstraße',124,12345)",
             "INSERT INTO address VALUES(2,'Deutschland','Musterstadt','Musterstraße',125,12345)",
