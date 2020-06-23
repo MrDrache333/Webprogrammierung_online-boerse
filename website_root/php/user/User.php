@@ -117,6 +117,7 @@ class User
         if (file_exists('images/profilImages/' . $this->getId() . '.jpeg')) {
             return ('images/profilImages/' . $this->getId() . '.jpeg');
         }
+        else return ('images/profile_template.png');
 
     }
 }
