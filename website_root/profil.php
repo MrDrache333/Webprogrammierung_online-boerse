@@ -76,39 +76,46 @@ if (isset($_POST["pb_submit"])) {
     if ($check !== false) {
         $uploadOk = 1;
     } else {
-        echo "File is not an image.";
+        echo "Das ist kein Bild.";
         $uploadOk = 0;
     }
 // Check file size
     if ($_FILES["fileToUpload"]["size"] > 10000000000) {
-        echo "Sorry, your image is too large.";
+        echo "Das Bild ist zu groß, nur 10MBit erlaubt.";
         $uploadOk = 0;
     }
 // Allow certain file formats
-    if ($imageFileType !== "jpg" && $imageFileType !== "png" && $imageFileType !== "jpeg"
-        && $imageFileType !== "gif") {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif") {
+        echo "Nur JPG, JPEG, PNG & GIF Dateiformate sind erlaubt.";
         $uploadOk = 0;
     }
 // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk === 0) {
-        echo "Sorry, your file was not uploaded.";
+    if ($uploadOk == 0) {
+        echo "Das Bild konnte nicht hochgeladen werden.";
 // if everything is ok, try to upload file
-    } else if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
-        echo "Sorry, there was an error uploading your file.";
+    } else {
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
+
+        } else {
+            echo "Error: Das Bild konnte nicht hochgeladen werden.";
+        }
     }
 
 
 }
 if (isset($_POST['reset_pb'])) {
-    echo "Bild löschen";
     $imageTarget_file = $user->getProfilePhoto();
-    if (file_exists($imageTarget_file)) {
-        unlink($imageTarget_file);
-    } else {
-        echo 'Could not delete ' . $imageTarget_file . ', file does not exist';
+    if($imageTarget_file=="images/profile_template.png"){
+    //Do nothing
     }
-}
+    else {
+        if (file_exists($imageTarget_file)) {
+            unlink($imageTarget_file);
+        } else {
+            echo 'Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.';
+        }
+    }}
 
 
 ?>
