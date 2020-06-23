@@ -71,7 +71,6 @@ if (isset($_POST["pb_submit"])) {
     $imageFileType = strtolower(pathinfo($imageTarget_dir . basename($_FILES["fileToUpload"]["name"]), PATHINFO_EXTENSION));
     $imageTarget_file = $imageTarget_dir . $user->getId() . "." . $imageFileType;
     // Check if image file is a actual image or fake image
-    var_dump($_FILES["fileToUpload"]);
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if ($check !== false) {
         $uploadOk = 1;
@@ -91,15 +90,11 @@ if (isset($_POST["pb_submit"])) {
         $uploadOk = 0;
     }
 // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
+    if ($uploadOk === 0) {
         echo "Das Bild konnte nicht hochgeladen werden.";
 // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
-
-        } else {
-            echo "Error: Das Bild konnte nicht hochgeladen werden.";
-        }
+    } else if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
+        echo "Error: Das Bild konnte nicht hochgeladen werden.";
     }
 
 
@@ -177,6 +172,7 @@ if (isset($_POST['reset_pb'])) {
                                 </div>
                                 <div class="form-group">
                                     <label for="father_name">Nachname :</label>
+                                    <label hidden for="fahter_name"></label>
                                     <input type="text" name="father_name" id="fahter_name"
                                            value="<?php echo $user->getSurname(); ?>" required/>
                                 </div>
