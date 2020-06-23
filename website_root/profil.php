@@ -1,7 +1,6 @@
 <?php include "header.php"; ?>
 <?php
 
-use php\user\User;
 use php\user\UserDAOImpl;
 
 include_once 'php/classes.php';
@@ -16,6 +15,7 @@ if ($eingelogt != "true") {
     $u = new UserDAOImpl();
     $email = $_COOKIE["email"];
     $user = $u->findUserByMail($email);
+
     $pwaktuell = $user->getPassword();
 }
 
@@ -23,7 +23,7 @@ if (isset($_POST["submit_pb"])) {
     $name = $_POST["name"];
     $name2 = $_POST["father_name"];
 
-    $user = new User();
+
     $user->setEmail($email);
     $user->setPrename($name);
     $user->setSurname($name2);
@@ -41,7 +41,11 @@ if (isset($_POST["submit_pb"])) {
                 echo "Ihr Passwort wurde erfolgreich geändert";
 
             } else {
-                echo "Ihr altes Passwort ist nicht korrekt";
+
+                echo $pwaktuell;
+                echo "          ";
+
+                echo "            Ihr altes Passwort ist nicht korrekt";
             }
 
         } else {

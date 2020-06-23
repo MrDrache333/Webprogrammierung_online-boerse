@@ -52,7 +52,7 @@ class UserHelper
         $user->setEmail($result['email'] ?? null);
         $user->setPrename($result['prename'] ?? null);
         $user->setSurname($result['surname'] ?? null);
-        $user->setPassword(md5($result['password'] ?? null));
+        $user->setPassword(($result['password'] ?? null));
         return $user;
     }
 
