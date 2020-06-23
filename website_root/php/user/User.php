@@ -106,16 +106,16 @@ class User
         if ($this->getId() === null) {
             return ('images/profile_template.png');
         }
-        if (file_exists('images/profilImages/' . $this->getId() . '.png')) {
-            return ('images/profilImages/' . $this->getId() . '.png');
+        if (file_exists('images/profileImages/' . $this->getId() . '.png')) {
+            return ('images/profileImages/' . $this->getId() . '.png');
         }
 
-        if (file_exists('images/profilImages/' . $this->getId() . '.jpg')) {
-            return ('images/profilImages/' . $this->getId() . '.jpg');
+        if (file_exists('images/profileImages/' . $this->getId() . '.jpg')) {
+            return ('images/profileImages/' . $this->getId() . '.jpg');
         }
 
-        if (file_exists('images/profilImages/' . $this->getId() . '.jpeg')) {
-            return ('images/profilImages/' . $this->getId() . '.jpeg');
+        if (file_exists('images/profileImages/' . $this->getId() . '.jpeg')) {
+            return ('images/profileImages/' . $this->getId() . '.jpeg');
         }
 
     }

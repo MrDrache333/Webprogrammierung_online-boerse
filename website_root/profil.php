@@ -66,11 +66,12 @@ if (isset($_POST["profilloeschen"])) {
 //Change profile picture
 if (isset($_POST["pb_submit"])) {
 
-    $imageTarget_dir = "images/profilImages/";
+    $imageTarget_dir = "images/profileImages/";
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($imageTarget_dir . basename($_FILES["fileToUpload"]["name"]), PATHINFO_EXTENSION));
     $imageTarget_file = $imageTarget_dir . $user->getId() . "." . $imageFileType;
     // Check if image file is a actual image or fake image
+    var_dump($_FILES["fileToUpload"]);
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if ($check !== false) {
         $uploadOk = 1;
@@ -84,21 +85,17 @@ if (isset($_POST["pb_submit"])) {
         $uploadOk = 0;
     }
 // Allow certain file formats
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif") {
+    if ($imageFileType !== "jpg" && $imageFileType !== "png" && $imageFileType !== "jpeg"
+        && $imageFileType !== "gif") {
         echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
     }
 // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
+    if ($uploadOk === 0) {
         echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
-
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
+    } else if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
+        echo "Sorry, there was an error uploading your file.";
     }
 
 
