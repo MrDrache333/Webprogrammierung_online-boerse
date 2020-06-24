@@ -81,9 +81,15 @@ class SqliteDatabase implements Database
             "INSERT INTO address VALUES(0,'Deutschland','Musterstadt','Musterstraße',123,12345)",
             "INSERT INTO address VALUES(1,'Deutschland','Musterstadt','Musterstraße',124,12345)",
             "INSERT INTO address VALUES(2,'Deutschland','Musterstadt','Musterstraße',125,12345)",
+            "INSERT INTO address VALUES(3,'Deutschland','Musterstadt','Musterstraße',125,12345)",
+            "INSERT INTO address VALUES(4,'Deutschland','Musterstadt','Musterstraße',125,12345)",
             "INSERT INTO offers VALUES(0,'Verkäuferin (m/w/d)','Einzelhandel','MusterFirma','Wir suchen in absehbarer Zeit eine neue Aushilfe im Einzelhandel der Musterfirma-Reihe. Ein gepflegtes Aussehen und ein freundlicher Umgangston sind erwünscht.',0,'2020-06-20','2020-07-01',1,2,2,0)",
             "INSERT INTO offers VALUES(1,'Lagerist (m/w/d)','Baumarkt','YourCompany','Wir suchen in absehbarer Zeit eine neue Aushilfe im Lager einer unserer Großbaumärkte der YourCompany-Reihe. Ein gepflegtes Aussehen und ein freundlicher Umgangston sind erwünscht.',0,'2020-06-19','2020-07-15',2,2,3,0)",
-            "INSERT INTO offers VALUES(2,'Reinigungsfachkraft (m/w/d)','Hotel','SomeSoft GmbH','Wir suchen in absehbarer Zeit eine neue Aushilfe im Einzelhandel der SomeSoft-Reihe. Ein gepflegtes Aussehen und ein freundlicher Umgangston sind erwünscht.',1,'2020-06-21','2020-08-01',1,1,1,0)"
+            "INSERT INTO offers VALUES(2,'Reinigungsfachkraft (m/w/d)','Hotel','SomeSoft GmbH','Wir suchen in absehbarer Zeit eine neue Aushilfe im Einzelhandel der SomeSoft-Reihe. Ein gepflegtes Aussehen und ein freundlicher Umgangston sind erwünscht.',1,'2020-06-21','2020-08-01',1,1,1,0)",
+            "INSERT INTO offers VALUES(3,'Apoteker (m/w/d)','Einzelhandel','Bayer','Wir suchen schnellst möglich einen neuen Apotker. Ein gepflegtes Aussehen und ein freundlicher Umgangston sind erwünscht.',0,'2020-06-20','2020-08-01',2,1,1,0)",
+            "INSERT INTO offers VALUES(4,'Raupenzüchter (m/w/d)','Tierhandel','Co&Zoo','Wir sind pleite und suchen ein freundlicher Umgangston mit uns.',0,'2020-06-20','2020-08-01',1,2,1,0)",
+            "INSERT INTO offers VALUES(5,'Türstopper (m/w/d)','Einzelhandel','BauschTörse','Wir von der Bauschtörse sind hilflos. Wir suchen neue Mitarbeiter dringend',0,'2020-06-20','2020-08-01',1,0,1,0)"
+
         ];
 
         foreach ($commands as $command) {
