@@ -15,25 +15,34 @@ if ($eingelogt != "true") {
     $u = new UserDAOImpl();
     $email = $_COOKIE["email"];
     $user = $u->findUserByMail($email);
-
     $pwaktuell = $user->getPassword();
 }
 
 if (isset($_POST["submit_pb"])) {
-    $name = $_POST["name"];
-    $name2 = $_POST["father_name"];
+    $name = htmlspecialchars($_POST["name"]);
+    $name2 = htmlspecialchars($_POST["father_name"]);
+    $email = htmlspecialchars($_POST["email"]);
+    if (!preg_match('/[a-zA-Z]{3,50}/', $name)) {
+        $_SESSION["error"] .= "Ihr Name ist falsch.";
+    }
+    if (!preg_match('/[a-zA-Z]{3,50}/', $name2)) {
+        $_SESSION["error"] .= " Ihr Nachname ist falsch.";
+    }
+    if (!preg_match('/[a-zA-Z-0-9-@-_-.]{3,50}/', $email)) {
+        $_SESSION["error"] .= "Ihr Email ist falsch.";
+    }
 
-
-    $user->setEmail($email);
-    $user->setPrename($name);
-    $user->setSurname($name2);
-    $user->setPassword($pwaktuell);
-    $test = $u->update($user);
-    $pw = $_POST["pwsetzen"];
-    $pwneu = $_POST["pwwiederholen"];
-    $pwalt = $_POST["altespw"];
-    if ($pwalt != null && $pwneu != null) {
-        if ($pwneu == $pw) {
+    if ($_SESSION["error"] == null) {
+        $user->setEmail($email);
+        $user->setPrename($name);
+        $user->setSurname($name2);
+        $user->setPassword($pwaktuell);
+        $test = $u->update($user);
+        $pw = $_POST["pwsetzen"];
+        $pwneu = $_POST["pwwiederholen"];
+        $pwalt = $_POST["altespw"];
+        if ($pwalt != null && $pwneu != null) {
+            if ($pwneu == $pw) {
             if (password_verify($pwalt, $pwaktuell)) {
 
 
@@ -41,21 +50,23 @@ if (isset($_POST["submit_pb"])) {
                 echo "Ihr Passwort wurde erfolgreich geändert";
 
             } else {
-
-                echo $pwaktuell;
-                echo "          ";
-
-                echo "            Ihr altes Passwort ist nicht korrekt";
+                echo "Ihr altes Passwort ist nicht korrekt";
             }
 
-        } else {
-            echo "Die Passwörter stimmen nicht überein. Wiederholen sie die Eingabe";
+            } else {
+                echo "Die Passwörter stimmen nicht überein. Wiederholen sie die Eingabe";
+
+            }
+
 
         }
-
+    } else {
+        echo $_SESSION["error"];
+        unset($_SESSION["error"]);
 
     }
 }
+
 if (isset($_POST["profilloeschen"])) {
     $delete = $u->delete($email);
     setcookie("loggedin", "false", time() - 60 * 60 * 24);
