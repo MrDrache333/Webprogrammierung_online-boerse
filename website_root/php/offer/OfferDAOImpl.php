@@ -92,6 +92,13 @@ class OfferDAOImpl implements OfferDAO
         return OfferHelper::getOffersFromSQLResult($this->database->execute($command, $values));
     }
 
+    public function getLastOwnOffer($user)
+    {
+        $command = "SELECT * FROm offers, address WHERE offers.address = address.ID AND created = (SELECT MAX(created) FROM offers WHERE creator = ?)";
+        $values = [$user->getId()];
+        return OfferHelper::getOffersFromSQLResult($this->database->execute($command, $values));
+    }
+
     public function search($what, $where, $type, $duration, $time)
     {
         //Standardfilter erstellen
