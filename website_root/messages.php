@@ -27,13 +27,17 @@ if ($eingelogt != "true") {
             $ownoffer = $OfferDAOImpl->getOwnOffers($user);
             if ($ownoffer != null) {
 
+                $found = false;
                 foreach ($ownoffer as $offer) {
                     if ($offer->getId() == $id) {
-                        $OfferDAOImpl->delete($id);
-
-                    } else {
-                        echo "Sie löschen eine Anzeige die nicht Ihnen gehört. Dies ist nicht möglich.";
+                        $found = true;
+                        break;
                     }
+                }
+                if ($found === true) {
+                    $OfferDAOImpl->delete($id);
+                } else {
+                    echo "Sie löschen eine Anzeige die nicht Ihnen gehört. Dies ist nicht möglich.";
                 }
             } else {
                 echo "Sie besitzen keine Anzeigens.";
