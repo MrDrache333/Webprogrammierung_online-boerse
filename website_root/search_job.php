@@ -29,13 +29,15 @@
                     <input id="searchBox-what" name="what" class="searchBox-input searchBox-item" type="text"
                            placeholder="Was? (z.B. Beruf oder Stichwort)"
                            value="<?php echo $_GET['what'] ?? $_SESSION['ls_what'] ?? "" ?>"
-                           onkeyup="showHint(this.value)" list="liveSearch"/>
-                    <datalist id="liveSearch"></datalist>
+                           onkeyup="showHint(this.value,0)" list="liveSearch_0"/>
+                    <datalist id="liveSearch_0"></datalist>
                     <label for="searchBox-where" hidden>Wo? (z.B. PLZ oder Ort)</label>
                     <input id="searchBox-where" name="where" class="searchBox-input searchBox-item"
                            type="text"
                            placeholder="Wo? (z.B. PLZ oder Ort)"
-                           value="<?php echo $_GET['where'] ?? $_SESSION['ls_where'] ?? "" ?>"/>
+                           value="<?php echo $_GET['where'] ?? $_SESSION['ls_where'] ?? "" ?>"
+                           onkeyup="showHint(this.value,1)" list="liveSearch_1"/>
+                    <datalist id="liveSearch_1"></datalist>
                     <button href="search_job.php" class="searchBox-button searchBox-button-text searchBox-item"
                             type="submit"><span
                                 class="searchBox-button-gradient"></span>Suchen
