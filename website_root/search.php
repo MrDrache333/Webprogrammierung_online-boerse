@@ -34,6 +34,7 @@ if (isset($_GET['what']) || isset($_GET['where'])) {
         //In Datenbank nach Einträgen suchen
         $OfferDAOImpl = new OfferDAOImpl();
         $result = $OfferDAOImpl->search($what, $where, $type, $duration, $time);
+
         //Ergebnisse anzeigen
         displayResults($result);
     }
@@ -42,14 +43,16 @@ if (isset($_GET['what']) || isset($_GET['where'])) {
 /**
  * @param Offer[] $result Ergebnisse der Datenbankabfrage
  */
+
 function displayResults($result)
 {
 
     if ($result !== null) {
         $count = 0;
         foreach ($result as $offer) {
+            $test = $offer->getId();
             $count++;
-            $html = "<article role=\"article\" id=\"" . $offer->getId() . "\">
+            $html = "<article role=\"article\" id=\"" . $offer->getId() . "\"> 
                         <div class=\"article-content\">
                             <div class=\"article-left\">
                                 <div class=\"article-head\">
@@ -72,6 +75,7 @@ function displayResults($result)
                                     <div class=\"article-info-type\">Frei ab:</div>
                                     <span class=\"article-info-value\" id=\"article_freeAt\">" . $offer->getFree() . "</span>
                                 </div>
+                         
                                 <div class=\"article-info-row\">
                                     <div class=\"article-info-type\">Standort:</div>
                                     <div class=\"article-info-group\">
@@ -82,11 +86,15 @@ function displayResults($result)
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <a class=\"article-link\" id=\"article_link\" href=\"#\">Mehr Informationen</a>
+                      <a class=\"article-link\" id=\"article_link\" href=\"#\">Mehr Informationen</a>    </div>
+                      
+           
+    
                     </article>";
             echo $html . "\n";
         }
+
+
         if ($count === 0) { ?>
             <div style="background: radial-gradient(circle at center, white 0,rgba(255,255,255,0.9) 60%,
                  rgba(255,255,255,0.5) 70%,transparent 90%); text-align: center; border-radius: 20px">
@@ -103,4 +111,5 @@ function displayResults($result)
         </div>
         <?php
     }
+
 }
