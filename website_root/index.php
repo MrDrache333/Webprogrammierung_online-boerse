@@ -35,7 +35,8 @@
             <p class="searchBox-text">Wonach suchen Sie ?</p>
             <label for="searchBox-what" hidden>Was? (z.B. Beruf oder Stichwort)</label>
             <input id="searchBox-what" name="what" class="searchBox-input searchBox-item" type="text"
-                   placeholder="Was? (z.B. Beruf oder Stichwort)" onkeyup="showHint(this.value)"/>
+                   placeholder="Was? (z.B. Beruf oder Stichwort)" onkeyup="showHint(this.value)" list="liveSearch"/>
+            <datalist id="liveSearch"></datalist>
             <label for="searchBox-where" hidden>Wo? (z.B. PLZ oder Ort)</label>
             <input id="searchBox-where" name="where" class="searchBox-input searchBox-item" type="text"
                    placeholder="Wo? (z.B. PLZ oder Ort)"/>

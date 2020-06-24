@@ -29,7 +29,8 @@
                     <input id="searchBox-what" name="what" class="searchBox-input searchBox-item" type="text"
                            placeholder="Was? (z.B. Beruf oder Stichwort)"
                            value="<?php echo $_GET['what'] ?? $_SESSION['ls_what'] ?? "" ?>"
-                           onkeyup="showHint(this.value)"/>
+                           onkeyup="showHint(this.value)" list="liveSearch"/>
+                    <datalist id="liveSearch"></datalist>
                     <label for="searchBox-where" hidden>Wo? (z.B. PLZ oder Ort)</label>
                     <input id="searchBox-where" name="where" class="searchBox-input searchBox-item"
                            type="text"

@@ -2,6 +2,7 @@
 
 use php\offer\OfferDAOImpl;
 
+include_once 'php/classes.php';
 $q = $_REQUEST["q"];
 
 $hint = "";
@@ -15,7 +16,7 @@ if ($q !== "") {
     if ($result !== null) {
         $count = 0;
         foreach ($result as $offer) {
-            $hint .= "<a href=\"#\" onclick=\"fillTextField(\"searchBox-what\"," . $offer->getTitle() . ");\">" . $offer->getTitle() . "</a>";
+            $hint .= "<option value=\"" . $offer->getTitle() . "\"</option>";
         }
     }
 }
