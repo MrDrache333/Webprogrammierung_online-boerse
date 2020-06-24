@@ -3,11 +3,19 @@
 
 use php\user\UserDAOImpl;
 
-include_once 'php/classes.php';
-
+include_once 'php/classes.php'; ?>
+<p id="js-info" style="display:none">Tets</p>
+<noscript></noscript>
+<script>
+    document.getElementById("js-info").style.display = "inline";
+</script>
+<?php
 $eingelogt = $_COOKIE['loggedin'];
 if ($eingelogt != "true") {
-    $_SESSION["error"] = "loggout"
+    $_SESSION["error"] = "loggout";
+}
+
+if ($_SESSION["error"] != null) {
     ?>
     <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
 

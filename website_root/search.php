@@ -86,8 +86,8 @@ function displayResults($result)
                                     </div>
                                 </div>
                             </div>
-                      <a class=\"article-link\" id=\"article_link\" href=\"#\">Mehr Informationen</a>    </div>
-                      
+                        </div>
+                       <a class=\"article-link\" id=\"article_link\" href=\"#\">Mehr Informationen</a> 
            
     
                     </article>";
