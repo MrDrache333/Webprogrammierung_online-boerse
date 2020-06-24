@@ -31,10 +31,17 @@ session_start();
     <?php } ?>
 
     <script src="scripts/ajax.js"></script>
+    <script src="scripts/cookie.js"></script>
+
 
     <title>KEFEDO-Startseite</title>
 </head>
-<body>
+<body onload="setCookie('JS','true',1)">
+<?php
+if (!isset($_COOKIE["JS"])) {
+    header("Location: noJS.html");
+}
+?>
 <div class="grid-container">
     <div class="headerrahmen">
         <div class="logo">
