@@ -4,11 +4,7 @@
 use php\user\UserDAOImpl;
 
 include_once 'php/classes.php'; ?>
-<p id="js-info" style="display:none">Tets</p>
-<noscript></noscript>
-<script>
-    document.getElementById("js-info").style.display = "inline";
-</script>
+
 <?php
 $eingelogt = $_COOKIE['loggedin'];
 if ($eingelogt != "true") {
