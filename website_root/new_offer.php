@@ -202,10 +202,10 @@ if ($eingelogt != "true") {
                 if (!preg_match('/^[\d]{5}$/', $plz)) {
                     $_SESSION["error"] .= " Ihre Postleitzahl ist falsch.";
                 }
-                if (!preg_match('/^[\d]{3,50}$/', $free)) {
+                if (!preg_match('/[\d]{3,50}/', $free)) {
                     $_SESSION["error"] .= " Ihr Verfügbarkeitsdatumfrei ist falsch.";
                 }
-                if (!preg_match('/^[a-zA-Z0-9-ä-ü-ß]{5,20}$/', $beschreibung)) {
+                if (!preg_match('/^[a-zA-Z0-9-ä-ü-ß]{5,50}$/', $beschreibung)) {
                     $_SESSION["error"] .= " Ihre Beschreibung ist falsch. ";
                 }
                 if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,50}$/', $companyname)) {
@@ -378,7 +378,7 @@ if ($eingelogt != "true") {
                     <label for="street">Beschreibung :<br></label>
                     <textarea name="beschreibung" id="beschreibung" cols="50" rows="7"
                               placeholder="Was über den Beruf zu sagen ist."
-                              required><?php echo $beschreibung ?? ""; ?> </textarea>
+                              required><?php echo $beschreibung ?? ""; ?></textarea>
 
                     <div class="form-submit">
                         <?php if (isset($_POST["bearbeiten_offer"])) { ?>
