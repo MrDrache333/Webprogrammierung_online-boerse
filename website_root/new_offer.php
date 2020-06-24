@@ -184,19 +184,19 @@ if ($eingelogt != "true") {
                 $befristung = $_POST['befristung'];
                 $arbeitszeit = $_POST['arbeitszeiten'];
 
-                if (!preg_match('/^[a-zA-Z]{3,50}$/', $titel)) {
+                if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,50}$/', $titel)) {
                     $_SESSION["error"] .= "Ihr Titel ist falsch.";
                 }
                 if (!preg_match('/^[a-zA-Z]{3,50}$/', $subtitle)) {
                     $_SESSION["error"] .= " Ihr Untertitel ist falsch.";
                 }
-                if (!preg_match('/^[a-zA-Z]{3,50}$/', $straße)) {
+                if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,50}$/', $straße)) {
                     $_SESSION["error"] .= "Ihr Straße ist falsch.";
                 }
-                if (!preg_match('/^[a-zA-Z0-9]{1,50}$/', $hsnr)) {
+                if (!preg_match('/^[a-zA-Z0-9-ä-ü-ß]{1,50}$/', $hsnr)) {
                     $_SESSION["error"] .= " Ihr Hausnummer ist falsch.";
                 }
-                if (!preg_match('/^[a-zA-Z]{2,20}$/', $ort)) {
+                if (!preg_match('/^[a-zA-Z-ä-ü-ß]{2,20}$/', $ort)) {
                     $_SESSION["error"] .= " Ihre Ort ist falsch.";
                 }
                 if (!preg_match('/^[\d]{5}$/', $plz)) {
@@ -205,10 +205,10 @@ if ($eingelogt != "true") {
                 if (!preg_match('/^[\d]{3,50}$/', $free)) {
                     $_SESSION["error"] .= " Ihr Verfügbarkeitsdatumfrei ist falsch.";
                 }
-                if (!preg_match('/^[a-zA-Z0-9]{5,20}$/', $beschreibung)) {
+                if (!preg_match('/^[a-zA-Z0-9-ä-ü-ß]{5,20}$/', $beschreibung)) {
                     $_SESSION["error"] .= " Ihre Beschreibung ist falsch. ";
                 }
-                if (!preg_match('/^[a-zA-Z]{3,50}$/', $companyname)) {
+                if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,50}$/', $companyname)) {
                     $_SESSION["error"] .= "Ihr Firmenname ist falsch. ";
                 }
                 if ($art == null) {
