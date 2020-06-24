@@ -20,7 +20,6 @@ class SqliteDatabase implements Database
     {
     }
 
-
     /**
      * @inheritDoc
      */

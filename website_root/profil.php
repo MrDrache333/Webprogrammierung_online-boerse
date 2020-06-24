@@ -67,7 +67,7 @@ if (isset($_POST["profilloeschen"])) {
 if (isset($_POST["pb_submit"])) {
 
     $imageTarget_dir = "images/profileImages/";
-    if (!file_exists($imageTarget_dir) && !mkdir($imageTarget_dir, true) && !is_dir($imageTarget_dir)) {
+    if (!file_exists($imageTarget_dir) && !mkdir($imageTarget_dir) && !is_dir($imageTarget_dir)) {
         throw new RuntimeException(sprintf('Directory "%s" was not created', $imageTarget_dir));
     }
     $uploadOk = 1;
@@ -96,6 +96,7 @@ if (isset($_POST["pb_submit"])) {
     if ($uploadOk === 0) {
         echo "Das Bild konnte nicht hochgeladen werden.";
 // if everything is ok, try to upload file
+        var_dump($imageTarget_file);
     } else if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
         echo "Error: Das Bild konnte nicht hochgeladen werden.";
     }
