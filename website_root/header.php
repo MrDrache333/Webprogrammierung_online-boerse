@@ -36,7 +36,7 @@ session_start();
 
     <title>KEFEDO-Startseite</title>
 </head>
-<body onload="setCookie('JS','true',1)">
+<body onload="setCookie('JS','true',0)">
 <?php
 if (!isset($_COOKIE["JS"])) {
     header("Location: noJS.html");
@@ -101,7 +101,7 @@ if (!isset($_COOKIE["JS"])) {
                                     type="button">Cancel
                             </button>
 
-                        <span class="psw">
+                            <span class="psw">
                                     <button name="pwforget" type="submit">Passwort vergessen</button>
                                      </span>
                     </form>
@@ -169,3 +169,4 @@ window.onclick = function(event) {
     }
 }
 </script>-->
+</body>
