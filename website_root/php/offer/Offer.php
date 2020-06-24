@@ -98,8 +98,12 @@ class Offer
      */
     public function getLogo()
     {
-        if ($this->getId() === null) {
-            return 'images/company_placeholder.png';
+        if($this->getId()== null){
+            if(file_exists('images/logos/1111.jpg')){
+                return 'images/logos/1111.jpg';
+            }else{
+                return 'images/company_placeholder.png';
+            }
         }
         if (file_exists('images/logos/' . $this->getId() . '.png')) {
             return 'images/logos/' . $this->getId() . '.png';
