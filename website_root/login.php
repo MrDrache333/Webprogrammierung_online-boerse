@@ -40,16 +40,16 @@ if (isset($_POST["loginSubmit"])) {
     $loginEmail = htmlspecialchars($_POST["registerEmail"]);
     $loginPassword = htmlspecialchars($_POST["newPassword"]);
 
-    if (!preg_match('/^[a-zA-Z]{3,30}$/', $prename)) {
+    if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,30}$/', $prename)) {
         echo "Vorname ungültig";
     }
-    if (!preg_match('/^[a-zA-Z]{3,30}$/', $lastname)) {
+    if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,30}$/', $lastname)) {
         echo "Nachname ungültig";
     }
     if (!filter_var($loginEmail, FILTER_VALIDATE_EMAIL)) {
         echo "Mail ungültig";
     }
-    if (!preg_match('/^[a-zA-Z0-9]{5,30}$/', $loginPassword)) {
+    if (!preg_match('/^[a-zA-Z0-9-ä-ü-ß]{5,30}$/', $loginPassword)) {
         echo "Password ungültig";
     }
 
