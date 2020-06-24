@@ -30,6 +30,8 @@ session_start();
         <link rel="stylesheet" type="text/css" href="styles/new_offer.css">
     <?php } ?>
 
+    <script src="scripts/ajax.js"></script>
+
     <title>KEFEDO-Startseite</title>
 </head>
 <body>
