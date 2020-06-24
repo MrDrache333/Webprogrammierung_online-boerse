@@ -17,26 +17,33 @@ if ($q !== "") {
     if ($result !== null) {
         foreach ($result as $offer) {
             if ($id === "0") {
-                $hint .= "<option value=\"" . $offer->getTitle() . "\"/>";
+                if (strpos($offer->getTitle(), $q) !== false) {
+                    $hint .= "<option value=\"" . $offer->getTitle() . "\"/>";
+                }
+                if (strpos($offer->getSubTitle(), $q) !== false) {
+                    $hint .= "<option value=\"" . $offer->getSubTitle() . "\"/>";
+                }
             } else {
-                $value = "";
                 $state = $offer->getAddress()->getState();
                 $town = $offer->getAddress()->getTown();
                 $street = $offer->getAddress()->getStreet();
                 $number = $offer->getAddress()->getNumber();
                 $plz = $offer->getAddress()->getPlz();
                 if (strpos($state, $q) !== false) {
-                    $value = $state;
-                } elseif (strpos($town, $q) !== false) {
-                    $value = $town;
-                } elseif (strpos($street, $q) !== false) {
-                    $value = $street;
-                } elseif (strpos($number, $q) !== false) {
-                    $value = $number;
-                } elseif (strpos($plz, $q) !== false) {
-                    $value = $plz;
+                    $hint .= "<option value=\"" . $state . "\"/>";
                 }
-                $hint .= "<option value=\"" . $value . "\"/>";
+                if (strpos($town, $q) !== false) {
+                    $hint .= "<option value=\"" . $town . "\"/>";
+                }
+                if (strpos($street, $q) !== false) {
+                    $hint .= "<option value=\"" . $street . "\"/>";
+                }
+                if (strpos($number, $q) !== false) {
+                    $hint .= "<option value=\"" . $number . "\"/>";
+                }
+                if (strpos($plz, $q) !== false) {
+                    $hint .= "<option value=\"" . $plz . "\"/>";
+                }
             }
         }
     }
