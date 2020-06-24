@@ -43,9 +43,16 @@ interface OfferDAO
      * @return mixed
      */
     public function update(Offer $offer);
+
     /**
      * @param $id
      * @return mixed
      */
     public function getOfferByID($id);
+
+    /**
+     * @param User $user
+     * @return mixed
+     */
+    public function getLastOwnOffer($user);
 }
