@@ -22,13 +22,13 @@ if (isset($_POST["submit_pb"])) {
     $name = htmlspecialchars($_POST["name"]);
     $name2 = htmlspecialchars($_POST["father_name"]);
     $email = htmlspecialchars($_POST["email"]);
-    if (!preg_match('/[a-zA-Z]{3,50}/', $name)) {
+    if (!preg_match('/^[a-zA-Z]{3,50}$/', $name)) {
         $_SESSION["error"] .= "Ihr Name ist falsch.";
     }
-    if (!preg_match('/[a-zA-Z]{3,50}/', $name2)) {
+    if (!preg_match('/^[a-zA-Z]{3,50}$/', $name2)) {
         $_SESSION["error"] .= " Ihr Nachname ist falsch.";
     }
-    if (!preg_match('/[a-zA-Z-0-9-@-_-.]{3,50}/', $email)) {
+    if (!preg_match('/^[a-zA-Z-0-9-@-_-.]{3,50}$/', $email)) {
         $_SESSION["error"] .= "Ihr Email ist falsch.";
     }
 
