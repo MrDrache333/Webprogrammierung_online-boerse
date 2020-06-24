@@ -31,7 +31,6 @@ if ($eingelogt != "true") {
             $arbeitszeit = $_POST["arbeitszeiten"];
 
 
-
             if (!preg_match('/^[a-zA-Z]{3,50}$/', $titel)) {
                 $_SESSION["error"] .= "Ihr Titel ist falsch.";
             }
@@ -164,14 +163,18 @@ if ($eingelogt != "true") {
     // To upload the Logo
     if (isset($_POST["uploadLogoSubmit"])) {
         $imageTarget_dir = "images/logos/";
-        $tmp_ID = 1111;
         if (!file_exists($imageTarget_dir) && !mkdir($imageTarget_dir) && !is_dir($imageTarget_dir)) {
             throw new RuntimeException(sprintf('Directory "%s" was not created', $imageTarget_dir));
         }
         $uploadOk = 1;
+        $tmp_ID = "tempOfferImage";
         $imageFileType = strtolower(pathinfo($imageTarget_dir . basename($_FILES["fileToUpload"]["name"]), PATHINFO_EXTENSION));
-        $imageTarget_file = $imageTarget_dir . $tmp_ID . "." . $imageFileType;
-        var_dump($imageTarget_file);
+        $randomUploadNumber = random_int(1, 100000);
+        $imageTarget_file = $imageTarget_dir . $tmp_ID . $randomUploadNumber . "." . $imageFileType;
+        while (file_exists($imageTarget_file)) {
+            $randomUploadNumber = random_int(1, 100000);
+            $imageTarget_file = $imageTarget_dir . $tmp_ID . $randomUploadNumber . "." . $imageFileType;
+        }
         // Check if image file is a actual image or fake image
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
         if ($check !== false) {
@@ -197,12 +200,17 @@ if ($eingelogt != "true") {
             // if everything is ok, try to upload file
         } else if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
             echo "Error: Das Bild konnte nicht hochgeladen werden.";
+        } else {
+            $offer->setLogo($imageTarget_file);
+            $_SESSION["tempUpload"] = $tmp_ID . $randomUploadNumber . "." . $imageFileType;
+
         }
 
     }
 
     if (isset($_POST["submit_offer"])) {
         if ($eingelogt == "true") {
+
             if (isset($_POST["titel"], $_POST["subtitel"], $_POST["straße"], $_POST["hausnummer"], $_POST["ort"], $_POST["plz"], $_POST["free"], $_POST["beschreibung"], $_POST["companyname"])) {
                 $AddressDAO = $OfferDao->getAddressDAOImpl();
                 $email = $_COOKIE["email"];
@@ -243,7 +251,7 @@ if ($eingelogt != "true") {
                 if (!preg_match('/[\d]{3,50}/', $free)) {
                     $_SESSION["error"] .= " Ihr Verfügbarkeitsdatumfrei ist falsch.";
                 }
-                if (!preg_match('/^[a-zA-Z0-9-ä-ü-ß]{5,50}$/', $beschreibung)) {
+                if (!preg_match('/[a-z A-Z 0-9-ä-ü-ß]{5,50}$/', $beschreibung)) {
                     $_SESSION["error"] .= " Ihre Beschreibung ist falsch. ";
                 }
                 if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,50}$/', $companyname)) {
@@ -276,11 +284,17 @@ if ($eingelogt != "true") {
                     $offer->setCreator($idaktuelle);
                     $offer->setWorkModel($arbeitszeit);
                     $result = $OfferDao->create($offer);
-                    $logo = $imageTarget_dir . $offer->getId() . "." . $imageFileType;
-                    rename($imageTarget_file, $logo);
-                    $offer->setLogo($imageTarget_file);
-                    $imageTarget_file -> delete();
+                    if ($result) {
+                        $result = $OfferDao->getLastOwnOffer($user);
+                        if ($result != null) {
+                            $createdOffer = current($result);
+                            if (isset($_SESSION['tempUpload'])) {
+                                rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $createdOffer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
+                                unset($_SESSION['tempUpload']);
 
+                            }
+                        }
+                    }
                     ?>
                     <script language="javascript"
                             type="text/javascript"> document.location = "messages.php"; </script><?php

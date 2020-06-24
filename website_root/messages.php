@@ -5,7 +5,6 @@ include_once 'php/classes.php';
 use php\offer\Offer;
 use php\offer\OfferDAOImpl;
 use php\user\UserDAOImpl;
-
 $email = $_COOKIE['email'] ?? null;
 $eingelogt = $_COOKIE['loggedin'];
 if ($eingelogt != "true") {
