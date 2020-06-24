@@ -67,6 +67,9 @@ if (isset($_POST["profilloeschen"])) {
 if (isset($_POST["pb_submit"])) {
 
     $imageTarget_dir = "images/profileImages/";
+    if (!file_exists($imageTarget_dir) && !mkdir($imageTarget_dir, true) && !is_dir($imageTarget_dir)) {
+        throw new RuntimeException(sprintf('Directory "%s" was not created', $imageTarget_dir));
+    }
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($imageTarget_dir . basename($_FILES["fileToUpload"]["name"]), PATHINFO_EXTENSION));
     $imageTarget_file = $imageTarget_dir . $user->getId() . "." . $imageFileType;
