@@ -15,13 +15,14 @@ if ($q !== "") {
     $result = $OfferDAOImpl->search($id === "0" ? $q : "", $id === "1" ? $q : "", null, null, null);
     //Einträge anzeigen
     if ($result !== null) {
+        $values = [];
         foreach ($result as $offer) {
             if ($id === "0") {
                 if (strpos($offer->getTitle(), $q) !== false) {
-                    $hint .= "<option value=\"" . $offer->getTitle() . "\"/>";
+                    $values[] = $offer->getTitle();
                 }
                 if (strpos($offer->getSubTitle(), $q) !== false) {
-                    $hint .= "<option value=\"" . $offer->getSubTitle() . "\"/>";
+                    $values[] = $offer->getSubTitle();
                 }
             } else {
                 $state = $offer->getAddress()->getState();
@@ -30,23 +31,27 @@ if ($q !== "") {
                 $number = $offer->getAddress()->getNumber();
                 $plz = $offer->getAddress()->getPlz();
                 if (strpos($state, $q) !== false) {
-                    $hint .= "<option value=\"" . $state . "\"/>";
+                    $values[] = $state;
                 }
                 if (strpos($town, $q) !== false) {
-                    $hint .= "<option value=\"" . $town . "\"/>";
+                    $values[] = $town;
                 }
                 if (strpos($street, $q) !== false) {
-                    $hint .= "<option value=\"" . $street . "\"/>";
+                    $values[] = $street;
                 }
                 if (strpos($number, $q) !== false) {
-                    $hint .= "<option value=\"" . $number . "\"/>";
+                    $values[] = $number;
                 }
                 if (strpos($plz, $q) !== false) {
-                    $hint .= "<option value=\"" . $plz . "\"/>";
+                    $values[] = $plz;
                 }
             }
+        }
+        $values = array_unique($values);
+        foreach ($values as $value) {
+            $hint .= "<option value=\"" . $value . "\"/>";
         }
     }
 }
 // Output "no suggestion" if no hint was found or output correct values
-echo $hint === "" ? "Keine Ergebnisse" : $hint;
+echo $hint === "" ? "<option value=\"Keine Ergebnisse\" disabled/>" : $hint;
