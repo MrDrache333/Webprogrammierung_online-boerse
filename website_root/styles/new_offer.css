@@ -3,8 +3,12 @@
 }
 */
 
-
-/* Header/Blog Title */
+@media (prefers-color-scheme: dark) {
+  .grid-farbe, .contact-h2, .leftcolumn, .leftcolumn > .card, .middlecolumn, .middlecolumn > .card, .rightcolumne, .rightcolumne > .card {
+    background-color: rgb(31, 31, 31) !important;
+    color: rgb(180, 188, 202) !important;
+  }
+}
 
 
 /* Create two unequal columns that floats next to each other */

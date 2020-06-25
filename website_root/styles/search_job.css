@@ -216,10 +216,7 @@ label {
     font-size: 1.2rem;
 }
 
-@media screen and (max-width: 1064px) {
-    .article-content {
-        margin: auto;
-    }
+@media screen and (max-width: 1400px) {
 
     .jobs-filter {
         position: relative;
@@ -232,14 +229,22 @@ label {
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1000px) and (min-width: 851px) {
 
-    .article-right {
-        margin-top: 0;
+    .article-content {
+        margin: auto;
     }
 
     .article-company {
         justify-content: center;
+    }
+
+}
+
+@media screen and (max-width: 850px) and (min-width: 451px) {
+
+    .article-right {
+        margin-top: 0;
     }
 }
 

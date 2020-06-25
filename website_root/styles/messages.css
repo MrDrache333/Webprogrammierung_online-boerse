@@ -3,10 +3,12 @@
     border: .1rem solid red;
 }
 */
+@media (prefers-color-scheme: dark) {
+  .anzeigen-inhalt > h2, .card > h2 {
+    color: #c4d7e7 !important;
+  }
 
-
-
-/* Header/Blog Title */
+}
 
 
 /* Create two unequal columns that floats next to each other */

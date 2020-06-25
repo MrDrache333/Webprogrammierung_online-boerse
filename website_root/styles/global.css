@@ -6,6 +6,53 @@
     box-sizing: border-box;
 }
 
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .headerrahmen {
+        background-color: black;
+    }
+
+    .navi {
+        background-color: #4f4f4f !important;
+    }
+
+    .jobs-content {
+        background-color: #0b0b0b !important;
+    }
+
+    .searchBox-text {
+        color: #c4d7e7 !important;
+    }
+
+    input[type="text"], input[type="text"]::placeholder, input[type="email"], input[type="email"]::placeholder, input[type="password"], input[type="password"]::placeholder, input[type="date"], input[type="date"]::placeholder, textarea {
+        background-color: #4f4f4f !important;
+        color: #cccccc !important;
+    }
+
+    .filter-fieldset, article, .card, .button_field, .button_field > a {
+        background-color: #4f4f4f !important;
+        color: #cccccc !important;
+    }
+
+    .loginModal-content, .loginModal-content > h2 {
+        background-color: #222222 !important;
+        color: #cccccc !important;
+    }
+
+    .filter-fieldset > h3, .article-head > h3, .article-head > span, .new_offer-form > h2 {
+        color: #c4d7e7 !important;
+    }
+
+    .content {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/background.jpg") !important;
+    }
+
+    .grid-farbe, .contact-h2 {
+        background-color: rgb(31, 31, 31) !important;
+        color: rgb(180, 188, 202) !important;
+    }
+}
+
 /*Same for all pages*/
 body {
     margin: 0;
