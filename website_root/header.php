@@ -39,7 +39,7 @@ session_start();
 <body onload="setCookie('JS','true',0)">
 <?php
 if (!isset($_COOKIE["JS"])) {
-    header("Location: noJS.html");
+    //header("Location: noJS.html");
 }
 ?>
 <div class="grid-container">
@@ -170,3 +170,4 @@ window.onclick = function(event) {
 }
 </script>-->
 </body>
+</html>
