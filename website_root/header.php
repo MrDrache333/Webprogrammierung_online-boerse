@@ -2,8 +2,10 @@
 ini_set("session.use_cookies", 1); // 1 using cookies
 ini_set("session.use_only_cookies", 0);
 ini_set("session.use_trans_sid", 1); // 1 using GET and when cookies are disabled
-error_reporting(E_ERROR | E_PARSE);
-session_start();
+error_reporting(E_ALL);
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -68,7 +70,7 @@ if (!isset($_COOKIE["JS"])) {
             <a href="index.php"><img alt="Logo" class="kefedologo" src="images/logo.png"></a>
         </div>
 
-        <?php if (isset($_COOKIE["loggedin"]) and $_COOKIE["loggedin"] === "true") {
+        <?php if (isset($_COOKIE["loggedin"]) && $_COOKIE["loggedin"] === "true") {
             ?>
             <div class="loginbutton">
                 <form action="login.php" method="post">
@@ -88,7 +90,8 @@ if (!isset($_COOKIE["JS"])) {
             </button>
         </div>
         <div>
-            <div class="loginModal" id="login-modal">
+            <div class="loginModal"
+                 id="login-modal">
             <span class="loginClose" onclick="document.getElementById('login-modal').style.display='none'"
                   title="Close Modal">&times;</span>
 
@@ -180,8 +183,8 @@ if (!isset($_COOKIE["JS"])) {
 
 
 <?php
-    }
-    ?>
+}
+?>
 
 </div>
 

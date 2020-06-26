@@ -1,3 +1,11 @@
+@media (prefers-color-scheme: dark) {
+    .profile-form > h2 {
+        background-color: rgb(31, 31, 31) !important;
+        color: rgb(180, 188, 202) !important;
+    }
+}
+
+
 a:focus, a:active {
     text-decoration: none;
     outline: none;
