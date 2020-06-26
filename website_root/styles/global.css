@@ -47,6 +47,10 @@
         background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/background.jpg") !important;
     }
 
+    .article-link {
+        color: red !important;
+    }
+
     .grid-farbe, .contact-h2 {
         background-color: rgb(31, 31, 31) !important;
         color: rgb(180, 188, 202) !important;

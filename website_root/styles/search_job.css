@@ -216,7 +216,7 @@ label {
     font-size: 1.2rem;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1185px) {
 
     .jobs-filter {
         position: relative;
@@ -241,7 +241,7 @@ label {
 
 }
 
-@media screen and (max-width: 850px) and (min-width: 451px) {
+@media screen and (max-width: 600px) and (min-width: 451px) {
 
     .article-right {
         margin-top: 0;

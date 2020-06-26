@@ -32,7 +32,27 @@ session_start();
 
     <script src="scripts/ajax.js"></script>
     <script src="scripts/cookie.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="styles/cookieBanner.css"/>
+    <script src="scripts/cookieBanner.js"></script>
+    <script>window.addEventListener("load", function () {
+            window.wpcc.init({
+                "border": "normal",
+                "corners": "normal",
+                "colors": {
+                    "popup": {"background": "#1c1f4b", "text": "#ffffff", "border": "#afb3e4"},
+                    "button": {"background": "#afb3e4", "text": "#000000"}
+                },
+                "position": "bottom",
+                "transparency": "15",
+                "fontsize": "large",
+                "content": {
+                    "href": "/impressum.php",
+                    "button": "Ich stimme zu",
+                    "link": "Weitere Informationen",
+                    "message": "Unsere Webseite verwendet Cookies, um Ihnen ein bestmögliches Nutzungserlebnis zu ermöglichen"
+                }
+            })
+        });</script>
 
     <title>KEFEDO-Startseite</title>
 </head>
