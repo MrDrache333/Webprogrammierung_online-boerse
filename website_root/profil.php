@@ -236,5 +236,9 @@ if (isset($_POST['reset_pb'])) {
 </div>
 </div>
 </div>
-</div><?php include "footer.html"; ?>
+</div>
+
+</html>
+
+<?php include "footer.html"; ?>
 
