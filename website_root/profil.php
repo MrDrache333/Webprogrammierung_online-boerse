@@ -32,12 +32,18 @@ if (isset($_POST["submit_pb"])) {
     if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,50}$/', $name2)) {
         $_SESSION["error"] .= " Ihr Nachname ist falsch.";
     }
-    if (!preg_match('/^[a-zA-Z-ä-ü-0-9-@-_-.]{3,50}$/', $email)) {
-        $_SESSION["error"] .= "Ihr Email ist falsch.";
-    }
 
+    if ($email != $_COOKIE["email"]) {
+        if ($u->findUserByMail($email) == null) {
+            $user->setEmail($email);
+
+        } else {
+            $_SESSION["error"] = "Die Email gibt es bereits.";
+        }
+
+    }
     if ($_SESSION["error"] == null) {
-        $user->setEmail($email);
+
         $user->setPrename($name);
         $user->setSurname($name2);
         $user->setPassword($pwaktuell);
@@ -65,6 +71,7 @@ if (isset($_POST["submit_pb"])) {
 
         }
     } else {
+
         echo $_SESSION["error"];
         unset($_SESSION["error"]);
 
