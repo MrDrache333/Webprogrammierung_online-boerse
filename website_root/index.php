@@ -9,10 +9,8 @@ if ($_SESSION["error"] ?? "" === "loggout") {
 ?>
 <div class="header">
     <ul class="navi">
-
         <?php
         if (isset($_COOKIE["loggedin"]) && $_COOKIE["loggedin"] === "true") { ?>
-
             <li class="navibutton">
                 <div class="active"><a href="index.php" class="naviobjekt"> Startseite</a></div>
             </li>
@@ -52,4 +50,3 @@ if ($_SESSION["error"] ?? "" === "loggout") {
     </form>
 </div>
 <?php include "footer.html"; ?>
-

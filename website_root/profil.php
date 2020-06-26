@@ -6,12 +6,12 @@ use php\user\UserDAOImpl;
 include_once 'php/classes.php'; ?>
 
 <?php
-$eingelogt = $_COOKIE['loggedin'];
+$eingelogt = $_COOKIE['loggedin'] ?? "";
 if ($eingelogt != "true") {
     $_SESSION["error"] = "loggout";
 }
 
-if ($_SESSION["error"] != null) {
+if (isset($_SESSION["error"])) {
     ?>
     <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
 
