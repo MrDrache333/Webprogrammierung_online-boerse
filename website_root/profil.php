@@ -205,15 +205,19 @@ if (isset($_POST['reset_pb'])) {
                                 </div>
                                 <div class="form-group">
                                     <label for="city">neues Passwort:</label>
-                                    <input type="password" name="pwsetzen" id="pwsetzen"/>
+                                    <input type="password" name="pwsetzen" id="pwsetzen" onkeyup="pw_check();"/>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="street">neues Passwort wiederholen</label>
-                                    <input type="password" name="pwwiederholen" id="pwwiederholen"/>
+                                    <input type="password" name="pwwiederholen" id="pwwiederholen"
+                                           onkeyup="pw_check();"/>
                                 </div>
+                                <span id="feedback"></span>
+
                             </div>
+
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="email">E-Mail Adresse :</label>
@@ -222,7 +226,29 @@ if (isset($_POST['reset_pb'])) {
                                 </div>
 
                             </div>
+                            <script>
+                                function pw_check() {
+                                    var pw1 = document.getElementById('pwsetzen').value;
+                                    var pw2 = document.getElementById('pwwiederholen').value;
+                                    var call = document.getElementById('feedback');
 
+                                    if (pw1.length < 5) {
+                                        call.innerHTML = "<strong>Das Passwort ist zu kurz</strong>";
+                                        call.style.color = "red";
+                                    } else {
+
+                                        if (pw1 == pw2) {
+                                            call.innerHTML = "<strong>Die Passwörter sind gleich</strong>";
+                                            call.style.color = "#56a40c";
+
+                                        } else {
+                                            call.style.color = "red";
+                                            call.innerHTML = "<strong>Die Passwörter sind ungleich</strong>";
+                                        }
+                                    }
+                                }
+
+                            </script>
 
                             <input type="submit" value="Speichern" class="submit" name="submit_pb" id="submit"/>
                             <input type="submit" value="Profil löschen" class="delete " name="profilloeschen"
