@@ -50,13 +50,13 @@ function displayResults($result)
     if ($result !== null) {
         $count = 0;
         foreach ($result as $offer) {
-            $test = $offer->getId();
+$titel=$offer->getTitle();
             $count++;
             $html = "<article role=\"article\" id=\"" . $offer->getId() . "\"> 
                         <div class=\"article-content\">
                             <div class=\"article-left\">
                                 <div class=\"article-head\">
-                                    <h3 class=\"result-h3\" role=\"heading\" id=\"article_head\">" . $offer->getTitle() . "</h3>
+                                    <h3 class=\"result-h3\" role=\"heading\" id=\"article_head\">" . $titel . "</h3>
                                     <span class=\"result-h3-sub\" id=\"article_sub\">" . $offer->getSubTitle() . "</span>
                                 </div>
                                 <div class=\"article-company\">
@@ -64,6 +64,8 @@ function displayResults($result)
                                          src=\"" . $offer->getLogo() . "\"
                                          alt=\"Firmenlogo\">
                                     <span class=\"article-company-name\">" . $offer->getCompanyName() . "</span>
+                                    <span class=\"article-company-name\" id='testsalat'>" . $offer->getId() . "</span>
+                                    
                                 </div>
                             </div>
                             <div class=\"article-right\">
@@ -87,14 +89,99 @@ function displayResults($result)
                                 </div>
                             </div>
                         </div>
-                       <a class=\"article-link\" id=\"article_link\" href=\"#\">Mehr Informationen</a> 
-           
+                        
+                      
+            
+            <p id=". $offer->getId() ."></p>
+            
+ <button id=". $offer->getId() .">Try it</button>
+
+ <p id=". $offer->getId() .">
+
+</p>
+<p id='$count'></p>
+        <script>
+document.getElementById(". $offer->getId() .").onclick = displayDate;
+
+function displayDate() {
+    
+    var z = document.getElementById(\"testsalat\").firstChild.nodeValue;
+                            var x = document.getElementById(\"article_head\").firstChild.nodeValue;
+                            document.getElementById(z).innerHTML = x;
+                            document.getElementById($count).innerHTML=z;
+}
+</script>
+
+        
     
                     </article>";
-            echo $html . "\n";
+            echo $html . "\n";?>
+
+
+
+
+<?php
+
         }
 
+        ?>
 
+
+        <script>
+
+
+
+
+
+
+
+                    </script>
+        <div>
+            <div class="loginModal" id="w_offer">
+            <span class="loginClose" onclick="document.getElementById('w_offer').style.display='none'"
+                  title="Close Modal">&times;</span>
+                <div class="formulare">
+                    <!-- Login form-->
+                    <p id="offer_name"></p>
+                        <div class=\"article-content\">
+                            <div class=\"article-left\">
+                                <div class=\"article-head\">
+                                    <h3 class=\"result-h3\" role=\"heading\" id=\"article_head\">" . $offer->getTitle() . "</h3>
+                                    <span class=\"result-h3-sub\" id=\"article_sub\">" . $offer->getSubTitle() . "</span>
+                                </div>
+                                <div class=\"article-company\">
+                                    <img class=\"article-company-logo\" id=\"article-logo\"
+                                         src=\"" . $offer->getLogo() . "\"
+                                         alt=\"Firmenlogo\">
+                                    <span class=\"article-company-name\">" . $offer->getCompanyName() . "</span>
+                                </div>
+                            </div>
+                            <div class=\"article-right\">
+                                <div class=\"article-info-row\">
+                                    <div class=\"article-info-type\">Veröffentlichung:</div>
+                                    <span class=\"article-info-value\" id=\"article_releaseDate\">" . $offer->getCreated() . "</span>
+                                </div>
+                                <div class=\"article-info-row\">
+                                    <div class=\"article-info-type\">Frei ab:</div>
+                                    <span class=\"article-info-value\" id=\"article_freeAt\">" . $offer->getFree() . "</span>
+                                </div>
+
+                                <div class=\"article-info-row\">
+                                    <div class=\"article-info-type\">Standort:</div>
+                                    <div class=\"article-info-group\">
+                                        <span class=\"article-info-value\"
+                                              id=\"article_address_street\">" . $offer->getAddress()->getStreet() . " " . $offer->getAddress()->getNumber() . "</span>
+                                        <span class=\"article-info-value\"
+                                              id=\"article_address_plz\">" . $offer->getAddress()->getPlz() . " " . $offer->getAddress()->getTown() . "</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+<?php
         if ($count === 0) { ?>
             <div style="background: radial-gradient(circle at center, white 0,rgba(255,255,255,0.9) 60%,
                  rgba(255,255,255,0.5) 70%,transparent 90%); text-align: center; border-radius: 20px">
@@ -113,3 +200,4 @@ function displayResults($result)
     }
 
 }
+
