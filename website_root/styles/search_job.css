@@ -3,6 +3,14 @@
 }
 */
 
+@media (prefers-color-scheme: dark) {
+
+    article:hover {
+        border: .1rem solid lightgrey !important;
+        border-left: .2666666667rem solid #c4d7e7 !important;
+    }
+}
+
 .content {
     padding: 10px .5% 10px .5%;
     margin: 0;
