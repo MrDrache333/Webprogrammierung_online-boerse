@@ -5,6 +5,7 @@ include_once 'php/classes.php';
 use php\offer\Offer;
 use php\offer\OfferDAOImpl;
 use php\user\UserDAOImpl;
+
 $email = $_COOKIE['email'] ?? null;
 $eingelogt = $_COOKIE['loggedin'];
 if ($eingelogt != "true") {
@@ -93,8 +94,6 @@ echo $_SESSION["error"];
                     foreach ($result as $offer) {
 
                         $offer_id = $offer->getId();
-
-
                         $count++;
                         $html = "<div class=\"card\">
                                     <div class=\"anzeigen-inhalt\">

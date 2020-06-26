@@ -153,26 +153,33 @@ if (!isset($_COOKIE["JS"])) {
                                    placeholder="Nachname eingeben" required
                                    type="email">
                         </p>
-                        <p><label for="newPassword"><b>Passwort</b></label>
+                        <p><label for="newPassword"><b>Passwort <span id="feedback"></span></b></label>
                             <input class="loginInput" id="newPassword" name="newPassword"
                                    placeholder="Passwort eingeben"
                                    required
-                                   type="password">
-                        </p>
-                        <button name="registerSubmit" type="submit">Registrieren</button>
-                    </div>
+                                   type="password" onkeyup="char_count();">
 
-                    <div class="loginContainer">
-                        <button class="cancelbtn"
-                                onclick="document.getElementById('login-modal').style.display='none'">
-                            Cancel
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <?php
+                            <script type="text/javascript" src="passwd_check.js">
+                            </script>
+
+</body>
+</p>
+<button name="registerSubmit" type="submit">Registrieren</button>
+</div>
+
+<div class="loginContainer">
+    <button class="cancelbtn"
+            onclick="document.getElementById('login-modal').style.display='none'">
+        Cancel
+    </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+<?php
     }
     ?>
 
