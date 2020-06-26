@@ -7,7 +7,7 @@ use php\offer\OfferDAOImpl;
 use php\user\UserDAOImpl;
 
 $email = $_COOKIE['email'] ?? null;
-$eingelogt = $_COOKIE['loggedin'];
+$eingelogt = $_COOKIE['loggedin'] ?? null;
 if ($eingelogt != "true") {
     $_SESSION["error"] = "loggout";
     ?>
@@ -53,7 +53,10 @@ if ($eingelogt != "true") {
 
     }
 }
-echo $_SESSION["error"];
+if (isset($_SESSION["error"])) {
+    echo $_SESSION["error"];
+}
+
 ?>
 <div class="header">
     <nav>
