@@ -79,12 +79,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <title>KEFEDO-Startseite</title>
 </head>
-<body onload="setCookie('JS','true',0)">
-<?php
-if (!isset($_COOKIE["JS"])) {
-    //header("Location: noJS.html");
-}
-?>
+<body>
 <div class="grid-container">
     <div class="headerrahmen">
         <div class="logo">
@@ -154,7 +149,7 @@ if (!isset($_COOKIE["JS"])) {
 
 
                 <!-- Register form-->
-                <form action="/login.php" class="loginModal-content loginAnimate" method="post">
+                <form action="login.php" class="loginModal-content loginAnimate" method="post">
                     <h2>Registrieren</h2>
                     <div class="loginImgcontainer">
                         <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
