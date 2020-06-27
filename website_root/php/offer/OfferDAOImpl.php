@@ -104,15 +104,17 @@ class OfferDAOImpl implements OfferDAO
         //Standardfilter erstellen
         $command = "SELECT * FROM offers, address WHERE offers.address = address.ID";
         $values = [];
+        $what = strtoupper($what);
+        $where = strtoupper($where);
         //Wenn nach einem begriff gesucht werden soll
         if ($what !== "") {
-            $command .= " AND (title like ? OR subtitle like ? OR description like ?)";
+            $command .= " AND (UPPER(title) like ? OR UPPER(subtitle) like ? OR UPPER(description) like ?)";
             $what = '%' . $what . '%';
             array_push($values, $what, $what, $what);
         }
         //Wenn nach einem Ort gesucht werden soll
         if ($where !== "") {
-            $command .= " AND (plz like ? OR town like ?)";
+            $command .= " AND (UPPER(plz) like ? OR UPPER(town) like ?)";
             $where = '%' . $where . '%';
             array_push($values, $where, $where);
         }

@@ -18,10 +18,10 @@ if ($q !== "") {
         $values = [];
         foreach ($result as $offer) {
             if ($id === "0") {
-                if (strpos($offer->getTitle(), $q) !== false) {
+                if (stripos($offer->getTitle(), $q) !== false) {
                     $values[] = $offer->getTitle();
                 }
-                if (strpos($offer->getSubTitle(), $q) !== false) {
+                if (stripos($offer->getSubTitle(), $q) !== false) {
                     $values[] = $offer->getSubTitle();
                 }
             } else {
@@ -30,19 +30,19 @@ if ($q !== "") {
                 $street = $offer->getAddress()->getStreet();
                 $number = $offer->getAddress()->getNumber();
                 $plz = $offer->getAddress()->getPlz();
-                if (strpos($state, $q) !== false) {
+                if (stripos($state, $q) !== false) {
                     $values[] = $state;
                 }
-                if (strpos($town, $q) !== false) {
+                if (stripos($town, $q) !== false) {
                     $values[] = $town;
                 }
-                if (strpos($street, $q) !== false) {
+                if (stripos($street, $q) !== false) {
                     $values[] = $street;
                 }
-                if (strpos($number, $q) !== false) {
+                if (stripos($number, $q) !== false) {
                     $values[] = $number;
                 }
-                if (strpos($plz, $q) !== false) {
+                if (stripos($plz, $q) !== false) {
                     $values[] = $plz;
                 }
             }
