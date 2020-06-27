@@ -10,6 +10,19 @@ if (isset($_GET['what']) || isset($_GET['where'])) {
     $what = htmlspecialchars($_GET['what']) ?? "";
     $where = htmlspecialchars($_GET['where']) ?? "";
 
+    if (!isValidInput($what) || !isValidInput($where)) {
+        $where = "";
+        $what = "";
+        unset($_GET['what'], $_GET['where']);
+        echo '<script>
+                document.getElementById("searchBox_where").value = "";
+                document.getElementById("searchBox_what").value = "";
+                alert("Deine Suche ist ungültig.\nBitte verwende nur: Großbuchstaben, Kleinbuchstaben, Nummern, Umlaute bis zu einer Länge von max. 50 Zeichen")
+              </script>';
+        displayResults([]);
+        exit();
+    }
+
     //Suchbegriffe für evtl. spätere Filterung speichern
     $_SESSION['ls_what'] = $what;
     $_SESSION['ls_where'] = $where;
@@ -31,6 +44,19 @@ if (isset($_GET['what']) || isset($_GET['where'])) {
         $where = $_SESSION['ls_where'] ?? "";
         $what = $_SESSION['ls_what'] ?? "";
 
+        if (!isValidInput($what) || !isValidInput($where)) {
+            $where = "";
+            $what = "";
+            unset($_GET['what'], $_GET['where']);
+            echo '<script>
+                document.getElementById("searchBox_where").value = "";
+                document.getElementById("searchBox_what").value = "";
+                alert("Deine Suche ist ungültig.\nBitte verwende nur: Großbuchstaben, Kleinbuchstaben, Nummern, Umlaute bis zu einer Länge von max. 50 Zeichen")
+              </script>';
+            displayResults([]);
+            exit();
+        }
+
         //In Datenbank nach Einträgen suchen
         $OfferDAOImpl = new OfferDAOImpl();
         $result = $OfferDAOImpl->search($what, $where, $type, $duration, $time);
@@ -40,19 +66,22 @@ if (isset($_GET['what']) || isset($_GET['where'])) {
     }
 }
 
+function isValidInput($input)
+{
+    return preg_match('/^([\w\x{C4}\x{E4}\x{D6}\x{F6}\x{DC}\x{FC}\x{DF}\x{2F}\x{29}\x{28}\s]){0,50}$/u', $input);
+}
+
 /**
  * @param Offer[] $result Ergebnisse der Datenbankabfrage
  */
-
 function displayResults($result)
 {
 
     if ($result !== null) {
-        $count = 0;
-        foreach ($result as $offer) {
-            $test = $offer->getId();
-            $count++;
-            $html = "<article role=\"article\" id=\"" . $offer->getId() . "\"> 
+        if (sizeof($result) > 0) {
+            foreach ($result as $offer) {
+                $test = $offer->getId();
+                $html = "<article role=\"article\" id=\"" . $offer->getId() . "\"> 
                         <div class=\"article-content\">
                             <div class=\"article-left\">
                                 <div class=\"article-head\">
@@ -91,11 +120,9 @@ function displayResults($result)
            
     
                     </article>";
-            echo $html . "\n";
-        }
-
-
-        if ($count === 0) { ?>
+                echo $html . "\n";
+            }
+        } else { ?>
             <div style="background: radial-gradient(circle at center, white 0,rgba(255,255,255,0.9) 60%,
                  rgba(255,255,255,0.5) 70%,transparent 90%); text-align: center; border-radius: 20px">
                 <img style="display: inline-block; max-width: 60%" src="images/no_result.png" alt="Keine Ergebnisse">

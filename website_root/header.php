@@ -53,10 +53,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <link rel="stylesheet" type="text/css" href="styles/new_offer.css">
     <?php } ?>
 
-    <script src="scripts/ajax.js"></script>
-    <script src="scripts/cookie.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/cookieBanner.css"/>
-    <script src="scripts/cookieBanner.js"></script>
     <script>window.addEventListener("load", function () {
             window.wpcc.init({
                 "border": "normal",

@@ -23,7 +23,7 @@
     animation: fadein .5s;
 }
 
-.searchBox-input {
+.searchBox_input {
     min-width: 100%;
 }
 
@@ -154,7 +154,7 @@ article:hover {
     padding: 10px;
 }
 
-.searchBox-text {
+.searchBox_text {
     color: white;
 }
 

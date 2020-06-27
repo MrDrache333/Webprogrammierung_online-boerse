@@ -9,38 +9,37 @@
             <li class="navibutton"><a href="profil.php" class="naviobjekt"> Mein Profil</a></li>
             <li class="navibutton"><a href="messages.php" class="naviobjekt">Meine Anzeigen </a></li>
         <?php } else {
-            ?>
-            <li class="navibutton">
-                <div class="active"><a href="index.php" class="naviobjekt"> Startseite</a></div>
-                <?php }
         ?>
+        <li class="navibutton">
+            <div class="active"><a href="index.php" class="naviobjekt"> Startseite</a></div>
+            <?php }
+            ?>
         <li class="navibutton"><a href="contact.php" class="naviobjekt">Kontakt </a></li>
         <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
     </ul>
 </div>
-<!--Searchbox-->
 <div class="content">
     <div class="container">
         <div class="jobs-content">
             <div class="jobs-search">
                 <form class="searchBox" method="GET">
-                    <p class="searchBox-text">Wonach suchen Sie ?</p>
-                    <label for="searchBox-what" hidden>Was? (z.B. Beruf oder Stichwort)</label>
-                    <input id="searchBox-what" name="what" class="searchBox-input searchBox-item" type="text"
+                    <p class="searchBox_text">Wonach suchen Sie ?</p>
+                    <label for="searchBox_what" hidden>Was? (z.B. Beruf oder Stichwort)</label>
+                    <input id="searchBox_what" name="what" class="searchBox_input searchBox_item" type="text"
                            placeholder="Was? (z.B. Beruf oder Stichwort)"
                            value="<?php echo $_GET['what'] ?? $_SESSION['ls_what'] ?? "" ?>"
                            onkeyup="showHint(this.value,0)" list="liveSearch_0" autocomplete="off"/>
                     <datalist id="liveSearch_0"></datalist>
-                    <label for="searchBox-where" hidden>Wo? (z.B. PLZ oder Ort)</label>
-                    <input id="searchBox-where" name="where" class="searchBox-input searchBox-item"
+                    <label for="searchBox_where" hidden>Wo? (z.B. PLZ oder Ort)</label>
+                    <input id="searchBox_where" name="where" class="searchBox_input searchBox_item"
                            type="text"
                            placeholder="Wo? (z.B. PLZ oder Ort)"
                            value="<?php echo $_GET['where'] ?? $_SESSION['ls_where'] ?? "" ?>"
                            onkeyup="showHint(this.value,1)" list="liveSearch_1" autocomplete="off"/>
                     <datalist id="liveSearch_1"></datalist>
-                    <button href="search_job.php" class="searchBox-button searchBox-button-text searchBox-item"
+                    <button href="search_job.php" class="searchBox_button searchBox_button-text searchBox_item"
                             type="submit"><span
-                                class="searchBox-button-gradient"></span>Suchen
+                                class="searchBox_button-gradient"></span>Suchen
                     </button>
                 </form>
             </div>
@@ -131,5 +130,6 @@
         </div>
     </div>
 </div>
+<script src="scripts/searchBox.js"></script>
 <?php include "footer.html"; ?>
 

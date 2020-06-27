@@ -1,4 +1,4 @@
-.searchBox-grid {
+.searchBox_grid {
     display: grid;
     margin: auto;
     padding: 10px 0 10px 0;
@@ -32,20 +32,20 @@
     }
 }
 
-.searchBox-input {
+.searchBox_input {
     border-radius: 8px;
     padding: 10px;
     text-align: center;
     min-width: 350px;
 }
 
-.searchBox-item {
+.searchBox_item {
     grid-row: auto;
     grid-column-end: 2;
     margin: 5px auto 5px auto;
 }
 
-.searchBox-text {
+.searchBox_text {
     display: grid;
     min-width: 200px;
     padding-bottom: 15px;
@@ -53,7 +53,7 @@
     font-size: 26px;
 }
 
-.searchBox-button {
+.searchBox_button {
     display: flex;
     width: 150px;
     height: 64px;
@@ -69,21 +69,21 @@
     box-shadow: 0 9px 18px rgba(0, 0, 0, 0.2);
 }
 
-.searchBox-button:hover {
+.searchBox_button:hover {
     text-decoration: none;
-    color: grey;
+    color: #d3dbe9;
 }
 
-.searchBox-button-text {
+.searchBox_button-text {
     align-items: center;
-    padding-left: 30px;
+    padding-left: 36px;
     border-radius: 50px;
     color: black;
     background: #c4d7e7;
     transition: all 0.2s ease-out 0s;
 }
 
-.searchBox-button-gradient {
+.searchBox_button-gradient {
     display: block;
     position: absolute;
     top: 0;
@@ -97,10 +97,10 @@
     background: radial-gradient(50px circle at top center, rgba(100, 100, 255, .5) 30%, rgba(255, 255, 255, 0));
     transition: all 0s ease-out 0s;
     transform: translatex(-50px);
-    animation: 18s linear 0s infinite searchBox-button-gradient-move;
+    animation: 18s linear 0s infinite searchBox_button-gradient-move;
 }
 
-@-webkit-keyframes searchBox-button-gradient-move {
+@-webkit-keyframes searchBox_button-gradient-move {
     0% {
         transform: translatex(-50px);
         background: radial-gradient(50px circle at center, rgba(100, 100, 255, .5) 30%, rgba(255, 255, 255, 0));
@@ -124,7 +124,7 @@
         padding: 0;
     }
 
-    .searchBox-input {
+    .searchBox_input {
         min-width: 100%;
         width: 100%;
         max-width: 100%;
