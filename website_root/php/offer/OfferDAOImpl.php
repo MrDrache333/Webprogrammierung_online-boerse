@@ -131,6 +131,7 @@ class OfferDAOImpl implements OfferDAO
             $command .= " AND workModel=?";
             $values[] = $time;
         }
+        $command .= " ORDER BY offers.id DESC";
         //Datenbank abfragen und Ergebnis zurückgeben
         return OfferHelper::getOffersFromSQLResult($this->database->execute($command, $values));
     }
