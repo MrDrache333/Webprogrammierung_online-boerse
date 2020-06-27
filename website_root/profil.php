@@ -26,17 +26,20 @@ if (isset($_POST["submit_pb"])) {
     $name = htmlspecialchars($_POST["name"]);
     $name2 = htmlspecialchars($_POST["father_name"]);
     $email = htmlspecialchars($_POST["email"]);
-    if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,50}$/', $name)) {
+    if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $name)) {
         $_SESSION["error"] .= "Ihr Name ist falsch.";
     }
-    if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,50}$/', $name2)) {
+    if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $name2)) {
+        $_SESSION["error"] .= " Ihr Nachname ist falsch.";
+    }
+    if (!preg_match('/^[0-9a-zA-Zöäß+_\s]{3,50}$/', $email)) {
         $_SESSION["error"] .= " Ihr Nachname ist falsch.";
     }
 
     if ($email != $_COOKIE["email"]) {
         if ($u->findUserByMail($email) == null) {
             $user->setEmail($email);
-
+//TODO Set Email repariren
         } else {
             $_SESSION["error"] = "Die Email gibt es bereits.";
         }

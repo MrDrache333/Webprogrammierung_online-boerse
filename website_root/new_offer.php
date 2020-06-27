@@ -18,17 +18,23 @@ if ($eingelogt != "true") {
     ?>
     <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
 } else {
+    //TODO BEHEBT PROBLEM DES VERSCHWINDENDEN TEXT
+
     $offer = new Offer();
+    $titel = htmlspecialchars($_POST["titel"]);
+    $subtitle = htmlspecialchars($_POST["subtitel"]);
+    $straße = htmlspecialchars($_POST["straße"]);
+    $hsnr = htmlspecialchars($_POST["hausnummer"]);
+    $ort = htmlspecialchars($_POST["ort"]);
+    $plz = htmlspecialchars($_POST["plz"]);
+    $free = htmlspecialchars($_POST["free"]);
+    $beschreibung = htmlspecialchars($_POST["beschreibung"]);
+    $companyname = htmlspecialchars($_POST["companyname"]);
+    $art = $_POST['angebotsart'];
+    $befristung = $_POST['befristung'];
+    $arbeitszeit = $_POST['arbeitszeiten'];
     if (isset($_POST["edit_offer"])) {
         if ($eingelogt == "true") {
-            $titel = $_POST["titel"];
-            $subtitle = $_POST["subtitel"];
-            $companyname = $_POST["companyname"];
-            $beschreibung = $_POST["beschreibung"];
-            $free = $_POST["free"];
-            $art = $_POST["angebotsart"];
-            $befristung = $_POST["befristung"];
-            $arbeitszeit = $_POST["arbeitszeiten"];
 
 
             if (!preg_match('/^[a-zA-Z]{3,50}$/', $titel)) {
@@ -162,6 +168,7 @@ if ($eingelogt != "true") {
     }
     // To upload the Logo
     if (isset($_POST["uploadLogoSubmit"])) {
+
         $imageTarget_dir = "images/logos/";
         if (!file_exists($imageTarget_dir) && !mkdir($imageTarget_dir) && !is_dir($imageTarget_dir)) {
             throw new RuntimeException(sprintf('Directory "%s" was not created', $imageTarget_dir));
@@ -217,44 +224,30 @@ if ($eingelogt != "true") {
                 $user = $UserDAO->findUserByMail($email);
                 $idaktuelle = $user->getId();
 
-                $titel = htmlspecialchars($_POST["titel"]);
-                $subtitle = htmlspecialchars($_POST["subtitel"]);
-                $straße = htmlspecialchars($_POST["straße"]);
-                $hsnr = htmlspecialchars($_POST["hausnummer"]);
-                $ort = htmlspecialchars($_POST["ort"]);
-                $plz = htmlspecialchars($_POST["plz"]);
-                $free = htmlspecialchars($_POST["free"]);
-                $beschreibung = htmlspecialchars($_POST["beschreibung"]);
-                $companyname = htmlspecialchars($_POST["companyname"]);
-                $art = $_POST['angebotsart'];
-                $befristung = $_POST['befristung'];
-                $arbeitszeit = $_POST['arbeitszeiten'];
 
-                if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,50}$/', $titel)) {
+                if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $titel)) {
                     $_SESSION["error"] .= "Ihr Titel ist falsch.";
                 }
-                if (!preg_match('/^[a-zA-Z]{3,50}$/', $subtitle)) {
+                if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $subtitle)) {
                     $_SESSION["error"] .= " Ihr Untertitel ist falsch.";
                 }
-                if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,50}$/', $straße)) {
+                if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $straße)) {
                     $_SESSION["error"] .= "Ihr Straße ist falsch.";
                 }
-                if (!preg_match('/^[a-zA-Z0-9-ä-ü-ß]{1,50}$/', $hsnr)) {
+                if (!preg_match('/^[0-9a-zA-Z]{1,50}$/', $hsnr)) {
                     $_SESSION["error"] .= " Ihr Hausnummer ist falsch.";
                 }
-                if (!preg_match('/^[a-zA-Z-ä-ü-ß]{2,20}$/', $ort)) {
+                if (!preg_match('/^[0-9a-zA-Zöäß\s]{2,20}$/', $ort)) {
                     $_SESSION["error"] .= " Ihre Ort ist falsch.";
                 }
                 if (!preg_match('/^[\d]{5}$/', $plz)) {
                     $_SESSION["error"] .= " Ihre Postleitzahl ist falsch.";
                 }
-                if (!preg_match('/[\d]{3,50}/', $free)) {
-                    $_SESSION["error"] .= " Ihr Verfügbarkeitsdatumfrei ist falsch.";
-                }
-                if (!preg_match('/[a-z A-Z 0-9-ä-ü-ß]{5,50}$/', $beschreibung)) {
+
+                if (!preg_match('/[0-9a-zA-Zöäß\s]{5,50}$/', $beschreibung)) {
                     $_SESSION["error"] .= " Ihre Beschreibung ist falsch. ";
                 }
-                if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,50}$/', $companyname)) {
+                if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $companyname)) {
                     $_SESSION["error"] .= "Ihr Firmenname ist falsch. ";
                 }
                 if ($art == null) {
@@ -340,8 +333,7 @@ if ($eingelogt != "true") {
                         <input type="file" name="fileToUpload" id="fileToUpload">
                         <input type="submit" value="Upload Image" name="uploadLogoSubmit">
                     </div>
-                </form>
-                <form method="POST" class="new_offer-form" id="new_offer-form" action="messages.php"></form>
+                    <!--TODO REQUIRED BUG BEHEBEN    </form>-->
             </div>
         </div>
         <div class="middlecolumn">
