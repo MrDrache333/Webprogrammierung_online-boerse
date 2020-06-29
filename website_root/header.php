@@ -90,7 +90,9 @@ if (isset($_POST["profildelete"])) {
 
     <title>KEFEDO-Startseite</title>
 </head>
-<body>
+<body <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] == true) { ?>
+    onload="document.getElementById('login-modal').style.display='block'"
+<?php }; ?>>
 <div class="grid-container">
     <div class="headerrahmen">
         <div class="logo">
@@ -119,8 +121,12 @@ if (isset($_POST["profildelete"])) {
                 Einloggen
                 oder Registrieren
             </button>
+
             <noscript> </form> </noscript>
+
         </div>
+
+
         <div>
             <div class="loginModal"
                  id="login-modal">
@@ -129,7 +135,7 @@ if (isset($_POST["profildelete"])) {
 
                 <div class="formulare">
                     <!-- Login form-->
-                    <form onload="setCookie('currentModelIsOpen','true',0)" action="login.php"
+                    <form action="login.php"
                           class="loginModal-content loginAnimate" method="post">
                         <h2>Login</h2>
                         <div class="loginImgcontainer">
@@ -138,12 +144,22 @@ if (isset($_POST["profildelete"])) {
 
                         <div class="loginContainer">
                             <p><label for="email"><b>Email</b></label>
-                                <input class="loginInput" id="email" name="email" placeholder="Email eingeben"
+                                <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] == true) {
+                                    echo '<br /><br /><label for="email"><i style="color: #FF0000">Email und/oder Passwort ist falsch!</i></label>';
+                                }; ?>
+                                <input class="loginInput" id="email" name="email"
+                                    <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] == true) {
+                                        echo 'style="border: 2px solid red;"';
+                                    }; ?>
+                                       placeholder="Email eingeben"
                                        required
                                        type="email">
                             </p>
                             <p><label for="password"><b>Passwort</b></label>
                                 <input class="loginInput" id="password" name="password"
+                                    <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] == true) {
+                                        echo 'style="border: 2px solid red;"';
+                                    }; ?>
                                        placeholder="Passwort eingeben"
                                        required
                                        type="password">
@@ -163,7 +179,6 @@ if (isset($_POST["profildelete"])) {
                     </form>
 
                 </div>
-
 
                 <!-- Register form-->
                 <form action="login.php" class="loginModal-content loginAnimate" method="post">

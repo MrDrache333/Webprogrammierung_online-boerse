@@ -22,7 +22,7 @@ if (isset($_POST["loginSubmit"])) {
         } else {
             setcookie("loggedin", "false", time() + 60 * 60 * 24);
             echo "Die Anmeldedaten sind falsch.";
-            header("Location:index.php");
+            header("Location:index.php?reloadModal=true");
         }
     } else {
         setcookie("loggedin", "false", time() + 60 * 60 * 24);
@@ -67,7 +67,7 @@ if (isset($_POST["loginSubmit"])) {
             $result = $controller->create($toRegisterUser);
             if (($user = $controller->findUserByMail($loginEmail)) === null) {
                 echo "Fehler beim erstellen des Benutzers";
-                header("Location: index.php");
+                header("Location: index.php?reloadModal=true&error=0");
             } else {
                 setcookie("email", $toRegisterUser->getEmail(), time() + 60 * 60 * 24);
                 setcookie("username", $toRegisterUser->getPrename() . " " . $toRegisterUser->getSurname(), time() + 60 * 60 * 24);
