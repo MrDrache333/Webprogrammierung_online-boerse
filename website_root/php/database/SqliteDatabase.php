@@ -26,13 +26,9 @@ class SqliteDatabase implements Database
     public function connect(): ?bool
     {
         if ($this->exists()) {
-            $this->conn = new PDO('sqlite:../DB.sqlite3', "", "", array(
-                PDO::ATTR_PERSISTENT => true
-            )) or die("Cannot open the Database");
+            $this->conn = new PDO('sqlite:../DB.sqlite3') or die("Cannot open the Database");
         } else {
-            $this->conn = new PDO('sqlite:../DB.sqlite3', "", "", array(
-                PDO::ATTR_PERSISTENT => true
-            )) or die("Cannot open the Database");
+            $this->conn = new PDO('sqlite:../DB.sqlite3') or die("Cannot open the Database");
             return $this->create();
         }
         return true;
