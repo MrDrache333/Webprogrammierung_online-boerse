@@ -107,6 +107,7 @@ article:hover {
     width: 100px;
     height: 100px;
     padding: 10px;
+    border-radius: 20%;
 }
 
 .article-company-name {

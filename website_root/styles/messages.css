@@ -27,9 +27,11 @@
 
 .fakeimg {
     padding: 10px;
-    min-width: 100px;
-    max-width: 100px;
     float: left;
+    width: 100px;
+    margin: 0 auto auto;
+    border-radius: 20%;
+    height: auto;
 }
 
 .ads_button {
