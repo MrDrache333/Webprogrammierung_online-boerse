@@ -90,9 +90,9 @@ if (isset($_POST["profildelete"])) {
 
     <title>KEFEDO-Startseite</title>
 </head>
-<body <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] == true) { ?>
+<body <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] === "true") { ?>
     onload="document.getElementById('login-modal').style.display='block'"
-<?php }; ?>>
+<?php } ?>>
 <div class="grid-container">
     <div class="headerrahmen">
         <div class="logo">
@@ -146,11 +146,11 @@ if (isset($_POST["profildelete"])) {
                             <p><label for="email"><b>Email</b></label>
                                 <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] == true) {
                                     echo '<br /><br /><label for="email"><i style="color: #FF0000">Email und/oder Passwort ist falsch!</i></label>';
-                                }; ?>
+                                } ?>
                                 <input class="loginInput" id="email" name="email"
                                     <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] == true) {
                                         echo 'style="border: 2px solid red;"';
-                                    }; ?>
+                                    } ?>
                                        placeholder="Email eingeben"
                                        required
                                        type="email">
@@ -159,7 +159,7 @@ if (isset($_POST["profildelete"])) {
                                 <input class="loginInput" id="password" name="password"
                                     <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] == true) {
                                         echo 'style="border: 2px solid red;"';
-                                    }; ?>
+                                    } ?>
                                        placeholder="Passwort eingeben"
                                        required
                                        type="password">

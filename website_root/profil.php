@@ -11,7 +11,7 @@ $email = $_COOKIE["email"];
 
 
 $eingelogt = $_COOKIE['loggedin'] ?? null;
-if ($eingelogt != "true") {
+if ($eingelogt !== "true") {
     $_SESSION["error"] = "Sie wurden zwischenzeitlich ausgeloggt!";
 }
 
@@ -31,13 +31,13 @@ if (isset($_SESSION["error"])) {
         $name2 = htmlspecialchars($_POST["father_name"]);
         $email = htmlspecialchars($_POST["email"]);
         if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{3,50}$/u', $name)) {
-            $errornachricht = Fehlerbehandlung("Ihr Name ist falsch.");
+            Fehlerbehandlung("Ihr Name ist falsch.");
         }
         if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{3,50}$/u', $name2)) {
-            $errornachricht = Fehlerbehandlung("Ihr Nachname ist falsch.");
+            Fehlerbehandlung("Ihr Nachname ist falsch.");
         }
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errornachricht = Fehlerbehandlung("Ihre Email ist falsch.");
+            Fehlerbehandlung("Ihre Email ist falsch.");
         }
 
         if ($email != $_COOKIE["email"]) {
@@ -45,7 +45,7 @@ if (isset($_SESSION["error"])) {
                 $user->setEmail($email);
 //TODO Set Email repariren
             } else {
-                $errornachricht = Fehlerbehandlung("Ihr Email gibt es bereits");
+                Fehlerbehandlung("Ihr Email gibt es bereits");
             }
 
         }

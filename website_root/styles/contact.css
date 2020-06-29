@@ -1,9 +1,23 @@
-#submit_contact {
-    background: #A2B3F8;
-    color: #fff;
+.delete {
+    background: red !important;
+    float: right !important;
 }
 
-#submit_contact:hover {
+.form-submit {
+    display: inline-flex;
+}
+
+.contact-form {
+
+}
+
+.submit {
+    background: #A2B3F8;
+    color: #fff;
+    float: left;
+}
+
+.submit:hover {
     background-color: #A2B3F8;
 }
 

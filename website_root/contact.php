@@ -24,63 +24,64 @@
 <div class="content">
     <div class="container contact-container">
         <h3>Was liegt Ihnen noch auf dem Herzen?</h3>
-        <form method="POST" class="contact-form" id="contact-form">
+        <div class="contact-form">
+            <form method="POST" id="contact-form">
 
-            Dein Name:<br>
-            <div class="contact-row">
-                <label for="firstname" hidden>Vorname</label>
-                <input type="text" name="name" id="firstname" placeholder="Max Mustermann" required autofocus>
-            </div>
-            Deine E-Mail:
-            <div class="contact-row">
-                <label for="email" hidden>Nachname</label>
-                <input class="emailfeld" type="email" name="email" id="email" placeholder="Max.mustermann@web.de"
-                       required autofocus>
-            </div>
-            Betreff:
-            <div class="contact-row">
+                Dein Name:<br>
+                <div class="contact-row">
+                    <label for="firstname" hidden>Vorname</label>
+                    <input type="text" name="name" id="firstname" placeholder="Max Mustermann" required autofocus>
+                </div>
+                Deine E-Mail:
+                <div class="contact-row">
+                    <label for="email" hidden>Nachname</label>
+                    <input class="emailfeld" type="email" name="email" id="email" placeholder="Max.mustermann@web.de"
+                           required autofocus>
+                </div>
+                Betreff:
+                <div class="contact-row">
 
-                <label for="subject" hidden>Betreff</label>
-                <input id="subject" type="text" name="subject" placeholder="Tolle Seite" required autofocus>
+                    <label for="subject" hidden>Betreff</label>
+                    <input id="subject" type="text" name="subject" placeholder="Tolle Seite" required autofocus>
 
-            </div>
-            Was möchtest du uns mitteilen:<br>
-            <div class="contact-row">
+                </div>
+                Was möchtest du uns mitteilen:<br>
+                <div class="contact-row">
 
-                <label for="messagearea" hidden>Deine Nachricht an uns</label>
-                <textarea name="message" id="messagearea"
-                          cols="50" rows="7" placeholder="Ihr habt ne tolle Seite"></textarea>
-            </div>
-            <div class="form-submit">
-                <input type="submit" value="Senden" class="submit" name="submit" id="submit_contact"/>
-                <input type="reset" value="Löschen" class="submit" name="delete" id="submit_contact"/>
+                    <label for="messagearea" hidden>Deine Nachricht an uns</label>
+                    <textarea name="message" id="messagearea"
+                              cols="50" rows="7" placeholder="Ihr habt ne tolle Seite"></textarea>
+                </div>
+                <div class="form-submit">
+                    <input type="submit" value="Senden" class="submit" name="submit" id="submit_contact"/>
+                    <input type="reset" value="Löschen" class="submit delete" name="delete" id="submit_contact"/>
+                </div>
 
-            </div>
+                <?php
+                if (isset($_POST["submit"])) {
 
-            <?php
-            if (isset($_POST["submit"])) {
+                    $submit = $_POST["submit"];
+                    date_default_timezone_set("Europe/Berlin");
+                    $timestamp = time();
+                    $absendermail = $_POST["email"];
+                    $empfaenger = "dominik.luebben@uni-oldenburg.de";
+                    $absendername = $_POST["name"];
+                    $betreff = $_POST["subject"];
+                    $text = "Die Person" . $absendername . "schireb um" . $timestamp . "folgendes:" . $_POST["message"];
 
-                $submit = $_POST["submit"];
-                date_default_timezone_set("Europe/Berlin");
-                $timestamp = time();
-                $absendermail = $_POST["email"];
-                $empfaenger = "dominik.luebben@uni-oldenburg.de";
-                $absendername = $_POST["name"];
-                $betreff = $_POST["subject"];
-                $text = "Die Person" . $absendername . "schireb um" . $timestamp . "folgendes:" . $_POST["message"];
+                    if (mail($empfaenger, $betreff, $text, "From: $absendername <$absendermail>")) {
 
-                if (mail($empfaenger, $betreff, $text, "From: $absendername <$absendermail>")) {
+                        echo "Email wurde erfolgreich versendet.";
 
-                    echo "Email wurde erfolgreich versendet.";
+                    } else {
 
-                } else {
+                        echo "Ihre Anfrage konnte nicht gesendet werden!";
 
-                    echo "Ihre Anfrage konnte nicht gesendet werden!";
-
+                    }
                 }
-            }
-            ?>
-        </form>
+                ?>
+            </form>
+        </div>
     </div>
 </div>
 

@@ -21,7 +21,6 @@ if (isset($_POST["loginSubmit"])) {
             header("Location: profil.php");
         } else {
             setcookie("loggedin", "false", time() + 60 * 60 * 24);
-            echo "Die Anmeldedaten sind falsch.";
             header("Location:index.php?reloadModal=true");
         }
     } else {
