@@ -71,6 +71,7 @@ input {
     box-sizing: border-box;
     font-weight: 500;
     font-size: 13px;
+    border-radius: 3px;
 }
 
 /* Full-width input fields of Login and Registration */
@@ -92,6 +93,7 @@ button {
     border: none;
     cursor: pointer;
     width: 100%;
+    border-radius: 5px;
 }
 
 button:hover {
@@ -231,6 +233,7 @@ span.psw {
     margin: 0 auto 0 auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 40%; /* Could be more or less, depending on screen size */
+    border-radius: 5px;
 }
 
 

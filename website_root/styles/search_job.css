@@ -50,6 +50,7 @@ article {
     min-width: 200px;
     padding: 15px;
     display: grid;
+    border-radius: 8px;
 }
 
 article:hover {

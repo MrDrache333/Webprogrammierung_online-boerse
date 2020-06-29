@@ -53,6 +53,7 @@
     text-decoration: none;
     text-align: center;
     padding: 14px 16px;
+    border-radius: 3px;
 }
 
 .button_new_offer:hover {
@@ -63,8 +64,7 @@
 
 .button_field {
     background-color: white;
-
-
+    border-radius: 3px;
 }
 
 .infos {
@@ -84,6 +84,7 @@
     background-color: white;
     padding: 20px;
     margin-top: 20px;
+    border-radius: 5px;
 }
 
 /* Clear floats after the columns */

@@ -1,6 +1,7 @@
 .delete {
     background: red !important;
     float: right !important;
+    margin-left: 10px;
 }
 
 .form-submit {
@@ -15,6 +16,7 @@
     background: #A2B3F8;
     color: #fff;
     float: left;
+    border-radius: 5px;
 }
 
 .submit:hover {
@@ -77,5 +79,6 @@ textarea {
     box-sizing: border-box;
     font-weight: 500;
     font-size: 13px;
+    border-radius: 3px;
 }
 
