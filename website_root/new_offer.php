@@ -51,48 +51,46 @@ if (isset($_POST["companyname"])) {
 }
 if (isset($_POST["angebotsart"])) {
     $art = htmlspecialchars($_POST["angebotsart"]);
+    if ($art == 0) {
+        $angebotsart0 = "checked";
+    } elseif ($art == 1) {
+        $angebotsart1 = "checked";
+    } elseif ($art == 2) {
+        $angebotsart2 = "checked";
+    } elseif ($art == 3) {
+        $angebotsart3 = "checked";
+    } else {
+        $angebotsart4 = "checked";
+    }
 }
 if (isset($_POST["befristung"])) {
     $befristung = htmlspecialchars($_POST["befristung"]);
+    if ($befristung == 0) {
+        $befristung0 = "checked";
+    } elseif ($befristung == 1) {
+        $befristung1 = "checked";
+    } elseif ($befristung == 2) {
+        $befristung2 = "checked";
+    } else {
+        $befristung3 = "checked";
+    }
 }
 if (isset($_POST["arbeitszeiten"])) {
     $arbeitszeit = htmlspecialchars($_POST["arbeitszeiten"]);
+    if ($arbeitszeit == 0) {
+        $arbeitszeit0 = "checked";
+    } elseif ($arbeitszeit == 1) {
+        $arbeitszeit1 = "checked";
+    } elseif ($arbeitszeit == 2) {
+        $arbeitszeit2 = "checked";
+    } elseif ($arbeitszeit == 3) {
+        $arbeitszeit3 = "checked";
+    } else {
+        $arbeitszeit4 = "checked";
+    }
+
 }
 
-if ($art == 0) {
-    $angebotsart0 = "checked";
-} elseif ($art == 1) {
-    $angebotsart1 = "checked";
-} elseif ($art == 2) {
-    $angebotsart2 = "checked";
-} elseif ($art == 3) {
-    $angebotsart3 = "checked";
-} else {
-    $angebotsart4 = "checked";
-}
-
-if ($befristung == 0) {
-    $befristung0 = "checked";
-} elseif ($befristung == 1) {
-    $befristung1 = "checked";
-} elseif ($befristung == 2) {
-    $befristung2 = "checked";
-} else {
-    $befristung3 = "checked";
-}
-
-
-if ($arbeitszeit == 0) {
-    $arbeitszeit0 = "checked";
-} elseif ($arbeitszeit == 1) {
-    $arbeitszeit1 = "checked";
-} elseif ($arbeitszeit == 2) {
-    $arbeitszeit2 = "checked";
-} elseif ($arbeitszeit == 3) {
-    $arbeitszeit3 = "checked";
-} else {
-    $arbeitszeit4 = "checked";
-}
 
 if (isset($_POST["edit_offer"])) {
     if ($eingelogt == "true") {
