@@ -7,14 +7,12 @@ include_once 'php/classes.php'; ?>
 
 <?php
 $eingelogt = $_COOKIE['loggedin'] ?? "";
-if ($eingelogt != "true") {
+if ($eingelogt !== "true") {
     $_SESSION["error"] = "loggout";
 }
 
 if (isset($_SESSION["error"])) {
-    ?>
-    <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
-
+    header("Location: index.php");
 } else {
     $u = new UserDAOImpl();
     $email = $_COOKIE["email"];
@@ -26,18 +24,18 @@ if (isset($_POST["submit_pb"])) {
     $name = htmlspecialchars($_POST["name"]);
     $name2 = htmlspecialchars($_POST["father_name"]);
     $email = htmlspecialchars($_POST["email"]);
-    if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $name)) {
+    if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/u', $name)) {
         $_SESSION["error"] .= "Ihr Name ist falsch.";
     }
-    if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $name2)) {
+    if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/u', $name2)) {
         $_SESSION["error"] .= " Ihr Nachname ist falsch.";
     }
-    if (!preg_match('/^[0-9a-zA-Zöäß+_\s]{3,50}$/', $email)) {
+    if (!preg_match('/^[0-9a-zA-Zöäß+_\s]{3,50}$/u', $email)) {
         $_SESSION["error"] .= " Ihr Nachname ist falsch.";
     }
 
-    if ($email != $_COOKIE["email"]) {
-        if ($u->findUserByMail($email) == null) {
+    if ($email !== $_COOKIE["email"]) {
+        if ($u->findUserByMail($email) === null) {
             $user->setEmail($email);
 //TODO Set Email repariren
         } else {
@@ -45,7 +43,7 @@ if (isset($_POST["submit_pb"])) {
         }
 
     }
-    if ($_SESSION["error"] == null) {
+    if ($_SESSION["error"] === null) {
 
         $user->setPrename($name);
         $user->setSurname($name2);
@@ -54,8 +52,8 @@ if (isset($_POST["submit_pb"])) {
         $pw = $_POST["pwsetzen"];
         $pwneu = $_POST["pwwiederholen"];
         $pwalt = $_POST["altespw"];
-        if ($pwalt != null && $pwneu != null) {
-            if ($pwneu == $pw) {
+        if ($pwalt !== null && $pwneu !== null) {
+            if ($pwneu === $pw) {
                 if (password_verify($pwalt, $pwaktuell)) {
 
 
@@ -130,7 +128,7 @@ if (isset($_POST["pb_submit"])) {
 }
 if (isset($_POST['reset_pb'])) {
     $imageTarget_file = $user->getProfilePhoto();
-    if ($imageTarget_file == "images/profile_template.png") {
+    if ($imageTarget_file === "images/profile_template.png") {
         //Do nothing
     } else {
         if (file_exists($imageTarget_file)) {

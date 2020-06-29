@@ -28,24 +28,28 @@
 
             Dein Name:<br>
             <div class="contact-row">
-
+                <label for="firstname" hidden>Vorname</label>
                 <input type="text" name="name" id="firstname" placeholder="Max Mustermann" required autofocus>
             </div>
             Deine E-Mail:
             <div class="contact-row">
+                <label for="email" hidden>Nachname</label>
                 <input class="emailfeld" type="email" name="email" id="email" placeholder="Max.mustermann@web.de"
                        required autofocus>
             </div>
             Betreff:
             <div class="contact-row">
 
-                <input type="text" name="subject" placeholder="Tolle Seite" required autofocus>
+                <label for="subject" hidden>Betreff</label>
+                <input id="subject" type="text" name="subject" placeholder="Tolle Seite" required autofocus>
+
             </div>
             Was möchtest du uns mitteilen:<br>
             <div class="contact-row">
 
-                  <textarea name="message" id="messagearea"
-                            cols="50" rows="7" placeholder="Ihr habt ne tolle Seite"></textarea>
+                <label for="messagearea" hidden>Deine Nachricht an uns</label>
+                <textarea name="message" id="messagearea"
+                          cols="50" rows="7" placeholder="Ihr habt ne tolle Seite"></textarea>
             </div>
             <div class="form-submit">
                 <input type="submit" value="Senden" class="submit" name="submit" id="submit_contact"/>
