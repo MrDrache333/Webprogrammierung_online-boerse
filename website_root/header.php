@@ -19,14 +19,13 @@ if (isset($_POST["profildelete"])) {
     $delete = $u->delete($email);
     header("Location: index.php");
     $_SESSION["test"] = true;
-    Fehlerbehandlung("Sie wurden ausgeloogt.");
+    Fehlerbehandlung("Sie wurden ausgeloggt.");
 }
 
 if (isset($_SESSION["test"])) {
-    echo "jaaaaa";
     unset($_SESSION["test"]);
     header("Location: index.php");
-    Fehlerbehandlung("Sie wurden ausgeloogt.");
+    Fehlerbehandlung("Sie wurden ausgeloggt.");
     exit;
 }
 
@@ -154,11 +153,11 @@ if (isset($_SESSION["test"])) {
 
                         <div class="loginContainer">
                             <p><label for="email"><b>Email</b></label>
-                                <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] == true) {
+                                <?php if (isset($_GET["error"]) && $_GET["error"] == "login_error") {
                                     echo '<br /><br /><label for="email"><i style="color: #FF0000">Email und/oder Passwort ist falsch!</i></label>';
                                 } ?>
-                                <input class="loginInput" id="email" name="email"
-                                    <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] == true) {
+                                <input autocomplete="off" class="loginInput" id="email" name="email"
+                                    <?php if (isset($_GET["error"]) && $_GET["error"] == "login_error") {
                                         echo 'style="border: 2px solid red;"';
                                     } ?>
                                        placeholder="Email eingeben"
@@ -167,7 +166,7 @@ if (isset($_SESSION["test"])) {
                             </p>
                             <p><label for="password"><b>Passwort</b></label>
                                 <input class="loginInput" id="password" name="password"
-                                    <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] == true) {
+                                    <?php if (isset($_GET["error"]) && $_GET["error"] == "login_error") {
                                         echo 'style="border: 2px solid red;"';
                                     } ?>
                                        placeholder="Passwort eingeben"
@@ -190,6 +189,7 @@ if (isset($_SESSION["test"])) {
 
                 </div>
 
+
                 <!-- Register form-->
                 <form action="login.php" class="loginModal-content loginAnimate" method="post">
                     <h2>Registrieren</h2>
@@ -197,24 +197,51 @@ if (isset($_SESSION["test"])) {
                         <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
                     </div>
 
+                    <?php if (isset($_GET["error"]) && preg_match('/register/',$_GET["error"])
+                        && preg_match('/vorname/',$_GET["error"])) {
+                        echo "";
+                    } ?>
                     <div class="loginContainer">
-                        <p><label for="name"><b>Vorname</b></label>
+                        <p><label for="name"><b>Vorname <?php if (isset($_GET["error"]) && preg_match('/register/',$_GET["error"])
+                                        && preg_match('/vorname/',$_GET["error"])) {
+                                        echo " falsch!";
+                                    } ?></b></label>
                             <input class="loginInput" id="name" name="loginPrename"
                                    placeholder="Vorname eingeben"
+                                   value="<?php if (isset($_GET["fill_vorname"])) {
+                                       echo $_GET["fill_vorname"];
+                                   } ?>"
                                    required
                                    type="text"></p>
 
-                        <p><label for="lastname"><b>Nachname</b></label>
+                        <p><label for="lastname"><b>Nachname<?php if (isset($_GET["error"]) && preg_match('/register/',$_GET["error"])
+                                        && preg_match('/nachname/',$_GET["error"])) {
+                                        echo " falsch!";
+                                    } ?></b></label>
                             <input class="loginInput" id="lastname" name="loginLastname"
-                                   placeholder="Nachname eingeben" required
+                                   placeholder="Nachname eingeben"
+                                   value="<?php if (isset($_GET["fill_nachname"])) {
+                                       echo $_GET["fill_nachname"];
+                                   } ?>"
+                                   required
                                    type="text">
                         </p>
-                        <p><label for="registerEmail"><b>Email-Adresse</b></label>
+                        <p><label for="registerEmail"><b>Email-Adresse<?php if (isset($_GET["error"]) && preg_match('/register/',$_GET["error"])
+                                        && preg_match('/exist/',$_GET["error"])) {
+                                        echo " falsch!";
+                                    } ?></b></label>
                             <input class="loginInput" id="registerEmail" name="registerEmail"
-                                   placeholder="Email eingeben" required
+                                   placeholder="Email eingeben"
+                                   value="<?php if (isset($_GET["fill_email"])) {
+                                       echo $_GET["fill_email"];
+                                   } ?>"
+                                   required
                                    type="email">
                         </p>
-                        <p><label for="newPassword"><b>Passwort <span id="feedback"></span></b></label>
+                        <p><label for="newPassword"><b>Passwort <?php if (isset($_GET["error"]) && preg_match('/register/',$_GET["error"])
+                                        && preg_match('/password/',$_GET["error"])) {
+                                        echo " ungültig! ";
+                                    } ?><span id="feedback"></span></b></label>
                             <input class="loginInput" id="newPassword" name="newPassword"
                                    placeholder="Passwort eingeben"
                                    required
