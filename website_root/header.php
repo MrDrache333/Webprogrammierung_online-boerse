@@ -18,6 +18,16 @@ if (isset($_POST["profildelete"])) {
     $email = $_COOKIE["email"];
     $delete = $u->delete($email);
     header("Location: index.php");
+    $_SESSION["test"] = true;
+    Fehlerbehandlung("Sie wurden ausgeloogt.");
+}
+
+if (isset($_SESSION["test"])) {
+    echo "jaaaaa";
+    unset($_SESSION["test"]);
+    header("Location: index.php");
+    Fehlerbehandlung("Sie wurden ausgeloogt.");
+    exit;
 }
 
 ?>

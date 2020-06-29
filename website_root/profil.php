@@ -7,39 +7,31 @@ include_once 'php/classes.php'; ?>
 
 <?php
 $u = new UserDAOImpl();
-$email = $_COOKIE["email"];
 
 
-$eingelogt = $_COOKIE['loggedin'] ?? null;
-if ($eingelogt !== "true") {
-    $_SESSION["error"] = "Sie wurden zwischenzeitlich ausgeloggt!";
-}
+if (isset($_COOKIE["email"])) {
 
-if (isset($_SESSION["error"])) {
-    // header("Location: index.php" );
-    exit;
-
-
-} else {
+    $email = $_COOKIE["email"];
     $user = $u->findUserByMail($email);
-    if ($user != null) {
-        $pwaktuell = $user->getPassword();
+}
+if ($user != null) {
+    $pwaktuell = $user->getPassword();
 
-    }
-    if (isset($_POST["submit_pb"])) {
-        $name = htmlspecialchars($_POST["name"]);
-        $name2 = htmlspecialchars($_POST["father_name"]);
-        $email = htmlspecialchars($_POST["email"]);
-        if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{3,50}$/u', $name)) {
+}
+if (isset($_POST["submit_pb"])) {
+    $name = htmlspecialchars($_POST["name"]);
+    $name2 = htmlspecialchars($_POST["father_name"]);
+    $email = htmlspecialchars($_POST["email"]);
+    if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{3,50}$/u', $name)) {
             Fehlerbehandlung("Ihr Name ist falsch.");
         }
         if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{3,50}$/u', $name2)) {
             Fehlerbehandlung("Ihr Nachname ist falsch.");
         }
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            Fehlerbehandlung("Ihre Email ist falsch.");
-        }
-
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        Fehlerbehandlung("Ihre Email ist falsch.");
+    }
+    if (isset($email) && isset($_COOKIE["email"])) {
         if ($email != $_COOKIE["email"]) {
             if ($u->findUserByMail($email) == null) {
                 $user->setEmail($email);
@@ -49,7 +41,8 @@ if (isset($_SESSION["error"])) {
             }
 
         }
-        if (!isset($_SESSION["error"])) {
+    }
+    if (!isset($_SESSION["error"])) {
 
             $user->setPrename($name);
             $user->setSurname($name2);
@@ -136,7 +129,6 @@ if (isset($_POST['reset_pb'])) {
             echo 'Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.';
         }
     }
-}
 }
 function Fehlerbehandlung($texterror)
 {
