@@ -144,6 +144,34 @@ h3 {
     flex-wrap: wrap;
     background-color: grey;
     border-radius: 8px;
+    justify-content: center;
+}
+
+.card {
+    max-height: min-content;
+}
+
+.card > label {
+    margin-top: 10px;
+}
+
+.content {
+    padding: 5vh 2% 50px 2%;
+}
+
+.offer_content {
+    animation: fadein 1.5s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(300px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 .radiobutton {
@@ -155,7 +183,7 @@ textarea {
 }
 
 .fakeimg {
-    width: 300px;
+    width: 250px;
     margin: 0 auto auto;
     border-radius: 20%;
     height: auto;
@@ -178,26 +206,37 @@ textarea {
     float: right;
 }
 
-@media screen and (max-width: 1100px) {
-    .leftcolumn, .middlecolumn {
-        width: 50%;
-        padding: 0;
-
+@media screen and (max-width: 460px) {
+    .fakeimg {
+        width: 150px;
     }
 
-    .rightcolumn {
+    h1 {
+        padding: 0 10px 10px 0;
+    }
+
+    .card {
+        width: 320px;
+        padding: 5px;
+    }
+
+    #fileToUpload {
         width: 100%;
     }
-}
 
-
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 800px) {
-    .leftcolumn, .middlecolumn, .rightcolumn {
-        width: 100%;
+    .column {
         padding: 0;
-
+        width: 100%;
+        min-width: 100%;
+        justify-content: center;
     }
 
+    .content {
+        padding-left: 0;
+        padding-right: 0;
+    }
 
+    textarea {
+        width: 100%;
+    }
 }
