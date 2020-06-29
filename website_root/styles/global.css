@@ -317,7 +317,6 @@ textarea:focus, input:focus {
 }
 
 .form-submit {
-    text-align: right;
     padding-top: 27px;
 }
 
@@ -397,14 +396,6 @@ textarea:focus, input:focus {
     text-decoration: none;
 }
 
-.grid-container-index {
-    display: grid;
-    grid-template-columns: 600px 400px 600px;
-    padding: 10px;
-    margin-left: 0;
-    background-color: #c4d7e7;
-}
-
 .headerrahmen {
     display: flex;
     flex-wrap: wrap;
@@ -412,12 +403,6 @@ textarea:focus, input:focus {
     padding: 10px;
     max-width: 100%;
     overflow: hidden;
-}
-
-.grid-container-index > div {
-    text-align: center;
-    padding: 20px 0;
-    font-size: 30px
 }
 
 .images {
@@ -445,11 +430,6 @@ textarea:focus, input:focus {
 .kefedologo {
     max-width: 250px;
     min-width: 200px;
-}
-
-.grid-item7 {
-    grid-column-start: 2;
-    grid-column-end: 3;
 }
 
 .button-anmelden {
