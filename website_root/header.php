@@ -96,11 +96,16 @@ if (session_status() === PHP_SESSION_NONE) {
             <?php
         } else {
         ?>
+
         <div class="loginbutton">
+            <noscript>
+                <form action="noJSLogin.php">
+            </noscript>
             <button onclick="document.getElementById('login-modal').style.display='block'" style="width:auto;">
                 Einloggen
                 oder Registrieren
             </button>
+            <noscript> </form> </noscript>
         </div>
         <div>
             <div class="loginModal"
@@ -110,7 +115,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
                 <div class="formulare">
                     <!-- Login form-->
-                    <form action="login.php" class="loginModal-content loginAnimate" method="post">
+                    <form onload="setCookie('currentModelIsOpen','true',0)" action="login.php"
+                          class="loginModal-content loginAnimate" method="post">
                         <h2>Login</h2>
                         <div class="loginImgcontainer">
                             <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
@@ -134,7 +140,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <div class="loginContainer">
                             <button class="cancelbtn"
                                     onclick="document.getElementById('login-modal').style.display='none'"
-                                    type="button">Cancel
+                                    type="button">Abbrechen
                             </button>
 
                             <span class="psw">
@@ -166,7 +172,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         </p>
                         <p><label for="registerEmail"><b>Email-Adresse</b></label>
                             <input class="loginInput" id="registerEmail" name="registerEmail"
-                                   placeholder="Nachname eingeben" required
+                                   placeholder="Email eingeben" required
                                    type="email">
                         </p>
                         <p><label for="newPassword"><b>Passwort <span id="feedback"></span></b></label>
@@ -186,7 +192,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <div class="loginContainer">
     <button class="cancelbtn"
             onclick="document.getElementById('login-modal').style.display='none'">
-        Cancel
+        Abbrechen
     </button>
 </div>
 </form>
@@ -201,16 +207,17 @@ if (session_status() === PHP_SESSION_NONE) {
 
 </div>
 
-<!-- Script with the click, which kills the Modal<script>
-// Get the modal
-var modal = document.getElementById('id01');
+<!-- Script with the click, which kills the Modal-->
+<script>
+    // Get the modal
+    var modal = document.getElementById('login-modal');
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
-}
-</script>-->
+</script>
 </body>
 </html>

@@ -22,6 +22,7 @@ if (isset($_POST["loginSubmit"])) {
         } else {
             setcookie("loggedin", "false", time() + 60 * 60 * 24);
             echo "Die Anmeldedaten sind falsch.";
+            header("Location:index.php");
         }
     } else {
         setcookie("loggedin", "false", time() + 60 * 60 * 24);
@@ -66,6 +67,7 @@ if (isset($_POST["loginSubmit"])) {
             $result = $controller->create($toRegisterUser);
             if (($user = $controller->findUserByMail($loginEmail)) === null) {
                 echo "Fehler beim erstellen des Benutzers";
+                header("Location: index.php");
             } else {
                 setcookie("email", $toRegisterUser->getEmail(), time() + 60 * 60 * 24);
                 setcookie("username", $toRegisterUser->getPrename() . " " . $toRegisterUser->getSurname(), time() + 60 * 60 * 24);
@@ -74,9 +76,11 @@ if (isset($_POST["loginSubmit"])) {
             }
         } else {
             echo "Fehler beim Erstellen des Benutzers";
+            header("Location: index.php");
         }
     } else {
         echo "Es wurden keine gültigen Daten eingegeben";
+        header("Location: index.php");
     }
 } //Passwort vergessen ausgeführt und Mail versendet zu Nutzer.
 
