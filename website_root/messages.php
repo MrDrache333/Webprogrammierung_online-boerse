@@ -6,6 +6,7 @@ use php\offer\Offer;
 use php\offer\OfferDAOImpl;
 use php\user\UserDAOImpl;
 
+unset($_SESSION["bearbeiten"]);
 $email = $_COOKIE['email'] ?? null;
 $eingelogt = $_COOKIE['loggedin'] ?? "";
 if ($eingelogt != "true") {
@@ -80,7 +81,7 @@ if (isset($_SESSION["error"])) {
 </div>
 <div class="grid-farbe">
     <div class="button_field">
-        <a href="new_offer.php" class="button_new_offer">Neue Anzeige erstellen</a>
+        <a href="new_offer.php" class="button_new_offer" id="button_newoffer">Neue Anzeige erstellen</a>
     </div>
     <div class="row">
         <div class="leftcolumn">

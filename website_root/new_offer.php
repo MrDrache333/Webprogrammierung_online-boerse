@@ -16,12 +16,13 @@ if ($eingelogt != "true") {
     $_SESSION["error"] = "loggout";
 }
 
-if (isset($_SESSION["test"])) {
+if (isset($_SESSION["error"])) {
     // header("Location: index.php" );
     //exit;
 }
+
 $offer = new Offer();
-//TODO BEHEBT PROBLEM DES VERSCHWINDENDEN TEXT
+
 if (isset($_POST["titel"])) {
     $titel = htmlspecialchars($_POST["titel"]);
 }
@@ -150,6 +151,10 @@ if (isset($_POST["edit_offer"])) {
                 $offer->setDuration($befristung);
                 $offer->setWorkModel($arbeitszeit);
                 $OfferDao->update($offer);
+                if (isset($_SESSION['tempUpload'])) {
+                    rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $offer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
+                    unset($_SESSION['tempUpload']);
+                }
 
                 ?>
                 <script language="javascript" type="text/javascript"> document.location = "messages.php"; </script><?php
@@ -186,7 +191,7 @@ if (isset($_POST["edit_offer"])) {
             $angebotsart = $offer->getOfferType();
             $arbeitszeit = $offer->getWorkModel();
             $beschreibung = $offer->getDescription();
-
+            $_SESSION["bearbeiten"] = $_POST["bearbeiten_offer"];
 
             if ($angebotsart == 0) {
                 $angebotsart0 = "checked";
@@ -407,7 +412,7 @@ function Fehlerbehandlung($texterror)
                         <input type="file" name="fileToUpload" id="fileToUpload">
                         <input type="submit" value="Bild hochlanden" name="uploadLogoSubmit" id="submit_bild">
                     </div>
-                    <!--TODO REQUIRED BUG BEHEBEN    </form>-->
+
             </div>
         </div>
         <div class="middlecolumn">
@@ -504,7 +509,9 @@ function Fehlerbehandlung($texterror)
                 ><?php echo $beschreibung ?? ""; ?></textarea>
 
                 <div class="form-submit">
-                    <?php if (isset($_POST["bearbeiten_offer"])) { ?>
+                    <?php
+
+                    if (isset($_SESSION["bearbeiten"])) { ?>
                         <input type="submit" value="Bearbeitete Anzeige veröffentlichen" class="button_offer"
                                name="edit_offer"
                                id="submit_offer"/>
