@@ -72,6 +72,7 @@ input {
     font-weight: 500;
     font-size: 13px;
 }
+
 /* Full-width input fields of Login and Registration */
 .loginInput {
     width: 100%;
@@ -81,6 +82,7 @@ input {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+
 /*All normal buttons*/
 button {
     background-color: #A2B3F8;

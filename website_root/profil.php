@@ -56,15 +56,15 @@ if (isset($_POST["submit_pb"])) {
         $pwalt = $_POST["altespw"];
         if ($pwalt != null && $pwneu != null) {
             if ($pwneu == $pw) {
-            if (password_verify($pwalt, $pwaktuell)) {
+                if (password_verify($pwalt, $pwaktuell)) {
 
 
-                $u->updatePassword(password_hash($pwneu, PASSWORD_DEFAULT), $email);
-                echo "Ihr Passwort wurde erfolgreich geändert";
+                    $u->updatePassword(password_hash($pwneu, PASSWORD_DEFAULT), $email);
+                    echo "Ihr Passwort wurde erfolgreich geändert";
 
-            } else {
-                echo "Ihr altes Passwort ist nicht korrekt";
-            }
+                } else {
+                    echo "Ihr altes Passwort ist nicht korrekt";
+                }
 
             } else {
                 echo "Die Passwörter stimmen nicht überein. Wiederholen sie die Eingabe";
@@ -130,16 +130,16 @@ if (isset($_POST["pb_submit"])) {
 }
 if (isset($_POST['reset_pb'])) {
     $imageTarget_file = $user->getProfilePhoto();
-    if($imageTarget_file=="images/profile_template.png"){
-    //Do nothing
-    }
-    else {
+    if ($imageTarget_file == "images/profile_template.png") {
+        //Do nothing
+    } else {
         if (file_exists($imageTarget_file)) {
             unlink($imageTarget_file);
         } else {
             echo 'Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.';
         }
-    }}
+    }
+}
 
 
 ?>

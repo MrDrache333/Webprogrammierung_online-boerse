@@ -4,102 +4,102 @@
 */
 
 @media (prefers-color-scheme: dark) {
-  .grid-farbe, .contact-h2,
-  .leftcolumn, .leftcolumn > .card,
-  .middlecolumn, .middlecolumn > .card,
-  .rightcolumne, .rightcolumne > .card,
-  .card > h2 {
-    background-color: rgb(31, 31, 31) !important;
-    color: rgb(180, 188, 202) !important;
-  }
+    .grid-farbe, .contact-h2,
+    .leftcolumn, .leftcolumn > .card,
+    .middlecolumn, .middlecolumn > .card,
+    .rightcolumne, .rightcolumne > .card,
+    .card > h2 {
+        background-color: rgb(31, 31, 31) !important;
+        color: rgb(180, 188, 202) !important;
+    }
 }
 
 
 /* Create two unequal columns that floats next to each other */
 /* Left column */
 .leftcolumn {
-  float: left;
-  width: 30%;
-  padding-left: 50px;
+    float: left;
+    width: 30%;
+    padding-left: 50px;
 }
 
 /* Right column */
 .middlecolumn {
-  float: left;
-  width: 30%;
+    float: left;
+    width: 30%;
 }
 
 .rightcolumn {
-  float: right;
-  width: 30%;
+    float: right;
+    width: 30%;
 
 }
 
 .radiobutton {
-  display: flex;
-  margin-top: 20px;
+    display: flex;
+    margin-top: 20px;
 
 
 }
 
 
 .fakeimg {
-  width: 15%;
-  padding: 20px;
-  min-width: 300px;
-  max-width: 300px;
-  float: left;
+    width: 15%;
+    padding: 20px;
+    min-width: 300px;
+    max-width: 300px;
+    float: left;
 }
 
 .ads_button {
-  color: black;
-  text-decoration: none;
+    color: black;
+    text-decoration: none;
 
 
 }
 
 .anzeige-inhalt {
-  display: flex;
+    display: flex;
 
 
 }
 
 .date_free {
-  color: grey;
-  min-width: 205px;
+    color: grey;
+    min-width: 205px;
 
 }
 
 .infos {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 
 
 }
 
 .nachricht {
-  display: flex;
+    display: flex;
 
 }
 
 /* Add a card effect for articles */
 .card {
 
-  padding: 20px;
-  margin-top: 20px;
+    padding: 20px;
+    margin-top: 20px;
 }
 
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .button_offer {
 
-  background: #A2B3F8;
-  color: #fff;
+    background: #A2B3F8;
+    color: #fff;
 }
 
 .leftcolumn {
@@ -108,25 +108,25 @@
 }
 
 @media screen and (max-width: 1100px) {
-  .leftcolumn, .middlecolumn {
-    width: 50%;
-    padding: 0;
+    .leftcolumn, .middlecolumn {
+        width: 50%;
+        padding: 0;
 
-  }
+    }
 
-  .rightcolumn {
-    width: 100%;
-  }
+    .rightcolumn {
+        width: 100%;
+    }
 }
 
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
-  .leftcolumn, .middlecolumn, .rightcolumn {
-    width: 100%;
-    padding: 0;
+    .leftcolumn, .middlecolumn, .rightcolumn {
+        width: 100%;
+        padding: 0;
 
-  }
+    }
 
 
 }

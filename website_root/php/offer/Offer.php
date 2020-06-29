@@ -32,22 +32,6 @@ class Offer
     /**
      * @return mixed
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getTitle()
     {
         return $this->title;
@@ -98,11 +82,11 @@ class Offer
      */
     public function getLogo()
     {
-        if($this->logo!=null){
+        if ($this->logo != null) {
             return $this->logo;
         }
-        if($this->getId()== null){
-          return 'images/company_placeholder.png';
+        if ($this->getId() == null) {
+            return 'images/company_placeholder.png';
         }
         if (file_exists('images/logos/' . $this->getId() . '.png')) {
             return 'images/logos/' . $this->getId() . '.png';
@@ -122,6 +106,22 @@ class Offer
     public function setLogo($logo): void
     {
         $this->logo = $logo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
     /**

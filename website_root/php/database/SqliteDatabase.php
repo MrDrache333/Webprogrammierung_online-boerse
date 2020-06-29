@@ -23,6 +23,24 @@ class SqliteDatabase implements Database
     /**
      * @inheritDoc
      */
+    public function connect(): ?bool
+    {
+        if ($this->exists()) {
+            $this->conn = new PDO('sqlite:../DB.sqlite3', "", "", array(
+                PDO::ATTR_PERSISTENT => true
+            )) or die("Cannot open the Database");
+        } else {
+            $this->conn = new PDO('sqlite:../DB.sqlite3', "", "", array(
+                PDO::ATTR_PERSISTENT => true
+            )) or die("Cannot open the Database");
+            return $this->create();
+        }
+        return true;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function exists(): ?bool
     {
         return file_exists('../DB.sqlite3');
@@ -109,24 +127,6 @@ class SqliteDatabase implements Database
                 return false;
             }
 
-        }
-        return true;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function connect(): ?bool
-    {
-        if ($this->exists()) {
-            $this->conn = new PDO('sqlite:../DB.sqlite3', "", "", array(
-                PDO::ATTR_PERSISTENT => true
-            )) or die("Cannot open the Database");
-        } else {
-            $this->conn = new PDO('sqlite:../DB.sqlite3', "", "", array(
-                PDO::ATTR_PERSISTENT => true
-            )) or die("Cannot open the Database");
-            return $this->create();
         }
         return true;
     }

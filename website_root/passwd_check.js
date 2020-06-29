@@ -35,4 +35,4 @@ function char_count() {
         call.style.color = "#ff352c";
         call.innerHTML = "<strong>zu kurz!</strong>";
     }
-};
+}

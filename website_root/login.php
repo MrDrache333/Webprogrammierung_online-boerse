@@ -78,13 +78,11 @@ if (isset($_POST["loginSubmit"])) {
     } else {
         echo "Es wurden keine gültigen Daten eingegeben";
     }
-}
-
-//Passwort vergessen ausgeführt und Mail versendet zu Nutzer.
+} //Passwort vergessen ausgeführt und Mail versendet zu Nutzer.
 
 
 else if (isset($_POST["pwforget"])) {
-    if (isset($_POST["email"])&& "email" != "") {
+    if (isset($_POST["email"]) && "email" != "") {
         $u = new UserDAOImpl();
         $submit = $_POST["pwforget"];
         date_default_timezone_set("Europe/Berlin");

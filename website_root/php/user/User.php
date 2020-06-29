@@ -23,23 +23,6 @@ class User
     /**
      * @return mixed
      */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id): void
-    {
-        $this->id = $id;
-    }
-
-
-    /**
-     * @return mixed
-     */
     public function getPrename()
     {
         return $this->prename;
@@ -116,8 +99,23 @@ class User
 
         if (file_exists('images/profileImages/' . $this->getId() . '.jpeg')) {
             return ('images/profileImages/' . $this->getId() . '.jpeg');
-        }
-        else return ('images/profile_template.png');
+        } else return ('images/profile_template.png');
 
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 }
