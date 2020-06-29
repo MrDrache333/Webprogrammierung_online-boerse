@@ -3,8 +3,21 @@ ini_set("session.use_cookies", 1); // 1 using cookies
 ini_set("session.use_only_cookies", 0);
 ini_set("session.use_trans_sid", 1); // 1 using GET and when cookies are disabled
 error_reporting(E_ALL);
+
+use php\user\UserDAOImpl;
+
+include_once 'php/classes.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+}
+if (isset($_POST["profildelete"])) {
+    $_SESSION["error"] = "Ihr Profil wurde erfolgreich gelöscht!";
+
+    setcookie("loggedin", "false", time() + 60 * 60 * 24);
+    $u = new UserDAOImpl();
+    $email = $_COOKIE["email"];
+    $delete = $u->delete($email);
+    header("Location: index.php");
 }
 
 ?>

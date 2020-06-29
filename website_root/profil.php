@@ -9,20 +9,7 @@ include_once 'php/classes.php'; ?>
 $u = new UserDAOImpl();
 $email = $_COOKIE["email"];
 
-if (isset($_POST["profildelete"])) {
-    $_SESSION["error"] = "Ihr Profil wurde erfolgreich gelöscht!";
 
-    setcookie("loggedin", "false", time() + 60 * 60 * 24);
-    echo $_COOKIE["loggedin"];
-    $delete = $u->delete($email);
-    ?>
-    <script language="javascript"
-            type="text/javascript">
-        document.location = "index.php";
-    </script> <?php
-    // header("Location: index.php" );
-
-}
 $eingelogt = $_COOKIE['loggedin'] ?? null;
 if ($eingelogt != "true") {
     $_SESSION["error"] = "Sie wurden zwischenzeitlich ausgeloggt!";
