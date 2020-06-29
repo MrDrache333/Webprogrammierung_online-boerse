@@ -16,12 +16,13 @@ if ($eingelogt != "true") {
     $_SESSION["error"] = "loggout";
 }
 
-if (isset($_SESSION["test"])) {
+if (isset($_SESSION["error"])) {
     // header("Location: index.php" );
     //exit;
 }
+
 $offer = new Offer();
-//TODO BEHEBT PROBLEM DES VERSCHWINDENDEN TEXT
+
 if (isset($_POST["titel"])) {
     $titel = htmlspecialchars($_POST["titel"]);
 }
@@ -97,40 +98,40 @@ if (isset($_POST["edit_offer"])) {
 
 
         if (!preg_match('/^[a-zA-Z]{3,50}$/', $titel)) {
-            $_SESSION["error"] .= "Ihr Titel ist falsch.";
+            $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
         }
         if (!preg_match('/^[a-zA-Z]{3,50}$/', $subtitle)) {
-            $_SESSION["error"] .= " Ihr Untertitel ist falsch.";
+            $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
             }
-            /*  if (!preg_match('/^[a-zA-Z]{3,50}$/', $straße)) {
-                  $_SESSION["error"] .= "Ihr Straße ist falsch.";
-              }
-              if (!preg_match('/^[a-zA-Z0-9]{1,50}$/', $hsnr)) {
-                  $_SESSION["error"] .= " Ihr Hausnummer ist falsch.";
-              }
-              if (!preg_match('/([a-zA-Z]){2,20}$/', $ort)) {
-                  $_SESSION["error"] .= " Ihre Ort ist falsch.";
-              }
-              if (!preg_match('/([0-9]){5,5}$/', $plz)) {
-                  $_SESSION["error"] .= " Ihre Postleitzahl ist falsch.";
-              }*/
-            if (!preg_match('/^[0-9]{3,50}$/', $free)) {
-                $_SESSION["error"] .= " Ihr Verfügbarkeitsdatumfrei ist falsch.";
-            }
-            if (!preg_match('/^[a-zA-Z0-9]{5,20}$/', $beschreibung)) {
-                $_SESSION["error"] .= " Ihre Beschreibung ist falsch. ";
-            }
-            if (!preg_match('/^[a-zA-Z]{3,50}$/', $companyname)) {
-                $_SESSION["error"] .= "Ihr Firmenname ist falsch. ";
-            }
-            if ($art == null) {
-                $_SESSION["error"] .= "Ihr Angebotsart ist nicht gesetzt. ";
-            }
+        /*  if (!preg_match('/^[a-zA-Z]{3,50}$/', $straße)) {
+            $errornachricht = Fehlerbehandlung("Ihre Straße ist falsch.");
+          }
+          if (!preg_match('/^[a-zA-Z0-9]{1,50}$/', $hsnr)) {
+             $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
+          }
+          if (!preg_match('/([a-zA-Z]){2,20}$/', $ort)) {
+             $errornachricht = Fehlerbehandlung("Ihr Ort ist falsch.");
+          }
+          if (!preg_match('/([0-9]){5,5}$/', $plz)) {
+             $errornachricht = Fehlerbehandlung("Ihre Postleitzahl ist falsch.");
+          }*/
+        if (!preg_match('/^[0-9-_]{3,50}$/', $free)) {
+            $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
+        }
+        if (!preg_match('/^[a-zA-Z0-9]{5,20}$/', $beschreibung)) {
+            $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
+        }
+        if (!preg_match('/^[a-zA-Z]{3,50}$/', $companyname)) {
+            $errornachricht = Fehlerbehandlung("Ihr Firmenname ist falsch.");
+        }
+        if ($art == null) {
+            $errornachricht = Fehlerbehandlung("Ihre Angebotsart ist nicht gesetzt.");
+        }
             if ($befristung == null) {
-                $_SESSION["error"] .= "Ihr Befristung ist nicht gesetzt. ";
+                $errornachricht = Fehlerbehandlung("Ihre Befrsitung ist nicht gesetzt.");
             }
             if ($arbeitszeit == null) {
-                $_SESSION["error"] .= "Ihr Arbeitszeit ist nicht gesetzt. ";
+                $errornachricht = Fehlerbehandlung("Ihre Arbeitszeit ist nicht gesetzt.");
             }
 
             if ($_SESSION["error"] == null) {
@@ -150,6 +151,10 @@ if (isset($_POST["edit_offer"])) {
                 $offer->setDuration($befristung);
                 $offer->setWorkModel($arbeitszeit);
                 $OfferDao->update($offer);
+                if (isset($_SESSION['tempUpload'])) {
+                    rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $offer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
+                    unset($_SESSION['tempUpload']);
+                }
 
                 ?>
                 <script language="javascript" type="text/javascript"> document.location = "messages.php"; </script><?php
@@ -186,7 +191,7 @@ if (isset($_POST["edit_offer"])) {
             $angebotsart = $offer->getOfferType();
             $arbeitszeit = $offer->getWorkModel();
             $beschreibung = $offer->getDescription();
-
+            $_SESSION["bearbeiten"] = $_POST["bearbeiten_offer"];
 
             if ($angebotsart == 0) {
                 $angebotsart0 = "checked";
@@ -287,38 +292,41 @@ if (isset($_POST["edit_offer"])) {
 
 
                 if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $titel)) {
-                    $_SESSION["error"] .= "Ihr Titel ist falsch.";
+                    $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
                 }
                 if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $subtitle)) {
-                    $_SESSION["error"] .= " Ihr Untertitel ist falsch.";
+                    $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
                 }
                 if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $straße)) {
-                    $_SESSION["error"] .= "Ihr Straße ist falsch.";
+                    $errornachricht = Fehlerbehandlung("Ihre Straße ist falsch.");
                 }
                 if (!preg_match('/^[0-9a-zA-Z]{1,50}$/', $hsnr)) {
-                    $_SESSION["error"] .= " Ihr Hausnummer ist falsch.";
+                    $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
                 }
                 if (!preg_match('/^[0-9a-zA-Zöäß\s]{2,20}$/', $ort)) {
-                    $_SESSION["error"] .= " Ihre Ort ist falsch.";
+                    $errornachricht = Fehlerbehandlung("Ihr Ort ist falsch.");
                 }
                 if (!preg_match('/^[\d]{5}$/', $plz)) {
-                    $_SESSION["error"] .= " Ihre Postleitzahl ist falsch.";
+                    $errornachricht = Fehlerbehandlung("Ihre Postleitzahl ist falsch.");
                 }
 
                 if (!preg_match('/[0-9a-zA-Zöäß\s]{5,50}$/', $beschreibung)) {
-                    $_SESSION["error"] .= " Ihre Beschreibung ist falsch. ";
+                    $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
                 }
                 if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $companyname)) {
-                    $_SESSION["error"] .= "Ihr Firmenname ist falsch. ";
+                    $errornachricht = Fehlerbehandlung("Ihr Firmenname ist falsch.");
                 }
-                if ($art == null) {
-                    $_SESSION["error"] .= "Ihr Angebotsart ist nicht gesetzt. ";
+                if (!isset ($art)) {
+                    $errornachricht = Fehlerbehandlung("Ihre Angebotsart ist nicht gesetzt.");
                 }
-                if ($befristung == null) {
-                    $_SESSION["error"] .= "Ihr Befristung ist nicht gesetzt. ";
+                if (!preg_match('/^[0-9-_]{3,50}$/', $free)) {
+                    $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
                 }
-                if ($arbeitszeit == null) {
-                    $_SESSION["error"] .= "Ihr Arbeitszeit ist nicht gesetzt. ";
+                if (!isset($befristung)) {
+                    $errornachricht = Fehlerbehandlung("Ihre Befrsitung ist nicht gesetzt.");
+                }
+                if (!isset($arbeitszeit)) {
+                    $errornachricht = Fehlerbehandlung("Ihre Arbeitszeit ist nicht gesetzt.");
                 }
 
                 if ($_SESSION["error"] == null) {
@@ -362,6 +370,16 @@ if (isset($_POST["edit_offer"])) {
         }
         unset($_SESSION["error"]);
     }
+function Fehlerbehandlung($texterror)
+{
+    if (isset($_SESSION['error'])) {
+        $_SESSION['error'] .= $texterror;
+
+    } else {
+        $_SESSION['error'] = $texterror;
+    }
+
+}
 
 
 ?>
@@ -395,7 +413,7 @@ if (isset($_POST["edit_offer"])) {
                             <input type="file" name="fileToUpload" id="fileToUpload">
                             <input type="submit" value="Bild hochlanden" name="uploadLogoSubmit" id="submit_bild">
                         </div>
-                        <!--TODO REQUIRED BUG BEHEBEN    </form>-->
+
                 </div>
             </div>
             <div class="column">
@@ -527,7 +545,9 @@ if (isset($_POST["edit_offer"])) {
 
 
                     <div class="form-submit">
-                        <?php if (isset($_POST["bearbeiten_offer"])) { ?>
+                        <?php
+
+                    if (isset($_SESSION["bearbeiten"])) { ?>
                             <input type="submit" value="Bearbeitete Anzeige veröffentlichen" class="button_offer"
                                    name="edit_offer"
                                    id="submit_offer"/>
