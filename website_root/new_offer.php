@@ -11,37 +11,98 @@ use php\user\UserDAOImpl;
 include_once 'php/classes.php';
 $OfferDao = new OfferDAOImpl();
 $UserDAO = new UserDAOImpl();
-
-$eingelogt = $_COOKIE['loggedin'];
+$eingelogt = $_COOKIE['loggedin'] ?? null;
 if ($eingelogt != "true") {
     $_SESSION["error"] = "loggout";
-    ?>
-    <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
-} else {
-    //TODO BEHEBT PROBLEM DES VERSCHWINDENDEN TEXT
+}
 
-    $offer = new Offer();
+if (isset($_SESSION["test"])) {
+    // header("Location: index.php" );
+    //exit;
+}
+$offer = new Offer();
+//TODO BEHEBT PROBLEM DES VERSCHWINDENDEN TEXT
+if (isset($_POST["titel"])) {
     $titel = htmlspecialchars($_POST["titel"]);
+}
+if (isset($_POST["subtitel"])) {
     $subtitle = htmlspecialchars($_POST["subtitel"]);
+}
+if (isset($_POST["straße"])) {
     $straße = htmlspecialchars($_POST["straße"]);
+}
+if (isset($_POST["hausnummer"])) {
     $hsnr = htmlspecialchars($_POST["hausnummer"]);
-    $ort = htmlspecialchars($_POST["ort"]);
+}
+if (isset($_POST["ort"])) {
+    $ort = htmlspecialchars($_POST["plz"]);
+}
+if (isset($_POST["plz"])) {
     $plz = htmlspecialchars($_POST["plz"]);
+}
+if (isset($_POST["free"])) {
     $free = htmlspecialchars($_POST["free"]);
+}
+if (isset($_POST["beschreibung"])) {
     $beschreibung = htmlspecialchars($_POST["beschreibung"]);
+}
+if (isset($_POST["companyname"])) {
     $companyname = htmlspecialchars($_POST["companyname"]);
-    $art = $_POST['angebotsart'];
-    $befristung = $_POST['befristung'];
-    $arbeitszeit = $_POST['arbeitszeiten'];
-    if (isset($_POST["edit_offer"])) {
-        if ($eingelogt == "true") {
+}
+if (isset($_POST["angebotsart"])) {
+    $art = htmlspecialchars($_POST["angebotsart"]);
+}
+if (isset($_POST["befristung"])) {
+    $befristung = htmlspecialchars($_POST["befristung"]);
+}
+if (isset($_POST["arbeitszeiten"])) {
+    $arbeitszeit = htmlspecialchars($_POST["arbeitszeiten"]);
+}
+
+if ($art == 0) {
+    $angebotsart0 = "checked";
+} elseif ($art == 1) {
+    $angebotsart1 = "checked";
+} elseif ($art == 2) {
+    $angebotsart2 = "checked";
+} elseif ($art == 3) {
+    $angebotsart3 = "checked";
+} else {
+    $angebotsart4 = "checked";
+}
+
+if ($befristung == 0) {
+    $befristung0 = "checked";
+} elseif ($befristung == 1) {
+    $befristung1 = "checked";
+} elseif ($befristung == 2) {
+    $befristung2 = "checked";
+} else {
+    $befristung3 = "checked";
+}
 
 
-            if (!preg_match('/^[a-zA-Z]{3,50}$/', $titel)) {
-                $_SESSION["error"] .= "Ihr Titel ist falsch.";
-            }
-            if (!preg_match('/^[a-zA-Z]{3,50}$/', $subtitle)) {
-                $_SESSION["error"] .= " Ihr Untertitel ist falsch.";
+if ($arbeitszeit == 0) {
+    $arbeitszeit0 = "checked";
+} elseif ($arbeitszeit == 1) {
+    $arbeitszeit1 = "checked";
+} elseif ($arbeitszeit == 2) {
+    $arbeitszeit2 = "checked";
+} elseif ($arbeitszeit == 3) {
+    $arbeitszeit3 = "checked";
+} else {
+    $arbeitszeit4 = "checked";
+}
+
+if (isset($_POST["edit_offer"])) {
+    if ($eingelogt == "true") {
+
+
+        if (!preg_match('/^[a-zA-Z]{3,50}$/', $titel)) {
+            $_SESSION["error"] .= "Ihr Titel ist falsch.";
+        }
+        if (!preg_match('/^[a-zA-Z]{3,50}$/', $subtitle)) {
+            $_SESSION["error"] .= " Ihr Untertitel ist falsch.";
             }
             /*  if (!preg_match('/^[a-zA-Z]{3,50}$/', $straße)) {
                   $_SESSION["error"] .= "Ihr Straße ist falsch.";
@@ -166,7 +227,9 @@ if ($eingelogt != "true") {
 
         }
     }
-    // To upload the Logo
+
+
+// To upload the Logo
     if (isset($_POST["uploadLogoSubmit"])) {
 
         $imageTarget_dir = "images/logos/";
@@ -301,7 +364,7 @@ if ($eingelogt != "true") {
         }
         unset($_SESSION["error"]);
     }
-}
+
 
 ?>
 <div class="header">
@@ -331,7 +394,7 @@ if ($eingelogt != "true") {
                          class="fakeimg">
                     <div class="form-submit">
                         <input type="file" name="fileToUpload" id="fileToUpload">
-                        <input type="submit" value="Upload Image" name="uploadLogoSubmit">
+                        <input type="submit" value="Bild hochlanden" name="uploadLogoSubmit" id="submit_bild">
                     </div>
                     <!--TODO REQUIRED BUG BEHEBEN    </form>-->
             </div>
@@ -343,31 +406,31 @@ if ($eingelogt != "true") {
                     <label for="titel">Titel :</label>
                     <input type="text" name="titel" id="titel" placeholder="Verkäufer/in"
                            value="<?php echo $titel ?? ""; ?>"
-                           required/>
+                    />
                     <label for="subtitetl">Untertitel :</label>
                     <input type="text" name="subtitel" id="subtitel" placeholder="Einzelhandel"
-                           value="<?php echo $subtitle ?? ""; ?>" required/>
+                           value="<?php echo $subtitle ?? ""; ?>"/>
                     <label for="subtitetl">Firmenname :</label>
                     <input type="text" name="companyname" id="companyname" placeholder="Firmenname"
-                           value="<?php echo $companyname ?? ""; ?>" required/>
+                           value="<?php echo $companyname ?? ""; ?>"/>
                     <label for="position">Straße:</label>
                     <input type="text" name="straße" id="straße" placeholder="Musterstraße"
-                           value="<?php echo $straße ?? ""; ?>" required/>
+                           value="<?php echo $straße ?? ""; ?>"/>
                     <label for="position">Hausnummer :</label>
                     <input type="text" name="hausnummer" id="hausnummer" placeholder="1234"
-                           value="<?php echo $hsnr ?? ""; ?>" required/>
+                           value="<?php echo $hsnr ?? ""; ?>"/>
                     <label for="position">Ort:</label>
                     <input type="text" name="ort" id="ort" placeholder="Musterhausen"
                            value="<?php echo $ort ?? ""; ?>"
-                           required/>
+                    />
                     <label for="position">Postleitzahl:</label>
                     <input type="text" name="plz" id="plz" placeholder="12345" value="<?php echo $plz ?? ""; ?>"
-                           required/>
+                    />
                     <label for="position">Standort:</label>
                     <label for="free">Frei ab :</label>
                     <input type="date" name="free" id="free" placeholder="2021-01-01" class="date_free"
                            value="<?php echo $free ?? ""; ?>"
-                           required/>
+                    />
                     <br>
             </div>
         </div>
@@ -427,7 +490,7 @@ if ($eingelogt != "true") {
                 <label for="street">Beschreibung :<br></label>
                 <textarea name="beschreibung" id="beschreibung" cols="50" rows="7"
                           placeholder="Was über den Beruf zu sagen ist."
-                          required><?php echo $beschreibung ?? ""; ?></textarea>
+                ><?php echo $beschreibung ?? ""; ?></textarea>
 
                 <div class="form-submit">
                     <?php if (isset($_POST["bearbeiten_offer"])) { ?>

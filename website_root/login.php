@@ -41,16 +41,16 @@ if (isset($_POST["loginSubmit"])) {
     $loginEmail = htmlspecialchars($_POST["registerEmail"]);
     $loginPassword = htmlspecialchars($_POST["newPassword"]);
 
-    if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,30}$/', $prename)) {
+    if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{3,30}$/', $prename)) {
         echo "Vorname ungültig";
     }
-    if (!preg_match('/^[a-zA-Z-ä-ü-ß]{3,30}$/', $lastname)) {
+    if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{3,30}$/', $lastname)) {
         echo "Nachname ungültig";
     }
     if (!filter_var($loginEmail, FILTER_VALIDATE_EMAIL)) {
         echo "Mail ungültig";
     }
-    if (!preg_match('/^[a-zA-Z0-9-ä-ü-ß]{5,30}$/', $loginPassword)) {
+    if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{5,30}$/', $loginPassword)) {
         echo "Password ungültig";
     }
 
@@ -95,7 +95,7 @@ else if (isset($_POST["pwforget"])) {
         $empfaenger = $_POST["email"];
         $absendermail = "info@kefedo.com";
         $absendername = "kefedo";
-        $pw = GeneratePassword();
+        $pw = GeneratePassword(12);
         $betreff = "Passwort zurücksetzten";
         $text = "Sie " . $empfaenger . " haben um " . $time .
             " ihr Passwort zurückgesetzt. Dafür lassen wir ihnen nun folgendes neues Passwort zukommen. Ihr neues Passwort lautet: " . $pw;

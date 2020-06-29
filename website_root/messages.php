@@ -7,11 +7,14 @@ use php\offer\OfferDAOImpl;
 use php\user\UserDAOImpl;
 
 $email = $_COOKIE['email'] ?? null;
-$eingelogt = $_COOKIE['loggedin'] ?? null;
+$eingelogt = $_COOKIE['loggedin'] ?? "";
 if ($eingelogt != "true") {
     $_SESSION["error"] = "loggout";
-    ?>
-    <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
+}
+
+if (isset($_SESSION["error"])) {
+    // header("Location: index.php" );
+    exit;
 } else {
     if ($email !== null) {
 

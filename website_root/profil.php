@@ -6,63 +6,68 @@ use php\user\UserDAOImpl;
 include_once 'php/classes.php'; ?>
 
 <?php
-$eingelogt = $_COOKIE['loggedin'] ?? "";
-if ($eingelogt !== "true") {
+
+$eingelogt = $_COOKIE['loggedin'] ?? null;
+if ($eingelogt != "true") {
     $_SESSION["error"] = "loggout";
 }
 
 if (isset($_SESSION["error"])) {
-    header("Location: index.php");
+    // header("Location: index.php" );
+    exit;
+
+
 } else {
+
     $u = new UserDAOImpl();
     $email = $_COOKIE["email"];
     $user = $u->findUserByMail($email);
     $pwaktuell = $user->getPassword();
-}
 
-if (isset($_POST["submit_pb"])) {
-    $name = htmlspecialchars($_POST["name"]);
-    $name2 = htmlspecialchars($_POST["father_name"]);
-    $email = htmlspecialchars($_POST["email"]);
-    if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/u', $name)) {
-        $_SESSION["error"] .= "Ihr Name ist falsch.";
-    }
-    if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/u', $name2)) {
-        $_SESSION["error"] .= " Ihr Nachname ist falsch.";
-    }
-    if (!preg_match('/^[0-9a-zA-Zöäß+_\s]{3,50}$/u', $email)) {
-        $_SESSION["error"] .= " Ihr Nachname ist falsch.";
-    }
 
-    if ($email !== $_COOKIE["email"]) {
-        if ($u->findUserByMail($email) === null) {
-            $user->setEmail($email);
-//TODO Set Email repariren
-        } else {
-            $_SESSION["error"] = "Die Email gibt es bereits.";
+    if (isset($_POST["submit_pb"])) {
+        $name = htmlspecialchars($_POST["name"]);
+        $name2 = htmlspecialchars($_POST["father_name"]);
+        $email = htmlspecialchars($_POST["email"]);
+        if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{3,50}$/u', $name)) {
+            $errornachricht = Fehlerbehandlung("Ihr Name ist falsch.");
+        }
+        if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{3,50}$/u', $name2)) {
+            $errornachricht = Fehlerbehandlung("Ihr Nachname ist falsch.");
+        }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errornachricht = Fehlerbehandlung("Ihre Email ist falsch.");
         }
 
-    }
-    if ($_SESSION["error"] === null) {
+        if ($email != $_COOKIE["email"]) {
+            if ($u->findUserByMail($email) == null) {
+                $user->setEmail($email);
+//TODO Set Email repariren
+            } else {
+                $errornachricht = Fehlerbehandlung("Ihr Email gibt es bereits");
+            }
 
-        $user->setPrename($name);
-        $user->setSurname($name2);
-        $user->setPassword($pwaktuell);
-        $test = $u->update($user);
-        $pw = $_POST["pwsetzen"];
-        $pwneu = $_POST["pwwiederholen"];
-        $pwalt = $_POST["altespw"];
-        if ($pwalt !== null && $pwneu !== null) {
-            if ($pwneu === $pw) {
-                if (password_verify($pwalt, $pwaktuell)) {
+        }
+        if (!isset($_SESSION["error"])) {
+
+            $user->setPrename($name);
+            $user->setSurname($name2);
+            $user->setPassword($pwaktuell);
+            $test = $u->update($user);
+            $pw = $_POST["pwsetzen"];
+            $pwneu = $_POST["pwwiederholen"];
+            $pwalt = $_POST["altespw"];
+            if ($pwalt != null && $pwneu != null) {
+                if ($pwneu === $pw) {
+                    if (password_verify($pwalt, $pwaktuell)) {
 
 
-                    $u->updatePassword(password_hash($pwneu, PASSWORD_DEFAULT), $email);
-                    echo "Ihr Passwort wurde erfolgreich geändert";
+                        $u->updatePassword(password_hash($pwneu, PASSWORD_DEFAULT), $email);
+                        echo "Ihr Passwort wurde erfolgreich geändert";
 
-                } else {
-                    echo "Ihr altes Passwort ist nicht korrekt";
-                }
+                    } else {
+                        echo "Ihr altes Passwort ist nicht korrekt";
+                    }
 
             } else {
                 echo "Die Passwörter stimmen nicht überein. Wiederholen sie die Eingabe";
@@ -128,7 +133,7 @@ if (isset($_POST["pb_submit"])) {
 }
 if (isset($_POST['reset_pb'])) {
     $imageTarget_file = $user->getProfilePhoto();
-    if ($imageTarget_file === "images/profile_template.png") {
+    if ($imageTarget_file == "images/profile_template.png") {
         //Do nothing
     } else {
         if (file_exists($imageTarget_file)) {
@@ -138,7 +143,17 @@ if (isset($_POST['reset_pb'])) {
         }
     }
 }
+}
+function Fehlerbehandlung($texterror)
+{
+    if (isset($_SESSION['error'])) {
+        $_SESSION['error'] .= $texterror;
 
+    } else {
+        $_SESSION['error'] = $texterror;
+    }
+
+}
 
 ?>
 <div class="header">
