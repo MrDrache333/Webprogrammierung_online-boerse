@@ -14,7 +14,6 @@ if (isset($_POST["profildelete"])) {
 
     setcookie("loggedin", "false", time() + 60 * 60 * 24);
     echo $_COOKIE["loggedin"];
-    exit;
     $delete = $u->delete($email);
     ?>
     <script language="javascript"

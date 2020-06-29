@@ -4,7 +4,6 @@
 <?php
 if (isset($_SESSION["error"])) {
     echo $_SESSION["error"];
-    echo $_COOKIE["loggedin"];
     unset($_SESSION["error"]);
 }
 ?>
