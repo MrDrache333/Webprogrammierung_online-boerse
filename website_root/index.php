@@ -2,8 +2,9 @@
     <noscript>Sie Haben Javascript aus. So können sie sich nicht einloggen.</noscript>
 
 <?php
-if ($_SESSION["error"] ?? "" === "loggout") {
-    echo "Sie wurden zwischenzeitlich ausgeloggt. Bitte Loggen Sie sich wieder ein um weiter zu verfahren.";
+if (isset($_SESSION["error"])) {
+    echo $_SESSION["error"];
+    echo $_COOKIE["loggedin"];
     unset($_SESSION["error"]);
 }
 ?>

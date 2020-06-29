@@ -103,7 +103,9 @@ button:hover {
 .cancelbtn {
     width: auto;
     padding: 10px 18px;
-    background-color: #f44336;
+    background-color: red;
+    width: 140px;
+    height: 40px;
 }
 
 /* The Close Button (x) */

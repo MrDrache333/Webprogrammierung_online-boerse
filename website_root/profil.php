@@ -6,10 +6,27 @@ use php\user\UserDAOImpl;
 include_once 'php/classes.php'; ?>
 
 <?php
+$u = new UserDAOImpl();
+$email = $_COOKIE["email"];
 
+if (isset($_POST["profildelete"])) {
+    $_SESSION["error"] = "Ihr Profil wurde erfolgreich gelöscht!";
+
+    setcookie("loggedin", "false", time() + 60 * 60 * 24);
+    echo $_COOKIE["loggedin"];
+    exit;
+    $delete = $u->delete($email);
+    ?>
+    <script language="javascript"
+            type="text/javascript">
+        document.location = "index.php";
+    </script> <?php
+    // header("Location: index.php" );
+
+}
 $eingelogt = $_COOKIE['loggedin'] ?? null;
 if ($eingelogt != "true") {
-    $_SESSION["error"] = "loggout";
+    $_SESSION["error"] = "Sie wurden zwischenzeitlich ausgeloggt!";
 }
 
 if (isset($_SESSION["error"])) {
@@ -18,13 +35,11 @@ if (isset($_SESSION["error"])) {
 
 
 } else {
-
-    $u = new UserDAOImpl();
-    $email = $_COOKIE["email"];
     $user = $u->findUserByMail($email);
-    $pwaktuell = $user->getPassword();
+    if ($user != null) {
+        $pwaktuell = $user->getPassword();
 
-
+    }
     if (isset($_POST["submit_pb"])) {
         $name = htmlspecialchars($_POST["name"]);
         $name2 = htmlspecialchars($_POST["father_name"]);
@@ -84,13 +99,6 @@ if (isset($_SESSION["error"])) {
     }
 }
 
-if (isset($_POST["profilloeschen"])) {
-    $delete = $u->delete($email);
-    setcookie("loggedin", "false", time() - 60 * 60 * 24);
-    session_destroy();
-    header("Location: index.php");
-    exit;
-}
 //Change profile picture
 if (isset($_POST["pb_submit"])) {
 
@@ -273,16 +281,41 @@ function Fehlerbehandlung($texterror)
 
                             </script>
 
-                            <input type="submit" value="Speichern" class="submit" name="submit_pb" id="submit"/>
-                            <input type="submit" value="Profil löschen" class="delete " name="profilloeschen"
-                                   id="submit"/>
+                            <input type="submit" value="Speichern" class="submit" name="submit_pb" id="submit"/></form>
+
+                        <button onclick="document.getElementById('delete-modal').style.display='block'"
+                                style="width:auto;" class="delete ">
+                            Profil löschen
+                        </button>
+
                     </div>
+                    <div>
+                        <div class="deleteModal"
+                             id="delete-modal">
+                            <span class="loginClose"
+                                  onclick="document.getElementById('delete-modal').style.display='none'"
+                                  title="Close Modal">&times;</span>
+
+                            <div class="formulare">
+                                <!-- Delete Form-->
+                                <form class="deleteModal-content delteAnimate" method="post">
+                                    <h2>Profil wirklich löschen</h2>
+                                    <button name="profildelete" class="delete">Profil löschen</button>
+                                    <button class="abbrechen"
+                                            onclick="document.getElementById('delete-modal').style.display='none'"
+                                            type="button">Abbrechen
+                                    </button>
+
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
-                </form>
             </div>
         </div>
     </div>
-</div>
 </div>
 </div>
 </div>
