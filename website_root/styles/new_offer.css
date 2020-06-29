@@ -5,8 +5,10 @@
         color: rgb(180, 188, 202) !important;
     }
 
-    .content_input,
-    .grid-farbe {
+    h1,
+    .column,
+    .card,
+    .content_input {
         background-color: rgb(31, 31, 31) !important;
 
     }
@@ -106,6 +108,10 @@
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
+}
+
+.grid-farbe {
+    padding: 0;
 }
 
 h1 {

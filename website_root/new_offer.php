@@ -443,7 +443,6 @@ function Fehlerbehandlung($texterror)
                         <label for="position">Postleitzahl:</label>
                         <input type="text" name="plz" id="plz" placeholder="12345" value="<?php echo $plz ?? ""; ?>"
                         />
-                        <label for="position">Standort:</label>
                         <label for="free">Frei ab :</label>
                         <input type="date" name="free" id="free" placeholder="2021-01-01" class="date_free"
                                value="<?php echo $free ?? ""; ?>"
