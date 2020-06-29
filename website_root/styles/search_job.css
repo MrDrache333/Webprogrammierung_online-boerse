@@ -267,10 +267,16 @@ article:hover {
 
 .filter-radio input:checked + i::before {
     transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+    -webkit-transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+    -moz-transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+    -ms-transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
 }
 
 .filter-radio input:checked + i::after {
     transform: translate3d(22px, 2px, 0);
+    -webkit-transform: translate3d(22px, 2px, 0);
+    -moz-transform: translate3d(22px, 2px, 0);
+    -ms-transform: translate3d(22px, 2px, 0);
 }
 
 .filter-h3 {
