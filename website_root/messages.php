@@ -7,17 +7,10 @@ use php\offer\OfferDAOImpl;
 use php\user\UserDAOImpl;
 
 unset($_SESSION["bearbeiten"]);
-$email = $_COOKIE['email'] ?? null;
-$eingelogt = $_COOKIE['loggedin'] ?? "";
-if ($eingelogt != "true") {
-    $_SESSION["error"] = "loggout";
-}
+$email = $_COOKIE['email'] ?? null;;
 
-if (isset($_SESSION["error"])) {
-    // header("Location: index.php" );
-    exit;
-} else {
-    if ($email !== null) {
+
+if ($email !== null) {
 
 
         //User abfragen
@@ -55,7 +48,6 @@ if (isset($_SESSION["error"])) {
         }
 
 
-    }
 }
 if (isset($_SESSION["error"])) {
     echo $_SESSION["error"];

@@ -4,10 +4,7 @@ use php\user\User;
 use php\user\UserDAOImpl;
 
 include_once 'php/classes.php';
-if ($_POST["logoutSubmit"]) {
 
-    $_SESSION["test"] = true;
-}
 if (isset($_POST["loginSubmit"])) {
     if (isset($_POST["email"]) && (isset($_POST["password"]))) {
 

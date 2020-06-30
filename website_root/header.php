@@ -22,12 +22,6 @@ if (isset($_POST["profildelete"])) {
     Fehlerbehandlung("Sie wurden ausgeloggt.");
 }
 
-if (isset($_SESSION["test"])) {
-    unset($_SESSION["test"]);
-    header("Location: index.php");
-    Fehlerbehandlung("Sie wurden ausgeloggt.");
-    exit;
-}
 
 ?>
 <!DOCTYPE html>
