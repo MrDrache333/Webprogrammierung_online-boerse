@@ -55,8 +55,51 @@ if (isset($_POST["profildelete"])) {
     Fehlerbehandlung("Sie wurden ausgeloggt.");
 }
 
+if (isset($_POST["profildelete_nojs"])) {
 
+    $_SESSION["error"] = "Ihr Profil wurde erfolgreich gelöscht!";
+
+    setcookie("loggedin", "false", time() + 60 * 60 * 24);
+    $UserDao = new UserDAOImpl();
+    $OfferDao = new OfferDAOImpl();
+    $email = $_COOKIE["email"];
+    $user = $UserDao->findUserByMail($email);
+    $ownoffer = $OfferDao->getOwnOffers($user);
+
+
+    if ($ownoffer != null) {
+        foreach ($ownoffer as $offer) {
+            $id = $offer->getId();
+            $imageTarget_file = $offer->getLogo();
+            if ($imageTarget_file == "images/company_placeholder.png") {
+                //Do nothing
+            } else {
+                if (file_exists($imageTarget_file)) {
+                    unlink($imageTarget_file);
+                } else {
+                    Fehlerbehandlung('Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.');
+                }
+            }
+
+            $OfferDao->delete($id);
+        }
+    }
+    $imageTarget_file = $user->getProfilePhoto();
+    if ($imageTarget_file == "images/profile_template.png") {
+        //Do nothing
+    } else {
+        if (file_exists($imageTarget_file)) {
+            unlink($imageTarget_file);
+        } else {
+            Fehlerbehandlung('Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.');
+        }
+    }
+    $delete = $UserDao->delete($email);
+    header("Location: index.php");
+    Fehlerbehandlung("Sie wurden ausgeloggt.");
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>

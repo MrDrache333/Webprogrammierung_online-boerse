@@ -264,11 +264,14 @@ function Fehlerbehandlung($texterror)
                             </script>
 
                             <input type="submit" value="Speichern" class="submit" name="submit_pb" id="submit"/></form>
-
+                        <noscript>
+                            <form action="index.php" method="post">
+                        </noscript>
                         <button onclick="document.getElementById('delete-modal').style.display='block'"
-                                style="width:auto;" class="delete ">
+                                style="width:auto;" class="delete" name="profildelete_nojs">
                             Profil löschen
                         </button>
+                        <noscript> </form> </noscript>
 
                     </div>
                     <div>
