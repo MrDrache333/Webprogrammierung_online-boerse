@@ -1,5 +1,5 @@
 <?php include "header.php"; ?>
-    <noscript>Sie Haben Javascript aus. Einige Funktionen stehen deshalb nihct zur Verfügung</noscript>
+
 
 <?php
 if (isset($_SESSION["error"])) {
