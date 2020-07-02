@@ -44,6 +44,10 @@ if (isset($_POST["plz"])) {
 if (isset($_POST["free"])) {
     $free = htmlspecialchars($_POST["free"]);
 }
+if (isset($_POST["image"])) {
+    $logo = htmlspecialchars($_POST["image"]);
+
+}
 if (isset($_POST["beschreibung"])) {
     $beschreibung = htmlspecialchars($_POST["beschreibung"]);
 }
@@ -187,6 +191,7 @@ if (isset($_POST["edit_offer"])) {
             $country = $AddressObjekt->getState();
             $ort = $AddressObjekt->getTown();
             $free = $offer->getFree();
+            $logo = $offer->getLogo();
             $befristung = $offer->getDuration();
             $angebotsart = $offer->getOfferType();
             $arbeitszeit = $offer->getWorkModel();
@@ -249,34 +254,39 @@ if (isset($_POST["edit_offer"])) {
             $imageTarget_file = $imageTarget_dir . $tmp_ID . $randomUploadNumber . "." . $imageFileType;
         }
         // Check if image file is a actual image or fake image
-        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-        if ($check !== false) {
-            $uploadOk = 1;
-        } else {
-            echo "Das ist kein Bild.";
-            $uploadOk = 0;
-        }
-        // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 10000000000) {
-            echo "Das Bild ist zu groß, nur 10MBit erlaubt.";
-            $uploadOk = 0;
-        }
-        // Allow certain file formats
-        if ($imageFileType !== "jpg" && $imageFileType !== "png" && $imageFileType !== "jpeg"
-            && $imageFileType !== "gif") {
-            echo "Nur JPG, JPEG, PNG & GIF Dateiformate sind erlaubt.";
-            $uploadOk = 0;
-        }
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk === 0) {
-            echo "Das Bild konnte nicht hochgeladen werden.";
-            // if everything is ok, try to upload file
-        } else if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
-            echo "Error: Das Bild konnte nicht hochgeladen werden.";
-        } else {
-            $offer->setLogo($imageTarget_file);
-            $_SESSION["tempUpload"] = $tmp_ID . $randomUploadNumber . "." . $imageFileType;
 
+        if ($_FILES["fileToUpload"]["tmp_name"] != null) {
+            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+            if ($check !== false) {
+                $uploadOk = 1;
+            } else {
+                echo "Das ist kein Bild.";
+                $uploadOk = 0;
+            }
+            // Check file size
+            if ($_FILES["fileToUpload"]["size"] > 10000000000) {
+                echo "Das Bild ist zu groß, nur 10MBit erlaubt.";
+                $uploadOk = 0;
+            }
+            // Allow certain file formats
+            if ($imageFileType !== "jpg" && $imageFileType !== "png" && $imageFileType !== "jpeg"
+                && $imageFileType !== "gif") {
+                echo "Nur JPG, JPEG, PNG & GIF Dateiformate sind erlaubt.";
+                $uploadOk = 0;
+            }
+            // Check if $uploadOk is set to 0 by an error
+            if ($uploadOk === 0) {
+                echo "Das Bild konnte nicht hochgeladen werden.";
+                // if everything is ok, try to upload file
+            } else if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
+                echo "Error: Das Bild konnte nicht hochgeladen werden.";
+            } else {
+                $offer->setLogo($imageTarget_file);
+                $_SESSION["tempUpload"] = $tmp_ID . $randomUploadNumber . "." . $imageFileType;
+
+            }
+        } else {
+            echo "Sie haben kein Bild ausgewählt :-)";
         }
 
     }
@@ -408,6 +418,7 @@ function Fehlerbehandlung($texterror)
                         <h2>Produktbild</h2>
                         <img src="<?php echo($offer->getLogo()) ?>" alt="Produktbild-Template" id="pb_image"
                              class="fakeimg">
+                        <input type="hidden" value="<?php echo($offer->getLogo()) ?>" id="image" name="image"/>
                         <form enctype="multipart/form-data" action="new_offer.php" method="POST" class="new_offer-form"
                               id="new_offer-form">
                             <div class="form-submit">

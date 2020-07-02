@@ -19,8 +19,11 @@ if (isset($_POST["profildelete"])) {
     $OfferDao = new OfferDAOImpl();
     $email = $_COOKIE["email"];
     $user = $UserDao->findUserByMail($email);
+
     $ownoffer = $OfferDao->getOwnOffers($user);
-    if ($ownoffer = !null) {
+
+
+    if ($ownoffer != null) {
         foreach ($ownoffer as $offer) {
             $id = $offer->getId();
             $imageTarget_file = $offer->getLogo();
