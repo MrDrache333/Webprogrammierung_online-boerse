@@ -234,7 +234,23 @@ if (isset($_POST["edit_offer"])) {
             }
 
         }
+
     }
+if (isset($_POST['bild-delete'])) {
+    $id = $_SESSION["offerid"];
+    $offer = $OfferDao->getOfferByID($id);
+    $imageTarget_file = $offer->getLogo();
+    if ($imageTarget_file == "images/company_placeholder.png") {
+        //Do nothing
+    } else {
+
+        if (file_exists($imageTarget_file)) {
+            unlink($imageTarget_file);
+        } else {
+            echo 'Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.';
+        }
+    }
+}
 
 
 // To upload the Logo
@@ -424,6 +440,10 @@ function Fehlerbehandlung($texterror)
                             <div class="form-submit">
                                 <input type="file" name="fileToUpload" id="fileToUpload">
                                 <input type="submit" value="Bild hochlanden" name="uploadLogoSubmit" id="submit_bild">
+                                <?php if (isset($_SESSION["bearbeiten"])) { ?>
+                                    <input type="submit" value="Bild löschen" class="bild-delete"
+                                           name="bild-delete" id="bild-delete"/>
+                                <?php } ?>
                             </div>
 
                     </div>
