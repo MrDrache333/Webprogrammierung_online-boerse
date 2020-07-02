@@ -98,6 +98,18 @@ if (isset($_POST["profildelete_nojs"])) {
     header("Location: index.php");
     Fehlerbehandlung("Sie wurden ausgeloggt.");
 }
+if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
+    Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt.Loggen sie sich wieder ein um fort zu fahren.");
+    header("Location: index.php");
+}
+if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
+    Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt.Loggen sie sich wieder ein um fort zu fahren.");
+    header("Location: index.php");
+}
+if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
+    Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt.Loggen sie sich wieder ein um fort zu fahren.");
+    header("Location: index.php");
+}
 ?>
 
 <!DOCTYPE html>

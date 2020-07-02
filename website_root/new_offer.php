@@ -12,14 +12,7 @@ include_once 'php/classes.php';
 $OfferDao = new OfferDAOImpl();
 $UserDAO = new UserDAOImpl();
 $eingelogt = $_COOKIE['loggedin'] ?? null;
-if ($eingelogt != "true") {
-    $_SESSION["error"] = "loggout";
-}
 
-if (isset($_SESSION["error"])) {
-    // header("Location: index.php" );
-    //exit;
-}
 
 $offer = new Offer();
 

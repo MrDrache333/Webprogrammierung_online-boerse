@@ -49,10 +49,16 @@ if ($email !== null) {
 
 
 }
-if (isset($_SESSION["error"])) {
-    echo $_SESSION["error"];
-}
+function Fehlerbehandlung($texterror)
+{
+    if (isset($_SESSION['error'])) {
+        $_SESSION['error'] .= $texterror;
 
+    } else {
+        $_SESSION['error'] = $texterror;
+    }
+
+}
 ?>
 <div class="header">
     <nav>
