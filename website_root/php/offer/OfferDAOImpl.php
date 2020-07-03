@@ -94,7 +94,7 @@ class OfferDAOImpl implements OfferDAO
 
     public function getLastOwnOffer($user)
     {
-        $command = "SELECT * FROm offers, address WHERE offers.address = address.ID AND created = (SELECT MAX(created) FROM offers WHERE creator = ?)";
+        $command = "SELECT * FROM offers, address WHERE offers.address = address.ID AND offers.id= (SELECT MAX(offers.id) FROM offers WHERE creator = ?)";
         $values = [$user->getId()];
         return OfferHelper::getOffersFromSQLResult($this->database->execute($command, $values));
     }
@@ -161,4 +161,6 @@ class OfferDAOImpl implements OfferDAO
         }
         return $offers;
     }
+
+
 }

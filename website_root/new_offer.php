@@ -348,7 +348,7 @@ if (isset($_POST['bild-delete'])) {
                     $errornachricht = Fehlerbehandlung("Ihre Arbeitszeit ist nicht gesetzt.");
                 }
 
-                if ($_SESSION["error"] == null) {
+                if (!isset($_SESSION["error"])) {
 
 
                     $address = new Address(1, "Deutschland", $ort, $straße, $hsnr, $plz);
@@ -367,18 +367,19 @@ if (isset($_POST['bild-delete'])) {
                     $result = $OfferDao->create($offer);
                     if ($result) {
                         $result = $OfferDao->getLastOwnOffer($user);
+                        var_dump($result);
                         if ($result != null) {
                             $createdOffer = current($result);
                             if (isset($_SESSION['tempUpload'])) {
+                                var_dump($createdOffer);
                                 rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $createdOffer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
                                 unset($_SESSION['tempUpload']);
 
                             }
                         }
                     }
-                    ?>
-                    <script language="javascript"
-                            type="text/javascript"> document.location = "messages.php"; </script><?php
+
+
                 } else {
                     echo $_SESSION["error"];
                     unset($_SESSION["error"]);
