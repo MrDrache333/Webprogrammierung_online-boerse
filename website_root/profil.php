@@ -264,7 +264,7 @@ function Fehlerbehandlung($texterror)
                     <div class="formulare">
                         <!-- Delete Form-->
                         <form class="deleteModal-content delteAnimate" method="post">
-                            <h2>Profil wirklich löschen</h2>
+                            <h2>Profil und alle Anzeigen wirklich löschen?</h2>
                             <button name="profildelete" class="delete">Profil löschen</button>
                             <button class="abbrechen"
                                     onclick="document.getElementById('delete-modal').style.display='none'"
