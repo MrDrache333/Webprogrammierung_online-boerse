@@ -110,6 +110,62 @@ if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["logged
     Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: index.php");
 }
+if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI'])) {
+    unset($_SESSION["bearbeiten"]);
+    if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
+        $logo = "images/logos/";
+        $logo .= $_SESSION["tempUpload"];
+        unlink($logo);
+        $_SESSION['tempUpload'] = false;
+    }
+}
+if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI'])) {
+    unset($_SESSION["bearbeiten"]);
+    if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
+        $logo = "images/logos/";
+        $logo .= $_SESSION["tempUpload"];
+        unlink($logo);
+        $_SESSION['tempUpload'] = false;
+    }
+}
+if (preg_match("/index\.php/i", $_SERVER['REQUEST_URI'])) {
+    unset($_SESSION["bearbeiten"]);
+    if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
+        $logo = "images/logos/";
+        $logo .= $_SESSION["tempUpload"];
+        unlink($logo);
+        $_SESSION['tempUpload'] = false;
+    }
+    if (preg_match("/contact\.php/i", $_SERVER['REQUEST_URI'])) {
+        unset($_SESSION["bearbeiten"]);
+        if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
+            $logo = "images/logos/";
+            $logo .= $_SESSION["tempUpload"];
+            unlink($logo);
+            $_SESSION['tempUpload'] = false;
+        }
+    }
+    if (preg_match("/impressum\.php/i", $_SERVER['REQUEST_URI'])) {
+        unset($_SESSION["bearbeiten"]);
+        if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
+            $logo = "images/logos/";
+            $logo .= $_SESSION["tempUpload"];
+            unlink($logo);
+            $_SESSION['tempUpload'] = false;
+        }
+    }
+    if (preg_match("/search_job\.php/i", $_SERVER['REQUEST_URI'])) {
+        unset($_SESSION["bearbeiten"]);
+        if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
+            $logo = "images/logos/";
+            $logo .= $_SESSION["tempUpload"];
+            unlink($logo);
+            $_SESSION['tempUpload'] = false;
+        }
+    }
+
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">
