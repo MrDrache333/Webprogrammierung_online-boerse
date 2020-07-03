@@ -44,12 +44,12 @@ if (isset($_POST["loginSubmit"])) {
 
 
 
-    if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,30}$/', $prename)) {
+    if (!preg_match('/^[a-zA-Z-_üöäß\s]{3,30}$/', $prename)) {
         $errorRegister = $errorRegister . "+vorname";
     } else {
         $FILL_vorname = $prename;
     }
-    if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,30}$/', $lastname)) {
+    if (!preg_match('/^[a-zA-Z-_üöäß\s]{3,30}$/', $lastname)) {
         $errorRegister = $errorRegister . "+nachname";
     } else {
         $FILL_nachname = $lastname;
@@ -62,8 +62,6 @@ if (isset($_POST["loginSubmit"])) {
     if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{5,30}$/', $loginPassword)) {
         $errorRegister = $errorRegister . "+password";
     }
-
-
     if ($errorRegister == "register") {
         $controller = new UserDAOImpl();
         if ($controller->findUserByMail($loginEmail) === null) {
@@ -74,7 +72,7 @@ if (isset($_POST["loginSubmit"])) {
             $toRegisterUser->setPassword(password_hash($loginPassword, PASSWORD_DEFAULT));
             $result = $controller->create($toRegisterUser);
             if (($user = $controller->findUserByMail($loginEmail)) === null) {
-                header('Location: index.php?reloadModal=true&error=register_exist&fill_vorname='.$FILL_vorname.'&fill_nachname='.$FILL_nachname);
+                header('Location: index.php?reloadModal=true&error=register_exist&fill_vorname='.$FILL_vorname.'&fill_nachname=' . $FILL_nachname);
             } else {
                 setcookie("email", $toRegisterUser->getEmail(), time() + 60 * 60 * 24);
                 setcookie("username", $toRegisterUser->getPrename() . " " . $toRegisterUser->getSurname(), time() + 60 * 60 * 24);

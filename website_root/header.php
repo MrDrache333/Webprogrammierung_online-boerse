@@ -17,7 +17,7 @@ if (isset($_POST["profildelete"])) {
     setcookie("loggedin", "false", time() + 60 * 60 * 24);
     $UserDao = new UserDAOImpl();
     $OfferDao = new OfferDAOImpl();
-    $email = $_COOKIE["email"];
+    $email = $_SESSION["email"];
     $user = $UserDao->findUserByMail($email);
 
     $ownoffer = $OfferDao->getOwnOffers($user);
@@ -62,7 +62,7 @@ if (isset($_POST["profildelete_nojs"])) {
     setcookie("loggedin", "false", time() + 60 * 60 * 24);
     $UserDao = new UserDAOImpl();
     $OfferDao = new OfferDAOImpl();
-    $email = $_COOKIE["email"];
+    $email = $_SESSION["email"];
     $user = $UserDao->findUserByMail($email);
     $ownoffer = $OfferDao->getOwnOffers($user);
 
@@ -99,19 +99,18 @@ if (isset($_POST["profildelete_nojs"])) {
     Fehlerbehandlung("Sie wurden ausgeloggt.");
 }
 if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt.Loggen sie sich wieder ein um fort zu fahren.");
+    Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: index.php");
 }
 if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt.Loggen sie sich wieder ein um fort zu fahren.");
+    Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: index.php");
 }
 if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt.Loggen sie sich wieder ein um fort zu fahren.");
+    Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: index.php");
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -182,7 +181,7 @@ if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["logged
     <title>KEFEDO-Startseite</title>
 </head>
 <body <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] === "true") { ?>
-    onload="document.getElementById('login-modal').style.display='block'"
+    onload="document.getElementById('login-modal').style.display='block'" 
 <?php } ?>>
 <div class="grid-container">
     <div class="headerrahmen">
