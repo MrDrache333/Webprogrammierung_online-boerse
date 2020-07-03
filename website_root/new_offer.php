@@ -91,7 +91,7 @@ if (isset($_POST["edit_offer"])) {
     if ($eingelogt == "true") {
 
 
-        if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $titel)) {
+        if (!preg_match('/^([\w\x{C4}\x{E4}\x{D6}\x{F6}\x{DC}\x{FC}\x{DF}\x{2F}\x{29}\x{28}\s]){0,50}$/u', $titel)) {
             $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
         }
         if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $subtitle)) {
@@ -112,7 +112,7 @@ if (isset($_POST["edit_offer"])) {
         if (!preg_match('/^[0-9-_]{3,50}$/', $free)) {
             $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
         }
-        if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{5,20}$/', $beschreibung)) {
+        if (!preg_match('/^([\w\x{C4}\x{E4}\x{D6}\x{F6}\x{DC}\x{FC}\x{DF}\x{2F}\x{29}\x{28}\s]){0,900}$/u', $beschreibung)) {
             $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
         }
         if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $companyname)) {
@@ -306,7 +306,7 @@ if (isset($_POST['bild-delete'])) {
                 $idaktuelle = $user->getId();
 
 
-                if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $titel)) {
+                if (!preg_match('/^([\w\x{C4}\x{E4}\x{D6}\x{F6}\x{DC}\x{FC}\x{DF}\x{2F}\x{29}\x{28}\s]){0,50}$/u', $titel)) {
                     $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
                 }
                 if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $subtitle)) {
@@ -325,7 +325,7 @@ if (isset($_POST['bild-delete'])) {
                     $errornachricht = Fehlerbehandlung("Ihre Postleitzahl ist falsch.");
                 }
 
-                if (!preg_match('/[0-9a-zA-Zöäß\s]{5,50}$/', $beschreibung)) {
+                if (!preg_match('/^([\w\x{C4}\x{E4}\x{D6}\x{F6}\x{DC}\x{FC}\x{DF}\x{2F}\x{29}\x{28}\s]){0,900}$/u', $beschreibung)) {
                     $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
                 }
                 if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $companyname)) {
@@ -373,8 +373,6 @@ if (isset($_POST['bild-delete'])) {
                             }
                         }
                     }
-
-
                 } else {
                     echo $_SESSION["error"];
                     unset($_SESSION["error"]);
