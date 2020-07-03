@@ -276,7 +276,6 @@ span.psw {
 .submit {
     width: 140px;
     height: 40px;
-    display: flex;
     font-weight: 400;
     font-size: 13px;
     padding: 10px;

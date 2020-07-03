@@ -7,45 +7,45 @@ use php\offer\OfferDAOImpl;
 use php\user\UserDAOImpl;
 
 unset($_SESSION["bearbeiten"]);
-$email = $_COOKIE['email'] ?? null;;
+$email = $_COOKIE['email'] ?? null;
 
 
 if ($email !== null) {
 
 
-        //User abfragen
-        $user = new UserDAOImpl();
-        $user = $user->findUserByMail($email);
-        if ($user !== null) {
-            //In Datenbank nach Einträgen suchen
-            $OfferDAOImpl = new OfferDAOImpl();
-            if (isset($_POST['anzeigeloeschen'])) {
-                $id = $_POST["id_offer"];
-                $ownoffer = $OfferDAOImpl->getOwnOffers($user);
-                if ($ownoffer != null) {
+    //User abfragen
+    $user = new UserDAOImpl();
+    $user = $user->findUserByMail($email);
+    if ($user !== null) {
+        //In Datenbank nach Einträgen suchen
+        $OfferDAOImpl = new OfferDAOImpl();
+        if (isset($_POST['anzeigeloeschen'])) {
+            $id = $_POST["id_offer"];
+            $ownoffer = $OfferDAOImpl->getOwnOffers($user);
+            if ($ownoffer != null) {
 
-                    $found = false;
-                    foreach ($ownoffer as $offer) {
-                        if ($offer->getId() == $id) {
-                            $found = true;
-                            break;
-                        }
+                $found = false;
+                foreach ($ownoffer as $offer) {
+                    if ($offer->getId() == $id) {
+                        $found = true;
+                        break;
                     }
-                    if ($found === true) {
-                        $OfferDAOImpl->delete($id);
-                    } else {
-                        echo "Sie löschen eine Anzeige die nicht Ihnen gehört. Dies ist nicht möglich.";
-                    }
-                } else {
-                    echo "Sie besitzen keine Anzeigens.";
                 }
-
-
+                if ($found === true) {
+                    $OfferDAOImpl->delete($id);
+                } else {
+                    echo "Sie löschen eine Anzeige die nicht Ihnen gehört. Dies ist nicht möglich.";
+                }
+            } else {
+                echo "Sie besitzen keine Anzeigens.";
             }
-            $result = $OfferDAOImpl->getOwnOffers($user);
-        } else {
-            $result = null;
+
+
         }
+        $result = $OfferDAOImpl->getOwnOffers($user);
+    } else {
+        $result = null;
+    }
 
 
 }
@@ -59,6 +59,7 @@ function Fehlerbehandlung($texterror)
     }
 
 }
+
 ?>
 <div class="header">
     <nav>
@@ -78,15 +79,13 @@ function Fehlerbehandlung($texterror)
     </nav>
 </div>
 <div class="grid-farbe">
-    <div class="button_field">
-        <a href="new_offer.php" name="button_new_offer" class="button_new_offer" id="button_new_offer">Neue Anzeige
-            erstellen</a>
-    </div>
-    <div class="row">
-        <div class="leftcolumn">
+    <div class="content">
+        <div class="button_field">
+            <a href="new_offer.php" name="button_new_offer" class="button_new_offer" id="button_new_offer">Neue Anzeige
+                erstellen</a>
+        </div>
+        <div class="offers_content">
             <?php
-
-
             //Einträge anzeigen1
             displayResults($result);
             /**
@@ -101,33 +100,50 @@ function Fehlerbehandlung($texterror)
 
                         $offer_id = $offer->getId();
                         $count++;
-                        $html = "<div class=\"card\">
-                                    <div class=\"anzeigen-inhalt\">
-                                        <h2>" . $offer->getTitle() . "<br>" . $offer->getSubTitle() . "</h2>
-                                        <img class=\"fakeimg\" src=\"" . $offer->getLogo() . "\" alt=\"Firmenlogo\">
-                                        <div class=\"beschreibung\">
-                                            " . $offer->getDescription() . "
+                        ?>
+                        <div class="card">
+                            <div class="anzeige">
+                                <div class="anzeige_head">
+                                    <h2><?php echo $offer->getTitle(); ?></h2>
+                                    <h4><?php echo $offer->getSubTitle(); ?></h4>
+                                </div>
+                                <div class="anzeige_content">
+                                    <div class="image">
+                                        <img class="fakeimg" src="<?php echo $offer->getLogo(); ?>" alt="Firmenlogo">
+                                    </div>
+                                    <div class="anzeige_info">
+                                        <div class="beschreibung">
+                                            <?php echo $offer->getDescription(); ?>
+                                        </div>
+                                        <div class="anzeige_footer">
+                                            <div class="erstellt rowItem">
+                                                <h5>erstellt am:<br><?php echo $offer->getCreated(); ?>
+                                            </div>
+                                            <div class="frei rowItem">
+                                                <h5> Frei ab:<br><?php echo $offer->getFree(); ?></h5>
+                                            </div>
+                                            <div class="rowItem">
+                                                <div class="buttons">
+                                                    <form method="post" action="new_offer.php">
+                                                        <input type="hidden" name="id_offer"
+                                                               value="<?php echo $offer_id; ?>">
+                                                        <input type="submit" value="Bearbeiten" class="submit btn"
+                                                               name="bearbeiten_offer"
+                                                               id="submit"/>
+                                                        <input type="submit" value="Anzeige löschen"
+                                                               class="submit btn delete"
+                                                               name="anzeigeloeschen"
+                                                               id="submit"/>
+                                                    </form>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                    <form method=\"POST\"  class=\"profile-form\" id=\"profile-form\">
-                                    <div class=\"infos\">
-                                        <div class=\"erstellt\"><h5>erstellt am:<br>" . $offer->getCreated() . "</div>
-                                        <div class=\"frei\"><h5> Frei ab:<br>" . $offer->getFree() . "</h5></div>
-                                        <input type='hidden' name='id_offer' value='$offer_id'></form> 
-                    
-                                     <form method='post' action='new_offer.php'><input type=\"submit\" value=\"Bearbeiten\" class=\"submit\" name=\"bearbeiten_offer\"
-                                   id=\"submit\"/> 
-                                        <input type='hidden' name='id_offer' value='$offer_id'></form> 
-                                    <input type=\"submit\" value=\"Anzeige löschen\" class=\"submit\" name=\"anzeigeloeschen\"
-                                   id=\"submit\"/>
-                                    </div>
-                                 </form>
-                                </div>";
-
-
-                        echo $html . "\n";
-
-
+                                </div>
+                            </div>
+                        </div>
+                        <?php
                     }
                     if ($count === 0) {
                         echo "<div style=\"background: radial-gradient(circle at center, white 0,rgba(255,255,255,0.9) 60%, rgba(255,255,255,0.5) 70%,transparent 90%); text-align: center; border-radius: 20px\">
@@ -145,24 +161,7 @@ function Fehlerbehandlung($texterror)
 
             ?>
         </div>
-        <div class="rightcolumn">
-            <div class="card">
-                <h2>Nachrichten</h2>
-                <div class="card">
-                    <div class=" nachricht">
-                        <img class="fakeimg" src="images/company_placeholder.png" alt="Firmenlogo">
-                        <div class="nachrichtenbes">
-                            <h5>Verkäufer/-in (m/w/d)</h5>
-                            Ich möchte mich auf die Stelle bewerben. Anbei finden sie meine Unterlagen.
-                            Geben sie mir bitte Rückmelduung, wenn sie weiter Fragen haben. Vielen Dank.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-</div>
-</div>
 </div>
 <?php include "footer.html"; ?>
 
