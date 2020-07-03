@@ -17,11 +17,7 @@
     }
 
     .jobs-content {
-        background-color: #0b0b0b !important;
-    }
-
-    .searchBox_text {
-        color: #c4d7e7 !important;
+        background-color: rgb(31, 31, 31) !important;
     }
 
     input[type="text"], input[type="text"]::placeholder, input[type="email"], input[type="email"]::placeholder, input[type="password"], input[type="password"]::placeholder, input[type="date"], input[type="date"]::placeholder, textarea {

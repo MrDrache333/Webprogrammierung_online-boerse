@@ -1,3 +1,15 @@
+@media (prefers-color-scheme: dark) {
+
+    .searchBox_text {
+        color: #c4d7e7 !important;
+    }
+
+    .searchBox {
+        background-color: rgb(31, 31, 31) !important;
+    }
+}
+
+
 .searchBox_grid {
     display: grid;
     margin: auto;

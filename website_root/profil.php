@@ -174,72 +174,73 @@ function Fehlerbehandlung($texterror)
             <h1>Mein Profil</h1>
             <div class="profile_form">
                 <div class="form_col">
+                    <h2>Mein Profilbild</h2>
                     <form enctype="multipart/form-data" method="POST" action="profil.php"
                           id="profile-form">
-                        <h2>Mein Profilbild</h2>
                         <img class="profile_img" src="<?php echo($user->getProfilePhoto()) ?>" alt="Profilbild-Template"
                              id="pb_image">
                         <div class="form-submit">
+                            <input type="submit" value="Bild hochladen" name="pb_submit" class="submit"/>
+                            <input type="file" name="fileToUpload" id="fileToUpload"/>
                             <input type="submit" value="Profilbild löschen" class="submit" name="reset_pb"
                                    id="reset_pb"/>
-                            <input type="file" name="fileToUpload" id="fileToUpload"/>
-                            <input type="submit" value="Bild hochladen" name="pb_submit" class="submit"/>
                         </div>
                     </form>
                 </div>
                 <div class="form_col">
+                    <h2>Meine Informationen</h2>
                     <form method="POST" id="profile-form-image">
-                        <h2>Meine Informationen</h2>
                         <div class="inputs">
-                            <label for="name">Vorname</label>
-                            <input type="text" name="name" id="name" value="<?php echo $user->getPrename(); ?>"
-                                   required/>
-                            <label for="father_name">Nachname</label>
-                            <label hidden for="fahter_name"></label>
-                            <input type="text" name="father_name" id="fahter_name"
-                                   value="<?php echo $user->getSurname(); ?>" required/>
+                            <div class="inputs_col">
+                                <h3>Allgemein</h3>
+                                <label for="name">Vorname</label>
+                                <input type="text" name="name" id="name" value="<?php echo $user->getPrename(); ?>"
+                                       required/>
+                                <label for="father_name">Nachname</label>
+                                <label hidden for="fahter_name"></label>
+                                <input type="text" name="father_name" id="fahter_name"
+                                       value="<?php echo $user->getSurname(); ?>" required/>
 
-                            <label for="email">E-Mail Adresse</label>
-                            <input class="profilemail" type="email" name="email" id="email"
-                                   value="<?php echo $user->getEmail(); ?>"/>
+                                <label for="email">E-Mail Adresse</label>
+                                <input class="profilemail" type="email" name="email" id="email"
+                                       value="<?php echo $user->getEmail(); ?>"/>
+                            </div>
+                            <div class="inputs_col">
+                                <h3>Passwort ändern</h3>
+                                <!-- Möglich für Passwort vergessen1-->
+                                <label for="altestpw">altes Passwort</label>
+                                <input type="password" name="altespw" id="altestpw">
+                                <label for="pwsetzen">neues Passwort</label>
+                                <input type="password" name="pwsetzen" id="pwsetzen" onkeyup="pw_check();"/>
+                                <label for="pwwiederholen">neues Passwort wiederholen</label>
+                                <input type="password" name="pwwiederholen" id="pwwiederholen"
+                                       onkeyup="pw_check();"/>
 
-                            <!-- Möglich für Passwort vergessen1-->
+                                <span id="feedback"></span>
+                                <script>
+                                    function pw_check() {
+                                        var pw1 = document.getElementById('pwsetzen').value;
+                                        var pw2 = document.getElementById('pwwiederholen').value;
+                                        var call = document.getElementById('feedback');
 
-                            <label for="altestpw">altes Passwort</label>
-                            <input type="password" name="altespw" id="altestpw">
-
-                            <label for="pwsetzen">neues Passwort</label>
-                            <input type="password" name="pwsetzen" id="pwsetzen" onkeyup="pw_check();"/>
-
-
-                            <label for="pwwiederholen">neues Passwort wiederholen</label>
-                            <input type="password" name="pwwiederholen" id="pwwiederholen"
-                                   onkeyup="pw_check();"/>
-
-                            <span id="feedback"></span>
-
-                            <script>
-                                function pw_check() {
-                                    var pw1 = document.getElementById('pwsetzen').value;
-                                    var pw2 = document.getElementById('pwwiederholen').value;
-                                    var call = document.getElementById('feedback');
-
-                                    if (pw1.length < 5) {
-                                        call.innerHTML = "<strong>Das Passwort ist zu kurz</strong>";
-                                        call.style.color = "red";
-                                    } else {
-
-                                        if (pw1 === pw2) {
-                                            call.innerHTML = "<strong>Die Passwörter sind gleich</strong>";
-                                            call.style.color = "#56a40c";
-
-                                        } else {
+                                        if (pw1.length < 5) {
+                                            call.innerHTML = "<strong>Das Passwort ist zu kurz</strong>";
                                             call.style.color = "red";
-                                            call.innerHTML = "<strong>Die Passwörter sind ungleich</strong>";
+                                        } else {
+
+                                            if (pw1 === pw2) {
+                                                call.innerHTML = "<strong>Die Passwörter sind gleich</strong>";
+                                                call.style.color = "#56a40c";
+
+                                            } else {
+                                                call.style.color = "red";
+                                                call.innerHTML = "<strong>Die Passwörter sind ungleich</strong>";
+                                            }
                                         }
                                     }
-                                }
-                            </script>
+                                </script>
+                            </div>
+
                         </div>
                         <input type="submit" value="Speichern" class="submit" name="submit_pb" id="submit"/>
                     </form>
