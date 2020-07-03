@@ -1,28 +1,17 @@
 @media (prefers-color-scheme: dark) {
-    .profile-form > h2 {
-        background-color: rgb(31, 31, 31) !important;
+    form > h2 {
         color: rgb(180, 188, 202) !important;
     }
-}
 
+    .profile_form, h1 {
+        background-color: rgb(31, 31, 31) !important;
+    }
+}
 
 a:focus, a:active {
     text-decoration: none;
     outline: none;
     transition: all 300ms ease 0s;
-}
-
-/* @extend display-flex; */
-display-flex, .profile-content, .form-row, .form-radio, .select-icon, .select-icon i .form-col {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-/* @extend list-type-ulli; */
-list-type-ulli {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
 }
 
 .delete {
@@ -47,8 +36,8 @@ img {
     border-radius: 20%;;
 }
 
-.profile-content {
-    flex-direction: column;
+.content {
+    padding: 3vh 2% 50px 2%;
 }
 
 .submit {
@@ -56,173 +45,69 @@ img {
     color: #fff;
 }
 
-figure {
-    margin: 0;
-}
-
-input[type=number] {
-    appearance: none !important;
-}
-
-input:-webkit-autofill {
-    box-shadow: 0 0 0 30px transparent inset;
-}
-
-.clear {
-    clear: both;
-}
-
-.form-radio-item-group {
-    float: left;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.profile-container {
+.profile_content {
     width: 90%;
     max-width: 100%;
     position: relative;
     margin: 0 auto;
     background: transparent;
     padding: 20px;
-
+    animation: fadein 1.5s;
 }
 
-.profile-img {
-    margin-bottom: -7px;
-    border-color: grey;
-    border-width: 2px;
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(300px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
-.profile-form {
-    flex-wrap: wrap;
-    float: left;
-    margin: auto;
+h1 {
+    background-color: grey;
+    width: max-content;
+    border-radius: 8px;
+    padding: 10px;
+    margin-block-end: 0;
+    margin-bottom: -13px;
 }
 
-.form-row {
-    margin: 0;
-}
-
-.form-col {
-    padding: 1em;
-    float: left;
-    min-width: 300px;
-    max-width: 600px;
-    flex-grow: 2;
+.profile_form {
+    background-color: grey;
+    padding: 10px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 8px;
 }
 
-.form-row .form-group {
-    width: 50%;
-    padding: 0;
+.inputs > label {
+    margin-top: 10px;
+    padding-top: 10px;
 }
 
-.form-group {
-    margin-bottom: 23px;
-    min-width: 300px;
-    position: relative;
+.form_col {
+    padding: 10px;
+    min-width: 250px;
 }
 
-.profilemail {
-    margin-top: 11px;
+.profile_img {
+    width: 250px;
+    margin: 0 auto auto;
+    border-radius: 20%;
+    height: auto;
 }
 
-input:focus, select:focus {
-    border: 1px solid #ff6801;
-}
-
-label {
-    font-size: 14px;
-    font-weight: bold;
-    margin-bottom: 2px;
-    display: block;
-}
-
-.form-radio {
-    margin-bottom: 18px;
-}
-
-.form-radio input {
-    width: auto;
-    display: inline-block;
-}
-
-.radio-label {
-    padding-right: 72px;
-}
-
-.form-radio-item {
-    position: relative;
-    margin-right: 45px;
-}
-
-.form-radio-item label {
-    font-weight: 500;
-    font-size: 13px;
-    padding-left: 25px;
-    position: relative;
-    display: block;
-    cursor: pointer;
-}
-
-input[type=radio] {
-    position: absolute;
-    visibility: hidden;
-}
-
-input[type=radio]:checked ~ .check {
-    border: 1px solid #A2B3F8;
-}
-
-input[type=radio]:checked ~ .check::before {
-    background: #A2B3F8;
-}
-
-input {
-    width: auto;
-    display: block;
-    max-width: 300px;
-    border: 1px solid #ebebeb;
-    padding: 11px 20px;
-    box-sizing: border-box;
-    font-weight: 500;
-    font-size: 13px;
-}
-
-.check {
-    display: inline-block;
-    position: absolute;
-    border: 1px solid #ebebeb;
-    border-radius: 50%;
-    height: 13px;
-    width: 13px;
-    top: 4px;
-    left: 0;
-    transition: border .25s linear;
-}
-
-.check:before {
-    position: absolute;
-    display: block;
-    content: '';
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    top: 2px;
-    left: 2px;
-    margin: auto;
-    transition: background 0.25s linear;
-}
-
-#reset, #reset_pb {
+#reset_pb {
     background: #f8f8f8;
     color: #999;
     margin-right: 8px;
 }
 
-#reset:hover, #reset_pb:hover {
+#reset_pb:hover {
     background: #A2B3F8;
     color: #fff;
 }
@@ -265,5 +150,41 @@ input {
 .deleteanimate {
     -webkit-animation: animatezoom 1.5s;
     animation: animatezoom 1.5s
+}
+
+@media screen and (max-width: 460px) {
+    .profile_img {
+        width: 150px;
+    }
+
+    h1 {
+        padding: 0 10px 10px 0;
+    }
+
+    .profile_form {
+        padding: 5px;
+    }
+
+    .form_col {
+        padding: 0;
+        width: 100%;
+        min-width: 100%;
+        justify-content: center;
+    }
+
+    .profile_content {
+        padding: 0;
+        width: 100%;
+    }
+
+    .form_col {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .content {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 

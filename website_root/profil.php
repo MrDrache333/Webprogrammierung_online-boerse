@@ -44,24 +44,24 @@ if (isset($_POST["submit_pb"])) {
     }
     if (!isset($_SESSION["error"])) {
 
-            $user->setPrename($name);
-            $user->setSurname($name2);
-            $user->setPassword($pwaktuell);
-            $test = $u->update($user);
-            $pw = $_POST["pwsetzen"];
-            $pwneu = $_POST["pwwiederholen"];
-            $pwalt = $_POST["altespw"];
-            if ($pwalt != null && $pwneu != null) {
-                if ($pwneu === $pw) {
-                    if (password_verify($pwalt, $pwaktuell)) {
+        $user->setPrename($name);
+        $user->setSurname($name2);
+        $user->setPassword($pwaktuell);
+        $test = $u->update($user);
+        $pw = $_POST["pwsetzen"];
+        $pwneu = $_POST["pwwiederholen"];
+        $pwalt = $_POST["altespw"];
+        if ($pwalt != null && $pwneu != null) {
+            if ($pwneu === $pw) {
+                if (password_verify($pwalt, $pwaktuell)) {
 
 
-                        $u->updatePassword(password_hash($pwneu, PASSWORD_DEFAULT), $email);
-                        echo "Ihr Passwort wurde erfolgreich geändert";
+                    $u->updatePassword(password_hash($pwneu, PASSWORD_DEFAULT), $email);
+                    echo "Ihr Passwort wurde erfolgreich geändert";
 
-                    } else {
-                        echo "Ihr altes Passwort ist nicht korrekt";
-                    }
+                } else {
+                    echo "Ihr altes Passwort ist nicht korrekt";
+                }
 
             } else {
                 echo "Die Passwörter stimmen nicht überein. Wiederholen sie die Eingabe";
@@ -169,76 +169,55 @@ function Fehlerbehandlung($texterror)
     </nav>
 </div>
 <div class="grid-farbe">
-    <div class="container">
+    <div class="content">
+        <div class="profile_content">
+            <h1>Mein Profil</h1>
+            <div class="profile_form">
+                <div class="form_col">
+                    <form enctype="multipart/form-data" method="POST" action="profil.php"
+                          id="profile-form">
+                        <h2>Mein Profilbild</h2>
+                        <img class="profile_img" src="<?php echo($user->getProfilePhoto()) ?>" alt="Profilbild-Template"
+                             id="pb_image">
+                        <div class="form-submit">
+                            <input type="submit" value="Profilbild löschen" class="submit" name="reset_pb"
+                                   id="reset_pb"/>
+                            <input type="file" name="fileToUpload" id="fileToUpload"/>
+                            <input type="submit" value="Bild hochladen" name="pb_submit" class="submit"/>
+                        </div>
+                    </form>
+                </div>
+                <div class="form_col">
+                    <form method="POST" id="profile-form-image">
+                        <h2>Meine Informationen</h2>
+                        <div class="inputs">
+                            <label for="name">Vorname</label>
+                            <input type="text" name="name" id="name" value="<?php echo $user->getPrename(); ?>"
+                                   required/>
+                            <label for="father_name">Nachname</label>
+                            <label hidden for="fahter_name"></label>
+                            <input type="text" name="father_name" id="fahter_name"
+                                   value="<?php echo $user->getSurname(); ?>" required/>
 
-        <h1> Mein Profil</h1>
-        <div class="profile-container">
-            <div class="profile-content">
-                <div class="profile-form">
-                    <div class="form-col">
-                        <form enctype="multipart/form-data" method="POST" action="profil.php" class="profile-form"
-                              id="profile-form">
-                            <h2>Mein Profilbild</h2>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <img src="<?php echo($user->getProfilePhoto()) ?>" alt="Profilbild-Template"
-                                         id="pb_image">
-                                </div>
-                            </div>
-                            <div class="form-submit">
-                                <input type="submit" value="Profilbild löschen" class="submit" name="reset_pb"
-                                       id="reset_pb"/>
-                                <input type="file" name="fileToUpload" id="fileToUpload"/>
-                                <input type="submit" value="Bild hochladen" name="pb_submit" class="submit"/>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="form-col">
-                        <form method="POST" class="profile-form" id="profile-form-image">
-                            <h2>Meine Informationen</h2>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="name">Vorname :</label>
-                                    <input type="text" name="name" id="name" value="<?php echo $user->getPrename(); ?>"
-                                           required/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="father_name">Nachname :</label>
-                                    <label hidden for="fahter_name"></label>
-                                    <input type="text" name="father_name" id="fahter_name"
-                                           value="<?php echo $user->getSurname(); ?>" required/>
-                                </div>
-                            </div>
+                            <label for="email">E-Mail Adresse</label>
+                            <input class="profilemail" type="email" name="email" id="email"
+                                   value="<?php echo $user->getEmail(); ?>"/>
 
                             <!-- Möglich für Passwort vergessen1-->
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="state">altes Passwort:</label>
-                                    <input type="password" name="altespw" id="altestpw">
-                                </div>
-                                <div class="form-group">
-                                    <label for="city">neues Passwort:</label>
-                                    <input type="password" name="pwsetzen" id="pwsetzen" onkeyup="pw_check();"/>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="street">neues Passwort wiederholen</label>
-                                    <input type="password" name="pwwiederholen" id="pwwiederholen"
-                                           onkeyup="pw_check();"/>
-                                </div>
-                                <span id="feedback"></span>
 
-                            </div>
+                            <label for="altestpw">altes Passwort</label>
+                            <input type="password" name="altespw" id="altestpw">
 
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="email">E-Mail Adresse :</label>
-                                    <input class="profilemail" type="email" name="email" id="email"
-                                           value="<?php echo $user->getEmail(); ?>"/>
-                                </div>
+                            <label for="pwsetzen">neues Passwort</label>
+                            <input type="password" name="pwsetzen" id="pwsetzen" onkeyup="pw_check();"/>
 
-                            </div>
+
+                            <label for="pwwiederholen">neues Passwort wiederholen</label>
+                            <input type="password" name="pwwiederholen" id="pwwiederholen"
+                                   onkeyup="pw_check();"/>
+
+                            <span id="feedback"></span>
+
                             <script>
                                 function pw_check() {
                                     var pw1 = document.getElementById('pwsetzen').value;
@@ -250,7 +229,7 @@ function Fehlerbehandlung($texterror)
                                         call.style.color = "red";
                                     } else {
 
-                                        if (pw1 == pw2) {
+                                        if (pw1 === pw2) {
                                             call.innerHTML = "<strong>Die Passwörter sind gleich</strong>";
                                             call.style.color = "#56a40c";
 
@@ -260,41 +239,38 @@ function Fehlerbehandlung($texterror)
                                         }
                                     }
                                 }
-
                             </script>
-
-                            <input type="submit" value="Speichern" class="submit" name="submit_pb" id="submit"/></form>
-                        <noscript>
-                            <form action="index.php" method="post">
-                        </noscript>
-                        <button onclick="document.getElementById('delete-modal').style.display='block'"
-                                style="width:auto;" class="delete" name="profildelete_nojs">
-                            Profil löschen
-                        </button>
-                        <noscript> </form> </noscript>
-
-                    </div>
-                    <div>
-                        <div class="deleteModal"
-                             id="delete-modal">
+                        </div>
+                        <input type="submit" value="Speichern" class="submit" name="submit_pb" id="submit"/>
+                    </form>
+                    <noscript>
+                        <form action="index.php" method="post">
+                    </noscript>
+                    <button onclick="document.getElementById('delete-modal').style.display='block'"
+                            style="width:auto;" class="delete" name="profildelete_nojs">
+                        Profil löschen
+                    </button>
+                    <noscript> </form> </noscript>
+                </div>
+            </div>
+            <div>
+                <div class="deleteModal"
+                     id="delete-modal">
                             <span class="loginClose"
                                   onclick="document.getElementById('delete-modal').style.display='none'"
                                   title="Close Modal">&times;</span>
 
-                            <div class="formulare">
-                                <!-- Delete Form-->
-                                <form class="deleteModal-content delteAnimate" method="post">
-                                    <h2>Profil wirklich löschen</h2>
-                                    <button name="profildelete" class="delete">Profil löschen</button>
-                                    <button class="abbrechen"
-                                            onclick="document.getElementById('delete-modal').style.display='none'"
-                                            type="button">Abbrechen
-                                    </button>
+                    <div class="formulare">
+                        <!-- Delete Form-->
+                        <form class="deleteModal-content delteAnimate" method="post">
+                            <h2>Profil wirklich löschen</h2>
+                            <button name="profildelete" class="delete">Profil löschen</button>
+                            <button class="abbrechen"
+                                    onclick="document.getElementById('delete-modal').style.display='none'"
+                                    type="button">Abbrechen
+                            </button>
 
-                                </form>
-                            </div>
-
-                        </div>
+                        </form>
                     </div>
 
                 </div>
@@ -302,10 +278,6 @@ function Fehlerbehandlung($texterror)
         </div>
     </div>
 </div>
-</div>
-</div>
-
-</html>
 
 <?php include "footer.html"; ?>
 
