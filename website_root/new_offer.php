@@ -418,8 +418,12 @@ if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
 </div>
 <div class="grid-farbe">
     <div class="content">
-        <div class="offer_content">
-            <h1>Anzeige erstellen</h1>
+        <div class="offer_content"><?php
+            if (isset($_SESSION["bearbeiten"])) { ?>
+                <h1>Anzeige bearbeiten</h1>
+            <?php } else { ?>
+                <h1>Anzeige erstellen</h1>
+            <?php } ?>
             <div class="content_input">
                 <div class="column">
                     <div class="card">
@@ -469,9 +473,13 @@ if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
                             />
                             <label for="free">Frei ab</label>
                             <input type="date" name="free" id="free" placeholder="2021-01-01" class="date_free"
-                                   value="<?php echo $free ?? ""; ?>"
-                            />
-                            <br>
+                                   value="<?php echo $free ?? ""; ?>"</form>
+                        </form>
+                        <button onclick="document.getElementById('test').innerHTML=Date(dd.mm.JJJJ)">Verfügbar ab
+                            Heute
+                        </button>
+                        <br>
+                        <p id="test"></p>
                     </div>
                 </div>
                 <div class="column">
