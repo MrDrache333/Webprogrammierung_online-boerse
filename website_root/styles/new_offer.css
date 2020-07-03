@@ -200,6 +200,10 @@ textarea {
     padding: 20px;
 }
 
+.bild-delete {
+    background-color: red;
+}
+
 .button_offer {
     background: #A2B3F8;
     color: #fff;
