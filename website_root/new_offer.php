@@ -473,13 +473,8 @@ if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
                             />
                             <label for="free">Frei ab</label>
                             <input type="date" name="free" id="free" placeholder="2021-01-01" class="date_free"
-                                   value="<?php echo $free ?? ""; ?>"</form>
-                        </form>
-                        <button onclick="document.getElementById('test').innerHTML=Date(dd.mm.JJJJ)">Verfügbar ab
-                            Heute
-                        </button>
-                        <br>
-                        <p id="test"></p>
+                                   value="<?php echo $free ?? ""; ?>"
+
                     </div>
                 </div>
                 <div class="column">
