@@ -448,30 +448,30 @@ if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
                     <div class="card">
                         <h2>Basisinformationen</h2>
                         <form method="POST" class="new_offer-form" id="new_offer-form">
-                            <label for="titel">Titel :</label>
+                            <label for="titel">Titel</label>
                             <input type="text" name="titel" id="titel" placeholder="Verkäufer/in"
                                    value="<?php echo $titel ?? ""; ?>"
                             />
-                            <label for="subtitetl">Untertitel :</label>
+                            <label for="subtitel">Untertitel</label>
                             <input type="text" name="subtitel" id="subtitel" placeholder="Einzelhandel"
                                    value="<?php echo $subtitle ?? ""; ?>"/>
-                            <label for="subtitetl">Firmenname :</label>
+                            <label for="companyname">Firmenname</label>
                             <input type="text" name="companyname" id="companyname" placeholder="Firmenname"
                                    value="<?php echo $companyname ?? ""; ?>"/>
-                            <label for="position">Straße:</label>
+                            <label for="straße">Straße</label>
                             <input type="text" name="straße" id="straße" placeholder="Musterstraße"
                                    value="<?php echo $straße ?? ""; ?>"/>
-                            <label for="position">Hausnummer :</label>
+                            <label for="hausnummer">Hausnummer</label>
                             <input type="text" name="hausnummer" id="hausnummer" placeholder="1234"
                                    value="<?php echo $hsnr ?? ""; ?>"/>
-                            <label for="position">Ort:</label>
+                            <label for="ort">Ort</label>
                             <input type="text" name="ort" id="ort" placeholder="Musterhausen"
                                    value="<?php echo $ort ?? ""; ?>"
                             />
-                            <label for="position">Postleitzahl:</label>
+                            <label for="plz">Postleitzahl</label>
                             <input type="text" name="plz" id="plz" placeholder="12345" value="<?php echo $plz ?? ""; ?>"
                             />
-                            <label for="free">Frei ab :</label>
+                            <label for="free">Frei ab</label>
                             <input type="date" name="free" id="free" placeholder="2021-01-01" class="date_free"
                                    value="<?php echo $free ?? ""; ?>"</form>
                         </form>
