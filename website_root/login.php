@@ -44,17 +44,23 @@ if (isset($_POST["loginSubmit"])) {
 
 
 
-    if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{3,30}$/', $prename)) {
-        $errorRegister =  $errorRegister."+vorname";
-    } else { $FILL_vorname = $prename; }
-    if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{3,30}$/', $lastname)) {
-        $errorRegister =  $errorRegister."+nachname";
-    } else { $FILL_nachname = $lastname; }
+    if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,30}$/', $prename)) {
+        $errorRegister = $errorRegister . "+vorname";
+    } else {
+        $FILL_vorname = $prename;
+    }
+    if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,30}$/', $lastname)) {
+        $errorRegister = $errorRegister . "+nachname";
+    } else {
+        $FILL_nachname = $lastname;
+    }
     if (!filter_var($loginEmail, FILTER_VALIDATE_EMAIL)) {
-        $errorRegister =  $errorRegister."+email";
-    } else { $FILL_email = $loginEmail; }
-    if (!preg_match('/^[0-9a-zA-Z-_öäß\s]{5,30}$/', $loginPassword)) {
-        $errorRegister =  $errorRegister."+password";
+        $errorRegister = $errorRegister . "+email";
+    } else {
+        $FILL_email = $loginEmail;
+    }
+    if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{5,30}$/', $loginPassword)) {
+        $errorRegister = $errorRegister . "+password";
     }
 
 
@@ -114,10 +120,10 @@ function GeneratePassword($length = 12)
     //Funktion zur Generierung eines zufälligen Passworts
 
     $char_control = "";
-    $chars_for_pw = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $chars_for_pw = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÜÖ";
     $chars_for_pw .= "0123456789";
 
-    $chars_for_pw .= "abcdefghijklmnopqrstuvwxyz";
+    $chars_for_pw .= "abcdefghijklmnopqrstuvwxyzäüö";
     mt_srand((double)microtime() * 1000000);
     for ($i = 0; $i < $length; $i++) {
         $number = random_int(0, strlen($chars_for_pw));

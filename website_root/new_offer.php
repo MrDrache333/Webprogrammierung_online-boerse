@@ -94,16 +94,16 @@ if (isset($_POST["edit_offer"])) {
     if ($eingelogt == "true") {
 
 
-        if (!preg_match('/^[a-zA-Z]{3,50}$/', $titel)) {
+        if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $titel)) {
             $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
         }
-        if (!preg_match('/^[a-zA-Z]{3,50}$/', $subtitle)) {
+        if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $subtitle)) {
             $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
-            }
-        /*  if (!preg_match('/^[a-zA-Z]{3,50}$/', $straße)) {
+        }
+        /*  if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $straße)) {
             $errornachricht = Fehlerbehandlung("Ihre Straße ist falsch.");
           }
-          if (!preg_match('/^[a-zA-Z0-9]{1,50}$/', $hsnr)) {
+          if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{1,50}$/', $hsnr)) {
              $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
           }
           if (!preg_match('/([a-zA-Z]){2,20}$/', $ort)) {
@@ -115,10 +115,10 @@ if (isset($_POST["edit_offer"])) {
         if (!preg_match('/^[0-9-_]{3,50}$/', $free)) {
             $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
         }
-        if (!preg_match('/^[a-zA-Z0-9]{5,20}$/', $beschreibung)) {
+        if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{5,20}$/', $beschreibung)) {
             $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
         }
-        if (!preg_match('/^[a-zA-Z]{3,50}$/', $companyname)) {
+        if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $companyname)) {
             $errornachricht = Fehlerbehandlung("Ihr Firmenname ist falsch.");
         }
         if ($art == null) {
@@ -310,19 +310,19 @@ if (isset($_POST['bild-delete'])) {
                 $idaktuelle = $user->getId();
 
 
-                if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $titel)) {
+                if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $titel)) {
                     $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
                 }
-                if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $subtitle)) {
+                if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $subtitle)) {
                     $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
                 }
-                if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $straße)) {
+                if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $straße)) {
                     $errornachricht = Fehlerbehandlung("Ihre Straße ist falsch.");
                 }
                 if (!preg_match('/^[0-9a-zA-Z]{1,50}$/', $hsnr)) {
                     $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
                 }
-                if (!preg_match('/^[0-9a-zA-Zöäß\s]{2,20}$/', $ort)) {
+                if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{2,20}$/', $ort)) {
                     $errornachricht = Fehlerbehandlung("Ihr Ort ist falsch.");
                 }
                 if (!preg_match('/^[\d]{5}$/', $plz)) {
@@ -332,7 +332,7 @@ if (isset($_POST['bild-delete'])) {
                 if (!preg_match('/[0-9a-zA-Zöäß\s]{5,50}$/', $beschreibung)) {
                     $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
                 }
-                if (!preg_match('/^[0-9a-zA-Zöäß\s]{3,50}$/', $companyname)) {
+                if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $companyname)) {
                     $errornachricht = Fehlerbehandlung("Ihr Firmenname ist falsch.");
                 }
                 if (!isset ($art)) {
