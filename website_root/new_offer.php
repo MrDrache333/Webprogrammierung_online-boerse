@@ -29,7 +29,7 @@ if (isset($_POST["hausnummer"])) {
     $hsnr = htmlspecialchars($_POST["hausnummer"]);
 }
 if (isset($_POST["ort"])) {
-    $ort = htmlspecialchars($_POST["plz"]);
+    $ort = htmlspecialchars($_POST["ort"]);
 }
 if (isset($_POST["plz"])) {
     $plz = htmlspecialchars($_POST["plz"]);
@@ -37,10 +37,7 @@ if (isset($_POST["plz"])) {
 if (isset($_POST["free"])) {
     $free = htmlspecialchars($_POST["free"]);
 }
-if (isset($_POST["image"])) {
-    $logo = htmlspecialchars($_POST["image"]);
 
-}
 if (isset($_POST["beschreibung"])) {
     $beschreibung = htmlspecialchars($_POST["beschreibung"]);
 }
@@ -292,7 +289,6 @@ if (isset($_POST['bild-delete'])) {
             } else {
                 $offer->setLogo($imageTarget_file);
                 $_SESSION["tempUpload"] = $tmp_ID . $randomUploadNumber . "." . $imageFileType;
-
             }
         } else {
             echo "Sie haben kein Bild ausgewählt :-)";
@@ -367,14 +363,13 @@ if (isset($_POST['bild-delete'])) {
                     $result = $OfferDao->create($offer);
                     if ($result) {
                         $result = $OfferDao->getLastOwnOffer($user);
-                        var_dump($result);
                         if ($result != null) {
                             $createdOffer = current($result);
                             if (isset($_SESSION['tempUpload'])) {
-                                var_dump($createdOffer);
                                 rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $createdOffer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
-                                unset($_SESSION['tempUpload']);
-
+                                $_SESSION['tempUpload'] = false;
+                                ?>
+                                <script type="text/javascript">location.href = "messages.php";</script><?php
                             }
                         }
                     }
@@ -401,7 +396,12 @@ function Fehlerbehandlung($texterror)
 
 }
 
-
+if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
+    $logo = "images/logos/";
+    $logo .= $_SESSION["tempUpload"];
+} else {
+    $logo = $offer->getLogo();
+}
 ?>
 <div class="header">
     <nav>
@@ -426,9 +426,9 @@ function Fehlerbehandlung($texterror)
                 <div class="column">
                     <div class="card">
                         <h2>Produktbild</h2>
-                        <img src="<?php echo($offer->getLogo()) ?>" alt="Produktbild-Template" id="pb_image"
+                        <img src="<?php echo($logo) ?>" alt="Produktbild-Template" id="pb_image"
                              class="fakeimg">
-                        <input type="hidden" value="<?php echo($offer->getLogo()) ?>" id="image" name="image"/>
+                        <input type="hidden" value="<?php echo($logo) ?>" id="image" name="image"/>
                         <form enctype="multipart/form-data" action="new_offer.php" method="POST" class="new_offer-form"
                               id="new_offer-form">
                             <div class="form-submit">

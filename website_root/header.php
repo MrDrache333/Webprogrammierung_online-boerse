@@ -111,7 +111,6 @@ if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["logged
     header("Location: index.php");
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
