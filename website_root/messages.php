@@ -7,6 +7,12 @@ use php\offer\OfferDAOImpl;
 use php\user\UserDAOImpl;
 
 unset($_SESSION["bearbeiten"]);
+if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
+    $logo = "images/logos/";
+    $logo .= $_SESSION["tempUpload"];
+    unlink($logo);
+    $_SESSION['tempUpload'] = false;
+}
 $email = $_COOKIE['email'] ?? null;
 
 
