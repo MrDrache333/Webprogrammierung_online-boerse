@@ -17,9 +17,8 @@ if (isset($_POST["profildelete"])) {
     setcookie("loggedin", "false", time() + 60 * 60 * 24);
     $UserDao = new UserDAOImpl();
     $OfferDao = new OfferDAOImpl();
-    $email = $_SESSION["email"];
+    $email = $_COOKIE["email"];
     $user = $UserDao->findUserByMail($email);
-
     $ownoffer = $OfferDao->getOwnOffers($user);
 
 
