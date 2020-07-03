@@ -430,8 +430,8 @@ if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
                         <form enctype="multipart/form-data" action="new_offer.php" method="POST" class="new_offer-form"
                               id="new_offer-form">
                             <div class="form-submit">
-                                <input type="file" name="fileToUpload" id="fileToUpload">
                                 <input type="submit" value="Bild hochlanden" name="uploadLogoSubmit" id="submit_bild">
+                                <input type="file" name="fileToUpload" id="fileToUpload">
                                 <?php if (isset($_SESSION["bearbeiten"])) { ?>
                                     <input type="submit" value="Bild löschen" class="bild-delete"
                                            name="bild-delete" id="bild-delete"/>
