@@ -10,7 +10,7 @@
     }
 
     .column {
-        background-color: rgb(70, 70, 70);
+        background-color: rgb(70, 70, 70) !important;
     }
 
     .offerDetails,
