@@ -376,6 +376,10 @@ textarea:focus, input:focus {
 
 .footer-li {
     padding-bottom: 1rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .container {
@@ -428,7 +432,8 @@ textarea:focus, input:focus {
 .loginbutton {
     float: right;
     margin-right: 0;
-    align-items: end;
+    display: flex;
+    align-items: flex-end;
 }
 
 .logo {

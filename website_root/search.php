@@ -80,47 +80,51 @@ function displayResults($result)
     if ($result !== null) {
         if (sizeof($result) > 0) {
             foreach ($result as $offer) {
-                $test = $offer->getId();
-                $html = "<article role=\"article\" id=\"" . $offer->getId() . "\"> 
-                        <div class=\"article-content\">
-                            <div class=\"article-left\">
-                                <div class=\"article-head\">
-                                    <h3 class=\"result-h3\" role=\"heading\" id=\"article_head\">" . $offer->getTitle() . "</h3>
-                                    <span class=\"result-h3-sub\" id=\"article_sub\">" . $offer->getSubTitle() . "</span>
-                                </div>
-                                <div class=\"article-company\">
-                                    <img class=\"article-company-logo\" id=\"article-logo\"
-                                         src=\"" . $offer->getLogo() . "\"
-                                         alt=\"Firmenlogo\">
-                                    <span class=\"article-company-name\">" . $offer->getCompanyName() . "</span>
-                                </div>
+                ?>
+                <article role="article" id="<?php echo $offer->getId(); ?>">
+                    <div class="article-content">
+                        <div class="article-left">
+                            <div class="article-head">
+                                <h3 class="result-h3" role="heading"
+                                    id="article_head"><?php echo $offer->getTitle(); ?></h3>
+                                <span class="result-h3-sub" id="article_sub"><?php echo $offer->getSubTitle(); ?></span>
                             </div>
-                            <div class=\"article-right\">
-                                <div class=\"article-info-row\">
-                                    <div class=\"article-info-type\">Veröffentlichung:</div>
-                                    <span class=\"article-info-value\" id=\"article_releaseDate\">" . $offer->getCreated() . "</span>
+                            <div class="article-company">
+                                <img class="article-company-logo" id="article-logo"
+                                     src="<?php echo $offer->getLogo(); ?>"
+                                     alt="Firmenlogo">
+                                <span class="article-company-name"><?php echo $offer->getCompanyName(); ?></span>
+                            </div>
+                        </div>
+                        <div class="article-right">
+                            <div class="article-info-row">
+                                <div class="article-info-type">
+                                    <span class="material-icons">today</span> Veröffentlichung:
                                 </div>
-                                <div class=\"article-info-row\">
-                                    <div class=\"article-info-type\">Frei ab:</div>
-                                    <span class=\"article-info-value\" id=\"article_freeAt\">" . $offer->getFree() . "</span>
+                                <span class="article-info-value"
+                                      id="article_releaseDate"><?php echo $offer->getCreated(); ?></span>
+                            </div>
+                            <div class="article-info-row">
+                                <div class="article-info-type"><span class="material-icons">event</span> Frei ab:</div>
+                                <span class="article-info-value"
+                                      id="article_freeAt"><?php echo $offer->getFree(); ?></span>
+                            </div>
+                            <div class="article-info-row">
+                                <div class="article-info-type"><span class="material-icons">location_on</span> Standort:
                                 </div>
-                         
-                                <div class=\"article-info-row\">
-                                    <div class=\"article-info-type\">Standort:</div>
-                                    <div class=\"article-info-group\">
-                                        <span class=\"article-info-value\"
-                                              id=\"article_address_street\">" . $offer->getAddress()->getStreet() . " " . $offer->getAddress()->getNumber() . "</span>
-                                        <span class=\"article-info-value\"
-                                              id=\"article_address_plz\">" . $offer->getAddress()->getPlz() . " " . $offer->getAddress()->getTown() . "</span>
-                                    </div>
+                                <div class="article-info-group">
+                                        <span class="article-info-value"
+                                              id="article_address_street"><?php echo $offer->getAddress()->getStreet(); ?><?php echo $offer->getAddress()->getNumber(); ?></span>
+                                    <span class="article-info-value"
+                                          id="article_address_plz"><?php echo $offer->getAddress()->getPlz(); ?><?php echo $offer->getAddress()->getTown(); ?></span>
                                 </div>
                             </div>
                         </div>
-                       <a class=\"article-link\" id=\"article_link\" href=\"#\">Mehr Informationen</a> 
-           
-    
-                    </article>";
-                echo $html . "\n";
+                    </div>
+                    <a class="article-link" href="detailView.php?showId=<?php echo $offer->getId(); ?>">Mehr
+                        Informationen<br><span class="material-icons">expand_more</span> </a>
+                </article>
+                <?php
             }
         } else { ?>
             <div style="background: radial-gradient(circle at center, white 0,rgba(255,255,255,0.9) 60%,

@@ -48,6 +48,10 @@ if ($q !== "") {
             }
         }
         $values = array_unique($values);
+        //Max 10 Elemente anzeigen
+        if (sizeof($values) > 10) {
+            $values = array_slice($values, 9);
+        }
         foreach ($values as $value) {
             $hint .= "<option value=\"" . $value . "\"/>";
         }

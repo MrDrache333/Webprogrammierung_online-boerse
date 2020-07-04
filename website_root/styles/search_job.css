@@ -48,7 +48,7 @@ article {
     width: auto;
     margin-bottom: 5px;
     min-width: 200px;
-    padding: 15px;
+    padding: 15px 15px 0;
     display: grid;
     border-radius: 8px;
 }
@@ -84,15 +84,21 @@ article:hover {
 
 .article-info-row {
     display: flex;
+    align-items: center;
+    width: fit-content;
+    min-width: 200px;
     padding: 5px;
 }
 
 .article-info-group {
     display: grid;
+    min-width: 200px;
 }
 
 .article-info-type {
-    width: 150px;
+    width: 200px;
+    display: flex;
+    align-items: center;
 }
 
 .article-company {
