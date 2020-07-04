@@ -15,7 +15,15 @@ if (isset($_COOKIE["email"])) {
 }
 if ($user != null) {
     $pwaktuell = $user->getPassword();
-
+    $prename = $user->getPrename();
+    $surname = $user->getSurname();
+    $Regfile = $prename . "_" . $surname . ".txt";
+}
+if (file_exists($Regfile)) {
+    unlink($Regfile);
+}
+if (file_exists("wichtige_info.txt")) {
+    unlink("wichtige_info.txt");
 }
 if (isset($_POST["submit_pb"])) {
     $name = htmlspecialchars($_POST["name"]);

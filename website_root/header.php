@@ -265,9 +265,9 @@ function Fehlerbehandlung($texterror)
                         <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
                     </div>
 
-                    <?php if (isset($_GET["error"]) && preg_match('/register/',$_GET["error"])
-                        && preg_match('/vorname/',$_GET["error"])) {
-                        echo "";
+                    <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                        && preg_match('/ja/', $_GET["error"])) {
+                        echo "Schauen sie in der Datei";
                     } ?>
                     <div class="loginContainer">
                         <p><label for="name"><b>Vorname <?php if (isset($_GET["error"]) && preg_match('/register/',$_GET["error"])
