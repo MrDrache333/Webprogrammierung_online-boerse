@@ -22,7 +22,7 @@ class OfferHelper
     public static function getOffersFromSQLResult($result): ?array
     {
         $offers = [];
-        if ($result !== null && !is_bool($result)) {
+        if ($result !== null && !is_bool($result) && $result !== "false") {
             foreach ($result as $row) {
                 $offer = self::getOfferFromSQLResultRow($row);
                 if ($offer !== null) {

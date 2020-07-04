@@ -211,7 +211,11 @@ if (preg_match("/index\.php/i", $_SERVER['REQUEST_URI'])) {
     <?php if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) { ?>
         <link rel="stylesheet" type="text/css" href="styles/new_offer.css">
     <?php } ?>
+    <?php if (preg_match("/detailView\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <link rel="stylesheet" type="text/css" href="styles/detailView.css">
+    <?php } ?>
 
+    <link rel="stylesheet" type="text/css" href="styles/icons.css"/>
     <link rel="stylesheet" type="text/css" href="styles/cookieBanner.css"/>
     <script>window.addEventListener("load", function () {
             window.wpcc.init({

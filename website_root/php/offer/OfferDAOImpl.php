@@ -156,6 +156,9 @@ class OfferDAOImpl implements OfferDAO
         $command = "SELECT * FROM offers, address WHERE offers.id=? AND offers.address = address.ID";
         $values = [$id];
         $offers = OfferHelper::getOffersFromSQLResult($this->database->execute($command, $values));
+        if (is_array($offers) && sizeof($offers) === 0) {
+            return null;
+        }
         if (is_array($offers)) {
             return current($offers);
         }
