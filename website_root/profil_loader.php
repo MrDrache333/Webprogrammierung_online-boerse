@@ -133,14 +133,5 @@ if (isset($_POST['reset_pb'])) {
         }
     }
 }
-function Fehlerbehandlung($texterror)
-{
-    if (isset($_SESSION['error'])) {
-        $_SESSION['error'] .= $texterror;
 
-    } else {
-        $_SESSION['error'] = $texterror;
-    }
-
-}
 

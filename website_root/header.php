@@ -51,9 +51,9 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
     }
     $delete = $UserDao->delete($email);
     if ($delete == true) {
-        $_SESSION["error"] = "Ihr Profil wurde erfolgreich gelöscht!";
-        header("Location: index.php");
+        Fehlerbehandlung("Ihr Profil wurde erfolgreich gelöscht!");
         Fehlerbehandlung("Sie wurden ausgeloggt.");
+        header("Location: index.php");
     }
 }
 
@@ -81,8 +81,18 @@ if (!preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) {
     }
 
 
+}
+function Fehlerbehandlung($texterror)
+{
+    if (isset($_SESSION['error'])) {
+        $_SESSION['error'] .= $texterror;
+
+    } else {
+        $_SESSION['error'] = $texterror;
+    }
 
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="de">

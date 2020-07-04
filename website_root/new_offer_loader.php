@@ -388,16 +388,7 @@ if (isset($_POST["submit_offer"])) {
     }
     unset($_SESSION["error"]);
 }
-function Fehlerbehandlung($texterror)
-{
-    if (isset($_SESSION['error'])) {
-        $_SESSION['error'] .= $texterror;
 
-    } else {
-        $_SESSION['error'] = $texterror;
-    }
-
-}
 
 if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
     $logo = "images/logos/";

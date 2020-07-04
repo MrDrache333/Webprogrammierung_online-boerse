@@ -47,15 +47,5 @@ if ($email !== null) {
 
 
 }
-function Fehlerbehandlung($texterror)
-{
-    if (isset($_SESSION['error'])) {
-        $_SESSION['error'] .= $texterror;
-
-    } else {
-        $_SESSION['error'] = $texterror;
-    }
-
-}
 
 ?>
