@@ -11,8 +11,8 @@ include_once 'php/classes.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-if (isset($_POST["profildelete"])) {
-    $_SESSION["error"] = "Ihr Profil wurde erfolgreich gelöscht!";
+if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
+
 
     setcookie("loggedin", "false", time() + 60 * 60 * 24);
     $UserDao = new UserDAOImpl();
@@ -50,53 +50,14 @@ if (isset($_POST["profildelete"])) {
         }
     }
     $delete = $UserDao->delete($email);
-    header("Location: index.php");
-    Fehlerbehandlung("Sie wurden ausgeloggt.");
+    if ($delete == true) {
+        $_SESSION["error"] = "Ihr Profil wurde erfolgreich gelöscht!";
+        header("Location: index.php");
+        Fehlerbehandlung("Sie wurden ausgeloggt.");
+    }
 }
 
-if (isset($_POST["profildelete_nojs"])) {
 
-    $_SESSION["error"] = "Ihr Profil wurde erfolgreich gelöscht!";
-
-    setcookie("loggedin", "false", time() + 60 * 60 * 24);
-    $UserDao = new UserDAOImpl();
-    $OfferDao = new OfferDAOImpl();
-    $email = $_SESSION["email"];
-    $user = $UserDao->findUserByMail($email);
-    $ownoffer = $OfferDao->getOwnOffers($user);
-
-
-    if ($ownoffer != null) {
-        foreach ($ownoffer as $offer) {
-            $id = $offer->getId();
-            $imageTarget_file = $offer->getLogo();
-            if ($imageTarget_file == "images/company_placeholder.png") {
-                //Do nothing
-            } else {
-                if (file_exists($imageTarget_file)) {
-                    unlink($imageTarget_file);
-                } else {
-                    Fehlerbehandlung('Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.');
-                }
-            }
-
-            $OfferDao->delete($id);
-        }
-    }
-    $imageTarget_file = $user->getProfilePhoto();
-    if ($imageTarget_file == "images/profile_template.png") {
-        //Do nothing
-    } else {
-        if (file_exists($imageTarget_file)) {
-            unlink($imageTarget_file);
-        } else {
-            Fehlerbehandlung('Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.');
-        }
-    }
-    $delete = $UserDao->delete($email);
-    header("Location: index.php");
-    Fehlerbehandlung("Sie wurden ausgeloggt.");
-}
 if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
     Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: index.php");
@@ -109,7 +70,8 @@ if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["logged
     Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: index.php");
 }
-if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI'])) {
+
+if (!preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) {
     unset($_SESSION["bearbeiten"]);
     if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
         $logo = "images/logos/";
@@ -117,51 +79,7 @@ if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI'])) {
         unlink($logo);
         $_SESSION['tempUpload'] = false;
     }
-}
-if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI'])) {
-    unset($_SESSION["bearbeiten"]);
-    if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
-        $logo = "images/logos/";
-        $logo .= $_SESSION["tempUpload"];
-        unlink($logo);
-        $_SESSION['tempUpload'] = false;
-    }
-}
-if (preg_match("/index\.php/i", $_SERVER['REQUEST_URI'])) {
-    unset($_SESSION["bearbeiten"]);
-    if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
-        $logo = "images/logos/";
-        $logo .= $_SESSION["tempUpload"];
-        unlink($logo);
-        $_SESSION['tempUpload'] = false;
-    }
-    if (preg_match("/contact\.php/i", $_SERVER['REQUEST_URI'])) {
-        unset($_SESSION["bearbeiten"]);
-        if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
-            $logo = "images/logos/";
-            $logo .= $_SESSION["tempUpload"];
-            unlink($logo);
-            $_SESSION['tempUpload'] = false;
-        }
-    }
-    if (preg_match("/impressum\.php/i", $_SERVER['REQUEST_URI'])) {
-        unset($_SESSION["bearbeiten"]);
-        if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
-            $logo = "images/logos/";
-            $logo .= $_SESSION["tempUpload"];
-            unlink($logo);
-            $_SESSION['tempUpload'] = false;
-        }
-    }
-    if (preg_match("/search_job\.php/i", $_SERVER['REQUEST_URI'])) {
-        unset($_SESSION["bearbeiten"]);
-        if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
-            $logo = "images/logos/";
-            $logo .= $_SESSION["tempUpload"];
-            unlink($logo);
-            $_SESSION['tempUpload'] = false;
-        }
-    }
+
 
 
 }

@@ -105,7 +105,7 @@ else if (isset($_POST["pwforget"])) {
         if (mail($empfaenger, $betreff, $text, "From: $absendername <$absendermail>")) {
             echo "Email wurde erfolgreich versendet.";
             echo $text;
-            $test = $u->updatePassword($pw, $empfaenger);
+            $u->updatePassword(password_hash($pw, PASSWORD_DEFAULT), $empfaenger);
         } else {
             echo "Ihre Anfrage konnte nicht gesendet werden!";
         }
@@ -118,10 +118,10 @@ function GeneratePassword($length = 12)
     //Funktion zur Generierung eines zufälligen Passworts
 
     $char_control = "";
-    $chars_for_pw = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÜÖ";
+    $chars_for_pw = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     $chars_for_pw .= "0123456789";
 
-    $chars_for_pw .= "abcdefghijklmnopqrstuvwxyzäüö";
+    $chars_for_pw .= "abcdefghijklmnopqrstuvwxyz";
     mt_srand((double)microtime() * 1000000);
     for ($i = 0; $i < $length; $i++) {
         $number = random_int(0, strlen($chars_for_pw));
