@@ -15,6 +15,7 @@ if (isset($_POST["loginSubmit"])) {
         $controller = new UserDAOImpl();
         $user = $controller->findUserByMail($email);
 
+
         if ($user !== null && password_verify($password, $user->getPassword())) {
             setcookie("email", $email, time() + 60 * 60 * 24);
             setcookie("username", $user->getPrename() . " " . $user->getSurname(), time() + 60 * 60 * 24);
@@ -26,7 +27,7 @@ if (isset($_POST["loginSubmit"])) {
         }
     } else {
         setcookie("loggedin", "false", time() + 60 * 60 * 24);
-        header("Location: index.php");
+        header("Location:index.php?reloadModal=true&error=login_error");
 
     }
 } else if (isset($_POST["logoutSubmit"])) {
@@ -71,42 +72,38 @@ if (isset($_POST["loginSubmit"])) {
             $toRegisterUser->setEmail($loginEmail);
             $toRegisterUser->setPassword(password_hash($loginPassword, PASSWORD_DEFAULT));
             $result = $controller->create($toRegisterUser);
-            if (($user = $controller->findUserByMail($loginEmail)) === null) {
-                $filename = $prename . "_" . $lastname . ".txt";
+            if ($result != 1) {
+                $filename = "wichtige_infos.txt";
                 $data = "Ihre Regestratur bei KEFEDO war nich erfolgreich. Bitte veruschen sie es erneut";
                 file_put_contents($filename, $data);
-                $errorRegister = $errorRegister . "+ja";
+                $errorRegister = $errorRegister . "+datei";
                 header('Location: index.php?reloadModal=true&error=' . $errorRegister);
 
             } else {
-                $filename = $prename . "_" . $lastname . ".txt";
-                $data = "Sie haben sich bei KEFEDO regestriert. Dies war erfolgreich. Loggen Sie sich mit Ihrem Benutzernamen: " . $loginEmail . "und Ihrem Passwort ein. Die Datei wird nach dem einloggen gelöscht!";
+                $user = $controller->findUserByMail($loginEmail);
+                $id = $user->getId();
+                $filename = $prename . "_" . $lastname . "_" . $id . ".txt";
+
+                $data = "Sie haben sich bei KEFEDO regestriert. Dies war erfolgreich. Loggen Sie sich mit Ihrem Benutzernamen: " . $loginEmail . " und Ihrem Passwort ein. Die Datei wird nach dem einloggen gelöscht!";
                 file_put_contents($filename, $data);
-                header('Location: index.php?reloadModal=true');
-                $errorRegister = $errorRegister . "+ja";
+                $errorRegister = $errorRegister . "+datei";
                 header('Location: index.php?reloadModal=true&error=' . $errorRegister);
             }
         } else {
-            $filename = $prename . "_" . $lastname . ".txt";
+            $filename = "wichtige_infos.txt";
             $data = "Ihre Regestratur bei KEFEDO war nich erfolgreich. Bitte veruschen sie es erneut";
             file_put_contents($filename, $data);
-            header('Location: index.php?reloadModal=true');
-            $errorRegister = $errorRegister . "+ja";
+            $errorRegister = $errorRegister . "+datei";
             header('Location: index.php?reloadModal=true&error=' . $errorRegister);
         }
     } else {
-        $filename = $prename . "_" . $lastname . ".txt";
-        $data = "Ihre Regestratur bei KEFEDO war nich erfolgreich. Bitte veruschen sie es erneut";
-        file_put_contents($filename, $data);
-        header('Location: index.php?reloadModal=true');
-        $errorRegister = $errorRegister . "+ja";
         header('Location: index.php?reloadModal=true&error=' . $errorRegister);
     }
 } //Passwort vergessen ausgeführt und Mail versendet zu Nutzer.
 
 
 else if (isset($_POST["pwforget"])) {
-    if (isset($_POST["email"]) && "email" != "") {
+    if (isset($_POST["email"]) && $_POST["email"] !== "") {
         $u = new UserDAOImpl();
         $submit = $_POST["pwforget"];
         date_default_timezone_set("Europe/Berlin");
@@ -123,27 +120,28 @@ else if (isset($_POST["pwforget"])) {
         if ($user != null) {
             $prename = $user->getPrename();
             $lastname = $user->getSurname();
-            $filename = $prename . "_" . $lastname . ".txt";
+            $id = $user->getId();
+            $filename = $prename . "_" . $lastname . _ . $id . ".txt";
             if (mail($empfaenger, $betreff, $text, "From: $absendername <$absendermail>")) {
                 $data =
                     "Sie haben sich bei KEFEDO ihr Passwort geändert. Dies war erfolgreich.
             Loggen Sie sich mit Ihrem Benutzernamen: " . $empfaenger . "und Ihrem neuen Passwort: " . $pw . " ein. 
             Die Datei wird nach dem einloggen gelöscht!";
                 file_put_contents($filename, $data);
-                header('Location: index.php?reloadModal=true');
+                header('Location: index.php?reloadModal=true&error=pw_forget');
                 $u->updatePassword(password_hash($pw, PASSWORD_DEFAULT), $empfaenger);
             }
         } else {
-            $filename = "wichtige_info.txt";
+            $filename = "wichtige_infos.txt";
             $data =
                 "Sie haben sich bei KEFEDO ihr Passwort vergessen und zurückgesetzt. Dies war nicht erfolgreich.
                 Veruschen sie es erneut.
                 Die Datei wird nach dem einloggen gelöscht!";
             file_put_contents($filename, $data);
-            header('Location: index.php?reloadModal=true');
+            header('Location: index.php?reloadModal=true&error=pw_forget');
         }
     } else {
-        header('Location: index.php?reloadModal=true');
+        header('Location: index.php?reloadModal=true&error=email');
     }
 }
 function GeneratePassword($length = 12)
