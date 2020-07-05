@@ -152,6 +152,14 @@
     margin: auto;
 }
 
+.map {
+    max-height: 250px;
+}
+
+#mapView {
+    height: 250px;
+}
+
 .errorContainer > h1 {
     font-size: 50px;
     display: flex;

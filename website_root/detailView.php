@@ -46,7 +46,7 @@ include "detailViewLoader.php"
                     <h2 class="headLine"><span class="material-icons">work</span> Arbeitgeber</h2>
                     <p><strong><?php echo $offer->getCompanyName(); ?></strong></p>
                     <h3 class="headLine"><span class="material-icons">location_on</span>Firmenadresse</h3>
-                    <p><?php echo $offer->getAddress()->getStreet() . " " . $offer->getAddress()->getNumber() . "\n";
+                    <p><?php echo $offer->getAddress()->getStreet() . " " . $offer->getAddress()->getNumber() . "<br>";
                         echo $offer->getAddress()->getPlz() . " " . $offer->getAddress()->getTown();
                         ?></p>
                 </div>
@@ -68,6 +68,27 @@ include "detailViewLoader.php"
                     <h2 class="headLine">Beschreibung</h2>
                     <p><?php echo $offer->getDescription(); ?></p>
                 </div>
+                <?php if ($location !== null) { ?>
+                    <div class="map">
+                        <div id="mapView">
+                        </div>
+                        <script>
+                            var mymap = L.map('mapView').setView([<?php echo $location->getLat() . ", " . $location->getLong(); ?>], 13);
+                            var marker = L.marker([<?php echo $location->getLat() . ", " . $location->getLong(); ?>]).addTo(mymap);
+                            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                            }).addTo(mymap);
+                            marker.bindPopup("<b><?php echo $offer->getCompanyName() ?></b>").openPopup();
+                            mymap.locate({setView: true, maxZoom: 16});
+
+                            function onLocationFound(e) {
+                                L.marker(e.latlng).addTo(mymap);
+                            }
+
+                            mymap.on('locationfound', onLocationFound);
+                        </script>
+                    </div>
+                <?php } ?>
             </div>
             <div class="column edgeColumn offerAttributes">
                 <h2 class="headLine"><span class="material-icons">info</span> Details</h2>

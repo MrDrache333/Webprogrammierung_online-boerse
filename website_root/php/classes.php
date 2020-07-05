@@ -14,3 +14,5 @@ include 'user/User.php';
 include 'user/UserDAO.php';
 include 'user/UserDAOImpl.php';
 include 'user/UserHelper.php';
+include 'mapquest/MapQuest.php';
+include 'mapquest/Location.php';

@@ -141,6 +141,10 @@ function Fehlerbehandlung($texterror)
     <?php } ?>
     <?php if (preg_match("/detailView\.php/i", $_SERVER['REQUEST_URI'])) { ?>
         <link rel="stylesheet" type="text/css" href="styles/detailView.css">
+        <link rel="stylesheet" href="leaflet/leaflet.css"
+              crossorigin=""/>
+        <script src="leaflet/leaflet.js"
+                crossorigin=""></script>
     <?php } ?>
     <?php if (preg_match("/impressum\.php/i", $_SERVER['REQUEST_URI'])) { ?>
         <link rel="stylesheet" type="text/css" href="styles/impressum.css">

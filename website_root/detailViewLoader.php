@@ -1,5 +1,6 @@
 <?php
 
+use php\mapquest\MapQuest;
 use php\offer\OfferDAOImpl;
 
 if (isset($_GET["showId"]) && is_numeric($_GET["showId"])) {
@@ -15,6 +16,9 @@ if (isset($_GET["showId"]) && is_numeric($_GET["showId"])) {
 
     //Wenn Eintrag in Datenbank enthalten und erfolgreich ausgelesen
     if ($offer !== null) {
+        $adr = $offer->getAddress();
+        $location = MapQuest::query($adr->getStreet() . " " . $adr->getNumber() . ", " . $adr->getPlz() . " " . $adr->getTown());
+
         switch ($offer->getOfferType()) {
             case 0:
             {
