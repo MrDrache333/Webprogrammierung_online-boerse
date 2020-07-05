@@ -40,14 +40,14 @@ include "new_offer_loader.php";
                             } ?></label>
                         <label for="error">
                             <?php if (isset($_SESSION["error"]) && preg_match('/zugross/', $_SESSION["error"])) {
-                            echo '<i style="color: #FF0000"> Das Bild darf maximal 10MB groß sein!</i>';
-                        } ?></label>
+                                echo '<i style="color: #FF0000"> Das Bild darf maximal 10MB groß sein!</i>';
+                            } ?></label>
                         <label for="error">
                             <?php if (isset($_SESSION["error"]) && preg_match('/Bildhochladen/', $_SESSION["error"])) {
                                 echo '<i style="color: #FF0000"> Das Bild konnte nicht hochgeladen werden!</i>';
                             } ?></label>
 
-                        <img src="<?php echo($logo) ?>" alt="Produktbild-Template" id="pb_image"
+                        <img src="<?php echo $logo ?? ""; ?>" alt="Produktbild-Template" id="pb_image"
                              class="fakeimg">
                         <input type="hidden" value="<?php echo($logo) ?>" id="image" name="image"/>
                         <form enctype="multipart/form-data" action="new_offer.php" method="POST" class="new_offer-form"

@@ -398,6 +398,8 @@ if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
     $logo = "images/logos/";
     $logo .= $_SESSION["tempUpload"];
 } else {
+    $OfferDao = new OfferDAOImpl();
+    $offer = $OfferDao->getOfferByID($_SESSION["offerid"]);
     $logo = $offer->getLogo();
 }
 ?>
