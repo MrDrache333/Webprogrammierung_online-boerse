@@ -31,6 +31,21 @@ include "profil_loader.php";
             <div class="profile_form">
                 <div class="form_col">
                     <h2>Mein Profilbild</h2>
+                    <?php if (isset($_SESSION["error"]) && preg_match('/keinbild/', $_SESSION["error"])) {
+                        echo '<h3><i style="color: #FF0000"> Das ist kein Bild!</i></h3>';
+                    }
+                    if (isset($_SESSION["error"]) && preg_match('/bildgross/', $_SESSION["error"])) {
+                        echo '<h3><i style="color: #FF0000"> Das Bild ist zu groß, nur 10MBit erlaubt!</i></h3>';
+                    }
+                    if (isset($_SESSION["error"]) && preg_match('/gif/', $_SESSION["error"])) {
+                        echo '<h3><i style="color: #FF0000"> Nur JPG, JPEG, PNG & GIF Dateiformate sind erlaubt!</i></h3>';
+                    }
+                    if (isset($_SESSION["error"]) && preg_match('/upload/', $_SESSION["error"])) {
+                        echo '<h3><i style="color: #FF0000"> Das Bild konnte nicht hochgeladen werden!</i></h3>';
+                    }
+                    if (isset($_SESSION["error"]) && preg_match('/nobild/', $_SESSION["error"])) {
+                        echo '<h3><i style="color: #FF0000"> Sie haben kein Bild ausgewählt :-)</i></h3>';
+                    } ?>
                     <form enctype="multipart/form-data" method="POST" action="profil.php"
                           id="profile-form">
                         <img class="profile_img" src="<?php echo($user->getProfilePhoto()) ?>" alt="Profilbild-Template"
@@ -45,6 +60,16 @@ include "profil_loader.php";
                 </div>
                 <div class="form_col">
                     <h2>Meine Informationen</h2>
+                    <?php if (isset($_SESSION["error"]) && preg_match('/altpw/', $_SESSION["error"])) {
+                        echo '<h3><i style="color: #FF0000"> Ihr altes Passwort ist nicht korrekt!</i></h3>';
+                    }
+                    if (isset($_SESSION["error"]) && preg_match('/pwerfolgreich/', $_SESSION["error"])) {
+                        echo '<h3><i style="color: #FF0000"> Ihr Passwort wurde geändert!</i></h3>';
+                    }
+                    if (isset($_SESSION["error"]) && preg_match('/pwungleich/', $_SESSION["error"])) {
+                        echo '<h3><i style="color: #FF0000"> Die Passwörter stimmen nicht überein. Wiederholen sie die Eingabe!</i></h3>';
+                    } ?>
+
                     <form method="POST" id="profile-form-image">
                         <div class="inputs">
                             <div class="inputs_col">
