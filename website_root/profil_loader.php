@@ -45,7 +45,7 @@ if (isset($_POST["submit_pb"])) {
                 $user->setEmail($email);
 //TODO Set Email repariren
             } else {
-                Fehlerbehandlung("Ihr Email gibt es bereits");
+                Fehlerbehandlung("emailexist");
             }
 
         }
@@ -65,24 +65,15 @@ if (isset($_POST["submit_pb"])) {
 
 
                     $u->updatePassword(password_hash($pwneu, PASSWORD_DEFAULT), $email);
-                    echo "Ihr Passwort wurde erfolgreich geändert";
-
+                    Fehlerbehandlung("pwerfolgreich.");
                 } else {
-                    echo "Ihr altes Passwort ist nicht korrekt";
+                    Fehlerbehandlung("altpw.");
                 }
 
             } else {
-                echo "Die Passwörter stimmen nicht überein. Wiederholen sie die Eingabe";
-
+                Fehlerbehandlung("pwungleich");
             }
-
-
         }
-    } else {
-
-        echo $_SESSION["error"];
-        unset($_SESSION["error"]);
-
     }
 }
 
@@ -102,30 +93,32 @@ if (isset($_POST["pb_submit"])) {
         if ($check !== false) {
             $uploadOk = 1;
         } else {
-            echo "Das ist kein Bild.";
+            Fehlerbehandlung("keinbild");
             $uploadOk = 0;
         }
 // Check file size
         if ($_FILES["fileToUpload"]["size"] > 10000000000) {
-            echo "Das Bild ist zu groß, nur 10MBit erlaubt.";
+            Fehlerbehandlung("bildgross");
             $uploadOk = 0;
         }
 // Allow certain file formats
         if ($imageFileType !== "jpg" && $imageFileType !== "png" && $imageFileType !== "jpeg"
             && $imageFileType !== "gif") {
-            echo "Nur JPG, JPEG, PNG & GIF Dateiformate sind erlaubt.";
+            Fehlerbehandlung("gif");
             $uploadOk = 0;
         }
 // Check if $uploadOk is set to 0 by an error
         if ($uploadOk === 0) {
-            echo "Das Bild konnte nicht hochgeladen werden.";
+            Fehlerbehandlung("upload");
+
 // if everything is ok, try to upload file
             var_dump($imageTarget_file);
         } else if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
-            echo "Error: Das Bild konnte nicht hochgeladen werden.";
+            Fehlerbehandlung("uploaad");
+
         }
     } else {
-        echo "Sie haben kein Bild ausgewählt :-)";
+        Fehlerbehandlung("nobild");
     }
 
 

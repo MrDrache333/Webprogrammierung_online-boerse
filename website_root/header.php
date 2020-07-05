@@ -183,7 +183,7 @@ function Fehlerbehandlung($texterror)
             <a href="index.php"><img alt="Logo" class="kefedologo" src="images/logo.png"></a>
         </div>
         <div class="fehlermeldung">
-            <? if (isset($_SESSION["error"])) {
+            <?php if (isset($_SESSION["error"])) {
 
                 echo '<br /><br /><label for="error"><i style="color: #FF0000">' . $_SESSION["error"] . '</i></label>';
 
