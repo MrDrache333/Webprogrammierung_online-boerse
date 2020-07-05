@@ -377,7 +377,7 @@ textarea:focus, input:focus {
 .footer-li {
     padding-bottom: 1rem !important;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     text-decoration: none;
 }
@@ -525,4 +525,10 @@ textarea:focus, input:focus {
 
 .active {
     background-color: #222831;
+}
+
+.footer-li > a {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
 }
