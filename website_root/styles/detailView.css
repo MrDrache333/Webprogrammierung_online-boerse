@@ -71,7 +71,7 @@
 .offerHeader {
     border-radius: 8px;
     padding: 0 10px 10px 10px;
-    width: fit-content;
+    width: max-content;
     background-color: white;
 }
 
@@ -119,7 +119,7 @@
 
 .column {
     min-width: 300px;
-    width: fit-content;
+    width: max-content;
     background-color: lightgrey;
     border-radius: 8px;
     margin: 5px;
@@ -150,7 +150,7 @@
     background-color: #888888;
     border-radius: 8px;
     padding: 20px;
-    width: fit-content;
+    width: max-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
