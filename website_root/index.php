@@ -2,10 +2,7 @@
 
 
 <?php
-if (isset($_SESSION["error"])) {
-    echo $_SESSION["error"];
-    unset($_SESSION["error"]);
-}
+
 ?>
     <div class="header">
         <ul class="navi">
@@ -51,4 +48,4 @@ if (isset($_SESSION["error"])) {
         </form>
     </div>
     <script src="scripts/searchBox.js"></script>
-<?php include "footer.html"; ?>
+<?php include "footer.php"; ?>

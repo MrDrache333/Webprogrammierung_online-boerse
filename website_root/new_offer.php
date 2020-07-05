@@ -203,5 +203,5 @@ include "new_offer_loader.php";
 </div>
 
 
-<?php include "footer.html"; ?>
+<?php include "footer.php"; ?>
 

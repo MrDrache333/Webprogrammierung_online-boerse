@@ -59,16 +59,16 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
 
 
 if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: index.php");
+    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
 }
 if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: index.php");
+    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
 }
 if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    Fehlerbehandlung("Sie wurden zwischenzeitlich ausgeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: index.php");
+    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
 }
 
 if (!preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) {
@@ -171,16 +171,24 @@ function Fehlerbehandlung($texterror)
     <title>KEFEDO-Startseite</title>
 </head>
 <body <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] === "true") { ?>
-    onload="document.getElementById('login-modal').style.display='block'" 
+    onload="document.getElementById('login-modal').style.display='block'"
 <?php } ?>>
 <div class="grid-container">
     <div class="headerrahmen">
         <div class="logo">
             <a href="index.php"><img alt="Logo" class="kefedologo" src="images/logo.png"></a>
         </div>
+        <div class="fehlermeldung">
+            <? if (isset($_SESSION["error"])) {
 
+                echo '<br /><br /><label for="error"><i style="color: #FF0000">' . $_SESSION["error"] . '</i></label>';
+
+            }
+            ?>
+        </div>
         <?php if (isset($_COOKIE["loggedin"]) && $_COOKIE["loggedin"] === "true") {
             ?>
+
             <div class="loginbutton">
                 <form action="login.php" method="post">
 

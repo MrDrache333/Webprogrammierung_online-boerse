@@ -1,4 +1,5 @@
-<?php include "header.php"; ?>
+<?php include "header.php";
+?>
     <div>
         <div class="header">
             <ul class="navi">
@@ -21,6 +22,7 @@
             </ul>
         </div>
         <div class="loginContent">
+
             <div class="formulare">
                 <!-- Login form-->
                 <form action="login.php" class="loginModal-content loginAnimate" method="post">
@@ -157,4 +159,4 @@
     </div>
     </div>
 
-<?php include "footer.html"; ?>
+<?php include "footer.php"; ?>

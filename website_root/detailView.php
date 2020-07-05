@@ -90,5 +90,5 @@ include "detailViewLoader.php"
     <?php } ?>
 </div>
 </div>
-<?php include "footer.html"; ?>
+<?php include "footer.php"; ?>
 

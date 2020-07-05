@@ -167,5 +167,5 @@
     </div>
 </div>
 <script src="scripts/searchBox.js"></script>
-<?php include "footer.html"; ?>
+<?php include "footer.php"; ?>
 

@@ -437,7 +437,7 @@ textarea:focus, input:focus {
 }
 
 .logo {
-    flex-grow: 100;
+
 }
 
 .kefedologo {
@@ -531,4 +531,11 @@ textarea:focus, input:focus {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+}
+
+.fehlermeldung {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 100;
 }
