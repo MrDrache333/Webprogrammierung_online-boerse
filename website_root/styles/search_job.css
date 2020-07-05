@@ -79,7 +79,6 @@ article:hover {
 
 .article-right {
     margin-top: 50px;
-    padding-right: 50px;
 }
 
 .article-info-row {
@@ -96,7 +95,7 @@ article:hover {
 }
 
 .article-info-type {
-    width: 200px;
+    width: 180px;
     display: flex;
     align-items: center;
 }
@@ -313,7 +312,7 @@ label {
     font-size: 1.2rem;
 }
 
-@media screen and (max-width: 1185px) {
+@media screen and (max-width: 1200px) {
 
     .jobs-filter {
         position: relative;
