@@ -142,6 +142,9 @@ function Fehlerbehandlung($texterror)
     <?php if (preg_match("/detailView\.php/i", $_SERVER['REQUEST_URI'])) { ?>
         <link rel="stylesheet" type="text/css" href="styles/detailView.css">
     <?php } ?>
+    <?php if (preg_match("/impressum\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <link rel="stylesheet" type="text/css" href="styles/impressum.css">
+    <?php } ?>
 
     <link rel="stylesheet" type="text/css" href="styles/icons.css"/>
     <link rel="stylesheet" type="text/css" href="styles/cookieBanner.css"/>
