@@ -11,6 +11,10 @@ include_once 'php/classes.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+if (isset($_SESSION["kik"]) && $_SESSION["kik"] === true) {
+    header("Location:messages.php");
+    unset($_SESSION["kik"]);
+}
 if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
 
 
@@ -82,6 +86,7 @@ if (!preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) {
 
 
 }
+
 function Fehlerbehandlung($texterror)
 {
     if (isset($_SESSION['error'])) {
@@ -121,25 +126,32 @@ function Fehlerbehandlung($texterror)
 
     <link rel="stylesheet" type="text/css" href="styles/global.css">
     <?php if ((substr($_SERVER['REQUEST_URI'], -1) === '/') || preg_match("/index\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <title>KEFEDO-Startseite</title>
         <link rel="stylesheet" type="text/css" href="styles/searchBox.css">
     <?php } ?>
     <?php if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <title>KEFEDO-Profil</title>
         <link rel="stylesheet" type="text/css" href="styles/profile.css">
     <?php } ?>
     <?php if (preg_match("/search_job\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <title>KEFEDO-Job-suchen</title>
         <link rel="stylesheet" type="text/css" href="styles/searchBox.css">
         <link rel="stylesheet" type="text/css" href="styles/search_job.css">
     <?php } ?>
     <?php if (preg_match("/contact\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <title>KEFEDO-Kontakt</title>
         <link rel="stylesheet" type="text/css" href="styles/contact.css">
     <?php } ?>
     <?php if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <title>KEFEDO-Anzeigen</title>
         <link rel="stylesheet" type="text/css" href="styles/messages.css">
     <?php } ?>
     <?php if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <title>KEFEDO-Neue-Anzeige</title>
         <link rel="stylesheet" type="text/css" href="styles/new_offer.css">
     <?php } ?>
     <?php if (preg_match("/detailView\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <title>KEFEDO-Detailansicht</title>
         <link rel="stylesheet" type="text/css" href="styles/detailView.css">
         <link rel="stylesheet" href="leaflet/leaflet.css"
               crossorigin=""/>
@@ -147,6 +159,7 @@ function Fehlerbehandlung($texterror)
                 crossorigin=""></script>
     <?php } ?>
     <?php if (preg_match("/impressum\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <title>KEFEDO-Impressum</title>
         <link rel="stylesheet" type="text/css" href="styles/impressum.css">
     <?php } ?>
 
@@ -172,7 +185,7 @@ function Fehlerbehandlung($texterror)
             })
         });</script>
 
-    <title>KEFEDO-Startseite</title>
+
 </head>
 <body <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] === "true") { ?>
     onload="document.getElementById('login-modal').style.display='block'"

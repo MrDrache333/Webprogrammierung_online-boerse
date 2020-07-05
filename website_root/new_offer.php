@@ -30,22 +30,21 @@ include "new_offer_loader.php";
                 <div class="column">
                     <div class="card">
                         <h2>Produktbild</h2>
-                        <label for="error">
-                            <?php if (isset($_SESSION["error"]) && preg_match('/Bilder/', $_SESSION["error"])) {
-                                echo '<i style="color: #FF0000"> Es wurde kein Bild ausgewählt :-)</i>';
-                            } ?></label>
-                        <label for="error">
-                            <?php if (isset($_SESSION["error"]) && preg_match('/gif/', $_SESSION["error"])) {
-                                echo '<i style="color: #FF0000"> Nur JPG, JPEG, PNG & GIF Dateiformate sind erlaubt.</i>';
-                            } ?></label>
-                        <label for="error">
-                            <?php if (isset($_SESSION["error"]) && preg_match('/zugross/', $_SESSION["error"])) {
-                                echo '<i style="color: #FF0000"> Das Bild darf maximal 10MB groß sein!</i>';
-                            } ?></label>
-                        <label for="error">
-                            <?php if (isset($_SESSION["error"]) && preg_match('/Bildhochladen/', $_SESSION["error"])) {
-                                echo '<i style="color: #FF0000"> Das Bild konnte nicht hochgeladen werden!</i>';
-                            } ?></label>
+
+                        <?php if (isset($_SESSION["error"]) && preg_match('/Bilder/', $_SESSION["error"])) {
+                            echo '<i style="color: #FF0000"> Es wurde kein Bild ausgewählt :-)</i>';
+                        } ?>
+
+                        <?php if (isset($_SESSION["error"]) && preg_match('/gif/', $_SESSION["error"])) {
+                            echo '<i style="color: #FF0000"> Nur JPG, JPEG, PNG & GIF Dateiformate sind erlaubt.</i>';
+                        } ?>
+                        <?php if (isset($_SESSION["error"]) && preg_match('/zugross/', $_SESSION["error"])) {
+                            echo '<i style="color: #FF0000"> Das Bild darf maximal 10MB groß sein!</i>';
+                        } ?></label>
+
+                        <?php if (isset($_SESSION["error"]) && preg_match('/Bildhochladen/', $_SESSION["error"])) {
+                            echo '<i style="color: #FF0000"> Das Bild konnte nicht hochgeladen werden!</i>';
+                        } ?>
 
                         <img src="<?php echo $logo ?? ""; ?>" alt="Produktbild-Template" id="pb_image"
                              class="fakeimg">

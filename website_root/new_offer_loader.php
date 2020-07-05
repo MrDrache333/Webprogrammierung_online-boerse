@@ -110,7 +110,7 @@ if (isset($_POST["edit_offer"])) {
         if (!preg_match('/^[0-9-_]{3,50}$/', $free)) {
             $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
         }
-        if (!preg_match('/^([\w\x{C4}\x{E4}\x{D6}\x{F6}\x{DC}\x{FC}\x{DF}\x{2F}\x{29}\x{28}\s]){0,900}$/u', $beschreibung)) {
+        if (!preg_match('/^([\w\x{C4}\x{E4}\x{D6}\x{F6}\x{DC}\x{FC}\x{DF}\x{2F}\x{29}\x{28}\s]){5,900}$/u', $beschreibung)) {
             $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
         }
         if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $companyname)) {
@@ -126,33 +126,26 @@ if (isset($_POST["edit_offer"])) {
             $errornachricht = Fehlerbehandlung("Ihre Arbeitszeit ist nicht gesetzt.");
         }
 
-        if ($_SESSION["error"] == null) {
-
-            $offer->setTitle(htmlspecialchars($titel));
-            $offer->setSubTitle(htmlspecialchars($subtitle));
-            $offer->setCompanyName(htmlspecialchars($companyname));
-            $offer->setDescription(htmlspecialchars($beschreibung));
-            $offerid = $_SESSION["offerid"];
-            $offer->setId($offerid);
-            setcookie("offerid", "false", time() + 60 * 60 * 24);
-            /*$offer->setAddress($_POST["titel"]);*/
-
-
-            $offer->setFree(htmlspecialchars($free));
-            $offer->setOfferType($art);
-            $offer->setDuration($befristung);
+        if (!isset($_SESSION["error"])) {
+            $_SESSION["kik"] = true;
+        }
+        $offer->setTitle(htmlspecialchars($titel));
+        $offer->setSubTitle(htmlspecialchars($subtitle));
+        $offer->setCompanyName(htmlspecialchars($companyname));
+        $offer->setDescription(htmlspecialchars($beschreibung));
+        $offerid = $_SESSION["offerid"];
+        $offer->setId($offerid);
+        /*$offer->setAddress($_POST["titel"]);*/
+        $offer->setFree(htmlspecialchars($free));
+        $offer->setOfferType($art);
+        $offer->setDuration($befristung);
             $offer->setWorkModel($arbeitszeit);
             $OfferDao->update($offer);
             if (isset($_SESSION['tempUpload'])) {
                 rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $offer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
                 unset($_SESSION['tempUpload']);
+
             }
-
-            ?>
-            <script language="javascript" type="text/javascript"> document.location = "messages.php"; </script><?php
-
-
-        }
 
     }
 }
@@ -377,9 +370,9 @@ if (isset($_POST["submit_offer"])) {
                         if (isset($_SESSION['tempUpload'])) {
                             rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $createdOffer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
                             $_SESSION['tempUpload'] = false;
-                            ?>
-                            <script type="text/javascript">location.href = "messages.php";</script><?php
+
                         }
+                        $_SESSION["kik"] = true;
                     }
                 }
             } else {
@@ -399,7 +392,12 @@ if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
     $logo .= $_SESSION["tempUpload"];
 } else {
     $OfferDao = new OfferDAOImpl();
-    $offer = $OfferDao->getOfferByID($_SESSION["offerid"]);
-    $logo = $offer->getLogo();
+
+    if (isset($_SESSION["offerid"]) && $_SESSION["offerid"] != null) {
+        $offer = $OfferDao->getOfferByID($_SESSION["offerid"]);
+        $logo = $offer->getLogo();
+    } else {
+        $logo = "images/profile_template.png";
+    }
 }
 ?>
