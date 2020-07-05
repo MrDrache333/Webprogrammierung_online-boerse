@@ -4,7 +4,11 @@ use php\user\User;
 use php\user\UserDAOImpl;
 
 include_once 'php/classes.php';
-
+if (isset($_POST["js_no"])) {
+    $header = 'noJSLogin.php?error=';
+} else {
+    $header = 'index.php?reloadModal=true&error=';
+}
 if (isset($_POST["loginSubmit"])) {
     if (isset($_POST["email"]) && (isset($_POST["password"]))) {
 
@@ -23,11 +27,11 @@ if (isset($_POST["loginSubmit"])) {
             header("Location: profil.php");
         } else {
             setcookie("loggedin", "false", time() + 60 * 60 * 24);
-            header("Location:index.php?reloadModal=true&error=login_error");
+            header("Location:" . $header . "login_error");
         }
     } else {
         setcookie("loggedin", "false", time() + 60 * 60 * 24);
-        header("Location:index.php?reloadModal=true&error=login_error");
+        header("Location:" . $header . "login_error");
 
     }
 } else if (isset($_POST["logoutSubmit"])) {
@@ -63,11 +67,7 @@ if (isset($_POST["loginSubmit"])) {
     if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{5,30}$/', $loginPassword)) {
         $errorRegister = $errorRegister . "+password";
     }
-    if (isset($_POST["js_no"])) {
-        $header = 'noJSLogin.php?error=';
-    } else {
-        $header = 'index.php?reloadModal=true&error=';
-    }
+
 
     if ($errorRegister == "register") {
         $controller = new UserDAOImpl();
