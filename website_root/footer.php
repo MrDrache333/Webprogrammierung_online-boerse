@@ -1,5 +1,6 @@
 <?php
 unset($_SESSION["error"]);
+
 ?>
 <footer class="footer">
     <div class="container">

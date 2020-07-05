@@ -152,10 +152,8 @@ if (isset($_POST["edit_offer"])) {
             <script language="javascript" type="text/javascript"> document.location = "messages.php"; </script><?php
 
 
-        } else {
-            echo $_SESSION["error"];
-            unset($_SESSION["error"]);
         }
+
     }
 }
 
@@ -271,32 +269,38 @@ if (isset($_POST["uploadLogoSubmit"])) {
         if ($check !== false) {
             $uploadOk = 1;
         } else {
-            echo "Das ist kein Bild.";
+            $fehler = "Bildhochladen";
+            Fehlerbehandlung($fehler);
             $uploadOk = 0;
         }
         // Check file size
         if ($_FILES["fileToUpload"]["size"] > 10000000000) {
-            echo "Das Bild ist zu groß, nur 10MBit erlaubt.";
+            $fehler = "zugross";
+            Fehlerbehandlung($fehler);
             $uploadOk = 0;
         }
         // Allow certain file formats
         if ($imageFileType !== "jpg" && $imageFileType !== "png" && $imageFileType !== "jpeg"
             && $imageFileType !== "gif") {
-            echo "Nur JPG, JPEG, PNG & GIF Dateiformate sind erlaubt.";
+            $fehler = "gif";
+            Fehlerbehandlung($fehler);
             $uploadOk = 0;
         }
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk === 0) {
-            echo "Das Bild konnte nicht hochgeladen werden.";
+            $fehler = "Bildhochladen";
+            Fehlerbehandlung($fehler);
             // if everything is ok, try to upload file
         } else if (!move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $imageTarget_file)) {
-            echo "Error: Das Bild konnte nicht hochgeladen werden.";
+            $fehler = "Bildhochladen";
+            Fehlerbehandlung($fehler);
         } else {
             $offer->setLogo($imageTarget_file);
             $_SESSION["tempUpload"] = $tmp_ID . $randomUploadNumber . "." . $imageFileType;
         }
     } else {
-        echo "Sie haben kein Bild ausgewählt :-)";
+        $fehler = "Bilder";
+        Fehlerbehandlung($fehler);
     }
 
 }
@@ -311,7 +315,7 @@ if (isset($_POST["submit_offer"])) {
             $idaktuelle = $user->getId();
 
 
-            if (!preg_match('/^([\w\x{C4}\x{E4}\x{D6}\x{F6}\x{DC}\x{FC}\x{DF}\x{2F}\x{29}\x{28}\s]){0,50}$/u', $titel)) {
+            if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $titel)) {
                 $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
             }
             if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $subtitle)) {
@@ -343,7 +347,7 @@ if (isset($_POST["submit_offer"])) {
                 $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
             }
             if (!isset($befristung)) {
-                $errornachricht = Fehlerbehandlung("Ihre Befrsitung ist nicht gesetzt.");
+                $errornachricht = Fehlerbehandlung("Ihre Befristung ist nicht gesetzt.");
             }
             if (!isset($arbeitszeit)) {
                 $errornachricht = Fehlerbehandlung("Ihre Arbeitszeit ist nicht gesetzt.");
@@ -379,14 +383,14 @@ if (isset($_POST["submit_offer"])) {
                     }
                 }
             } else {
-                echo $_SESSION["error"];
-                unset($_SESSION["error"]);
+
+
             }
         } else {
-            echo "Alle Felder bitte ausfüllen";
+
         }
     }
-    unset($_SESSION["error"]);
+
 }
 
 
