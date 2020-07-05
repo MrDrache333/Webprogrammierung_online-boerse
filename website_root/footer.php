@@ -17,7 +17,7 @@ unset($_SESSION["error"]);
                     <ul class="list-unstyled">
                         <li class="footer-li"><a class="footer-link" href="noJSLogin.php">Registrieren</a></li>
                         <li class="footer-li"><a class="footer-link" href="search_job.php">Einen Job finden</a></li>
-                        <li class="footer-li"><a class="footer-link" href="impressum.php">FAQ</a></li>
+                        <li class="footer-li"><a class="footer-link" href="impressum.php">Impressum</a></li>
                     </ul>
                 </div>
             </div>
@@ -25,7 +25,7 @@ unset($_SESSION["error"]);
                 <div>
                     <h2 class="footer-h2">Untenehmen</h2>
                     <ul class="list-unstyled">
-                        <li class="footer-li"><a class="footer-link" href="profil.php">Ihre Profil</a></li>
+                        <li class="footer-li"><a class="footer-link" href="profil.php">Ihr Profil</a></li>
                         <li class="footer-li"><a class="footer-link" href="noJSLogin.php">Registrieren</a></li>
                         <li class="footer-li"><a class="footer-link" href="new_offer.php">Einen Job anbieten</a></li>
 

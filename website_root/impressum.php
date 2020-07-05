@@ -29,105 +29,29 @@
             <div class="impressumContainer">
                 <div class="contact-row">
                     <div class="contact-col">
-                        <h2 class="contact-h2">Datenschutzbestimmungen</h2>
-                        <p> At vero eos et accusam et justo duo dolores et ea rebum.
-                            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt ut labore et dolore magna aliquyam erat,
-                            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-                            gubergren,
-                            no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                        </p>
-                    </div>
-                    <div class="contact-col">
-                        <h2 class="contact-h2">Cookie Policy for KeFeDo</h2>
-                        <p>This is the Cookie Policy for KeFeDo</p>
-                        <p><strong>What Are Cookies</strong></p>
-                        <p>As is common practice with almost all professional websites this site uses cookies, which are
-                            tiny
-                            files that are downloaded to your computer, to improve your experience. This page describes
-                            what
-                            information they gather, how we use it and why we sometimes need to store these cookies. We
-                            will
-                            also share how you can prevent these cookies from being stored however this may downgrade or
-                            'break'
-                            certain elements of the sites functionality.</p>
-                        <p>For more general information on cookies, please read <a
-                                    href="https://www.cookieconsent.com/what-are-cookies/">"What Are Cookies"</a>.</p>
-                        <p><strong>How We Use Cookies</strong></p>
-                        <p>We use cookies for a variety of reasons detailed below. Unfortunately in most cases there are
-                            no
-                            industry standard options for disabling cookies without completely disabling the
-                            functionality and
-                            features they add to this site. It is recommended that you leave on all cookies if you are
-                            not sure
-                            whether you need them or not in case they are used to provide a service that you use.</p>
-                        <p><strong>Disabling Cookies</strong></p>
-                        <p>You can prevent the setting of cookies by adjusting the settings on your browser (see your
-                            browser
-                            Help for how to do this). Be aware that disabling cookies will affect the functionality of
-                            this and
-                            many other websites that you visit. Disabling cookies will usually result in also disabling
-                            certain
-                            functionality and features of the this site. Therefore it is recommended that you do not
-                            disable
-                            cookies.</p>
-                        <p><strong>The Cookies We Set</strong></p>
-                        <ul>
-                            <li>
-                                <p>Login related cookies</p>
-                                <p>We use cookies when you are logged in so that we can remember this fact. This
-                                    prevents you
-                                    from having to log in every single time you visit a new page. These cookies are
-                                    typically
-                                    removed or cleared when you log out to ensure that you can only access restricted
-                                    features
-                                    and areas when logged in.</p>
-                            </li>
-                        </ul>
-                        <p><strong>Third Party Cookies</strong></p>
-                        <p>In some special cases we also use cookies provided by trusted third parties. The following
-                            section
-                            details which third party cookies you might encounter through this site.</p>
-                        <ul>
-                            <li>
-                                <p>From time to time we test new features and make subtle changes to the way that the
-                                    site is
-                                    delivered. When we are still testing new features these cookies may be used to
-                                    ensure that
-                                    you receive a consistent experience whilst on the site whilst ensuring we understand
-                                    which
-                                    optimisations our users appreciate the most.</p>
-                            </li>
-                        </ul>
-                        <p><strong>More Information</strong></p>
-                        <p>Hopefully that has clarified things for you and as was previously mentioned if there is
-                            something
-                            that you aren't sure whether you need or not it's usually safer to leave cookies enabled in
-                            case it
-                            does interact with one of the features you use on our site.
-                        </p>
-                    </div>
-                    <div class="contact-col">
-                        <h2 class="contact-h2">Nutzungsbedingungen</h2>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum.
-                            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt ut labore et dolore magna aliquyam erat,
-                            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-                            gubergren,
-                            no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                    </div>
-                    <div class="contact-col">
-                        <h2 class="contact-h2">Impressum</h2>
-                        <p>At vero eos et accusam et justo duo dolores et ea rebum.
-                            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt ut labore et dolore magna aliquyam erat,
-                            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-                            gubergren,
-                            no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                    </div>
+
+                        <h3>Angaben gem&auml;&szlig; &sect; 5 TMG</h3>
+                        <p>Kefedo<br />
+                            Ammerl&auml;nder Heerstra&szlig;e 114-118<br />
+                            26219 Oldenburg</p>
+
+                        <p><strong>Vertreten durch:</strong><br />
+                            Keno Oelrichs Garcia<br />
+                            Fenja Bauer<br />
+                            Dominik L&uuml;bben</p>
+
+                        <h3>Kontakt</h3>
+                        <p>Telefon: +012 3456789<br />
+                            E-Mail: info.kefedo@mail.de</p>
+
+                        <h3>EU-Streitschlichtung</h3>
+                        <p>Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a>.<br /> Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+
+                        <h3>Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h3><p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+                        <h3>Haftung f&uuml;r Inhalte</h3> <p>Als Diensteanbieter sind wir gem&auml;&szlig; &sect; 7 Abs.1 TMG f&uuml;r eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach &sect;&sect; 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, &uuml;bermittelte oder gespeicherte fremde Informationen zu &uuml;berwachen oder nach Umst&auml;nden zu forschen, die auf eine rechtswidrige T&auml;tigkeit hinweisen.</p> <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unber&uuml;hrt. Eine diesbez&uuml;gliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung m&ouml;glich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p> <h3>Haftung f&uuml;r Links</h3> <p>Unser Angebot enth&auml;lt Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb k&ouml;nnen wir f&uuml;r diese fremden Inhalte auch keine Gew&auml;hr &uuml;bernehmen. F&uuml;r die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf m&ouml;gliche Rechtsverst&ouml;&szlig;e &uuml;berpr&uuml;ft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p> <p>Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p> <h3>Urheberrecht</h3> <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielf&auml;ltigung, Bearbeitung, Verbreitung und jede Art der Verwertung au&szlig;erhalb der Grenzen des Urheberrechtes bed&uuml;rfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur f&uuml;r den privaten, nicht kommerziellen Gebrauch gestattet.</p> <p>Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+
+                        <p>Quelle: <a href="https://www.e-recht24.de">eRecht24</a></p>
                 </div>
             </div>
         </div>

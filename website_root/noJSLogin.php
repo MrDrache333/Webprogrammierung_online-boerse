@@ -35,7 +35,7 @@
                     </noscript>
                     <div class="loginContainer">
                         <?php if (isset($_GET["error"]) && $_GET["error"] == "pw_forget") {
-                            echo '<br /><br /><label for="email"><i style="color: #FF0000">Schauen sie in die Datei für ihr neues Passwort!</i></label>';
+                            echo '<br /><br /><label for="email"><i style="color: #FF0000">Schauen Sie in die Datei für ihr neues Passwort!</i></label>';
                         } ?>
 
                         <p><label for="email"><b>Email</b></label>

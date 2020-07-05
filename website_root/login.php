@@ -82,7 +82,7 @@ if (isset($_POST["loginSubmit"])) {
 
             if ($result != 1) {
                 $filename = "wichtige_infos.txt";
-                $data = "Ihre Regestratur bei KEFEDO war nich erfolgreich. Bitte veruschen sie es erneut";
+                $data = "Ihre Registrierung bei KEFEDO war nicht erfolgreich. Bitte versuchen Sie es erneut";
                 file_put_contents($filename, $data);
                 $errorRegister = $errorRegister . "+datei";
                 header('Location:' . $header . $errorRegister);
@@ -91,14 +91,14 @@ if (isset($_POST["loginSubmit"])) {
                 $user = $controller->findUserByMail($loginEmail);
                 $id = $user->getId();
                 $filename = $prename . "_" . $lastname . "_" . $id . ".txt";
-                $data = "Sie haben sich bei KEFEDO regestriert. Dies war erfolgreich. Loggen Sie sich mit Ihrem Benutzernamen: " . $loginEmail . " und Ihrem Passwort ein. Die Datei wird nach dem einloggen gelöscht!";
+                $data = "Sie haben sich bei KEFEDO registriert. Dies war erfolgreich. Loggen Sie sich mit Ihrem Benutzernamen: " . $loginEmail . " und Ihrem Passwort ein. Die Datei wird nach dem einloggen gelöscht!";
                 file_put_contents($filename, $data);
                 $errorRegister = $errorRegister . "+datei";
                 header('Location:' . $header . $errorRegister);
             }
         } else {
             $filename = "wichtige_infos.txt";
-            $data = "Ihre Regestratur bei KEFEDO war nich erfolgreich. Bitte veruschen sie es erneut";
+            $data = "Ihre Registrierung bei KEFEDO war nicht erfolgreich. Bitte versuchen Sie es erneut";
             file_put_contents($filename, $data);
             $errorRegister = $errorRegister . "+datei";
 
