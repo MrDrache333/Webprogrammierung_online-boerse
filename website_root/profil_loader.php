@@ -17,13 +17,14 @@ if ($user != null) {
     $pwaktuell = $user->getPassword();
     $prename = $user->getPrename();
     $surname = $user->getSurname();
-    $Regfile = $prename . "_" . $surname . ".txt";
+    $id = $user->getId();
+    $Regfile = $prename . "_" . $surname . "_" . $id . ".txt";
 }
 if (file_exists($Regfile)) {
     unlink($Regfile);
 }
-if (file_exists("wichtige_info.txt")) {
-    unlink("wichtige_info.txt");
+if (file_exists("wichtige_infos.txt")) {
+    unlink("wichtige_infos.txt");
 }
 if (isset($_POST["submit_pb"])) {
     $name = htmlspecialchars($_POST["name"]);
