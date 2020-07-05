@@ -30,19 +30,22 @@ include "new_offer_loader.php";
                 <div class="column">
                     <div class="card">
                         <h2>Produktbild</h2>
-                        <?php if (isset($_SESSION["error"]) && preg_match('/Bilder/', $_SESSION["error"])) {
-                            echo '<i style="color: #FF0000"> Es wurde kein Bild ausgewählt :-)</i>';
-                        } ?></label>
-                        <?php if (isset($_SESSION["error"]) && preg_match('/gif/', $_SESSION["error"])) {
-                            echo '<i style="color: #FF0000"> Nur JPG, JPEG, PNG & GIF Dateiformate sind erlaubt.</i>';
-                        } ?></label>
-
-                        <?php if (isset($_SESSION["error"]) && preg_match('/zugross/', $_SESSION["error"])) {
+                        <label for="error">
+                            <?php if (isset($_SESSION["error"]) && preg_match('/Bilder/', $_SESSION["error"])) {
+                                echo '<i style="color: #FF0000"> Es wurde kein Bild ausgewählt :-)</i>';
+                            } ?></label>
+                        <label for="error">
+                            <?php if (isset($_SESSION["error"]) && preg_match('/gif/', $_SESSION["error"])) {
+                                echo '<i style="color: #FF0000"> Nur JPG, JPEG, PNG & GIF Dateiformate sind erlaubt.</i>';
+                            } ?></label>
+                        <label for="error">
+                            <?php if (isset($_SESSION["error"]) && preg_match('/zugross/', $_SESSION["error"])) {
                             echo '<i style="color: #FF0000"> Das Bild darf maximal 10MB groß sein!</i>';
                         } ?></label>
-                        <?php if (isset($_SESSION["error"]) && preg_match('/Bildhochladen/', $_SESSION["error"])) {
-                            echo '<i style="color: #FF0000"> Das Bild konnte nicht hochgeladen werden!</i>';
-                        } ?></label>
+                        <label for="error">
+                            <?php if (isset($_SESSION["error"]) && preg_match('/Bildhochladen/', $_SESSION["error"])) {
+                                echo '<i style="color: #FF0000"> Das Bild konnte nicht hochgeladen werden!</i>';
+                            } ?></label>
 
                         <img src="<?php echo($logo) ?>" alt="Produktbild-Template" id="pb_image"
                              class="fakeimg">
@@ -72,28 +75,28 @@ include "new_offer_loader.php";
                             <input type="text" name="titel" id="titel" placeholder="Verkäufer/in"
                                    value="<?php echo $titel ?? ""; ?>"
                             />
-                            <label for="titel"><?php if (isset($_SESSION["error"]) && preg_match('/Untertitel/', $_SESSION["error"])) {
+                            <label for="untertitel"><?php if (isset($_SESSION["error"]) && preg_match('/Untertitel/', $_SESSION["error"])) {
                                     echo '<i style="color: #FF0000"> Ihr Untertitel ist falsch!</i>';
                                 } else {
                                     echo "Untertitel:";
                                 } ?></label>
                             <input type="text" name="subtitel" id="subtitel" placeholder="Einzelhandel"
                                    value="<?php echo $subtitle ?? ""; ?>"/>
-                            <label for="titel"><?php if (isset($_SESSION["error"]) && preg_match('/Firmenname/', $_SESSION["error"])) {
+                            <label for="firmenname"><?php if (isset($_SESSION["error"]) && preg_match('/Firmenname/', $_SESSION["error"])) {
                                     echo '<i style="color: #FF0000"> Ihr Firmenname ist falsch!</i>';
                                 } else {
                                     echo "Firmenname:";
                                 } ?></label>
                             <input type="text" name="companyname" id="companyname" placeholder="Firmenname"
                                    value="<?php echo $companyname ?? ""; ?>"/>
-                            <label for="titel"><?php if (isset($_SESSION["error"]) && preg_match('/Straße/', $_SESSION["error"])) {
+                            <label for="straße"><?php if (isset($_SESSION["error"]) && preg_match('/Straße/', $_SESSION["error"])) {
                                     echo '<i style="color: #FF0000"> Ihr Straße ist falsch!</i>';
                                 } else {
                                     echo "Straße:";
                                 } ?></label>
                             <input type="text" name="straße" id="straße" placeholder="Musterstraße"
                                    value="<?php echo $straße ?? ""; ?>"/>
-                            <label for="titel"><?php if (isset($_SESSION["error"]) && preg_match('/Hausnummer/', $_SESSION["error"])) {
+                            <label for="hausnummer"><?php if (isset($_SESSION["error"]) && preg_match('/Hausnummer/', $_SESSION["error"])) {
                                     echo '<i style="color: #FF0000"> Ihr Hausnummer ist falsch!</i>';
                                 } else {
                                     echo "Hausnummer:";
@@ -108,14 +111,14 @@ include "new_offer_loader.php";
                             <input type="text" name="ort" id="ort" placeholder="Musterhausen"
                                    value="<?php echo $ort ?? ""; ?>"
                             />
-                            <label for="titel"><?php if (isset($_SESSION["error"]) && preg_match('/Postleitzahl/', $_SESSION["error"])) {
+                            <label for="postleitzahl"><?php if (isset($_SESSION["error"]) && preg_match('/Postleitzahl/', $_SESSION["error"])) {
                                     echo '<i style="color: #FF0000"> Ihr Postleitzahl ist falsch!</i>';
                                 } else {
                                     echo "Postleitzahl:";
                                 } ?></label>
                             <input type="text" name="plz" id="plz" placeholder="12345" value="<?php echo $plz ?? ""; ?>"
                             />
-                            <label for="titel"><?php if (isset($_SESSION["error"]) && preg_match('/Verfügbarkeitsdatum/', $_SESSION["error"])) {
+                            <label for="verfügbarkeitsdatum"><?php if (isset($_SESSION["error"]) && preg_match('/Verfügbarkeitsdatum/', $_SESSION["error"])) {
                                     echo '<i style="color: #FF0000"> Ihr Verfügbarkeitsdatum ist falsch!</i>';
                                 } else {
                                     echo "Frei ab:";
@@ -130,7 +133,7 @@ include "new_offer_loader.php";
                         <h2>Weitere Informationen</h2>
                         <div class="types">
                             <div class="typeGroup">
-                                <label for="titel"><?php if (isset($_SESSION["error"]) && preg_match('/Angebotsart/', $_SESSION["error"])) {
+                                <label for="angebotsart"><?php if (isset($_SESSION["error"]) && preg_match('/Angebotsart/', $_SESSION["error"])) {
                                         echo '<h3><i style="color: #FF0000"> Angebotsart</i></h3>';
                                     } else {
                                         echo '<h3>Angebotsart:</h3>';
@@ -163,7 +166,7 @@ include "new_offer_loader.php";
                                 </div>
                             </div>
                             <div class="typeGroup">
-                                <label for="titel"><?php if (isset($_SESSION["error"]) && preg_match('/Befristung/', $_SESSION["error"])) {
+                                <label for="befristung"><?php if (isset($_SESSION["error"]) && preg_match('/Befristung/', $_SESSION["error"])) {
                                         echo '<h3><i style="color: #FF0000"> Befristung</i></h3>';
                                     } else {
                                         echo '<h3>Befristung</h3>';
@@ -191,7 +194,7 @@ include "new_offer_loader.php";
                             </div>
 
                             <div class="typeGroup">
-                                <label for="titel"><?php if (isset($_SESSION["error"]) && preg_match('/Arbeitszeit/', $_SESSION["error"])) {
+                                <label for="Arbeitszeit"><?php if (isset($_SESSION["error"]) && preg_match('/Arbeitszeit/', $_SESSION["error"])) {
                                         echo '<h3><i style="color: #FF0000"> Arbeitszeit</i></h3>';
                                     } else {
                                         echo '<h3>Arbeitszeit</h3>';
@@ -231,7 +234,7 @@ include "new_offer_loader.php";
                             </div>
                         </div>
 
-                        <label for="titel"><?php if (isset($_SESSION["error"]) && preg_match('/Beschreibung/', $_SESSION["error"])) {
+                        <label for="beschreibung"><?php if (isset($_SESSION["error"]) && preg_match('/Beschreibung/', $_SESSION["error"])) {
                                 echo '<i style="color: #FF0000"> Ihre Beschreibung ist falsch!</i>';
                             } else {
                                 echo '<h3>Beschreibung:</h3>';
