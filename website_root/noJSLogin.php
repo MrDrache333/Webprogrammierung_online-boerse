@@ -28,14 +28,23 @@
                     <div class="loginImgcontainer">
                         <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
                     </div>
-
+                    <noscript>
+                        <input type="hidden" id="aus" name="js_no" value="aus">
+                    </noscript>
                     <div class="loginContainer">
+                        <?php if (isset($_GET["error"]) && $_GET["error"] == "pw_forget") {
+                            echo '<br /><br /><label for="email"><i style="color: #FF0000">Schauen sie in die Datei für ihr neues Passwort!</i></label>';
+                        } ?>
+
                         <p><label for="email"><b>Email</b></label>
                             <?php if (isset($_GET["error"]) && $_GET["error"] == "login_error") {
                                 echo '<br /><br /><label for="email"><i style="color: #FF0000">Email und/oder Passwort ist falsch!</i></label>';
+                            }
+                            if (isset($_GET["error"]) && $_GET["error"] == "email") {
+                                echo '<br /><br /><label for="email"><i style="color: #FF0000">Email muss gesetzt sein!</i></label>';
                             } ?>
                             <input autocomplete="off" class="loginInput" id="email" name="email"
-                                <?php if (isset($_GET["error"]) && $_GET["error"] == "login_error") {
+                                <?php if ((isset($_GET["error"]) && $_GET["error"] == "login_error") || isset($_GET["error"]) && $_GET["error"] == "email") {
                                     echo 'style="border: 2px solid red;"';
                                 } ?>
                                    placeholder="Email eingeben"
@@ -48,7 +57,6 @@
                                     echo 'style="border: 2px solid red;"';
                                 } ?>
                                    placeholder="Passwort eingeben"
-
                                    type="password">
                         </p>
                         <button href="profil.php" name="loginSubmit" type="submit">Login</button>
@@ -69,17 +77,22 @@
                 <div class="loginImgcontainer">
                     <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
                 </div>
+                <noscript>
+                    <input type="hidden" id="aus" name="js_no" value="aus">
+                </noscript>
 
-                <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
-                    && preg_match('/vorname/', $_GET["error"])) {
-                    echo "";
-                } ?>
+
                 <div class="loginContainer">
+                    <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                        && preg_match('/datei/', $_GET["error"])) {
+                        echo '<i style="color: #FF0000"> Schauen sie in die Datei um sich einzuloggen!</i>';
+                    } ?>
+
                     <p>
-                        <label for="name"><b>Vorname <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                        <label for="name"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
                                     && preg_match('/vorname/', $_GET["error"])) {
-                                    echo " falsch!";
-                                } ?></b></label>
+                                    echo '<i style="color: #FF0000"> Vorname falsch!</i>';
+                                } else { ?>Vorname: <?php } ?></b></label>
                         <input class="loginInput" id="name" name="loginPrename"
                                placeholder="Vorname eingeben"
                                value="<?php if (isset($_GET["fill_vorname"])) {
@@ -88,11 +101,12 @@
                                required
                                type="text"></p>
 
+
                     <p>
-                        <label for="lastname"><b>Nachname<?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                        <label for="lastname"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
                                     && preg_match('/nachname/', $_GET["error"])) {
-                                    echo " falsch!";
-                                } ?></b></label>
+                                    echo '<i style="color: #FF0000"> Nachname falsch!</i>';
+                                } else { ?>Nachname: <?php } ?></b></label></b></label>
                         <input class="loginInput" id="lastname" name="loginLastname"
                                placeholder="Nachname eingeben"
                                value="<?php if (isset($_GET["fill_nachname"])) {
@@ -102,10 +116,10 @@
                                type="text">
                     </p>
                     <p>
-                        <label for="registerEmail"><b>Email-Adresse<?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
-                                    && preg_match('/exist/', $_GET["error"])) {
-                                    echo " falsch!";
-                                } ?></b></label>
+                        <label for="registerEmail"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                                    && preg_match('/email/', $_GET["error"])) {
+                                    echo '<i style="color: #FF0000"> Email-Adresse falsch!</i>';
+                                } else { ?>Email-Adresse: <?php } ?></b></label></b></label>
                         <input class="loginInput" id="registerEmail" name="registerEmail"
                                placeholder="Email eingeben"
                                value="<?php if (isset($_GET["fill_email"])) {
@@ -115,17 +129,18 @@
                                type="email">
                     </p>
                     <p>
-                        <label for="newPassword"><b>Passwort <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                        <label for="newPassword"><b> <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
                                     && preg_match('/password/', $_GET["error"])) {
-                                    echo " ungültig! ";
-                                } ?><span id="feedback"></span></b></label>
+                                    echo '<i style="color: #FF0000"> Passwort ungültig!</i>';
+                                } else { ?>Passwort: <?php } ?><span id="feedback"></span></b></label>
                         <input class="loginInput" id="newPassword" name="newPassword"
                                placeholder="Passwort eingeben"
-                               required
+
                                type="password" onkeyup="char_count();">
 
                         <script type="text/javascript" src="passwd_check.js">
                         </script>
+
 
                     </p>
                     <button name="registerSubmit" type="submit">Registrieren</button>

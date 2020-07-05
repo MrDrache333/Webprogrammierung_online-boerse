@@ -63,6 +63,12 @@ if (isset($_POST["loginSubmit"])) {
     if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{5,30}$/', $loginPassword)) {
         $errorRegister = $errorRegister . "+password";
     }
+    if (isset($_POST["js_no"])) {
+        $header = 'noJSLogin.php?error=';
+    } else {
+        $header = 'index.php?reloadModal=true&error=';
+    }
+
     if ($errorRegister == "register") {
         $controller = new UserDAOImpl();
         if ($controller->findUserByMail($loginEmail) === null) {
@@ -72,37 +78,45 @@ if (isset($_POST["loginSubmit"])) {
             $toRegisterUser->setEmail($loginEmail);
             $toRegisterUser->setPassword(password_hash($loginPassword, PASSWORD_DEFAULT));
             $result = $controller->create($toRegisterUser);
+
+
             if ($result != 1) {
                 $filename = "wichtige_infos.txt";
                 $data = "Ihre Regestratur bei KEFEDO war nich erfolgreich. Bitte veruschen sie es erneut";
                 file_put_contents($filename, $data);
                 $errorRegister = $errorRegister . "+datei";
-                header('Location: index.php?reloadModal=true&error=' . $errorRegister);
+                header('Location:' . $header . $errorRegister);
 
             } else {
                 $user = $controller->findUserByMail($loginEmail);
                 $id = $user->getId();
                 $filename = $prename . "_" . $lastname . "_" . $id . ".txt";
-
                 $data = "Sie haben sich bei KEFEDO regestriert. Dies war erfolgreich. Loggen Sie sich mit Ihrem Benutzernamen: " . $loginEmail . " und Ihrem Passwort ein. Die Datei wird nach dem einloggen gelöscht!";
                 file_put_contents($filename, $data);
                 $errorRegister = $errorRegister . "+datei";
-                header('Location: index.php?reloadModal=true&error=' . $errorRegister);
+                header('Location:' . $header . $errorRegister);
             }
         } else {
             $filename = "wichtige_infos.txt";
             $data = "Ihre Regestratur bei KEFEDO war nich erfolgreich. Bitte veruschen sie es erneut";
             file_put_contents($filename, $data);
             $errorRegister = $errorRegister . "+datei";
-            header('Location: index.php?reloadModal=true&error=' . $errorRegister);
+
+            header('Location:' . $header . $errorRegister);
         }
     } else {
-        header('Location: index.php?reloadModal=true&error=' . $errorRegister);
+
+        header('Location:' . $header . $errorRegister);
     }
 } //Passwort vergessen ausgeführt und Mail versendet zu Nutzer.
 
 
 else if (isset($_POST["pwforget"])) {
+    if (isset($_POST["js_no"])) {
+        $header = 'noJSLogin.php?error=';
+    } else {
+        $header = 'index.php?reloadModal=true&error=';
+    }
     if (isset($_POST["email"]) && $_POST["email"] !== "") {
         $u = new UserDAOImpl();
         $submit = $_POST["pwforget"];
@@ -121,14 +135,14 @@ else if (isset($_POST["pwforget"])) {
             $prename = $user->getPrename();
             $lastname = $user->getSurname();
             $id = $user->getId();
-            $filename = $prename . "_" . $lastname . _ . $id . ".txt";
+            $filename = $prename . "_" . $lastname . "_" . $id . ".txt";
             if (mail($empfaenger, $betreff, $text, "From: $absendername <$absendermail>")) {
                 $data =
                     "Sie haben sich bei KEFEDO ihr Passwort geändert. Dies war erfolgreich.
             Loggen Sie sich mit Ihrem Benutzernamen: " . $empfaenger . "und Ihrem neuen Passwort: " . $pw . " ein. 
             Die Datei wird nach dem einloggen gelöscht!";
                 file_put_contents($filename, $data);
-                header('Location: index.php?reloadModal=true&error=pw_forget');
+                header('Location:' . $header . 'pw_forget');
                 $u->updatePassword(password_hash($pw, PASSWORD_DEFAULT), $empfaenger);
             }
         } else {
@@ -138,10 +152,10 @@ else if (isset($_POST["pwforget"])) {
                 Veruschen sie es erneut.
                 Die Datei wird nach dem einloggen gelöscht!";
             file_put_contents($filename, $data);
-            header('Location: index.php?reloadModal=true&error=pw_forget');
+            header('Location:' . $header . 'pw_forget');
         }
     } else {
-        header('Location: index.php?reloadModal=true&error=email');
+        header('Location:' . $header . 'email');
     }
 }
 function GeneratePassword($length = 12)
