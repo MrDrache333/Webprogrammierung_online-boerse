@@ -41,6 +41,7 @@ class OfferDAOImpl implements OfferDAO
 
     public function create(Offer $offer)
     {
+        $this->database->begin();
         /*
          * ERRORCODES
          * 1 = Fehler beim Eintragen der Addresse in die Datenbank
@@ -53,6 +54,7 @@ class OfferDAOImpl implements OfferDAO
             if ($address !== null) {
                 $address = $this->addressDAOImpl->findAddressId($offer->getAddress());
             } else {
+                $this->database->stop();
                 return 1;
             }
         }
@@ -61,8 +63,14 @@ class OfferDAOImpl implements OfferDAO
             $offer->getAddress()->setId($address->getId());
             $command = "insert into offers(title, subtitle, companyName, description, address, created, free, offerType, duration, workModel, creator) values (?,?,?,?,?,?,?,?,?,?,?)";
             $values = [$offer->getTitle(), $offer->getSubTitle(), $offer->getCompanyName(), $offer->getDescription(), $offer->getAddress()->getId(), $offer->getCreated(), $offer->getFree(), $offer->getOfferType(), $offer->getDuration(), $offer->getWorkModel(), $offer->getCreator()];
-            return ($this->database->execute($command, $values) !== null) ? true : 3;
+            if ($this->database->execute($command, $values) !== null) {
+                $this->database->end();
+                return true;
+            }
+            $this->database->stop();
+            return 3;
         }
+        $this->database->stop();
         return 2;
     }
 

@@ -93,9 +93,9 @@ class SqliteDatabase implements Database
 
             "INSERT INTO user VALUES(0,'demo@demo.de','Max','Mustermann','" . password_hash('demo', PASSWORD_DEFAULT) . "')",
             "INSERT INTO user VALUES(1,'demo2@demo.de','Maxime','Musterfrau','" . password_hash('demo', PASSWORD_DEFAULT) . "')",
-            "INSERT INTO user VALUES(2,'test@test.de','Tim','Fellon','" .password_hash('test',PASSWORD_DEFAULT)."')",
-            "INSERT INTO user VALUES(3,'test2@test.de','Rosa','Fellon','" .password_hash('test',PASSWORD_DEFAULT)."')",
-            "INSERT INTO user VALUES(4,'hans-wurst@wurst.de','Hans','Wurst','" .password_hash('wurst',PASSWORD_DEFAULT)."')",
+            "INSERT INTO user VALUES(2,'test@test.de','Tim','Fellon','" . password_hash('test', PASSWORD_DEFAULT) . "')",
+            "INSERT INTO user VALUES(3,'test2@test.de','Rosa','Fellon','" . password_hash('test', PASSWORD_DEFAULT) . "')",
+            "INSERT INTO user VALUES(4,'hans-wurst@wurst.de','Hans','Wurst','" . password_hash('wurst', PASSWORD_DEFAULT) . "')",
 
             "INSERT INTO address VALUES(0,'Deutschland','Musterstadt','Musterstraße',123,12345)",
             "INSERT INTO address VALUES(1,'Deutschland','Musterstadt','Musterstraße',124,12345)",
@@ -177,6 +177,36 @@ class SqliteDatabase implements Database
             }
         } else {
             return false;
+        }
+    }
+
+    /**
+     * Starts a Transaction
+     */
+    public function begin()
+    {
+        if (!$this->conn->inTransaction()) {
+            $this->conn->beginTransaction();
+        }
+    }
+
+    /**
+     * Ends a Transaction and commits
+     */
+    public function end()
+    {
+        if ($this->conn->inTransaction()) {
+            $this->conn->commit();
+        }
+    }
+
+    /**
+     * Stops a Transaction and rolls back
+     */
+    public function stop()
+    {
+        if ($this->conn->inTransaction()) {
+            $this->conn->rollBack();
         }
     }
 }
