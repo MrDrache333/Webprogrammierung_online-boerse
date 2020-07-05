@@ -17,6 +17,11 @@
     .offerHeader {
         background-color: rgb(31, 31, 31) !important;
     }
+
+    .leaflet-tile {
+        -webkit-filter: hue-rotate(180deg) invert(100%) !important;
+        filter: hue-rotate(180deg) invert(100%) !important;
+    }
 }
 
 .offerNameTime {
