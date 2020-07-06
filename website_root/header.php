@@ -257,7 +257,7 @@ function Fehlerbehandlung($texterror)
 
                         <div class="loginContainer">
                             <?php if (isset($_GET["error"]) && $_GET["error"] == "pw_forget") {
-                                echo '<br /><br /><label for="email"><i style="color: #FF0000">Schauen sie in die Datei für ihr neues Passwort!</i></label>';
+                                echo '<br /><br /><label for="email"><i style="color: #FF0000">Schauen Sie in die Datei für ihr neues Passwort!</i></label>';
                             } ?>
 
                             <p><label for="email"><b>Email</b></label>
@@ -365,6 +365,9 @@ function Fehlerbehandlung($texterror)
                             <script type="text/javascript" src="passwd_check.js">
                             </script>
 
+                        <p><span> <input value="1" type="checkbox" name="register[agb]" id="register_agb" required/> </span>
+                            <label for="accept_agb" >Ich habe die <a target="_blank" id="agb" href="impressum.php">Nutzungsbedingungen</a>
+                                zur Kenntnis genommen und akzeptiere sie.</label></p>
 </body>
 </p>
 <button name="registerSubmit" type="submit">Registrieren</button>
