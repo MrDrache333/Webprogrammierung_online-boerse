@@ -61,16 +61,24 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
     }
 }
 
-
-if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
+if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
+    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+} elseif (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
     Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: noJSLogin.php");
 }
-if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
+if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
+    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+} elseif (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
     Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: noJSLogin.php");
 }
-if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
+if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
+    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+} else if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
     Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: noJSLogin.php");
 }
