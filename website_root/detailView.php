@@ -73,17 +73,12 @@ include "detailViewLoader.php"
                         <div id="mapView">
                         </div>
                         <script>
-                            var mymap = L.map('mapView').setView([<?php echo $location->getLat() . ", " . $location->getLong(); ?>], 13);
-                            var marker = L.marker([<?php echo $location->getLat() . ", " . $location->getLong(); ?>]).addTo(mymap);
+                            const mymap = L.map('mapView').setView([<?php echo $location->getLat() . ", " . $location->getLong(); ?>], 13);
+                            const marker = L.marker([<?php echo $location->getLat() . ", " . $location->getLong(); ?>]).addTo(mymap);
                             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                             }).addTo(mymap);
                             marker.bindPopup("<b><?php echo $offer->getCompanyName() ?></b>").openPopup();
-                            mymap.locate({setView: true, maxZoom: 16});
-
-                            function onLocationFound(e) {
-                                L.marker(e.latlng).addTo(mymap);
-                            }
 
                             mymap.on('locationfound', onLocationFound);
                         </script>
@@ -109,7 +104,6 @@ include "detailViewLoader.php"
 
     </div>
     <?php } ?>
-</div>
 </div>
 <?php include "footer.php"; ?>
 
