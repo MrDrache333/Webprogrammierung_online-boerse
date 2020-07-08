@@ -90,6 +90,7 @@ function displayResults($result)
                                             <input type="submit" value="Bearbeiten" class="submit btn"
                                                    name="bearbeiten_offer"
                                                    id="submit"/>
+                                            <noscript><input type="hidden" name="nojs" value="true"></noscript>
                                         </form>
                                         <form method="post" action="messages.php">
                                             <input type="hidden" name="id_offer"
@@ -98,6 +99,7 @@ function displayResults($result)
                                                    class="submit btn delete"
                                                    name="anzeigeloeschen"
                                                    id="submit"/>
+
 
                                     </div>
                                     </form>

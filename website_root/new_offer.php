@@ -20,7 +20,8 @@ include "new_offer_loader.php";
 </div>
 <div class="grid-farbe">
     <div class="content">
-        <div class="offer_content"><?php
+        <div class="offer_content">
+            <?php
             if (isset($_SESSION["bearbeiten"])) { ?>
                 <h1>Anzeige bearbeiten</h1>
             <?php } else { ?>
@@ -123,9 +124,10 @@ include "new_offer_loader.php";
                                     echo "Frei ab:";
                                 } ?></label>
                             <input type="date" name="free" id="free" placeholder="2021-01-01" class="date_free"
-                                   value="<?php echo $free ?? ""; ?>"
-
+                                   value="<?php echo $free ?? ""; ?>">
+                            <button type="button" onclick="date()">Ab heute verfügbar</button>
                     </div>
+
                 </div>
                 <div class="column">
                     <div class="card">
@@ -235,6 +237,7 @@ include "new_offer_loader.php";
 
                         <label for="beschreibung"><?php if (isset($_SESSION["error"]) && preg_match('/Beschreibung/', $_SESSION["error"])) {
                                 echo '<i style="color: #FF0000"> Ihre Beschreibung ist falsch!</i>';
+
                             } else {
                                 echo '<h3>Beschreibung:</h3>';
                             } ?></label>
@@ -243,6 +246,8 @@ include "new_offer_loader.php";
                                   placeholder="Was über den Beruf zu sagen ist."><?php echo $beschreibung ?? ""; ?></textarea>
 
                         <div style="height: 20px"></div>
+
+
                         <div class="form-submit">
                             <?php
 
@@ -255,9 +260,32 @@ include "new_offer_loader.php";
                                 <input type="submit" value="Anzeige erstellen" class="button_offer"
                                        name="submit_offer"
                                        id="submit_offer"/>
-                            <?php } ?>
+                            <?php }; ?>
                         </div>
+
+
                         </form>
+
+
+                        <script>
+                            function date() {
+                                const date = new Date()
+                                const dateTimeFormat = new Intl.DateTimeFormat('de', {
+                                    year: 'numeric',
+                                    month: '2-digit',
+                                    day: '2-digit'
+                                })
+                                const [{value: day}, , {value: month}, , {value: year}] = dateTimeFormat.formatToParts(date)
+                                var d = (`${year}-${month}-${day}`)
+                                //var d="test"
+
+                                document.getElementById("free").value = d
+                                //document.getElementById("js_free").innerHTML= d
+
+                            }
+                        </script>
+
+
                     </div>
                 </div>
             </div>
@@ -265,7 +293,6 @@ include "new_offer_loader.php";
     </div>
 </div>
 </div>
-
 
 <?php include "footer.php"; ?>
 

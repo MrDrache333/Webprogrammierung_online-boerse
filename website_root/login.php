@@ -45,6 +45,7 @@ if (isset($_POST["loginSubmit"])) {
     $lastname = htmlspecialchars($_POST["loginLastname"]);
     $loginEmail = htmlspecialchars($_POST["registerEmail"]);
     $loginPassword = htmlspecialchars($_POST["newPassword"]);
+    $AGB = htmlspecialchars($_POST["register_agb"]);
     $errorRegister = "register";
 
 
@@ -67,7 +68,9 @@ if (isset($_POST["loginSubmit"])) {
     if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{5,30}$/', $loginPassword)) {
         $errorRegister = $errorRegister . "+password";
     }
-
+    if (!isset($AGB)) {
+        $errorRegister = $errorRegister . "+AGB";
+    }
 
     if ($errorRegister == "register") {
         $controller = new UserDAOImpl();
@@ -101,12 +104,11 @@ if (isset($_POST["loginSubmit"])) {
             $data = "Ihre Registrierung bei KEFEDO war nicht erfolgreich. Bitte versuchen Sie es erneut";
             file_put_contents($filename, $data);
             $errorRegister = $errorRegister . "+datei";
-
             header('Location:' . $header . $errorRegister);
         }
     } else {
 
-        header('Location:' . $header . $errorRegister);
+        header('Location:' . $header . $errorRegister . '&fill_vorname=' . $FILL_vorname . '&fill_nachname=' . $FILL_nachname . '&fill_email=' . $FILL_email);
     }
 } //Passwort vergessen ausgeführt und Mail versendet zu Nutzer.
 

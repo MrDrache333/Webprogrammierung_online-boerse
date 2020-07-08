@@ -313,6 +313,10 @@ function Fehlerbehandlung($texterror)
                             && preg_match('/datei/', $_GET["error"])) {
                             echo '<i style="color: #FF0000"> Schauen sie in die Datei um sich einzuloggen!</i>';
                         } ?>
+                        <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                            && preg_match('/AGB/', $_GET["error"])) {
+                            echo '<i style="color: #FF0000"> Sie müssen die Nutzungsbedingungen akzeptieren!</i>';
+                        } ?>
                         <p>
                             <label for="name"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
                                         && preg_match('/vorname/', $_GET["error"])) {
@@ -365,8 +369,9 @@ function Fehlerbehandlung($texterror)
                             <script type="text/javascript" src="passwd_check.js">
                             </script>
 
-                        <p><span> <input value="1" type="checkbox" name="register[agb]" id="register_agb" required/> </span>
-                            <label for="accept_agb" >Ich habe die <a target="_blank" id="agb" href="impressum.php">Nutzungsbedingungen</a>
+                        <p><span> <input value="1" type="checkbox" name="register_agb" id="register_agb"
+                                         required/> </span>
+                            <label for="accept_agb">Ich habe die <a target="_blank" id="agb" href="impressum.php">Nutzungsbedingungen</a>
                                 zur Kenntnis genommen und akzeptiere sie.</label></p>
 </body>
 </p>

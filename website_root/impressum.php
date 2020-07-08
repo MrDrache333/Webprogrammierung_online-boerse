@@ -168,7 +168,7 @@
                             herunterzuladen, zu verbreiten, zu übersenden, zu übertragen, anzuzeigen, zu verkaufen, zu
                             lizenzieren, zu ändern, anzupassen oder anderweitig zu verwenden, ausgenommen (a) in der Art
                             und
-                            Weise, wie sie im Dienst genehmigt wurde; oder (b) nach vorheriger Genehmigung durch YouTube
+                            Weise, wie sie im Dienst genehmigt wurde; oder (b) nach vorheriger Genehmigung durch KEFEDO
                             in
                             Textform und, sofern relevant, durch die jeweiligen Rechteinhaber oder (c) soweit durch
                             anwendbares Recht gestattet.</p>
@@ -185,7 +185,7 @@
                         </p>
                         <p>3. Mit automatisierten Verfahren (z. B. Robotern, Botnets oder Scrapern) auf den Dienst
                             zuzugreifen, ausgenommen (a) über öffentliche Suchmaschinen gemäß der Robots.txt-Datei von
-                            YouTube, (b) nach vorheriger Genehmigung durch YouTube in Textform oder (c) soweit durch
+                            KEFEDO, (b) nach vorheriger Genehmigung durch KEFEDO in Textform oder (c) soweit durch
                             anwendbares Recht gestattet.
                         </p>
                         <p>4. Informationen zu erfassen oder zu verwenden, die eine Person identifizieren könnten (z. B.
@@ -209,18 +209,18 @@
                             den
                             Dienst oder dessen Inhalte herum platziert wird, außer, es entspricht den Richtlinien zu
                             Werbung
-                            auf YouTube (beispielsweise die Richtlinien erfüllende Produktplatzierungen); oder (b)
+                            auf KEFEDO (beispielsweise die Richtlinien erfüllende Produktplatzierungen); oder (b)
                             Werbung
                             oder Sponsoring auf irgendeiner Seite einer Website oder Anwendung zu verkaufen, die
                             ausschließlich vom Dienst stammende Inhalte enthält oder deren vom Dienst stammende Inhalte
                             die
                             vorrangige Grundlage für derartige Verkäufe bildet (beispielsweise Verkauf von Anzeigen auf
-                            einer Webseite, auf der YouTube-Videos die einzigen Inhalte mit einem Mehrwert sind).
+                            einer Webseite, auf der KEFEDO-Videos die einzigen Inhalte mit einem Mehrwert sind).
                         </p>
 
                         <p>Quelle: <a href="https://www.e-recht24.de">eRecht24</a> <a
-                                    href="https://www.youtube.com/static?gl=DE&template=terms&hl=de">Ähnlich zu
-                                Youtube</a></p>
+                                    href="https://www.Youtube.com/static?gl=DE&template=terms&hl=de">Ähnlich zu
+                                KEFEDO</a></p>
                     </div>
                 </div>
             </div>

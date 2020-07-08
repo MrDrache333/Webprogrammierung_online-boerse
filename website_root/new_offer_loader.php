@@ -127,6 +127,8 @@ if (isset($_POST["edit_offer"])) {
         }
 
         if (!isset($_SESSION["error"])) {
+            ?>
+            <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
             $_SESSION["kik"] = true;
         }
         $offer->setTitle(htmlspecialchars($titel));
@@ -301,6 +303,7 @@ if (isset($_POST["uploadLogoSubmit"])) {
 if (isset($_POST["submit_offer"])) {
     if ($eingelogt == "true") {
 
+
         if (isset($_POST["titel"], $_POST["subtitel"], $_POST["straße"], $_POST["hausnummer"], $_POST["ort"], $_POST["plz"], $_POST["free"], $_POST["beschreibung"], $_POST["companyname"])) {
             $AddressDAO = $OfferDao->getAddressDAOImpl();
             $email = $_COOKIE["email"];
@@ -327,7 +330,7 @@ if (isset($_POST["submit_offer"])) {
                 $errornachricht = Fehlerbehandlung("Ihre Postleitzahl ist falsch.");
             }
 
-            if (!preg_match('/^([\w\x{C4}\x{E4}\x{D6}\x{F6}\x{DC}\x{FC}\x{DF}\x{2F}\x{29}\x{28}\s]){0,900}$/u', $beschreibung)) {
+            if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{2,200}$/', $beschreibung)) {
                 $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
             }
             if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $companyname)) {
@@ -372,7 +375,11 @@ if (isset($_POST["submit_offer"])) {
                             $_SESSION['tempUpload'] = false;
 
                         }
+                        ?>
+                        <script language="javascript"
+                                type="text/javascript"> document.location = "index.php"; </script><?php
                         $_SESSION["kik"] = true;
+
                     }
                 }
             } else {
