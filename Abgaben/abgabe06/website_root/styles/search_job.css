@@ -1,0 +1,377 @@
+/**{
+    border: .1rem solid red;
+}
+*/
+
+@media (prefers-color-scheme: dark) {
+
+    article:hover {
+        border: .1rem solid lightgrey !important;
+        border-left: .2666666667rem solid #c4d7e7 !important;
+    }
+}
+
+.content {
+    padding: 10px .5% 10px .5%;
+    margin: 0;
+}
+
+.jobs-content {
+    background: rgba(100, 100, 100, 0.8);
+    border-radius: 8px;
+    padding: 10px;
+    animation: fadein .5s;
+}
+
+.searchBox_input {
+    min-width: 100%;
+}
+
+.jobs-content-dynamic {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0;
+}
+
+.jobs-result {
+    flex-wrap: wrap;
+    overflow: hidden;
+    flex-grow: 100;
+    padding-left: 5px;
+    margin-right: 0;
+    padding-top: 15px;
+}
+
+article {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: auto;
+    margin-bottom: 5px;
+    min-width: 200px;
+    padding: 15px 15px 0;
+    display: grid;
+    border-radius: 8px;
+}
+
+article:hover {
+    background-color: rgba(240, 240, 240, 0.9);
+    border: .1rem solid grey;
+    border-left: .2666666667rem solid #020e25;
+    padding-left: 11px;
+    padding-top: 14px;
+}
+
+.article-container {
+    margin-left: 0;
+}
+
+.article-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-grow: 100;
+}
+
+.article-left {
+    padding-right: 10px;
+}
+
+.article-right {
+    margin-top: 50px;
+}
+
+.article-info-row {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    min-width: 200px;
+    padding: 5px;
+}
+
+.article-info-group {
+    display: grid;
+    min-width: 200px;
+}
+
+.article-info-type {
+    width: 180px;
+    display: flex;
+    align-items: center;
+}
+
+.article-company {
+    margin: auto;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+}
+
+.article-company-logo {
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 20%;
+}
+
+.article-company-name {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-right: 0;
+    padding-left: 10px;
+    font-size: 1.26rem;
+}
+
+.result-h3 {
+    color: #0b0b0b;
+    border-bottom: 0;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 1px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.article-link {
+    padding-top: 10px;
+    flex-grow: 100;
+    color: #b30920;
+    text-decoration: none;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.article-link:hover {
+    color: black;
+}
+
+.result-h3-sub {
+    color: rgb(55, 55, 55);
+}
+
+.searchBox {
+    background: inherit;
+    animation: inherit;
+    max-width: 1200px;
+    padding: 10px;
+}
+
+.searchBox_text {
+    color: white;
+}
+
+.jobs-filter {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 300px;
+    max-width: 300px;
+    flex-wrap: wrap;
+    height: max-content;
+}
+
+.filter-container {
+    padding: 5px;
+}
+
+.filter-fieldset {
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1.33rem;
+    border: 0;
+    margin-top: 10px;
+    display: block;
+    box-sizing: border-box;
+}
+
+.filter-row {
+    display: inline-flex;
+    flex-grow: 100;
+    padding: 6px;
+}
+
+.filter-row > label {
+    min-width: 150px;
+    padding-left: 10px;
+}
+
+.filter-radio {
+    display: inline-block;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.filter-radio i {
+    position: relative;
+    display: inline-block;
+    margin-right: .5rem;
+    width: 46px;
+    height: 26px;
+    background-color: #e6e6e6;
+    border-radius: 23px;
+    vertical-align: text-bottom;
+    transition: all 0.3s linear;
+}
+
+.filter-radio i::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 42px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 11px;
+    transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+    -webkit-transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+    -moz-transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+    -ms-transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+    transition: all 0.25s linear;
+}
+
+.filter-radio i::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 11px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+    transform: translate3d(2px, 2px, 0);
+    -webkit-transform: translate3d(2px, 2px, 0);
+    -moz-transform: translate3d(2px, 2px, 0);
+    -ms-transform: translate3d(2px, 2px, 0);
+    transition: all 0.2s ease-in-out;
+}
+
+.filter-radio:active i::after {
+    width: 28px;
+    transform: translate3d(2px, 2px, 0);
+    -webkit-transform: translate3d(2px, 2px, 0);
+    -moz-transform: translate3d(2px, 2px, 0);
+    -ms-transform: translate3d(2px, 2px, 0);
+}
+
+.filter-radio:active input:checked + i::after {
+    transform: translate3d(16px, 2px, 0);
+    -webkit-transform: translate3d(16px, 2px, 0);
+    -moz-transform: translate3d(16px, 2px, 0);
+    -ms-transform: translate3d(16px, 2px, 0);
+}
+
+.filter-radio input {
+    display: none;
+}
+
+.filter-radio input:checked + i {
+    background-color: #8d9cd7;
+}
+
+.filter-radio input:checked + i::before {
+    transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+    -webkit-transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+    -moz-transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+    -ms-transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+}
+
+.filter-radio input:checked + i::after {
+    transform: translate3d(22px, 2px, 0);
+    -webkit-transform: translate3d(22px, 2px, 0);
+    -moz-transform: translate3d(22px, 2px, 0);
+    -ms-transform: translate3d(22px, 2px, 0);
+}
+
+.filter-h3 {
+    color: #0b0b0b;
+    border-bottom: 0;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.26;
+}
+
+input[type=checkbox], input[type=radio] {
+    position: relative;
+    width: 1.3333333333rem;
+    height: 1.3333333333rem;
+    margin: 0;
+}
+
+label {
+    font-family: Roboto, sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width: 1200px) {
+
+    .jobs-filter {
+        position: relative;
+        flex-grow: 100;
+        max-width: 100%;
+    }
+
+    .article-right {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 851px) {
+
+    .article-content {
+        margin: auto;
+    }
+
+    .article-company {
+        justify-content: center;
+    }
+
+}
+
+@media screen and (max-width: 600px) and (min-width: 451px) {
+
+    .article-right {
+        margin-top: 0;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .content {
+        padding: 0;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .filter-container {
+        padding: 0;
+    }
+
+    .filter-fieldset {
+        padding: 5px;
+    }
+
+    .jobs-filter {
+        padding: 0;
+        width: 100%;
+    }
+
+    .jobs-content {
+        padding: 0;
+    }
+
+    .jobs-result {
+        padding-left: 0;
+    }
+
+}

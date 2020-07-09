@@ -1,0 +1,146 @@
+@media (prefers-color-scheme: dark) {
+
+    .searchBox_text {
+        color: #c4d7e7 !important;
+    }
+
+    .searchBox {
+        background-color: rgb(31, 31, 31) !important;
+    }
+}
+
+
+.searchBox_grid {
+    display: grid;
+    margin: auto;
+    padding: 10px 0 10px 0;
+}
+
+.searchBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    top: 45%;
+    min-width: 400px;
+    max-width: 600px;
+    align-items: center;
+    margin: auto;
+    position: relative;
+    padding: 20px;
+    font-size: 20px;
+    font-family: sans-serif;
+    background-color: grey;
+    border-radius: 8px;
+    animation: fadein 1.5s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(300px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.searchBox_input {
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    min-width: 350px;
+}
+
+.searchBox_item {
+    grid-row: auto;
+    grid-column-end: 2;
+    margin: 5px auto 5px auto;
+}
+
+.searchBox_text {
+    display: grid;
+    min-width: 200px;
+    padding-bottom: 15px;
+    margin: auto;
+    font-size: 26px;
+}
+
+.searchBox_button {
+    display: flex;
+    width: 150px;
+    height: 64px;
+    min-width: 130px;
+    max-width: 150px;
+    overflow: hidden;
+    position: relative;
+    transform: translatez(0);
+    text-decoration: none;
+    box-sizing: border-box;
+    font-size: 24px;
+    font-weight: normal;
+    box-shadow: 0 9px 18px rgba(0, 0, 0, 0.2);
+}
+
+.searchBox_button:hover {
+    text-decoration: none;
+    color: #d3dbe9;
+}
+
+.searchBox_button-text {
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    color: black;
+    background: #c4d7e7;
+    transition: all 0.2s ease-out 0s;
+}
+
+.searchBox_button-gradient {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    bottom: auto;
+    margin: auto;
+    opacity: 0.4;
+    z-index: -1;
+    background: radial-gradient(50px circle at top center, rgba(100, 100, 255, .5) 30%, rgba(255, 255, 255, 0));
+    transition: all 0s ease-out 0s;
+    transform: translatex(-50px);
+    animation: 18s linear 0s infinite searchBox_button-gradient-move;
+}
+
+@-webkit-keyframes searchBox_button-gradient-move {
+    0% {
+        transform: translatex(-50px);
+        background: radial-gradient(50px circle at center, rgba(100, 100, 255, .5) 30%, rgba(255, 255, 255, 0));
+    }
+    50% {
+        transform: translatex(200px);
+        opacity: 0.4;
+        background: radial-gradient(50px circle at center, rgba(50, 50, 50, .5) 30%, rgba(255, 255, 255, 0));
+    }
+    100% {
+        opacity: 1;
+        transform: translatex(-50px);
+        background: radial-gradient(50px circle at center, rgba(100, 100, 255, .5) 30%, rgba(255, 255, 255, 0));
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .searchBox {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .searchBox_input {
+        min-width: 100%;
+        width: 100%;
+        max-width: 100%;
+    }
+
+}

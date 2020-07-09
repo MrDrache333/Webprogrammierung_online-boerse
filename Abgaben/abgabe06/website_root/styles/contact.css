@@ -1,0 +1,84 @@
+.delete {
+    background: red !important;
+    float: right !important;
+    margin-left: 10px;
+}
+
+.form-submit {
+    display: inline-flex;
+}
+
+.contact-form {
+
+}
+
+.submit {
+    background: #A2B3F8;
+    color: #fff;
+    float: left;
+    border-radius: 5px;
+}
+
+.submit:hover {
+    background-color: #A2B3F8;
+}
+
+.contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    position: relative;
+
+}
+
+
+.content {
+    padding: 50px 10% 50px 10%;
+}
+
+.contact-col {
+    flex-grow: 1;
+    text-align: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 300px;
+    margin: 30px;
+
+}
+
+.contact-h2 {
+    font-family: inherit;
+    color: black;
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: 400;
+
+}
+
+.contact-li {
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    border-radius: 5px;
+    line-height: 22px;
+    background-color: white;
+    border: 2px solid #CC6666;
+    transition: all 0.3s;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+textarea {
+    display: block;
+    max-width: 500px;
+    border: 1px solid #ebebeb;
+    padding: 11px 20px;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 13px;
+    border-radius: 3px;
+}
+

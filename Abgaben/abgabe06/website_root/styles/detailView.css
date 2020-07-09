@@ -1,0 +1,220 @@
+@media (prefers-color-scheme: dark) {
+    .headLine {
+        color: rgb(180, 188, 202) !important;
+    }
+
+    .offerDescription > p,
+    .detailRow > p,
+    .offerCompanyDetails > p {
+        color: white;
+    }
+
+    .column {
+        background-color: rgb(70, 70, 70) !important;
+    }
+
+    .offerDetails,
+    .offerHeader {
+        background-color: rgb(31, 31, 31) !important;
+    }
+
+    .leaflet-tile {
+        -webkit-filter: hue-rotate(180deg) invert(100%) !important;
+        filter: hue-rotate(180deg) invert(100%) !important;
+    }
+}
+
+.offerNameTime {
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.offerNameTime > p {
+    font-size: 20px;
+}
+
+
+.content {
+    padding: 3vh 2% 50px 2%;
+}
+
+.offerCompanyContainer {
+    padding: 10px;
+    justify-content: center;
+}
+
+.offerCompanyDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.column > h2 {
+    font-size: 23px;
+}
+
+.offerImageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: min-content;
+}
+
+.offerLogo {
+    min-width: 100px;
+    width: content-box;
+    max-width: 250px;
+    border-radius: 25%;
+    padding: 5px;
+}
+
+.offerHeader {
+    border-radius: 8px;
+    padding: 0 10px 10px 10px;
+    width: max-content;
+    background-color: white;
+}
+
+.detailRow > p {
+    margin-block-start: 0;
+    font-size: 20px;
+}
+
+.offerName {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.offerCompanyDetails > p {
+    margin-block-start: 0;
+    font-size: 20px;
+}
+
+.offerName > h1,
+.offerName > h2 {
+    display: flex;
+    justify-content: center;
+    margin-block-start: 0;
+}
+
+.headLine {
+    color: black;
+    display: flex;
+    align-items: center;
+    margin-block-end: 0;
+    text-align: center;
+}
+
+.offerDetails {
+    background-color: white;
+    margin-top: -15px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 20px;
+    align-content: space-between;
+}
+
+.column {
+    min-width: 300px;
+    width: max-content;
+    background-color: lightgrey;
+    border-radius: 8px;
+    margin: 5px;
+    padding: 20px;
+}
+
+.edgeColumn {
+    max-width: 350px;
+}
+
+.offerDescription {
+    font-size: 20px;
+    text-align: justify;
+}
+
+.offerDescription > p {
+    line-height: 1.6;
+}
+
+.offerContainer {
+    animation: fadein 1.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.errorContainer {
+    background-color: #888888;
+    border-radius: 8px;
+    padding: 20px;
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+.map {
+    max-height: 250px;
+}
+
+#mapView {
+    height: 250px;
+}
+
+.errorContainer > h1 {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.errorContainer > h2 {
+    font-size: 35px;
+}
+
+.errorContainer > p {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+        transform: translateY(300px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .offerDetails {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .content {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .offerDetails {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .edgeColumn {
+        max-width: 100%;
+    }
+
+    .column {
+        width: 100%;
+    }
+}
+

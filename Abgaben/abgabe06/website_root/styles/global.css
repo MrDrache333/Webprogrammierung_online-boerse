@@ -1,0 +1,558 @@
+.div {
+    display: block;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .headerrahmen {
+        background-color: black;
+    }
+
+    .navi {
+        background-color: #4f4f4f !important;
+    }
+
+    .jobs-content {
+        background-color: rgb(31, 31, 31) !important;
+    }
+
+    input[type="text"], input[type="text"]::placeholder, input[type="email"], input[type="email"]::placeholder, input[type="password"], input[type="password"]::placeholder, input[type="date"], input[type="date"]::placeholder, textarea {
+        background-color: #4f4f4f !important;
+        color: #cccccc !important;
+    }
+
+    .filter-fieldset, article, .card, .button_field, .button_field > a {
+        background-color: #4f4f4f !important;
+        color: #cccccc !important;
+    }
+
+    .loginModal-content, .loginModal-content > h2 {
+        background-color: #222222 !important;
+        color: #cccccc !important;
+    }
+
+    .filter-fieldset > h3, .article-head > h3, .article-head > span, .new_offer-form > h2 {
+        color: #c4d7e7 !important;
+    }
+
+    .content {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/background.jpg") !important;
+    }
+
+    .article-link {
+        color: red !important;
+    }
+
+    .grid-farbe, .contact-h2 {
+        background-color: rgb(31, 31, 31) !important;
+        color: rgb(180, 188, 202) !important;
+    }
+
+    .loginClose {
+        position: absolute !important;
+        right: 25px !important;
+        top: 0 !important;
+        color: #FFFFFF !important;
+        font-size: 50px !important;
+        font-weight: bold !important;
+    }
+
+    .loginClose:hover,
+    .close:focus {
+        color: red !important;
+        cursor: pointer !important;
+    }
+}
+
+/*Same for all pages*/
+body {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input {
+    display: block;
+    max-width: 100%;
+    border: 1px solid #ebebeb;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    font-weight: 500;
+    font-size: 13px;
+    border-radius: 3px;
+}
+
+/* Full-width input fields of Login and Registration */
+.loginInput {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/*All normal buttons*/
+button {
+    background-color: #A2B3F8;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #7F7F7F;
+    opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: red;
+    width: 140px;
+    height: 40px;
+}
+
+/* The Close Button (x) */
+.loginClose {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.loginClose:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Center the image and position the close button */
+.loginImgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+/*For the Profileimage*/
+img.loginAvatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Add Zoom Animation */
+.loginAnimate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes loginAnimatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes loginAnimatezoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+.loginClose:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Center the image and position the close button */
+.loginImgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+/*For the Profileimage*/
+img.loginAvatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+/*The input for the textBox*/
+.loginContainer {
+    padding-left: 16px;
+    padding-right: 16px;
+    min-width: 100px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* The Modal (background) */
+.loginModal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.loginModal-content {
+    padding: 50px;
+    background-color: #fefefe;
+    margin: 0 auto 0 auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 40%; /* Could be more or less, depending on screen size */
+    border-radius: 5px;
+}
+
+
+/* Add Zoom Animation */
+.loginAnimate {
+    -webkit-animation: animatezoom 1.5s;
+    animation: animatezoom 1.5s
+}
+
+@-webkit-keyframes loginAnimatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes loginAnimatezoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+.submit {
+    width: 140px;
+    height: 40px;
+    font-weight: 400;
+    font-size: 13px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+h2 {
+    line-height: 1.66;
+    padding: 0;
+    font-weight: 700;
+    color: #222;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 0 0 32px;
+
+}
+
+h3 {
+    line-height: 1.66;
+    padding: 0;
+    font-weight: 700;
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin: 0 0 32px;
+
+}
+
+textarea:focus, input:focus {
+    outline: none;
+}
+
+.loginContent {
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    padding: 10vh 5% 50px 10%;
+    margin-top: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.content {
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+    margin-top: 0;
+    padding: 40vh 10% 50px 10%;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.form-submit {
+    padding-top: 27px;
+}
+
+.formulare {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer {
+    display: block;
+    position: relative;
+    font-size: 16px;
+    padding: 7em 0;
+    background: #222831;
+    color: rgba(255, 255, 255, 0.7);
+    grid-area: footer;
+    align-content: center;
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.grid-farbe {
+    background-color: #c4d7e7;
+}
+
+.text {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-col {
+    float: left;
+    flex-grow: 1;
+    text-align: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 200px;
+}
+
+.list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer-li {
+    padding-bottom: 1rem !important;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: auto;
+
+}
+
+.contact-container {
+    padding-bottom: 15px;
+    color: white;
+}
+
+.footer-h2 {
+    font-family: inherit;
+    color: #fff;
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+}
+
+.headerrahmen {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.images {
+    width: 300px;
+    height: 300px;
+}
+
+.loginbutton > button {
+    float: right;
+    margin-left: auto;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
+.loginbutton {
+    float: right;
+    margin-right: 0;
+    display: flex;
+    align-items: flex-end;
+}
+
+.logo {
+
+}
+
+.kefedologo {
+    max-width: 250px;
+    min-width: 200px;
+}
+
+.button-anmelden {
+    border-radius: 8px;
+    background-color: #A2B3F8;
+}
+
+.button-anmelden:hover {
+    background-color: #7F7F7F;
+    color: white;
+}
+
+/* Navi Leiste*/
+.navileiste {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    background-color: #c4d7e7;
+}
+
+.navi {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #7f7f7f;
+    /* position: fixed;
+    */
+    /*möglichkeit die leiste fix immer im Bild zu haben */
+    /* top:20;
+     width: 100%;
+    */
+}
+
+.navibutton {
+    float: left;
+}
+
+@media screen and (max-width: 520px) {
+    .navibutton {
+        width: 100%;
+    }
+
+    .content {
+        padding: 0;
+    }
+
+    .loginbutton {
+        margin: 0 auto;
+    }
+
+    .logo {
+        margin: 0 auto;
+        flex-grow: inherit;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .loginModal-content {
+        width: 100%;
+    }
+}
+
+.naviobjekt {
+    display: block;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+.navibutton :last-child {
+    border-right: none;
+}
+
+.naviobjekt:hover {
+    background-color: #222831;
+    text-decoration: none;
+    color: #A2B3F8;
+}
+
+.active {
+    background-color: #222831;
+}
+
+.footer-li > a {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.fehlermeldung {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 100;
+}
