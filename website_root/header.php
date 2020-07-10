@@ -15,6 +15,61 @@ if (isset($_SESSION["kik"]) && $_SESSION["kik"] === true) {
     header("Location:messages.php");
     unset($_SESSION["kik"]);
 }
+
+if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+} elseif (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+}
+if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+} elseif (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+}
+if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+} else if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+}
+
+if (!preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) {
+    unset($_SESSION["bearbeiten"]);
+    if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
+        $logo = "images/logos/";
+        $logo .= $_SESSION["tempUpload"];
+        unlink($logo);
+        $_SESSION['tempUpload'] = false;
+    }
+}
+
+function Fehlerbehandlung($texterror)
+{
+    if (isset($_SESSION['error'])) {
+        $_SESSION['error'] .= $texterror;
+
+    } else {
+        $_SESSION['error'] = $texterror;
+    }
+
+}
+
+function logout($texterror)
+{
+    if (isset($_SESSION['loggout'])) {
+        $_SESSION['loggout'] .= $texterror;
+
+    } else {
+        $_SESSION['loggout'] = $texterror;
+    }
+
+}
+
 if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
 
 
@@ -59,62 +114,6 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
         Fehlerbehandlung("Sie wurden ausgeloggt.");
         header("Location: index.php");
     }
-}
-
-if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
-    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: noJSLogin.php");
-} elseif (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: noJSLogin.php");
-}
-if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
-    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: noJSLogin.php");
-} elseif (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: noJSLogin.php");
-}
-if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
-    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: noJSLogin.php");
-} else if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: noJSLogin.php");
-}
-
-if (!preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) {
-    unset($_SESSION["bearbeiten"]);
-    if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
-        $logo = "images/logos/";
-        $logo .= $_SESSION["tempUpload"];
-        unlink($logo);
-        $_SESSION['tempUpload'] = false;
-    }
-
-
-}
-
-function Fehlerbehandlung($texterror)
-{
-    if (isset($_SESSION['error'])) {
-        $_SESSION['error'] .= $texterror;
-
-    } else {
-        $_SESSION['error'] = $texterror;
-    }
-
-}
-
-function logout($texterror)
-{
-    if (isset($_SESSION['loggout'])) {
-        $_SESSION['loggout'] .= $texterror;
-
-    } else {
-        $_SESSION['loggout'] = $texterror;
-    }
-
 }
 
 ?>
