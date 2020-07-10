@@ -91,7 +91,7 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
                 if (file_exists($imageTarget_file)) {
                     unlink($imageTarget_file);
                 } else {
-                    Fehlerbehandlung('Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.');
+                    logout('Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.');
                 }
             }
 
@@ -105,13 +105,13 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
         if (file_exists($imageTarget_file)) {
             unlink($imageTarget_file);
         } else {
-            Fehlerbehandlung('Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.');
+            logout('Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.');
         }
     }
     $delete = $UserDao->delete($email);
     if ($delete == true) {
-        Fehlerbehandlung("Ihr Profil wurde erfolgreich gelöscht!");
-        Fehlerbehandlung("Sie wurden ausgeloggt.");
+        logout("Ihr Profil wurde erfolgreich gelöscht!");
+        logout("Sie wurden ausgeloggt.");
         header("Location: index.php");
     }
 }
@@ -218,7 +218,7 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
             <?php if (isset($_SESSION["loggout"])) {
 
                 echo '<br /><br /><label for="error"><i style="color: #FF0000">' . $_SESSION["loggout"] . '</i></label>';
-                unset($_SESSION["loggout"]);
+
             }
             ?>
         </div>

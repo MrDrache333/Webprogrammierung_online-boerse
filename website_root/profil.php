@@ -60,7 +60,17 @@ include "profil_loader.php";
                 </div>
                 <div class="form_col">
                     <h2>Meine Informationen</h2>
-                    <?php if (isset($_SESSION["error"]) && preg_match('/altpw/', $_SESSION["error"])) {
+                    <?php
+                    if (isset($_SESSION["error"]) && preg_match('/Vorname/', $_SESSION["error"])) {
+                        echo '<h3><i style="color: #FF0000"> Ihr Vorame ist nicht korrekt!</i></h3>';
+                    }
+                    if (isset($_SESSION["error"]) && preg_match('/Nachname/', $_SESSION["error"])) {
+                        echo '<h3><i style="color: #FF0000"> Ihr Nachname ist nicht korrekt!</i></h3>';
+                    }
+                    if (isset($_SESSION["error"]) && preg_match('/Email/', $_SESSION["error"])) {
+                        echo '<h3><i style="color: #FF0000"> Ihr Email ist nicht falsch oder nicht verfügbar!</i></h3>';
+                    }
+                    if (isset($_SESSION["error"]) && preg_match('/altpw/', $_SESSION["error"])) {
                         echo '<h3><i style="color: #FF0000"> Ihr altes Passwort ist nicht korrekt!</i></h3>';
                     }
                     if (isset($_SESSION["error"]) && preg_match('/pwerfolgreich/', $_SESSION["error"])) {

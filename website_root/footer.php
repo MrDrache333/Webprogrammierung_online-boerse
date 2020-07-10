@@ -1,5 +1,6 @@
 <?php
 unset($_SESSION["error"]);
+unset($_SESSION["loggout"]);
 
 ?>
 <footer class="footer">
