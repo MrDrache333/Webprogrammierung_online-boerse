@@ -161,10 +161,11 @@ function Fehlerbehandlung($texterror)
     <?php if (preg_match("/detailView\.php/i", $_SERVER['REQUEST_URI'])) { ?>
         <title>KEFEDO-Detailansicht</title>
         <link rel="stylesheet" type="text/css" href="styles/detailView.css">
-        <link rel="stylesheet" href="leaflet/leaflet.css"
-              crossorigin=""/>
-        <script src="leaflet/leaflet.js"
-                crossorigin=""></script>
+        <link rel="stylesheet" href="leaflet/leaflet.css"/>
+        <script src="leaflet/leaflet.js"></script>
+        <link rel="stylesheet" href="leaflet/leaflet-routing-machine.css"/>
+        <script src="leaflet/leaflet-routing-machine.js"></script>
+
     <?php } ?>
     <?php if (preg_match("/impressum\.php/i", $_SERVER['REQUEST_URI'])) { ?>
         <title>KEFEDO-Impressum</title>
