@@ -62,24 +62,24 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
 }
 
 if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
-    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: noJSLogin.php");
 } elseif (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: noJSLogin.php");
 }
 if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
-    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: noJSLogin.php");
 } elseif (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: noJSLogin.php");
 }
 if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
-    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: noJSLogin.php");
 } else if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
     header("Location: noJSLogin.php");
 }
 
@@ -102,6 +102,17 @@ function Fehlerbehandlung($texterror)
 
     } else {
         $_SESSION['error'] = $texterror;
+    }
+
+}
+
+function logout($texterror)
+{
+    if (isset($_SESSION['loggout'])) {
+        $_SESSION['loggout'] .= $texterror;
+
+    } else {
+        $_SESSION['loggout'] = $texterror;
     }
 
 }
@@ -205,10 +216,10 @@ function Fehlerbehandlung($texterror)
             <a href="index.php"><img alt="Logo" class="kefedologo" src="images/logo.png"></a>
         </div>
         <div class="fehlermeldung">
-            <?php if (isset($_SESSION["error"])) {
+            <?php if (isset($_SESSION["loggout"])) {
 
-                echo '<br /><br /><label for="error"><i style="color: #FF0000">' . $_SESSION["error"] . '</i></label>';
-
+                echo '<br /><br /><label for="error"><i style="color: #FF0000">' . $_SESSION["loggout"] . '</i></label>';
+                unset($_SESSION["loggout"]);
             }
             ?>
         </div>
@@ -374,8 +385,8 @@ function Fehlerbehandlung($texterror)
                                          required/> </span>
                             <label for="accept_agb">Ich habe die <a target="_blank" id="agb" href="impressum.php">Nutzungsbedingungen</a>
                                 zur Kenntnis genommen und akzeptiere sie.</label></p>
-</body>
-</p>
+
+                        </p>
 <button name="registerSubmit" type="submit">Registrieren</button>
 </div>
 
