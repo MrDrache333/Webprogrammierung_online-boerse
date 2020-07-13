@@ -15,6 +15,61 @@ if (isset($_SESSION["kik"]) && $_SESSION["kik"] === true) {
     header("Location:messages.php");
     unset($_SESSION["kik"]);
 }
+
+if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+} elseif (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+}
+if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+} elseif (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+}
+if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+} else if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
+    logout("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
+    header("Location: noJSLogin.php");
+}
+
+if (!preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) {
+    unset($_SESSION["bearbeiten"]);
+    if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
+        $logo = "images/logos/";
+        $logo .= $_SESSION["tempUpload"];
+        unlink($logo);
+        $_SESSION['tempUpload'] = false;
+    }
+}
+
+function Fehlerbehandlung($texterror)
+{
+    if (isset($_SESSION['error'])) {
+        $_SESSION['error'] .= $texterror;
+
+    } else {
+        $_SESSION['error'] = $texterror;
+    }
+
+}
+
+function logout($texterror)
+{
+    if (isset($_SESSION['loggout'])) {
+        $_SESSION['loggout'] .= $texterror;
+
+    } else {
+        $_SESSION['loggout'] = $texterror;
+    }
+
+}
+
 if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
 
 
@@ -36,7 +91,7 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
                 if (file_exists($imageTarget_file)) {
                     unlink($imageTarget_file);
                 } else {
-                    Fehlerbehandlung('Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.');
+                    logout('Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.');
                 }
             }
 
@@ -50,60 +105,15 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
         if (file_exists($imageTarget_file)) {
             unlink($imageTarget_file);
         } else {
-            Fehlerbehandlung('Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.');
+            logout('Konnte nicht gelöscht werden:  ' . $imageTarget_file . ',das Bild existiert nicht.');
         }
     }
     $delete = $UserDao->delete($email);
     if ($delete == true) {
-        Fehlerbehandlung("Ihr Profil wurde erfolgreich gelöscht!");
-        Fehlerbehandlung("Sie wurden ausgeloggt.");
+        logout("Ihr Profil wurde erfolgreich gelöscht!");
+        logout("Sie wurden ausgeloggt.");
         header("Location: index.php");
     }
-}
-
-if (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
-    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: noJSLogin.php");
-} elseif (preg_match("/profil\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: noJSLogin.php");
-}
-if (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
-    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: noJSLogin.php");
-} elseif (preg_match("/messages\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: noJSLogin.php");
-}
-if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE["loggedin"])) {
-    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: noJSLogin.php");
-} else if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && $_COOKIE["loggedin"] != "true") {
-    Fehlerbehandlung("Sie sind nicht eingeloggt. Loggen sie sich wieder ein um fortzufahren.");
-    header("Location: noJSLogin.php");
-}
-
-if (!preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) {
-    unset($_SESSION["bearbeiten"]);
-    if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
-        $logo = "images/logos/";
-        $logo .= $_SESSION["tempUpload"];
-        unlink($logo);
-        $_SESSION['tempUpload'] = false;
-    }
-
-
-}
-
-function Fehlerbehandlung($texterror)
-{
-    if (isset($_SESSION['error'])) {
-        $_SESSION['error'] .= $texterror;
-
-    } else {
-        $_SESSION['error'] = $texterror;
-    }
-
 }
 
 ?>
@@ -161,10 +171,11 @@ function Fehlerbehandlung($texterror)
     <?php if (preg_match("/detailView\.php/i", $_SERVER['REQUEST_URI'])) { ?>
         <title>KEFEDO-Detailansicht</title>
         <link rel="stylesheet" type="text/css" href="styles/detailView.css">
-        <link rel="stylesheet" href="leaflet/leaflet.css"
-              crossorigin=""/>
-        <script src="leaflet/leaflet.js"
-                crossorigin=""></script>
+        <link rel="stylesheet" href="leaflet/leaflet.css"/>
+        <script src="leaflet/leaflet.js"></script>
+        <link rel="stylesheet" href="leaflet/leaflet-routing-machine.css"/>
+        <script src="leaflet/leaflet-routing-machine.js"></script>
+
     <?php } ?>
     <?php if (preg_match("/impressum\.php/i", $_SERVER['REQUEST_URI'])) { ?>
         <title>KEFEDO-Impressum</title>
@@ -204,9 +215,9 @@ function Fehlerbehandlung($texterror)
             <a href="index.php"><img alt="Logo" class="kefedologo" src="images/logo.png"></a>
         </div>
         <div class="fehlermeldung">
-            <?php if (isset($_SESSION["error"])) {
+            <?php if (isset($_SESSION["loggout"])) {
 
-                echo '<br /><br /><label for="error"><i style="color: #FF0000">' . $_SESSION["error"] . '</i></label>';
+                echo '<br /><br /><label for="error"><i style="color: #FF0000">' . $_SESSION["loggout"] . '</i></label>';
 
             }
             ?>
@@ -373,8 +384,8 @@ function Fehlerbehandlung($texterror)
                                          required/> </span>
                             <label for="accept_agb">Ich habe die <a target="_blank" id="agb" href="impressum.php">Nutzungsbedingungen</a>
                                 zur Kenntnis genommen und akzeptiere sie.</label></p>
-</body>
-</p>
+
+                        </p>
 <button name="registerSubmit" type="submit">Registrieren</button>
 </div>
 

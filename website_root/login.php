@@ -67,10 +67,11 @@ if (isset($_POST["loginSubmit"])) {
     if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{5,30}$/', $loginPassword)) {
         $errorRegister = $errorRegister . "+password";
     }
-    if (!isset($AGB)) {
+
+
+    if ($AGB !== "1") {
         $errorRegister = $errorRegister . "+AGB";
     }
-
     if ($errorRegister == "register") {
         $controller = new UserDAOImpl();
         if ($controller->findUserByMail($loginEmail) === null) {

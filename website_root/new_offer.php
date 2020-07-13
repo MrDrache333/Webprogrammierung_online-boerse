@@ -106,7 +106,7 @@ include "new_offer_loader.php";
                             <label for="Ort"><?php if (isset($_SESSION["error"]) && preg_match('/Ort/', $_SESSION["error"])) {
                                     echo '<i style="color: #FF0000"> Ihr Ort ist falsch!</i>';
                                 } else {
-                                    echo "Titel:";
+                                    echo "Stadt:";
                                 } ?></label>
                             <input type="text" name="ort" id="ort" placeholder="Musterhausen"
                                    value="<?php echo $ort ?? ""; ?>"

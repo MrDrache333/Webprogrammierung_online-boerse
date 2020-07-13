@@ -68,7 +68,7 @@ include "detailViewLoader.php"
                     <h2 class="headLine">Beschreibung</h2>
                     <p><?php echo $offer->getDescription(); ?></p>
                 </div>
-                <?php if ($location !== null) { ?>
+                <?php if (isset($location) && $location !== null) { ?>
                     <div class="map">
                         <div id="mapView">
                         </div>
@@ -81,6 +81,13 @@ include "detailViewLoader.php"
                             marker.bindPopup("<b><?php echo $offer->getCompanyName() ?></b>").openPopup();
 
                             mymap.on('locationfound', onLocationFound);
+
+                            function onLocationError(e) {
+                                L.marker(<?php echo $location->getLat() . ", " . $location->getLong(); ?>).addTo(mymap)
+                                    .bindPopup("<b><?php echo $offer->getCompanyName() ?></b>").openPopup();
+                            }
+
+                            map.on('locationerror', onLocationError);
                         </script>
                     </div>
                 <?php } ?>
