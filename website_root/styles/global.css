@@ -51,7 +51,8 @@
         background-color: rgb(31, 31, 31) !important;
         color: rgb(180, 188, 202) !important;
     }
-    .loginClose{
+
+    .loginClose {
         position: absolute !important;
         right: 25px !important;
         top: 0 !important;
@@ -318,16 +319,18 @@ h3 {
 textarea:focus, input:focus {
     outline: none;
 }
-.loginContent{
+
+.loginContent {
     background-image: url("../images/background.jpg");
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
     padding: 10vh 5% 50px 10%;
-    margin-top:0;
+    margin-top: 0;
     width: 100%;
-    min-height:100vh ;
+    min-height: 100vh;
 }
+
 .content {
     background-image: url("../images/background.jpg");
     background-repeat: no-repeat;

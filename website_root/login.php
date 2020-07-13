@@ -49,7 +49,6 @@ if (isset($_POST["loginSubmit"])) {
     $errorRegister = "register";
 
 
-
     if (!preg_match('/^[a-zA-Z-_üöäß\s]{3,30}$/', $prename)) {
         $errorRegister = $errorRegister . "+vorname";
     } else {

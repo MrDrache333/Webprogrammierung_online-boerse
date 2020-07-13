@@ -260,7 +260,7 @@ include "new_offer_loader.php";
                                 <input type="submit" value="Anzeige erstellen" class="button_offer"
                                        name="submit_offer"
                                        id="submit_offer"/>
-                            <?php }; ?>
+                            <?php } ?>
                         </div>
 
 

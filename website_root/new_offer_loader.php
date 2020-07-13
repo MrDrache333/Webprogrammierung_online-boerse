@@ -141,13 +141,13 @@ if (isset($_POST["edit_offer"])) {
         $offer->setFree(htmlspecialchars($free));
         $offer->setOfferType($art);
         $offer->setDuration($befristung);
-            $offer->setWorkModel($arbeitszeit);
-            $OfferDao->update($offer);
-            if (isset($_SESSION['tempUpload'])) {
-                rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $offer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
-                unset($_SESSION['tempUpload']);
+        $offer->setWorkModel($arbeitszeit);
+        $OfferDao->update($offer);
+        if (isset($_SESSION['tempUpload'])) {
+            rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $offer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
+            unset($_SESSION['tempUpload']);
 
-            }
+        }
 
     }
 }
