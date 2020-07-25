@@ -36,7 +36,7 @@ class UserDAOImpl implements UserDAO
      */
     function create(User $user)
     {
-        $command = "insert into user(email, prename, surname, password) values (?,?,?,?)";
+        $command = "insert into user(email, prename, surname, password,link) values (?,?,?,?,)";
         $values = [$user->getEmail(), $user->getPrename(), $user->getSurname(), $user->getPassword()];
         return UserHelper::getUsersFromSQLResult($this->database->execute($command, $values)) === null;
     }

@@ -38,6 +38,12 @@ if (preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI']) && !isset($_COOKIE[
     header("Location: noJSLogin.php");
 }
 
+if (preg_match("/noJSLogin\.php/i", $_SERVER['REQUEST_URI']) && isset($_COOKIE["loggedin"])) {
+    if ($_COOKIE["loggedin"] === "true") {
+        header("Location: profil.php");
+    }
+}
+
 if (!preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) {
     unset($_SESSION["bearbeiten"]);
     if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
@@ -407,6 +413,22 @@ if (!isset($_COOKIE["wpcc"])) {
     ?>
 
 </div>
+<?php
+if (isset($_GET["email"])) {
+    $email = $_GET["email"];
+    $UserDAOImpl = new UserDAOImpl();
+    $user = $UserDAOImpl->findUserByMail($email);
+    $link = $user->getLink();
+    if (isset($_GET["randomid"]) && preg_match(".$link.", $_GET["randomid"])) {
+        $user->setLink("");
+        $result = $UserDAOImpl->update($user);
+//TODO Fehlerbehandulung bei falschen daten und Bestätigung das man regestriert wurde per Text
+        // logout("Ihre Regestrierung war erfolgreich");
+    }
+}
+
+
+?>
 
 <!-- Script with the click, which kills the Modal-->
 <script>

@@ -20,7 +20,7 @@ if (isset($_POST["loginSubmit"])) {
         $user = $controller->findUserByMail($email);
 
 
-        if ($user !== null && password_verify($password, $user->getPassword())) {
+        if ($user !== null && password_verify($password, $user->getPassword()) && $user->getLink() == "") {
             setcookie("email", $email, time() + 60 * 60 * 24);
             setcookie("username", $user->getPrename() . " " . $user->getSurname(), time() + 60 * 60 * 24);
             setcookie("loggedin", "true", time() + 60 * 60 * 24);
@@ -80,6 +80,8 @@ if (isset($_POST["loginSubmit"])) {
             $toRegisterUser->setSurname($lastname);
             $toRegisterUser->setEmail($loginEmail);
             $toRegisterUser->setPassword(password_hash($loginPassword, PASSWORD_DEFAULT));
+            $randomid = randomid();
+            $toRegisterUser->setLink($randomid);
             $result = $controller->create($toRegisterUser);
 
 
@@ -94,7 +96,8 @@ if (isset($_POST["loginSubmit"])) {
                 $user = $controller->findUserByMail($loginEmail);
                 $id = $user->getId();
                 $filename = $prename . "_" . $lastname . "_" . $id . ".txt";
-                $data = "Sie haben sich bei KEFEDO registriert. Dies war erfolgreich. Loggen Sie sich mit Ihrem Benutzernamen: " . $loginEmail . " und Ihrem Passwort ein. Die Datei wird nach dem einloggen gelöscht!";
+                $data = "Sie haben sich bei KEFEDO registriert. Dies war erfolgreich. Loggen Sie sich mit Ihrem Benutzernamen: " . $loginEmail . " und Ihrem Passwort ein. Die Datei wird nach dem einloggen gelöscht!
+                http://localhost:8080/noJSLogin.php?randomid=" . $randomid . "&email=" . $loginEmail;
                 file_put_contents($filename, $data);
                 $errorRegister = $errorRegister . "+datei";
                 header('Location:' . $header . $errorRegister);
@@ -163,6 +166,25 @@ else if (isset($_POST["pwforget"])) {
 function GeneratePassword($length = 12)
 {
     //Funktion zur Generierung eines zufälligen Passworts
+
+    $char_control = "";
+    $chars_for_pw = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $chars_for_pw .= "0123456789";
+
+    $chars_for_pw .= "abcdefghijklmnopqrstuvwxyz";
+    mt_srand((double)microtime() * 1000000);
+    for ($i = 0; $i < $length; $i++) {
+        $number = random_int(0, strlen($chars_for_pw));
+        $char_control .= $chars_for_pw[$number];
+    }
+
+    return $char_control;
+
+}
+
+function randomid($length = 8)
+{
+    //Funktion zur Generierung einer zufälligen ID
 
     $char_control = "";
     $chars_for_pw = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

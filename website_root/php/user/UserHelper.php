@@ -53,6 +53,7 @@ class UserHelper
         $user->setPrename($result['prename'] ?? null);
         $user->setSurname($result['surname'] ?? null);
         $user->setPassword(($result['password'] ?? null));
+        $user->setLink(($result['link'] ?? null));
         return $user;
     }
 

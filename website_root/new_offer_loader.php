@@ -89,10 +89,10 @@ if (isset($_POST["edit_offer"])) {
     if ($eingelogt == "true") {
 
 
-        if (!preg_match('/^([\w\x{C4}\x{E4}\x{D6}\x{F6}\x{DC}\x{FC}\x{DF}\x{2F}\x{29}\x{28}\s]){0,50}$/u', $titel)) {
+        if (!preg_match('/^[A-Za-z0-9\s]{0,50}$/u', $titel)) {
             $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
         }
-        if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $subtitle)) {
+        if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]{3,50}$/', $subtitle)) {
             $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
         }
         /*  if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $straße)) {
@@ -110,10 +110,10 @@ if (isset($_POST["edit_offer"])) {
         if (!preg_match('/^[0-9-_]{3,50}$/', $free)) {
             $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
         }
-        if (!preg_match('/^([\w\x{C4}\x{E4}\x{D6}\x{F6}\x{DC}\x{FC}\x{DF}\x{2F}\x{29}\x{28}\s]){5,900}$/u', $beschreibung)) {
+        if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]{3,500}$/', $beschreibung)) {
             $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
         }
-        if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $companyname)) {
+        if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]{3,50}$/', $companyname)) {
             $errornachricht = Fehlerbehandlung("Ihr Firmenname ist falsch.");
         }
         if ($art == null) {
@@ -311,29 +311,29 @@ if (isset($_POST["submit_offer"])) {
             $idaktuelle = $user->getId();
 
 
-            if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $titel)) {
+            if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]{3,50}$/', $titel)) {
                 $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
             }
-            if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $subtitle)) {
+            if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]{3,50}$/', $subtitle)) {
                 $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
             }
-            if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $straße)) {
+            if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]{3,50}$/', $straße)) {
                 $errornachricht = Fehlerbehandlung("Ihre Straße ist falsch.");
             }
             if (!preg_match('/^[0-9a-zA-Z]{1,50}$/', $hsnr)) {
                 $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
             }
-            if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{2,20}$/', $ort)) {
+            if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]{2,20}$/', $ort)) {
                 $errornachricht = Fehlerbehandlung("Ihr Ort ist falsch.");
             }
             if (!preg_match('/^[\d]{5}$/', $plz)) {
                 $errornachricht = Fehlerbehandlung("Ihre Postleitzahl ist falsch.");
             }
 
-            if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{2,200}$/', $beschreibung)) {
+            if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]$/', $beschreibung)) {
                 $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
             }
-            if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $companyname)) {
+            if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]{3,50}$/', $companyname)) {
                 $errornachricht = Fehlerbehandlung("Ihr Firmenname ist falsch.");
             }
             if (!isset ($art)) {

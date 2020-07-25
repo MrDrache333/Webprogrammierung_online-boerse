@@ -12,6 +12,7 @@ class User
     private $surname;
     private $email;
     private $password;
+    private $link;
 
     /**
      * User constructor.
@@ -82,6 +83,22 @@ class User
     public function setPassword($password): void
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param mixed $link
+     */
+    public function setLink($link): void
+    {
+        $this->link = $link;
     }
 
     public function getProfilePhoto()
