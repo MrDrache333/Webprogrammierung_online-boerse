@@ -48,9 +48,25 @@ include "detailViewLoader.php"
                     <h3 class="headLine"><span class="material-icons">location_on</span>Firmenadresse</h3>
                     <p><?php echo $offer->getAddress()->getStreet() . " " . $offer->getAddress()->getNumber() . "<br>";
                         echo $offer->getAddress()->getPlz() . " " . $offer->getAddress()->getTown();
+                        $id = $offer->getId();
                         ?></p>
                 </div>
+                <h2 class="headLine"><span class="material-icons">share</span> Teilen</h2>
+                <hr>
+                <a class="twitter-share-button"
+                   href="https://twitter.com/intent/tweet?text=Dieser%20Job%20ist%20sehr%20interesannt.%20Schaut%20selbst:%20https://kefedo.kog-nas.synology.me:5443/detailView.php?showId=<?php echo $id; ?> "
+                   target="_blank"
+                   data-size="large">
+                    <img src="icons/twitter.png" width="50" height="50"/></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://kefedo.kog-nas.synology.me:5443/detailView.php?showId=<?php echo $id; ?> "
+                   target="_blank">
+                    <img src="icons/facbook.png" width="50" height="50"/></a>
+                <script async src="https://telegram.org/js/telegram-widget.js?10"
+                        data-telegram-share-url="https://kefedo.kog-nas.synology.me:5443/detailView.php?showId=<?php echo $id; ?>"
+                        data-comment="Hier den Job will ich dir Zeigen:" data-size="large" data-text="notext"></script>
+
             </div>
+
             <div class="column offerMainContent">
                 <div class="offerName">
                     <h1 class="headLine"><?php echo $offer->getTitle(); ?></h1>
@@ -95,7 +111,8 @@ include "detailViewLoader.php"
             <div class="column edgeColumn offerAttributes">
                 <h2 class="headLine"><span class="material-icons">info</span> Details</h2>
                 <div class="detailRow">
-                    <h3 class="headLine">Angebotsart</h3>
+
+                <h3 class="headLine">Angebotsart</h3>
                     <p><?php echo $workType ?? "Unbekannt"; ?></p>
                 </div>
                 <div class="detailRow">
