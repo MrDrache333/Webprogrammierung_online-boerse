@@ -56,5 +56,4 @@ unset($_SESSION["loggout"]);
             </div>
         </div>
     </div>
-    <script src="scripts/cookieBanner.js"></script>
 </footer>

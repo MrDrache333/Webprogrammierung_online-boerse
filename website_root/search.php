@@ -32,13 +32,13 @@ if (isset($_GET['what']) || isset($_GET['where'])) {
     //Einträge anzeigen
     displayResults($result);
     //Wenn gefiltert wurde, oder die Seite neugeladen wurde
-} elseif (isset($_GET['type']) || isset($_GET['duration']) || isset($_GET['time']) || isset($_SESSION['ls_what']) || isset($_SESSION['ls_where'])) {
+} elseif (isset($_GET['type1']) || isset($_GET['type2']) || isset($_GET['type4']) || isset($_GET['type8']) || isset($_GET['duration1']) || isset($_GET['duration2']) || isset($_GET['duration4']) || isset($_GET['time1']) || isset($_GET['time2']) || isset($_GET['time4']) || isset($_GET['time8']) || isset($_GET['time16']) || isset($_SESSION['ls_what']) || isset($_SESSION['ls_where'])) {
     //Filter laden, oder leeren
-    $type = $_GET['type'] ?? null;
-    $duration = $_GET['duration'] ?? null;
-    $time = $_GET['time'] ?? null;
+    $type = ($_GET['type1'] ?? 0) + ($_GET['type2'] ?? 0) + ($_GET['type4'] ?? 0) + ($_GET['type8'] ?? 0);
+    $duration = ($_GET['duration1'] ?? 0) + ($_GET['duration2'] ?? 0) + ($_GET['duration4'] ?? 0);
+    $time = ($_GET['time1'] ?? 0) + ($_GET['time2'] ?? 0) + ($_GET['time4'] ?? 0) + ($_GET['time8'] ?? 0) + ($_GET['time16'] ?? 0);
     //Prüfen, ob gültige Filterwerte übergeben wurden
-    if (($type >= 0 && $type <= 3) && ($duration >= 0 && $duration <= 2) && ($time >= 0 && $time <= 4)) {
+    if (($type >= 0 && $type <= 15) && ($duration >= 0 && $duration <= 8) && ($time >= 0 && $time <= 31)) {
 
         //Vorherige Suchbegriffe laden
         $where = $_SESSION['ls_where'] ?? "";

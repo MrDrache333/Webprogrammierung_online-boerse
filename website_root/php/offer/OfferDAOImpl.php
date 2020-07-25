@@ -127,19 +127,76 @@ class OfferDAOImpl implements OfferDAO
             array_push($values, $where, $where);
         }
         //Wenn nach einem bestimmten Arbeitstyp gesucht werden soll
-        if ($type !== null) {
-            $command .= " AND offerType=?";
-            $values[] = $type;
+        if ($type > 0) {
+            $command .= " AND (";
+            $sub = 8;
+            $add = false;
+            $iter = 0;
+            while ($sub >= 1) {
+                if ($type - $sub >= 0) {
+                    $type -= $sub;
+                    if ($sub >= 1) {
+                        if ($add) {
+                            $command .= " OR ";
+                        } else {
+                            $add = true;
+                        }
+                        $command .= "offerType=?";
+                        $values[] = $iter;
+                    }
+                }
+                $sub /= 2;
+                $iter++;
+            }
+            $command .= ")";
         }
         //Wenn nach einer bestimmten Befristung gesucht werden soll
-        if ($duration !== null) {
-            $command .= " AND duration=?";
-            $values[] = $duration;
+        if ($duration > 0) {
+            $command .= " AND (";
+            $sub = 4;
+            $add = false;
+            $iter = 0;
+            while ($sub >= 1) {
+                if ($duration - $sub >= 0) {
+                    $duration -= $sub;
+                    if ($sub >= 1) {
+                        if ($add) {
+                            $command .= " OR ";
+                        } else {
+                            $add = true;
+                        }
+                        $command .= "duration=?";
+                        $values[] = $iter;
+                    }
+                }
+                $sub /= 2;
+                $iter++;
+            }
+            $command .= ")";
         }
         //wenn nach einem bestimmten Arbeitszeitmodel gesucht werden soll
-        if ($time !== null) {
-            $command .= " AND workModel=?";
-            $values[] = $time;
+        if ($time > 0) {
+            $command .= " AND (";
+            $sub = 16;
+            $add = false;
+            $iter = 0;
+            while ($sub >= 1) {
+                if ($time - $sub >= 0) {
+                    $time -= $sub;
+                    if ($sub >= 1) {
+                        if ($add) {
+                            $command .= " OR ";
+                        } else {
+                            $add = true;
+                        }
+                        $command .= "workModel=?";
+                        $values[] = $iter;
+                    }
+                }
+                $sub /= 2;
+                $iter++;
+            }
+            $command .= ")";
         }
         $command .= " ORDER BY offers.id DESC";
         //Datenbank abfragen und Ergebnis zurückgeben
