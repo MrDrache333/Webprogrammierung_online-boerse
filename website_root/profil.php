@@ -44,7 +44,7 @@ include "profil_loader.php";
                         echo '<h3><i style="color: #FF0000"> Das Bild konnte nicht hochgeladen werden!</i></h3>';
                     }
                     if (isset($_SESSION["error"]) && preg_match('/nobild/', $_SESSION["error"])) {
-                        echo '<h3><i style="color: #FF0000"> Sie haben kein Bild ausgewählt :-)</i></h3>';
+                        echo '<h3><i style="color: #FF0000"> Sie haben kein Bild ausgewählt </i></h3>';
                     } ?>
                     <form enctype="multipart/form-data" method="POST" action="profil.php"
                           id="profile-form">
