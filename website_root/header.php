@@ -184,31 +184,32 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
 
     <link rel="stylesheet" type="text/css" href="styles/icons.css"/>
     <link rel="stylesheet" type="text/css" href="styles/cookieBanner.css"/>
-    <script>window.addEventListener("load", function () {
-            window.wpcc.init({
-                "border": "normal",
-                "corners": "normal",
-                "colors": {
-                    "popup": {"background": "#1c1f4b", "text": "#ffffff", "border": "#afb3e4"},
-                    "button": {"background": "#afb3e4", "text": "#000000"}
-                },
-                "position": "bottom",
-                "transparency": "15",
-                "fontsize": "large",
-                "content": {
-                    "href": "/impressum.php",
-                    "button": "Ich stimme zu",
-                    "link": "Weitere Informationen",
-                    "message": "Unsere Webseite verwendet Cookies, um Ihnen ein bestmögliches Nutzungserlebnis zu ermöglichen"
-                }
-            })
-        });</script>
-
-
 </head>
 <body <?php if (isset($_GET["reloadModal"]) && $_GET["reloadModal"] === "true") { ?>
     onload="document.getElementById('login-modal').style.display='block'"
 <?php } ?>>
+<?php
+if (!isset($_COOKIE["wpcc"])) {
+    ?>
+    <div id="cookie_banner">
+        <div class="wpcc-container wpcc-banner wpcc-corners-round wpcc-corners-normal wpcc-transparency-15 wpcc-fontsize-large wpcc-border-normal wpcc-bottom wpcc-color-custom--1705717418 "
+             style=""><span class="wpcc-message">Unsere Webseite verwendet Cookies, um Ihnen ein bestmögliches Nutzungserlebnis zu ermöglichen <a
+                        class="wpcc-privacy" href="impressum.php" rel="noopener" target="_blank" tabindex="1">Weitere Informationen</a></span>
+            <div class="wpcc-compliance"><a class="wpcc-btn" id="accept_cookie" tabindex="2">Ich stimme zu</a></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("accept_cookie").onclick = function () {
+            var d = new Date();
+            d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = "wpcc" + "=" + "dismiss" + ";" + expires + ";path=/";
+            document.getElementById("cookie_banner").innerHTML = "";
+        }
+    </script>
+    <?php
+}
+?>
 <div class="grid-container">
     <div class="headerrahmen">
         <div class="logo">
@@ -386,24 +387,24 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
                                 zur Kenntnis genommen und akzeptiere sie.</label></p>
 
                         </p>
-<button name="registerSubmit" type="submit">Registrieren</button>
-</div>
+                        <button name="registerSubmit" type="submit">Registrieren</button>
+                    </div>
 
-<div class="loginContainer">
-    <button class="cancelbtn"
-            onclick="document.getElementById('login-modal').style.display='none'">
-        Abbrechen
-    </button>
-</div>
-</form>
-</div>
-</div>
-</div>
+                    <div class="loginContainer">
+                        <button class="cancelbtn"
+                                onclick="document.getElementById('login-modal').style.display='none'">
+                            Abbrechen
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
-<?php
-}
-?>
+    <?php
+    }
+    ?>
 
 </div>
 

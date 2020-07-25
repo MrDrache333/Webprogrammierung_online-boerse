@@ -130,7 +130,7 @@ function displayResults($result)
             <div style="background: radial-gradient(circle at center, white 0,rgba(255,255,255,0.9) 60%,
                  rgba(255,255,255,0.5) 70%,transparent 90%); text-align: center; border-radius: 20px">
                 <img style="display: inline-block; max-width: 60%" src="images/no_result.png" alt="Keine Ergebnisse">
-            </div>;
+            </div>
             <?php
         }
     } else { ?>
