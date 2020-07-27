@@ -97,24 +97,22 @@ class OfferDAOImpl implements OfferDAO
         $address = $abfrage1[0]["Count(offers.id)"];
         $this->addressDAOImpl = new AddressDAOImpl($this->database);
 
-        if ($address !== "1") {
+        if ($address !== "1") {// Adresse wird öfter als 1 mal verwendet somit alte Adresse behalten
             $abfrage2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
 
-            if ($abfrage2 === null || sizeof($abfrage2) === 0) {
+            if ($abfrage2 === null || sizeof($abfrage2) === 0) {//neue Adresse gibt es noch nicht und wird angelegt
                 $address = $this->addressDAOImpl->create($offer->getAddress());
                 $offer = $this->addressDAOImpl->findAddressId($offer->getAddress());
-                $adressiddata2 = current($offer);
-                $adressiddata = $adressiddata2->getID();
+                $offer = current($offer);
+                $adressiddata = $offer->getID();
 
-            } else {
-                $command = "Delete  From address where ID=?;";
-                $values = [$offerid];
-                $this->database->execute($command, $values);
+            } else {//neue A
+
                 $adressiddata = current($abfrage2)->getId();
 
             }
 
-        } else {
+        } else {//Adresse wird nur 1 mal verwendet somit
             $abfrage2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
 
             if ($abfrage2 === null || sizeof($abfrage2) === 0) {
