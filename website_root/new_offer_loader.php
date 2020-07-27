@@ -9,6 +9,8 @@ use php\user\UserDAOImpl;
 include_once 'php/classes.php';
 $OfferDao = new OfferDAOImpl();
 $UserDAO = new UserDAOImpl();
+
+
 $eingelogt = $_COOKIE['loggedin'] ?? null;
 
 
@@ -95,18 +97,18 @@ if (isset($_POST["edit_offer"])) {
         if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]{3,50}$/', $subtitle)) {
             $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
         }
-        /*  if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $straße)) {
+        if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/', $straße)) {
             $errornachricht = Fehlerbehandlung("Ihre Straße ist falsch.");
-          }
-          if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{1,50}$/', $hsnr)) {
-             $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
-          }
+        }
+        if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{1,50}$/', $hsnr)) {
+            $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
+        }
           if (!preg_match('/([a-zA-Z]){2,20}$/', $ort)) {
              $errornachricht = Fehlerbehandlung("Ihr Ort ist falsch.");
           }
           if (!preg_match('/([0-9]){5,5}$/', $plz)) {
              $errornachricht = Fehlerbehandlung("Ihre Postleitzahl ist falsch.");
-          }*/
+          }
         if (!preg_match('/^[0-9-_]{3,50}$/', $free)) {
             $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
         }
@@ -128,8 +130,8 @@ if (isset($_POST["edit_offer"])) {
 
         if (!isset($_SESSION["error"])) {
             ?>
-            <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
-            $_SESSION["kik"] = true;
+            <!-- <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
+            //$_SESSION["kik"] = true;
         }
         $offer->setTitle(htmlspecialchars($titel));
         $offer->setSubTitle(htmlspecialchars($subtitle));
@@ -137,12 +139,14 @@ if (isset($_POST["edit_offer"])) {
         $offer->setDescription(htmlspecialchars($beschreibung));
         $offerid = $_SESSION["offerid"];
         $offer->setId($offerid);
-        /*$offer->setAddress($_POST["titel"]);*/
+        $address = new Address(null, "Deutschland", $ort, $straße, $hsnr, $plz);
+        $offer->setAddress($address);
         $offer->setFree(htmlspecialchars($free));
         $offer->setOfferType($art);
         $offer->setDuration($befristung);
         $offer->setWorkModel($arbeitszeit);
         $OfferDao->update($offer);
+
         if (isset($_SESSION['tempUpload'])) {
             rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $offer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
             unset($_SESSION['tempUpload']);
@@ -330,7 +334,7 @@ if (isset($_POST["submit_offer"])) {
                 $errornachricht = Fehlerbehandlung("Ihre Postleitzahl ist falsch.");
             }
 
-            if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]$/', $beschreibung)) {
+            if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]{3,500}$/', $beschreibung)) {
                 $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
             }
             if (!preg_match('/^[0-9a-zA-Z-,;._:()üöäß!?$€&\s]{3,50}$/', $companyname)) {

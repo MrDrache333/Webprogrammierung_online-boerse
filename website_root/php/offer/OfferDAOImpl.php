@@ -3,6 +3,7 @@
 namespace php\offer;
 
 use Exception;
+use php\address\Address;
 use php\address\AddressDAOImpl;
 use php\database\Database;
 use php\database\DatabaseController;
@@ -78,14 +79,64 @@ class OfferDAOImpl implements OfferDAO
     {
         $command = "DELETE FROM offers WHERE id =?";
         $values = [$id];
+
         return $this->database->execute($command, $values);
     }
 
     public function update($offer)
     {
 
-        $command = "UPDATE offers SET title=?, subtitle=?, companyname=?, description=?,free=?,offerType=?,duration=?,workModel=? WHERE id=?";
-        $values = [$offer->getTitle(), $offer->getSubTitle(), $offer->getCompanyName(), $offer->getDescription(), $offer->getFree(), $offer->getOfferType(), $offer->getDuration(), $offer->getWorkModel(), $offer->getId()];
+        $command = "Select address From offers WHERE id=?";
+        $values = [$offer->getId()];
+        $adressid = $this->database->execute($command, $values);
+
+        $test = $adressid[0]["address"];
+        $command = "SELECT Count(offers.id) From Offers where address=?;";
+        $values = [$test];
+        $abfrage1 = $this->database->execute($command, $values);
+        $address = $abfrage1[0]["Count(offers.id)"];
+        $this->addressDAOImpl = new AddressDAOImpl($this->database);
+
+        if ($address !== "1") {
+            $abfrage2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
+
+            if ($abfrage2 === null || sizeof($abfrage2) === 0) {
+                $address = $this->addressDAOImpl->create($offer->getAddress());
+                $test = $this->addressDAOImpl->findAddressId($offer->getAddress());
+                $adressiddata2 = current($test);
+                $adressiddata = $adressiddata2->getID();
+
+            } else {
+                $command = "Delete  From address where ID=?;";
+                $values = [$test];
+                $this->database->execute($command, $values);
+                $adressiddata = current($abfrage2)->getId();
+
+            }
+
+        } else {
+            $abfrage2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
+
+            if ($abfrage2 === null || sizeof($abfrage2) === 0) {
+                $plz = $offer->getAddress()->getPlz();
+                $street = $offer->getAddress()->getStreet();
+                $ort = $offer->getAddress()->getTown();
+                $nr = $offer->getAddress()->getNumber();
+                $address = new Address($test, "Deutschland", $ort, "$street", $nr, $plz);
+                $offer->setAddress($address);
+                $this->addressDAOImpl->update($offer->getAddress());
+                $adressiddata = $offer->getAddress()->getId();
+            } else {
+                $command = "Delete  From address where ID=?;";
+                $values = [$test];
+                $this->database->execute($command, $values);
+                $adressiddata = current($abfrage2)->getId();
+            }
+        }
+
+
+        $command = "UPDATE offers SET title=?, subtitle=?, companyname=?, description=?,address=?,free=?,offerType=?,duration=?,workModel=? WHERE id=?";
+        $values = [$offer->getTitle(), $offer->getSubTitle(), $offer->getCompanyName(), $offer->getDescription(), $adressiddata, $offer->getFree(), $offer->getOfferType(), $offer->getDuration(), $offer->getWorkModel(), $offer->getId()];
         return $this->database->execute($command, $values);
     }
 

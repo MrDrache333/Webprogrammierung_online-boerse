@@ -44,7 +44,9 @@ class AddressDAOImpl implements AddressDAO
      */
     public function update(Address $address)
     {
-        // TODO: Implement update() method.
+        $command = "UPDATE address SET town = ? , street=? , number=? , plz=? where ID=?";
+        $values = [$address->getTown(), $address->getStreet(), $address->getNumber(), $address->getPlz(), $address->getId()];
+        return $this->database->execute($command, $values) !== null;
     }
 
     public function findAddressId(Address $address)
@@ -53,4 +55,6 @@ class AddressDAOImpl implements AddressDAO
         $values = [$address->getState(), $address->getTown(), $address->getStreet(), $address->getNumber(), $address->getPlz()];
         return AddressHelper::getAddressFromSQLResult($this->database->execute($command, $values));
     }
+
+
 }
