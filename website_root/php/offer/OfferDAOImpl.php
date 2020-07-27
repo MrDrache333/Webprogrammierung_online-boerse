@@ -96,26 +96,24 @@ class OfferDAOImpl implements OfferDAO
         $abfrage1 = $this->database->execute($command, $values);
         $address = $abfrage1[0]["Count(offers.id)"];
         $this->addressDAOImpl = new AddressDAOImpl($this->database);
-
-        if ($address !== "1") {// Adresse wird öfter als 1 mal verwendet somit alte Adresse behalten
+        var_dump($address);
+        if ($address !== "1") {// alte Adresse  wird öfter als 1 mal verwendet somit alte Adresse behalten
             $abfrage2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
 
             if ($abfrage2 === null || sizeof($abfrage2) === 0) {//neue Adresse gibt es noch nicht und wird angelegt
                 $address = $this->addressDAOImpl->create($offer->getAddress());
-                $offer = $this->addressDAOImpl->findAddressId($offer->getAddress());
-                $offer = current($offer);
-                $adressiddata = $offer->getID();
+                $offer2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
+                $offer2 = current($offer2);
+                $adressiddata = $offer2->getID();
 
-            } else {//neue A
-
+            } else {//neue Adresse gibt es bereits also nur ID ändern
                 $adressiddata = current($abfrage2)->getId();
-
             }
 
-        } else {//Adresse wird nur 1 mal verwendet somit
+        } else {//alte Adresse wird nur 1 mal verwendet somit alte Adresse erstmal behalten
             $abfrage2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
 
-            if ($abfrage2 === null || sizeof($abfrage2) === 0) {
+            if ($abfrage2 === null || sizeof($abfrage2) === 0) {//alte Adresse auf neue umschreiben ändern
                 $plz = $offer->getAddress()->getPlz();
                 $street = $offer->getAddress()->getStreet();
                 $ort = $offer->getAddress()->getTown();
@@ -124,15 +122,13 @@ class OfferDAOImpl implements OfferDAO
                 $offer->setAddress($address);
                 $this->addressDAOImpl->update($offer->getAddress());
                 $adressiddata = $offer->getAddress()->getId();
-            } else {
+            } else {//neue Adresse gibt es bereits damit Id verwenden alte wird gelöscht
                 $command = "Delete  From address where ID=?;";
                 $values = [$offerid];
                 $this->database->execute($command, $values);
                 $adressiddata = current($abfrage2)->getId();
             }
         }
-
-
         $command = "UPDATE offers SET title=?, subtitle=?, companyname=?, description=?,address=?,free=?,offerType=?,duration=?,workModel=? WHERE id=?";
         $values = [$offer->getTitle(), $offer->getSubTitle(), $offer->getCompanyName(), $offer->getDescription(), $adressiddata, $offer->getFree(), $offer->getOfferType(), $offer->getDuration(), $offer->getWorkModel(), $offer->getId()];
         return $this->database->execute($command, $values);
