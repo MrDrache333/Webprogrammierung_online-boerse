@@ -55,4 +55,10 @@ interface OfferDAO
      * @return mixed
      */
     public function getLastOwnOffer($user);
+
+    /**
+     * @param Offer $offer
+     * @return mixed
+     */
+    public function Countadress(Offer $offer);
 }

@@ -90,9 +90,9 @@ class OfferDAOImpl implements OfferDAO
         $values = [$offer->getId()];
         $adressid = $this->database->execute($command, $values);
 
-        $test = $adressid[0]["address"];
+        $offerid = $adressid[0]["address"];
         $command = "SELECT Count(offers.id) From Offers where address=?;";
-        $values = [$test];
+        $values = [$offerid];
         $abfrage1 = $this->database->execute($command, $values);
         $address = $abfrage1[0]["Count(offers.id)"];
         $this->addressDAOImpl = new AddressDAOImpl($this->database);
@@ -102,13 +102,13 @@ class OfferDAOImpl implements OfferDAO
 
             if ($abfrage2 === null || sizeof($abfrage2) === 0) {
                 $address = $this->addressDAOImpl->create($offer->getAddress());
-                $test = $this->addressDAOImpl->findAddressId($offer->getAddress());
-                $adressiddata2 = current($test);
+                $offer = $this->addressDAOImpl->findAddressId($offer->getAddress());
+                $adressiddata2 = current($offer);
                 $adressiddata = $adressiddata2->getID();
 
             } else {
                 $command = "Delete  From address where ID=?;";
-                $values = [$test];
+                $values = [$offerid];
                 $this->database->execute($command, $values);
                 $adressiddata = current($abfrage2)->getId();
 
@@ -122,13 +122,13 @@ class OfferDAOImpl implements OfferDAO
                 $street = $offer->getAddress()->getStreet();
                 $ort = $offer->getAddress()->getTown();
                 $nr = $offer->getAddress()->getNumber();
-                $address = new Address($test, "Deutschland", $ort, "$street", $nr, $plz);
+                $address = new Address($offerid, "Deutschland", $ort, "$street", $nr, $plz);
                 $offer->setAddress($address);
                 $this->addressDAOImpl->update($offer->getAddress());
                 $adressiddata = $offer->getAddress()->getId();
             } else {
                 $command = "Delete  From address where ID=?;";
-                $values = [$test];
+                $values = [$offerid];
                 $this->database->execute($command, $values);
                 $adressiddata = current($abfrage2)->getId();
             }
@@ -279,6 +279,13 @@ class OfferDAOImpl implements OfferDAO
             return current($offers);
         }
         return $offers;
+    }
+
+    public function Countadress(Offer $offer)
+    {
+        $command = "SELECT Count(address) FROM offers WHERE address=?";
+        $values = [$offer->getAddress()->getId()];
+        return $this->database->execute($command, $values);
     }
 
 

@@ -130,8 +130,8 @@ if (isset($_POST["edit_offer"])) {
 
         if (!isset($_SESSION["error"])) {
             ?>
-            <!-- <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
-            //$_SESSION["kik"] = true;
+            <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
+            $_SESSION["kik"] = true;
         }
         $offer->setTitle(htmlspecialchars($titel));
         $offer->setSubTitle(htmlspecialchars($subtitle));

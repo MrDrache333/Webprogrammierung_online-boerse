@@ -20,11 +20,16 @@ if (isset($_POST["loginSubmit"])) {
         $user = $controller->findUserByMail($email);
 
 
-        if ($user !== null && password_verify($password, $user->getPassword()) && $user->getLink() == "") {
-            setcookie("email", $email, time() + 60 * 60 * 24);
-            setcookie("username", $user->getPrename() . " " . $user->getSurname(), time() + 60 * 60 * 24);
-            setcookie("loggedin", "true", time() + 60 * 60 * 24);
-            header("Location: profil.php");
+        if ($user !== null && password_verify($password, $user->getPassword())) {
+            if ($user->getLink() == "") {
+                setcookie("email", $email, time() + 60 * 60 * 24);
+                setcookie("username", $user->getPrename() . " " . $user->getSurname(), time() + 60 * 60 * 24);
+                setcookie("loggedin", "true", time() + 60 * 60 * 24);
+                header("Location: profil.php");
+            } else {
+                setcookie("loggedin", "false", time() + 60 * 60 * 24);
+                header("Location:" . $header . "reg_error");
+            }
         } else {
             setcookie("loggedin", "false", time() + 60 * 60 * 24);
             header("Location:" . $header . "login_error");
@@ -142,8 +147,7 @@ else if (isset($_POST["pwforget"])) {
             $id = $user->getId();
             $filename = $prename . "_" . $lastname . "_" . $id . ".txt";
             if (mail($empfaenger, $betreff, $text, "From: $absendername <$absendermail>")) {
-                $data =
-                    "Sie haben sich bei KEFEDO ihr Passwort geändert. Dies war erfolgreich.
+                $data = "Sie haben sich bei KEFEDO ihr Passwort geändert. Dies war erfolgreich.
             Loggen Sie sich mit Ihrem Benutzernamen: " . $empfaenger . "und Ihrem neuen Passwort: " . $pw . " ein. 
             Die Datei wird nach dem einloggen gelöscht!";
                 file_put_contents($filename, $data);

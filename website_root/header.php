@@ -282,6 +282,9 @@ if (!isset($_COOKIE["wpcc"])) {
                                 <?php if (isset($_GET["error"]) && $_GET["error"] == "login_error") {
                                     echo '<br /><br /><label for="email"><i style="color: #FF0000">Email und/oder Passwort ist falsch!</i></label>';
                                 }
+                                if (isset($_GET["error"]) && $_GET["error"] == "reg_error") {
+                                    echo '<br /><br /><label for="email"><i style="color: #FF0000">Ihr Email ist nicht bestätigt. Validieren sie die über den Link in der Datei!</i></label>';
+                                }
                                 if (isset($_GET["error"]) && $_GET["error"] == "email") {
                                     echo '<br /><br /><label for="email"><i style="color: #FF0000">Email muss gesetzt sein!</i></label>';
                                 } ?>

@@ -39,17 +39,7 @@ if (isset($_POST["submit_pb"])) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         Fehlerbehandlung("Ihre Email ist falsch.");
     }
-    if (isset($email) && isset($_COOKIE["email"])) {
-        if ($email != $_COOKIE["email"]) {
-            if ($u->findUserByMail($email) == null) {
-                $user->setEmail($email);
-//TODO Set Email repariren
-            } else {
-                Fehlerbehandlung("Ihre Email ist falsch.");
-            }
 
-        }
-    }
     if (!isset($_SESSION["error"])) {
 
         $user->setPrename($name);
@@ -135,5 +125,6 @@ if (isset($_POST['reset_pb'])) {
         }
     }
 }
+
 
 
