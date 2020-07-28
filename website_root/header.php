@@ -307,15 +307,16 @@ if (!isset($_COOKIE["wpcc"])) {
                             <button href="profil.php" name="loginSubmit" type="submit">Login</button>
                         </div>
 
-                        <div class="loginContainer">
+                        <div class="loginContainer" >
                             <button class="cancelbtn"
                                     onclick="document.getElementById('login-modal').style.display='none'"
                                     type="button">Abbrechen
                             </button>
-
+                        </div>
+                        <!--mit oder ohne div-->
                             <span class="psw">
                                     <button name="pwforget" type="submit">Passwort vergessen</button>
-                                     </span>
+                            </span>
                     </form>
 
                 </div>
@@ -355,7 +356,7 @@ if (!isset($_COOKIE["wpcc"])) {
                             <label for="lastname"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
                                         && preg_match('/nachname/', $_GET["error"])) {
                                         echo '<i style="color: #FF0000"> Nachname falsch!</i>';
-                                    } else { ?>Nachname: <?php } ?></b></label></b></label>
+                                    } else { ?>Nachname: <?php } ?></b></label>
                             <input class="loginInput" id="lastname" name="loginLastname"
                                    placeholder="Nachname eingeben"
                                    value="<?php if (isset($_GET["fill_nachname"])) {
@@ -368,7 +369,7 @@ if (!isset($_COOKIE["wpcc"])) {
                             <label for="registerEmail"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
                                         && preg_match('/email/', $_GET["error"])) {
                                         echo '<i style="color: #FF0000"> Email-Adresse falsch!</i>';
-                                    } else { ?>Email-Adresse: <?php } ?></b></label></b></label>
+                                    } else { ?>Email-Adresse: <?php } ?></b></label>
                             <input class="loginInput" id="registerEmail" name="registerEmail"
                                    placeholder="Email eingeben"
                                    value="<?php if (isset($_GET["fill_email"])) {
@@ -389,13 +390,11 @@ if (!isset($_COOKIE["wpcc"])) {
 
                             <script type="text/javascript" src="passwd_check.js">
                             </script>
-
+                        </p>
                         <p><span> <input value="1" type="checkbox" name="register_agb" id="register_agb"
                                          required/> </span>
-                            <label for="accept_agb">Ich habe die <a target="_blank" id="agb" href="impressum.php">Nutzungsbedingungen</a>
-                                zur Kenntnis genommen und akzeptiere sie.</label></p>
-
-                        </p>
+                            <label for="accept_agb">Ich habe die <a target="_blank" id="agb" href="terms_of_use.php">Nutzungsbedingungen</a> und die <a target="_blank" id="privacy" href="privacy.php" >Datenschutzerklärung</a>
+                              gelesen,sie zur Kenntnis genommen und akzeptiere sie.</label></p>
                         <button name="registerSubmit" type="submit">Registrieren</button>
                     </div>
 
@@ -445,5 +444,3 @@ if (isset($_GET["email"])) {
         }
     }
 </script>
-</body>
-</html>

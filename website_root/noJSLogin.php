@@ -143,8 +143,8 @@
                         <script type="text/javascript" src="passwd_check.js">
                         </script>
                     <p><span> <input value="1" type="checkbox" name="register[agb]" id="register_agb" required/> </span>
-                        <label for="accept_agb">Ich habe die <a target="_blank" id="agb" href="impressum.php">Nutzungsbedingungen</a>
-                            zur Kenntnis genommen und akzeptiere sie.</label></p>
+                        <label for="accept_agb">Ich habe die <a target="_blank" id="agb" href="terms_of_use.php">Nutzungsbedingungen</a> und die <a target="_blank" id="privacy" href="privacy.php" >Datenschutzerklärung</a>
+                            gelesen,sie zur Kenntnis genommen und akzeptiere sie.</label></p>
 
 
                     <button name="registerSubmit" type="submit">Registrieren</button>

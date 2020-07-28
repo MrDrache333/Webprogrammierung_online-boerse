@@ -9,7 +9,12 @@ unset($_SESSION["loggout"]);
             <div class="footer-col">
                 <div>
                     <h2 class="footer-h2">Über uns</h2>
-                    <p>Wir sind es leid, dass viele Menschen keine Arbeit finden, und möchten Ihnen hiermit helfen.</p>
+                    <ul class="list-unstyled">
+                        <li class="footer-li"><a class="footer-link" href="contact.php">Kontakt</a></li>
+                        <li class="footer-li"><a class="footer-link" href="Impressum.php">Impressum</a></li>
+                        <li class="footer-li"><a class="footer-link" href="terms_of_use.php">Nutzungsbedingungen</a></li>
+                        <li class="footer-li"><a class="footer-link" href="privacy.php">Datenschutz</a></li>
+                     </ul>
                 </div>
             </div>
             <div class="footer-col">
@@ -18,13 +23,12 @@ unset($_SESSION["loggout"]);
                     <ul class="list-unstyled">
                         <li class="footer-li"><a class="footer-link" href="noJSLogin.php">Registrieren</a></li>
                         <li class="footer-li"><a class="footer-link" href="search_job.php">Einen Job finden</a></li>
-                        <li class="footer-li"><a class="footer-link" href="impressum.php">Impressum</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-col">
                 <div>
-                    <h2 class="footer-h2">Untenehmen</h2>
+                    <h2 class="footer-h2">Unternehmen</h2>
                     <ul class="list-unstyled">
                         <li class="footer-li"><a class="footer-link" href="profil.php">Ihr Profil</a></li>
                         <li class="footer-li"><a class="footer-link" href="noJSLogin.php">Registrieren</a></li>
@@ -41,10 +45,10 @@ unset($_SESSION["loggout"]);
                             <li class="footer-li"><span class="material-icons">location_on</span> <span class="text">Ammerländer Heerstraße 114-118<br>26129 Oldenburg</span>
                             </li>
                             <li class="footer-li"><a href="#"><span class="material-icons">call</span> <span
-                                            class="text">+012 3456789</span></a>
+                                            class="text">+49441 7984450</span></a>
                             </li>
                             <li class="footer-li"><a href="#"><span class="material-icons">email</span> <span
-                                            class="text">info@kefedo.com</span></a>
+                                            class="text">info.kefedo@mail.de</span></a>
                             </li>
                         </ul>
                     </div>
@@ -57,3 +61,5 @@ unset($_SESSION["loggout"]);
         </div>
     </div>
 </footer>
+</body>
+</html>
