@@ -187,6 +187,14 @@ if (isset($_POST["profildelete"]) || isset($_POST["profildelete_nojs"])) {
         <title>KEFEDO-Impressum</title>
         <link rel="stylesheet" type="text/css" href="styles/impressum.css">
     <?php } ?>
+    <?php if (preg_match("/terms_of_use\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <title>KEFEDO-Nutzungsbedingungen</title>
+        <link rel="stylesheet" type="text/css" href="styles/impressum.css">
+    <?php } ?>
+    <?php if (preg_match("/privacy\.php/i", $_SERVER['REQUEST_URI'])) { ?>
+        <title>KEFEDO-Datenschutz und Cookies</title>
+        <link rel="stylesheet" type="text/css" href="styles/impressum.css">
+    <?php } ?>
 
     <link rel="stylesheet" type="text/css" href="styles/icons.css"/>
     <link rel="stylesheet" type="text/css" href="styles/cookieBanner.css"/>
@@ -200,7 +208,7 @@ if (!isset($_COOKIE["wpcc"])) {
     <div id="cookie_banner">
         <div class="wpcc-container wpcc-banner wpcc-corners-round wpcc-corners-normal wpcc-transparency-15 wpcc-fontsize-large wpcc-border-normal wpcc-bottom wpcc-color-custom--1705717418 "
              style=""><span class="wpcc-message">Unsere Webseite verwendet Cookies, um Ihnen ein bestmögliches Nutzungserlebnis zu ermöglichen <a
-                        class="wpcc-privacy" href="impressum.php" rel="noopener" target="_blank" tabindex="1">Weitere Informationen</a></span>
+                        class="wpcc-privacy" href="privacy.php" rel="noopener" target="_blank" tabindex="1">Weitere Informationen</a></span>
             <div class="wpcc-compliance"><a class="wpcc-btn" id="accept_cookie" tabindex="2">Ich stimme zu</a></div>
         </div>
     </div>
@@ -240,6 +248,7 @@ if (!isset($_COOKIE["wpcc"])) {
                     </button>
                 </form>
             </div>
+
             <?php
         } else {
         ?>
@@ -265,9 +274,9 @@ if (!isset($_COOKIE["wpcc"])) {
                   title="Close Modal">&times;</span>
 
                 <div class="formulare">
-                    <!-- Login form-->
                     <form action="login.php"
                           class="loginModal-content loginAnimate" method="post">
+                        <!-- Login form-->
                         <h2>Login</h2>
                         <div class="loginImgcontainer">
                             <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
@@ -306,115 +315,107 @@ if (!isset($_COOKIE["wpcc"])) {
                             </p>
                             <button href="profil.php" name="loginSubmit" type="submit">Login</button>
                         </div>
-
-                        <div class="loginContainer" >
+                        <div class="loginContainer">
                             <button class="cancelbtn"
                                     onclick="document.getElementById('login-modal').style.display='none'"
                                     type="button">Abbrechen
                             </button>
-                        </div>
-                        <!--mit oder ohne div-->
                             <span class="psw">
                                     <button name="pwforget" type="submit">Passwort vergessen</button>
                             </span>
+                        </div>
                     </form>
+                    <!-- Register form-->
+                    <form action="login.php" class="loginModal-content loginAnimate" method="post">
+                        <h2>Registrieren</h2>
+                        <div class="loginImgcontainer">
+                            <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
+                        </div>
+                        <div class="loginContainer">
+                            <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                                && preg_match('/datei/', $_GET["error"])) {
+                                echo '<i style="color: #FF0000"> Schauen sie in die Datei um sich einzuloggen!</i>';
+                            } ?>
+                            <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                                && preg_match('/AGB/', $_GET["error"])) {
+                                echo '<i style="color: #FF0000"> Sie müssen die Nutzungsbedingungen akzeptieren!</i>';
+                            } ?>
+                            <p>
+                                <label for="name"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                                            && preg_match('/vorname/', $_GET["error"])) {
+                                            echo '<i style="color: #FF0000"> Vorname falsch!</i>';
+                                        } else { ?>Vorname: <?php } ?></b></label>
+                                <input class="loginInput" id="name" name="loginPrename"
+                                       placeholder="Vorname eingeben"
+                                       value="<?php if (isset($_GET["fill_vorname"])) {
+                                           echo $_GET["fill_vorname"];
+                                       } ?>"
+                                       required
+                                       type="text"></p>
+                            <p>
+                                <label for="lastname"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                                            && preg_match('/nachname/', $_GET["error"])) {
+                                            echo '<i style="color: #FF0000"> Nachname falsch!</i>';
+                                        } else { ?>Nachname: <?php } ?></b></label>
+                                <input class="loginInput" id="lastname" name="loginLastname"
+                                       placeholder="Nachname eingeben"
+                                       value="<?php if (isset($_GET["fill_nachname"])) {
+                                           echo $_GET["fill_nachname"];
+                                       } ?>"
+                                       required
+                                       type="text">
+                            </p>
+                            <p>
+                                <label for="registerEmail"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                                            && preg_match('/email/', $_GET["error"])) {
+                                            echo '<i style="color: #FF0000"> Email-Adresse falsch!</i>';
+                                        } else { ?>Email-Adresse: <?php } ?></b></label>
+                                <input class="loginInput" id="registerEmail" name="registerEmail"
+                                       placeholder="Email eingeben"
+                                       value="<?php if (isset($_GET["fill_email"])) {
+                                           echo $_GET["fill_email"];
+                                       } ?>"
+                                       required
+                                       type="email">
+                            </p>
+                            <p>
+                                <label for="newPassword"><b> <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
+                                            && preg_match('/password/', $_GET["error"])) {
+                                            echo '<i style="color: #FF0000"> Passwort ungültig!</i>';
+                                        } else { ?>Passwort: <?php } ?><span id="feedback"></span></b></label>
+                                <input class="loginInput" id="newPassword" name="newPassword"
+                                       placeholder="Passwort eingeben"
+                                       required
+                                       type="password" onkeyup="char_count();">
 
+                                <script type="text/javascript" src="passwd_check.js">
+                                </script>
+                            </p>
+                            <p><span> <input value="1" type="checkbox" name="register_agb" id="register_agb"
+                                             required/> </span>
+                                <label for="accept_agb">Ich habe die <a target="_blank" id="agb"
+                                                                        href="terms_of_use.php">Nutzungsbedingungen</a>
+                                    und die <a target="_blank" id="privacy" href="privacy.php">Datenschutzerklärung</a>
+                                    gelesen,sie zur Kenntnis genommen und akzeptiere sie.</label></p>
+                            <button name="registerSubmit" type="submit">Registrieren</button>
+                        </div>
+
+                        <div class="loginContainer">
+                            <button class="cancelbtn"
+                                    onclick="document.getElementById('login-modal').style.display='none'">
+                                Abbrechen
+                            </button>
+                        </div>
+                    </form>
                 </div>
-
-
-                <!-- Register form-->
-                <form action="login.php" class="loginModal-content loginAnimate" method="post">
-                    <h2>Registrieren</h2>
-                    <div class="loginImgcontainer">
-                        <img alt="Avatar" class="loginAvatar" src="images/profile_template.png">
-                    </div>
-
-
-                    <div class="loginContainer">
-                        <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
-                            && preg_match('/datei/', $_GET["error"])) {
-                            echo '<i style="color: #FF0000"> Schauen sie in die Datei um sich einzuloggen!</i>';
-                        } ?>
-                        <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
-                            && preg_match('/AGB/', $_GET["error"])) {
-                            echo '<i style="color: #FF0000"> Sie müssen die Nutzungsbedingungen akzeptieren!</i>';
-                        } ?>
-                        <p>
-                            <label for="name"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
-                                        && preg_match('/vorname/', $_GET["error"])) {
-                                        echo '<i style="color: #FF0000"> Vorname falsch!</i>';
-                                    } else { ?>Vorname: <?php } ?></b></label>
-                            <input class="loginInput" id="name" name="loginPrename"
-                                   placeholder="Vorname eingeben"
-                                   value="<?php if (isset($_GET["fill_vorname"])) {
-                                       echo $_GET["fill_vorname"];
-                                   } ?>"
-                                   required
-                                   type="text"></p>
-
-                        <p>
-                            <label for="lastname"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
-                                        && preg_match('/nachname/', $_GET["error"])) {
-                                        echo '<i style="color: #FF0000"> Nachname falsch!</i>';
-                                    } else { ?>Nachname: <?php } ?></b></label>
-                            <input class="loginInput" id="lastname" name="loginLastname"
-                                   placeholder="Nachname eingeben"
-                                   value="<?php if (isset($_GET["fill_nachname"])) {
-                                       echo $_GET["fill_nachname"];
-                                   } ?>"
-                                   required
-                                   type="text">
-                        </p>
-                        <p>
-                            <label for="registerEmail"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
-                                        && preg_match('/email/', $_GET["error"])) {
-                                        echo '<i style="color: #FF0000"> Email-Adresse falsch!</i>';
-                                    } else { ?>Email-Adresse: <?php } ?></b></label>
-                            <input class="loginInput" id="registerEmail" name="registerEmail"
-                                   placeholder="Email eingeben"
-                                   value="<?php if (isset($_GET["fill_email"])) {
-                                       echo $_GET["fill_email"];
-                                   } ?>"
-                                   required
-                                   type="email">
-                        </p>
-                        <p>
-                            <label for="newPassword"><b> <?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
-                                        && preg_match('/password/', $_GET["error"])) {
-                                        echo '<i style="color: #FF0000"> Passwort ungültig!</i>';
-                                    } else { ?>Passwort: <?php } ?><span id="feedback"></span></b></label>
-                            <input class="loginInput" id="newPassword" name="newPassword"
-                                   placeholder="Passwort eingeben"
-                                   required
-                                   type="password" onkeyup="char_count();">
-
-                            <script type="text/javascript" src="passwd_check.js">
-                            </script>
-                        </p>
-                        <p><span> <input value="1" type="checkbox" name="register_agb" id="register_agb"
-                                         required/> </span>
-                            <label for="accept_agb">Ich habe die <a target="_blank" id="agb" href="terms_of_use.php">Nutzungsbedingungen</a> und die <a target="_blank" id="privacy" href="privacy.php" >Datenschutzerklärung</a>
-                              gelesen,sie zur Kenntnis genommen und akzeptiere sie.</label></p>
-                        <button name="registerSubmit" type="submit">Registrieren</button>
-                    </div>
-
-                    <div class="loginContainer">
-                        <button class="cancelbtn"
-                                onclick="document.getElementById('login-modal').style.display='none'">
-                            Abbrechen
-                        </button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
-
-
     <?php
     }
     ?>
-
 </div>
+
 <?php
 if (isset($_GET["email"])) {
     $email = $_GET["email"];
@@ -424,7 +425,7 @@ if (isset($_GET["email"])) {
     if (isset($_GET["randomid"]) && preg_match(".$link.", $_GET["randomid"])) {
         $user->setLink("");
         $result = $UserDAOImpl->update($user);
-//TODO Fehlerbehandulung bei falschen daten und Bestätigung das man regestriert wurde per Text
+//TODO Fehlerbehandulung bei falschen daten und Bestätigung das man registriert wurde per Text
         // logout("Ihre Regestrierung war erfolgreich");
     }
 }

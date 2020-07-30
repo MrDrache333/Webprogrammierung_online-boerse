@@ -55,10 +55,6 @@ unset($_SESSION["loggout"]);
                 </div>
             </div>
         </div>
-        <div>
-            <div>
-            </div>
-        </div>
     </div>
 </footer>
 </body>

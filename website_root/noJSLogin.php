@@ -68,8 +68,9 @@
                     <span class="psw">
                         <button name="pwforget" type="submit">Passwort vergessen</button>
                     </span>
+                    </div>
                 </form>
-            </div>
+
 
 
             <!-- Register form-->
@@ -108,7 +109,7 @@
                         <label for="lastname"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
                                     && preg_match('/nachname/', $_GET["error"])) {
                                     echo '<i style="color: #FF0000"> Nachname falsch!</i>';
-                                } else { ?>Nachname: <?php } ?></b></label></b></label>
+                                } else { ?>Nachname: <?php } ?></b></label>
                         <input class="loginInput" id="lastname" name="loginLastname"
                                placeholder="Nachname eingeben"
                                value="<?php if (isset($_GET["fill_nachname"])) {
@@ -121,7 +122,7 @@
                         <label for="registerEmail"><b><?php if (isset($_GET["error"]) && preg_match('/register/', $_GET["error"])
                                     && preg_match('/email/', $_GET["error"])) {
                                     echo '<i style="color: #FF0000"> Email-Adresse falsch!</i>';
-                                } else { ?>Email-Adresse: <?php } ?></b></label></b></label>
+                                } else { ?>Email-Adresse: <?php } ?></b></label>
                         <input class="loginInput" id="registerEmail" name="registerEmail"
                                placeholder="Email eingeben"
                                value="<?php if (isset($_GET["fill_email"])) {
