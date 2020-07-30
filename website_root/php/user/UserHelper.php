@@ -50,6 +50,7 @@ class UserHelper
         $user->setId($result['id'] ?? null);
         if ($user->getId() === null) return null;
         $user->setEmail($result['email'] ?? null);
+        $user->setNewmail($result['newemail'] ?? null);
         $user->setPrename($result['prename'] ?? null);
         $user->setSurname($result['surname'] ?? null);
         $user->setPassword(($result['password'] ?? null));

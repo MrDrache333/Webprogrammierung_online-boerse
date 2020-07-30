@@ -77,43 +77,55 @@ class OfferDAOImpl implements OfferDAO
 
     public function delete($id)
     {
+        $offer = $this->getOfferByID($id);
+        $anzahl = $this->Countadress($offer);
+        $anzahl = current($anzahl);
+        $anzahl = current($anzahl);
+        if ($anzahl === "1") {
+            //adresse wird einmal verwendet also löschen
+
+            $adressid = $offer->getAddress()->getId();
+            $this->addressDAOImpl->delete($adressid);
+        } else {//Addresse wird öfter verwendet also löschen egal
+        }
         $command = "DELETE FROM offers WHERE id =?";
         $values = [$id];
-
         return $this->database->execute($command, $values);
     }
 
     public function update($offer)
     {
-
         $command = "Select address From offers WHERE id=?";
         $values = [$offer->getId()];
         $adressid = $this->database->execute($command, $values);
-
         $offerid = $adressid[0]["address"];
         $command = "SELECT Count(offers.id) From Offers where address=?;";
         $values = [$offerid];
         $abfrage1 = $this->database->execute($command, $values);
         $address = $abfrage1[0]["Count(offers.id)"];
         $this->addressDAOImpl = new AddressDAOImpl($this->database);
-        var_dump($address);
-        if ($address !== "1") {// alte Adresse  wird öfter als 1 mal verwendet somit alte Adresse behalten
+        if ($address !== "1") {
+            // alte Adresse  wird öfter als 1 mal verwendet somit alte Adresse behalten
             $abfrage2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
 
-            if ($abfrage2 === null || sizeof($abfrage2) === 0) {//neue Adresse gibt es noch nicht und wird angelegt
-                $address = $this->addressDAOImpl->create($offer->getAddress());
+            if ($abfrage2 === null || sizeof($abfrage2) === 0) {
+                //neue Adresse gibt es noch nicht und wird angelegt
+                $this->addressDAOImpl->create($offer->getAddress());
                 $offer2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
                 $offer2 = current($offer2);
                 $adressiddata = $offer2->getID();
 
-            } else {//neue Adresse gibt es bereits also nur ID ändern
+            } else {
+                //neue Adresse gibt es bereits also nur ID ändern
                 $adressiddata = current($abfrage2)->getId();
             }
 
-        } else {//alte Adresse wird nur 1 mal verwendet somit alte Adresse erstmal behalten
+        } else {
+            //alte Adresse wird nur 1 mal verwendet somit alte Adresse erstmal behalten
             $abfrage2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
 
-            if ($abfrage2 === null || sizeof($abfrage2) === 0) {//alte Adresse auf neue umschreiben ändern
+            if ($abfrage2 === null || sizeof($abfrage2) === 0) {
+                //alte Adresse auf neue umschreiben ändern
                 $plz = $offer->getAddress()->getPlz();
                 $street = $offer->getAddress()->getStreet();
                 $ort = $offer->getAddress()->getTown();
@@ -122,7 +134,9 @@ class OfferDAOImpl implements OfferDAO
                 $offer->setAddress($address);
                 $this->addressDAOImpl->update($offer->getAddress());
                 $adressiddata = $offer->getAddress()->getId();
-            } else {//neue Adresse gibt es bereits damit Id verwenden alte wird gelöscht
+
+            } else {
+                //neue Adresse gibt es bereits damit Id verwenden alte wird gelöscht
                 $command = "Delete  From address where ID=?;";
                 $values = [$offerid];
                 $this->database->execute($command, $values);

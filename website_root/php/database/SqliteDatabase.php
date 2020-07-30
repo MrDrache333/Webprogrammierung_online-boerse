@@ -76,6 +76,7 @@ class SqliteDatabase implements Database
             "CREATE TABLE IF NOT EXISTS main.user (
                             id INTEGER NOT NULL PRIMARY KEY autoincrement,
                             email VARCHAR(50) NOT NULL UNIQUE,
+                            newemail VARCHAR(50) DEFAULT NULL,
                             prename VARCHAR(30) DEFAULT NULL,
                             surname VARCHAR(50) DEFAULT NULL,
                             link VARCHAR(50) DEFAULT NULL,
@@ -92,11 +93,11 @@ class SqliteDatabase implements Database
                             
             );",
 
-            "INSERT INTO user VALUES(0,'demo@demo.de','Max','Mustermann',null,'" . password_hash('demo', PASSWORD_DEFAULT) . "')",
-            "INSERT INTO user VALUES(1,'demo2@demo.de','Maxime','Musterfrau',null,'" . password_hash('demo', PASSWORD_DEFAULT) . "')",
-            "INSERT INTO user VALUES(2,'test@test.de','Tim','Fellon',null,'" . password_hash('test', PASSWORD_DEFAULT) . "')",
-            "INSERT INTO user VALUES(3,'test2@test.de','Rosa','Fellon',null,'" . password_hash('test', PASSWORD_DEFAULT) . "')",
-            "INSERT INTO user VALUES(4,'hans-wurst@wurst.de','Hans','Wurst',null,'" . password_hash('wurst', PASSWORD_DEFAULT) . "')",
+            "INSERT INTO user VALUES(0,'demo@demo.de',null,'Max','Mustermann',null,'" . password_hash('demo', PASSWORD_DEFAULT) . "')",
+            "INSERT INTO user VALUES(1,'demo2@demo.de',null,'Maxime','Musterfrau',null,'" . password_hash('demo', PASSWORD_DEFAULT) . "')",
+            "INSERT INTO user VALUES(2,'test@test.de',null,'Tim','Fellon',null,'" . password_hash('test', PASSWORD_DEFAULT) . "')",
+            "INSERT INTO user VALUES(3,'test2@test.de',null,'Rosa','Fellon',null,'" . password_hash('test', PASSWORD_DEFAULT) . "')",
+            "INSERT INTO user VALUES(4,'hans-wurst@wurst.de',null,'Hans','Wurst',null,'" . password_hash('wurst', PASSWORD_DEFAULT) . "')",
 
             "INSERT INTO address VALUES(0,'Deutschland','Wilhelmshaven','Helgolandstraße',48,26384)",
             "INSERT INTO address VALUES(1,'Deutschland','Schortens','Karl-Harms-Str',14,26419)",

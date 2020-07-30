@@ -53,6 +53,27 @@ if (!preg_match("/new_offer\.php/i", $_SERVER['REQUEST_URI'])) {
         $_SESSION['tempUpload'] = false;
     }
 }
+if (isset($_GET["randomid"]) && isset($_GET["email"])) {
+    if (strlen($_GET["randomid"]) === 12) {
+        setcookie("email", null, time() + 60 * 60 * 24);
+        setcookie("loggedin", "false", time() + 60 * 60 * 24);
+        header("Location: index.php");
+        $randomid = $_GET["randomid"];
+        $email = $_GET["email"];
+        $newemail = $_GET["newemail"];
+        $UserDAOImpl = new UserDAOImpl();
+        $user = $UserDAOImpl->findUserByMail($email);
+        if ($email == $user->getEmail() && $randomid == $user->getLink() && $newemail == $user->getNewmail()) {
+            if ($UserDAOImpl->findUserByMail($newemail) === null) {
+                $user->setEmail($newemail);
+                $user->setNewmail(null);
+                $user->setLink(null);
+                $UserDAOImpl->emailaenderung($user);
+                header("Location: noJSLogin.php");
+            }
+        }
+    }
+}
 
 function Fehlerbehandlung($texterror)
 {
@@ -422,11 +443,13 @@ if (isset($_GET["email"])) {
     $UserDAOImpl = new UserDAOImpl();
     $user = $UserDAOImpl->findUserByMail($email);
     $link = $user->getLink();
-    if (isset($_GET["randomid"]) && preg_match(".$link.", $_GET["randomid"])) {
-        $user->setLink("");
-        $result = $UserDAOImpl->update($user);
+    if (strlen($link) == 8) {
+        if (isset($_GET["randomid"]) && preg_match(".$link.", $_GET["randomid"])) {
+            $user->setLink(null);
+            $result = $UserDAOImpl->update($user);
 //TODO Fehlerbehandulung bei falschen daten und Bestätigung das man registriert wurde per Text
-        // logout("Ihre Regestrierung war erfolgreich");
+            // logout("Ihre Regestrierung war erfolgreich");
+        }
     }
 }
 

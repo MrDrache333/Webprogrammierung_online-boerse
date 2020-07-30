@@ -68,7 +68,10 @@ include "profil_loader.php";
                         echo '<h3><i style="color: #FF0000"> Ihr Nachname ist nicht korrekt!</i></h3>';
                     }
                     if (isset($_SESSION["error"]) && preg_match('/Email/', $_SESSION["error"])) {
-                        echo '<h3><i style="color: #FF0000"> Ihr Email ist nicht falsch oder nicht verfügbar!</i></h3>';
+                        echo '<h3><i style="color: #FF0000"> Wählen sie eine andere E-mail aus!</i></h3>';
+                    }
+                    if (isset($_SESSION["error"]) && preg_match('/Datei/', $_SESSION["error"])) {
+                        echo '<h3><i style="color: #FF0000"> Bestätigen sie den Link in der Datei um die Email änderung durchzuführen!</i></h3>';
                     }
                     if (isset($_SESSION["error"]) && preg_match('/altpw/', $_SESSION["error"])) {
                         echo '<h3><i style="color: #FF0000"> Ihr altes Passwort ist nicht korrekt!</i></h3>';
@@ -94,7 +97,7 @@ include "profil_loader.php";
 
                                 <label for="email">E-Mail Adresse</label>
                                 <input class="profilemail" type="email" name="email" id="email"
-                                       value="<?php echo $user->getEmail(); ?>"/>
+                                       value="<?php echo $user->getEmail(); ?> "/>
                             </div>
                             <div class="inputs_col">
                                 <h3>Passwort ändern</h3>

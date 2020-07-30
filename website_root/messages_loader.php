@@ -31,17 +31,9 @@ if ($email !== null) {
                     }
                 }
                 if ($found === true) {
-                    $offer = $OfferDAOImpl->getOfferByID($id);
-                    $anzahl = $OfferDAOImpl->Countadress($offer);
-                    $anzahl = $anzahl[0];
-                    $anzahl = $anzahl[0];
-                    if ($anzahl === "1") {
-                        $adressid = $offer->getAddress()->getId();
-                        //TODO das will nicht $AddressDAOImpl->delete($adressid);
-                        $OfferDAOImpl->delete($id);
-                    } else {//Addresse wird öfter verwendet also löschen egal
-                        $OfferDAOImpl->delete($id);
-                    }
+
+                    $OfferDAOImpl->delete($id);
+
                 } else {
                     echo "Sie löschen eine Anzeige die nicht Ihnen gehört. Dies ist nicht möglich.";
                 }

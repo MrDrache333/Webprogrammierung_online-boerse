@@ -21,7 +21,8 @@ if (isset($_POST["loginSubmit"])) {
 
 
         if ($user !== null && password_verify($password, $user->getPassword())) {
-            if ($user->getLink() == "") {
+
+            if ($user->getLink() == "" || $user->getLink() == null || strlen($user->getLink()) > 8) {
                 setcookie("email", $email, time() + 60 * 60 * 24);
                 setcookie("username", $user->getPrename() . " " . $user->getSurname(), time() + 60 * 60 * 24);
                 setcookie("loggedin", "true", time() + 60 * 60 * 24);
@@ -85,7 +86,7 @@ if (isset($_POST["loginSubmit"])) {
             $toRegisterUser->setSurname($lastname);
             $toRegisterUser->setEmail($loginEmail);
             $toRegisterUser->setPassword(password_hash($loginPassword, PASSWORD_DEFAULT));
-            $randomid = randomid();
+            $randomid = randomid(8);
             $toRegisterUser->setLink($randomid);
             $result = $controller->create($toRegisterUser);
 
@@ -186,7 +187,7 @@ function GeneratePassword($length = 12)
 
 }
 
-function randomid($length = 8)
+function randomid($length)
 {
     //Funktion zur Generierung einer zufälligen ID
 

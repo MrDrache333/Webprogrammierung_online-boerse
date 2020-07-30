@@ -11,6 +11,7 @@ class User
     private $prename;
     private $surname;
     private $email;
+    private $newmail;
     private $password;
     private $link;
 
@@ -67,6 +68,23 @@ class User
     public function setEmail($email): void
     {
         $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNewmail()
+    {
+        return $this->newmail;
+    }
+
+    /**
+     * @param mixed $newmail
+     */
+
+    public function setNewmail($newmail): void
+    {
+        $this->newmail = $newmail;
     }
 
     /**

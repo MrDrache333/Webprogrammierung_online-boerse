@@ -36,8 +36,8 @@ class UserDAOImpl implements UserDAO
      */
     function create(User $user)
     {
-        $command = "insert into user(email, prename, surname, password,link) values (?,?,?,?,?)";
-        $values = [$user->getEmail(), $user->getPrename(), $user->getSurname(), $user->getPassword(), $user->getLink()];
+        $command = "insert into user(email,newemail, prename, surname, password,link) values (?,?,?,?,?,?)";
+        $values = [$user->getEmail(), $user->getNewmail(), $user->getPrename(), $user->getSurname(), $user->getPassword(), $user->getLink()];
         return UserHelper::getUsersFromSQLResult($this->database->execute($command, $values)) === null;
     }
 
@@ -57,10 +57,21 @@ class UserDAOImpl implements UserDAO
      */
     public function update($user)
     {
-        /* $command = "UPDATE user Set email '" . $email . "'prename'" . $prename . "'surname'" . $surname . "'";
-         return $this->database->execute($command);*/
-        $command = "UPDATE user SET link=?,prename=?, surname=? WHERE email=?";
-        $values = [$user->getLink(), $user->getPrename(), $user->getSurname(), $user->getEmail()];
+
+        $command = "UPDATE user SET newemail=?, link=?,prename=?, surname=? WHERE email=?";
+        $values = [$user->getNewmail(), $user->getLink(), $user->getPrename(), $user->getSurname(), $user->getEmail()];
+        return $this->database->execute($command, $values);
+    }
+
+    /**
+     * @param User $user Die zuaktualisiernde Email
+     * @return bool Erfolgreich?
+     */
+    public function emailaenderung($user)
+    {
+
+        $command = "UPDATE user SET email=?, newemail=?, link=?,prename=?, surname=? WHERE id=?";
+        $values = [$user->getEmail(), $user->getNewmail(), $user->getLink(), $user->getPrename(), $user->getSurname(), $user->getId()];
         return $this->database->execute($command, $values);
     }
 
@@ -81,9 +92,5 @@ class UserDAOImpl implements UserDAO
         return $this->database->execute($command, [$newPassword, $email]);
     }
 
-    public function updateLink($link, $email)
-    {
-        $command = "UPDATE user SET link=? WHERE email=?";
-        return $this->database->execute($command, [$link, $email]);
-    }
+
 }

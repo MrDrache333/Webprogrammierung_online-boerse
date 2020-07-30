@@ -39,7 +39,26 @@ if (isset($_POST["submit_pb"])) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         Fehlerbehandlung("Ihre Email ist falsch.");
     }
+    if (isset($email) && isset($_COOKIE["email"])) {
 
+        if ($email != $_COOKIE["email"]) {
+            $randomid = randomid(12);
+            if ($u->findUserByMail($email) == null) {
+                $user->setNewmail($email);
+                $user->setLink($randomid);
+                $u->update($user);
+                $loginemail = $user->getEmail();
+
+                $filename = $prename . "_" . $surname . "_" . $id . ".txt";
+                $data = "Sie haben sich bei KEFEDO eine Email ändeurng angefordert. Um dies fortzfahren  kicken sie auf den Link und loggen Sie sich mit Ihrem Benutzernamen: " . $loginemail . " und Ihrem Passwort ein. Die Datei wird nach dem einloggen gelöscht!
+                http://localhost:8080/noJSLogin.php?randomid=" . $randomid . "&email=" . $loginemail . "&newemail=" . $email;
+                file_put_contents($filename, $data);
+                Fehlerbehandlung("Datei");
+            } else {
+                Fehlerbehandlung("Email");
+            }
+        }
+    }
     if (!isset($_SESSION["error"])) {
 
         $user->setPrename($name);
@@ -125,6 +144,23 @@ if (isset($_POST['reset_pb'])) {
         }
     }
 }
+function randomid($length)
+{
+    //Funktion zur Generierung einer zufälligen ID
 
+    $char_control = "";
+    $chars_for_pw = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $chars_for_pw .= "0123456789";
+
+    $chars_for_pw .= "abcdefghijklmnopqrstuvwxyz";
+    mt_srand((double)microtime() * 1000000);
+    for ($i = 0; $i < $length; $i++) {
+        $number = random_int(0, strlen($chars_for_pw) - 1);
+        $char_control .= $chars_for_pw[$number];
+    }
+
+    return $char_control;
+
+}
 
 
