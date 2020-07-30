@@ -6,6 +6,14 @@
     }
 }
 
+.aa:visited {
+    color: green;
+}
+
+.aa:link {
+    color: green;
+}
+
 .impressumContainer {
     background-color: lightgrey;
     padding: 20px;
