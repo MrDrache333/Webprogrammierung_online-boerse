@@ -6,7 +6,7 @@ use php\offer\OfferDAOImpl;
 include_once 'php/classes.php';
 
 if (!isset($_SESSION["searchStartWith"])) {
-    $_SESSION["searchStartWith"] = 0;
+    $_SESSION["searchStartWith"] = -1;
 }
 if (isset($_GET["startWith"])) {
     $start = (int)htmlspecialchars($_GET["startWith"]);
@@ -30,7 +30,7 @@ if (isset($_GET["startWith"])) {
     }
 } //Normale Suche (Startseite oder searchJob)
 elseif (isset($_GET['what']) || isset($_GET['where'])) {
-    $_SESSION["searchStartWith"] = 0;
+    $_SESSION["searchStartWith"] = -1;
     //Suchbegriffe übernehmen oder leer setzen
     $what = htmlspecialchars($_GET['what']) ?? "";
     $where = htmlspecialchars($_GET['where']) ?? "";
@@ -63,7 +63,7 @@ elseif (isset($_GET['what']) || isset($_GET['where'])) {
     displayResults($result);
     //Wenn gefiltert wurde, oder die Seite neugeladen wurde
 } elseif (isset($_GET['type1']) || isset($_GET['type2']) || isset($_GET['type4']) || isset($_GET['type8']) || isset($_GET['duration1']) || isset($_GET['duration2']) || isset($_GET['duration4']) || isset($_GET['time1']) || isset($_GET['time2']) || isset($_GET['time4']) || isset($_GET['time8']) || isset($_GET['time16']) || isset($_SESSION['ls_what']) || isset($_SESSION['ls_where'])) {
-    $_SESSION["searchStartWith"] = 0;
+    $_SESSION["searchStartWith"] = -1;
     //Filter laden, oder leeren
     $type = ($_GET['type1'] ?? 0) + ($_GET['type2'] ?? 0) + ($_GET['type4'] ?? 0) + ($_GET['type8'] ?? 0);
     $duration = ($_GET['duration1'] ?? 0) + ($_GET['duration2'] ?? 0) + ($_GET['duration4'] ?? 0);
@@ -181,7 +181,7 @@ function displayResults($result)
                     </form>
                     <?php
                 }
-                if (sizeof($result) === 5) {
+                if (sizeof($result) === 5 && $result[sizeof($result) - 1]->getId() - 1 >= 0) {
                     ?>
                     <form method="GET">
                         <label for="nextSite" hidden>Nächste Seite</label>

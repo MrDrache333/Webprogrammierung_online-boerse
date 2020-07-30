@@ -24,6 +24,10 @@
     }
 }
 
+.offerMainContent {
+    flex-grow: 100;
+}
+
 .offerNameTime {
     display: inline-flex;
     justify-content: space-between;
@@ -158,11 +162,11 @@
 }
 
 .map {
-    max-height: 250px;
+    max-height: 500px;
 }
 
 #mapView {
-    height: 250px;
+    height: 500px;
 }
 
 .errorContainer > h1 {

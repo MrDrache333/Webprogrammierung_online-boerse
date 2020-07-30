@@ -243,8 +243,9 @@ class OfferDAOImpl implements OfferDAO
             }
             $command .= ")";
         }
-        if ($startID > 0) {
-            $command .= " AND offers.id <= " . $startID;
+        if ($startID >= 0) {
+            $command .= " AND offers.id <= ?";
+            $values[] = $startID;
         }
         $command .= " ORDER BY offers.id DESC";
         $command .= " LIMIT 5";
