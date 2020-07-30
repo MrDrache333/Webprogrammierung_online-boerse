@@ -6,6 +6,12 @@
     src: url(icons.woff2) format('woff2');
 }
 
+@media (prefers-color-scheme: dark) {
+    .material-icons {
+        color: white;
+    }
+}
+
 .material-icons {
     font-family: 'Material Icons', serif;
     font-weight: normal;
@@ -20,5 +26,4 @@
     direction: ltr;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    color: white;
 }

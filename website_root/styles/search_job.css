@@ -17,8 +17,13 @@
     width: 100%;
 }
 
-.nextSideButton {
+.nextSideButtonContainer {
     max-width: 150px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.nextSideButton {
     justify-content: center;
 }
 
@@ -156,7 +161,7 @@ article:hover {
 .article-link {
     padding-top: 10px;
     flex-grow: 100;
-    color: #b30920;
+    color: #6b7aa4;
     text-decoration: none;
     font-weight: 400;
     text-align: center;

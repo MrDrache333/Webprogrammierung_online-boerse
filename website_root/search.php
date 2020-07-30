@@ -174,22 +174,26 @@ function displayResults($result)
                 if ($_SESSION["searchStartWith"] !== 0 && $result[0]->getId() < $_SESSION["maxResults"]) {
                     ?>
                     <form method="GET">
-                        <label for="previousSite" hidden>Vorherige Seite</label>
-                        <input type="hidden" value="<?php echo($result[0]->getId() + 6) ?>" name="startWith">
-                        <button class="nextSideButton" id="previousSite" type="submit"><span class="center"><span
-                                        class="material-icons">arrow_back</span> Vorherige Seite</span></button>
+                        <div class="nextSideButtonContainer">
+                            <label for="previousSite" hidden>Vorherige Seite</label>
+                            <input type="hidden" value="<?php echo($result[0]->getId() + 6) ?>" name="startWith">
+                            <button class="nextSideButton" id="previousSite" type="submit"><span class="center"><span
+                                            class="material-icons">arrow_back</span> zurück</span></button>
+                        </div>
                     </form>
                     <?php
                 }
                 if (sizeof($result) === 5 && $result[sizeof($result) - 1]->getId() - 1 >= 0) {
                     ?>
                     <form method="GET">
-                        <label for="nextSite" hidden>Nächste Seite</label>
-                        <input type="hidden" value="<?php echo($result[sizeof($result) - 1]->getId() - 1) ?>"
-                               name="startWith">
-                        <button class="nextSideButton" id="nextSite" type="submit"><span
-                                    class="center">Nächste Seite <span
-                                        class="material-icons">arrow_forward</span></span></button>
+                        <div class="nextSideButtonContainer">
+                            <label for="nextSite" hidden>Nächste Seite</label>
+                            <input type="hidden" value="<?php echo($result[sizeof($result) - 1]->getId() - 1) ?>"
+                                   name="startWith">
+                            <button class="nextSideButton" id="nextSite" type="submit"><span
+                                        class="center">Nächste Seite <span
+                                            class="material-icons">arrow_forward</span></span></button>
+                        </div>
                     </form>
                     <?php
                 }
