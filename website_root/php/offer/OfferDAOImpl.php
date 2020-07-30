@@ -152,7 +152,7 @@ class OfferDAOImpl implements OfferDAO
         return OfferHelper::getOffersFromSQLResult($this->database->execute($command, $values));
     }
 
-    public function search($what, $where, $type, $duration, $time)
+    public function search($what, $where, $type, $duration, $time, $startID = 0)
     {
         //Standardfilter erstellen
         $command = "SELECT * FROM offers, address WHERE offers.address = address.ID";
@@ -243,7 +243,11 @@ class OfferDAOImpl implements OfferDAO
             }
             $command .= ")";
         }
+        if ($startID > 0) {
+            $command .= " AND offers.id <= " . $startID;
+        }
         $command .= " ORDER BY offers.id DESC";
+        $command .= " LIMIT 5";
         //Datenbank abfragen und Ergebnis zurückgeben
         return OfferHelper::getOffersFromSQLResult($this->database->execute($command, $values));
     }

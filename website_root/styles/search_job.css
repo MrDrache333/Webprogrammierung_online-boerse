@@ -11,6 +11,23 @@
     }
 }
 
+.nextSideButtons {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.nextSideButton {
+    max-width: 150px;
+    justify-content: center;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .content {
     padding: 10px .5% 10px .5%;
     margin: 0;

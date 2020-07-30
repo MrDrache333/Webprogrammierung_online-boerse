@@ -56,7 +56,7 @@
                                 <div class="filter-row">
                                     <label class="filter-cb-label filter-radio">
                                         <input type="checkbox" id="f_type_0" name="type8"
-                                               value=8 <?php if (isset($_GET["type8"])) {
+                                               value=8 <?php if (isset($_GET["type8"]) || ($_SESSION["searchType"] ?? 0) & 0b1000) {
                                             echo "checked";
                                         } ?>>
                                         <i></i>
@@ -66,7 +66,7 @@
                                 <div class="filter-row">
                                     <label class="filter-cb-label filter-radio">
                                         <input type="checkbox" id="f_type_1" name="type4"
-                                               value=4 <?php if (isset($_GET["type4"])) {
+                                               value=4 <?php if (isset($_GET["type4"]) || ($_SESSION["searchType"] ?? 0) & 0b0100) {
                                             echo "checked";
                                         } ?>>
                                         <i></i>
@@ -76,7 +76,7 @@
                                 <div class="filter-row">
                                     <label class="filter-cb-label filter-radio">
                                         <input type="checkbox" id="f_type_2" name="type2"
-                                               value=2 <?php if (isset($_GET["type2"])) {
+                                               value=2 <?php if (isset($_GET["type2"]) || ($_SESSION["searchType"] ?? 0) & 0b0010) {
                                             echo "checked";
                                         } ?>>
                                         <i></i>
@@ -86,7 +86,7 @@
                                 <div class="filter-row">
                                     <label class="filter-cb-label filter-radio">
                                         <input type="checkbox" id="f_type_3" name="type1"
-                                               value=1 <?php if (isset($_GET["type1"])) {
+                                               value=1 <?php if (isset($_GET["type1"]) || ($_SESSION["searchType"] ?? 0) & 0b0001) {
                                             echo "checked";
                                         } ?>>
                                         <i></i>
@@ -99,7 +99,7 @@
                                 <div class="filter-row">
                                     <label class="filter-cb-label filter-radio">
                                         <input type="checkbox" id="f_duration_0" name="duration4"
-                                               value=4 <?php if (isset($_GET["duration4"])) {
+                                               value=4 <?php if (isset($_GET["duration4"]) || ($_SESSION["searchDuration"] ?? 0) & 0b100) {
                                             echo "checked";
                                         } ?>>
                                         <i></i>
@@ -109,7 +109,7 @@
                                 <div class="filter-row">
                                     <label class="filter-cb-label filter-radio">
                                         <input type="checkbox" id="f_duration_1" name="duration2"
-                                               value=2 <?php if (isset($_GET["duration2"])) {
+                                               value=2 <?php if (isset($_GET["duration2"]) || ($_SESSION["searchDuration"] ?? 0) & 0b010) {
                                             echo "checked";
                                         } ?>>
                                         <i></i>
@@ -119,7 +119,7 @@
                                 <div class="filter-row">
                                     <label class="filter-cb-label filter-radio">
                                         <input type="checkbox" id="f_duration_2" name="duration1"
-                                               value=1 <?php if (isset($_GET["duration1"])) {
+                                               value=1 <?php if (isset($_GET["duration1"]) || ($_SESSION["searchDuration"] ?? 0) & 0b001) {
                                             echo "checked";
                                         } ?>>
                                         <i></i>
@@ -132,7 +132,7 @@
                                 <div class="filter-row">
                                     <label class="filter-cb-label filter-radio">
                                         <input type="checkbox" id="f_time_0" name="time16"
-                                               value=16 <?php if (isset($_GET["time16"])) {
+                                               value=16 <?php if (isset($_GET["time16"]) || ($_SESSION["searchTime"] ?? 0) & 0b10000) {
                                             echo "checked";
                                         } ?>>
                                         <i></i>
@@ -142,7 +142,7 @@
                                 <div class="filter-row">
                                     <label class="filter-cb-label filter-radio">
                                         <input type="checkbox" id="f_time_1" name="time8"
-                                               value=8 <?php if (isset($_GET["time8"])) {
+                                               value=8 <?php if (isset($_GET["time8"]) || ($_SESSION["searchTime"] ?? 0) & 0b01000) {
                                             echo "checked";
                                         } ?>>
                                         <i></i>
@@ -152,7 +152,7 @@
                                 <div class="filter-row">
                                     <label class="filter-cb-label filter-radio">
                                         <input type="checkbox" id="f_time_2" name="time4"
-                                               value=4 <?php if (isset($_GET["time4"])) {
+                                               value=4 <?php if (isset($_GET["time4"]) || ($_SESSION["searchTime"] ?? 0) & 0b00100) {
                                             echo "checked";
                                         } ?>>
                                         <i></i>
@@ -162,7 +162,7 @@
                                 <div class="filter-row">
                                     <label class="filter-cb-label filter-radio">
                                         <input type="checkbox" id="f_time_3" name="time2"
-                                               value=2 <?php if (isset($_GET["time2"])) {
+                                               value=2 <?php if (isset($_GET["time2"]) || ($_SESSION["searchTime"] ?? 0) & 0b00010) {
                                             echo "checked";
                                         } ?>>
                                         <i></i>
@@ -172,7 +172,7 @@
                                 <div class="filter-row">
                                     <label class="filter-cb-label filter-radio">
                                         <input type="checkbox" id="f_time_4" name="time1"
-                                               value=1 <?php if (isset($_GET["time1"])) {
+                                               value=1 <?php if (isset($_GET["time1"]) || ($_SESSION["searchTime"] ?? 0) & 0b00001) {
                                             echo "checked";
                                         } ?>>
                                         <i></i>
