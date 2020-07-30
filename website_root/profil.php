@@ -48,8 +48,11 @@ include "profil_loader.php";
                     } ?>
                     <form enctype="multipart/form-data" method="POST" action="profil.php"
                           id="profile-form">
-                        <img class="profile_img" src="<?php echo($user->getProfilePhoto()) ?>" alt="Profilbild-Template"
-                             id="pb_image">
+                        <div class="profile_imgContainer">
+                            <img class="profile_img" src="<?php echo($user->getProfilePhoto()) ?>"
+                                 alt="Profilbild-Template"
+                                 id="pb_image">
+                        </div>
                         <div class="form-submit">
                             <input type="submit" value="Bild hochladen" name="pb_submit" class="submit"/>
                             <input type="file" name="fileToUpload" id="fileToUpload"/>

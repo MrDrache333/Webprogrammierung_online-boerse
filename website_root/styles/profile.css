@@ -36,8 +36,6 @@ h3 {
 }
 
 img {
-    max-width: 80%;
-    height: auto;
     border-radius: 20%;;
 }
 
@@ -110,11 +108,16 @@ h1 {
     min-width: 250px;
 }
 
-.profile_img {
+.profile_imgContainer {
     width: 250px;
+    height: 250px;
+}
+
+.profile_img {
+    width: 100%;
     margin: 0 auto auto;
     border-radius: 20%;
-    height: auto;
+    height: 100%;
 }
 
 #reset_pb {

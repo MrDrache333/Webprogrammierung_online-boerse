@@ -182,11 +182,16 @@ textarea {
     font-size: 15px;
 }
 
-.fakeimg {
+.fakeimgContainer {
     width: 250px;
+    height: 250px;
+}
+
+.fakeimg {
+    width: 100%;
     margin: 0 auto auto;
     border-radius: 20%;
-    height: auto;
+    height: 100%;
 }
 
 .date_free {

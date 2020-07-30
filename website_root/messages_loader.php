@@ -71,12 +71,15 @@ function displayResults($result)
                         <h4><?php echo $offer->getSubTitle(); ?></h4>
                     </div>
                     <div class="anzeige_content">
-                        <div class="image">
-                            <img class="fakeimg" src="<?php echo $offer->getLogo(); ?>" alt="Firmenlogo">
-                        </div>
+
                         <div class="anzeige_info">
-                            <div class="beschreibung">
-                                <?php echo $offer->getDescription(); ?>
+                            <div class="infoContent">
+                                <div class="image">
+                                    <img class="fakeimg" src="<?php echo $offer->getLogo(); ?>" alt="Firmenlogo">
+                                </div>
+                                <div class="beschreibung">
+                                    <?php echo $offer->getDescription(); ?>
+                                </div>
                             </div>
                             <div class="anzeige_footer">
                                 <div class="erstellt rowItem">

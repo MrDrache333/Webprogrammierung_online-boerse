@@ -46,9 +46,10 @@ include "new_offer_loader.php";
                         <?php if (isset($_SESSION["error"]) && preg_match('/Bildhochladen/', $_SESSION["error"])) {
                             echo '<i style="color: #FF0000"> Das Bild konnte nicht hochgeladen werden!</i>';
                         } ?>
-
-                        <img src="<?php echo $logo ?? ""; ?>" alt="Produktbild-Template" id="pb_image"
-                             class="fakeimg">
+                        <div class="fakeimgContainer">
+                            <img src="<?php echo $logo ?? ""; ?>" alt="Produktbild-Template" id="pb_image"
+                                 class="fakeimg">
+                        </div>
                         <input type="hidden" value="<?php echo($logo) ?>" id="image" name="image"/>
                         <form enctype="multipart/form-data" action="new_offer.php" method="POST" class="new_offer-form"
                               id="new_offer-form">

@@ -51,13 +51,22 @@
     padding-top: 18px;
 }
 
+.infoContent {
+    display: inline-flex;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+}
+
 .fakeimg {
     padding: 10px;
     float: left;
-    width: 100px;
+    width: 100%;
     margin: 0 auto auto;
     border-radius: 20%;
-    height: auto;
+    height: 100%;
 }
 
 .beschreibung {
