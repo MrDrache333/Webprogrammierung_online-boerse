@@ -30,10 +30,10 @@ if (isset($_POST["submit_pb"])) {
     $name = htmlspecialchars($_POST["name"]);
     $name2 = htmlspecialchars($_POST["father_name"]);
     $email = htmlspecialchars($_POST["email"]);
-    if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/u', $name)) {
+    if (!isset($name)) {
         Fehlerbehandlung("Ihr Vorname ist falsch.");
     }
-    if (!preg_match('/^[0-9a-zA-Z-_üöäß\s]{3,50}$/u', $name2)) {
+    if (!isset($name2)) {
         Fehlerbehandlung("Ihr Nachname ist falsch.");
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

@@ -126,6 +126,7 @@ class OfferDAOImpl implements OfferDAO
 
             if ($abfrage2 === null || sizeof($abfrage2) === 0) {
                 //alte Adresse auf neue umschreiben ändern
+                var_dump($offer);
                 $plz = $offer->getAddress()->getPlz();
                 $street = $offer->getAddress()->getStreet();
                 $ort = $offer->getAddress()->getTown();
