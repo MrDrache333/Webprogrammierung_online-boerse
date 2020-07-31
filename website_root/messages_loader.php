@@ -109,8 +109,8 @@ function displayResults($result)
                                 </div>
                             </div>
                         </div>
+
                     </div>
-                </div>
             </div>
             </div>
             <?php
