@@ -6,7 +6,6 @@ use php\user\UserDAOImpl;
 
 
 $email = $_COOKIE['email'] ?? null;
-
 unset($_SESSION["offerid"]);
 if ($email !== null) {
 

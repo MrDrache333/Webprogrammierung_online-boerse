@@ -1,5 +1,6 @@
 <?php include "header.php";
 include "new_offer_loader.php";
+
 ?>
 
 
@@ -68,6 +69,7 @@ include "new_offer_loader.php";
                     <div class="card">
                         <h2>Basisinformationen</h2>
                         <form method="POST" class="new_offer-form" id="new_offer-form">
+                            <input type="hidden" name="token" id="token" value="<?php echo $_SESSION['token']; ?>"/>
                             <label for="titel"><?php if (isset($_SESSION["error"]) && preg_match('/Titel/', $_SESSION["error"])) {
                                     echo '<i style="color: #FF0000"> Ihr Titel ist falsch!</i>';
                                 } else {

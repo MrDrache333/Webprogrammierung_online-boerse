@@ -26,6 +26,8 @@ if (isset($_POST["loginSubmit"])) {
                 setcookie("email", $email, time() + 60 * 60 * 24);
                 setcookie("username", $user->getPrename() . " " . $user->getSurname(), time() + 60 * 60 * 24);
                 setcookie("loggedin", "true", time() + 60 * 60 * 24);
+                session_start();
+                $_SESSION['token'] = GeneratePassword(14);
                 header("Location: profil.php");
             } else {
                 setcookie("loggedin", "false", time() + 60 * 60 * 24);
@@ -86,7 +88,7 @@ if (isset($_POST["loginSubmit"])) {
             $toRegisterUser->setSurname($lastname);
             $toRegisterUser->setEmail($loginEmail);
             $toRegisterUser->setPassword(password_hash($loginPassword, PASSWORD_DEFAULT));
-            $randomid = randomid(8);
+            $randomid = GeneratePassword(8);
             $toRegisterUser->setLink($randomid);
             $result = $controller->create($toRegisterUser);
 
@@ -168,9 +170,9 @@ else if (isset($_POST["pwforget"])) {
         header('Location:' . $header . 'email');
     }
 }
-function GeneratePassword($length = 12)
+function GeneratePassword($length)
 {
-    //Funktion zur Generierung eines zufälligen Passworts
+    //Funktion zur Generierung eines zufälligen Passworts/ID/Token
 
     $char_control = "";
     $chars_for_pw = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -179,7 +181,7 @@ function GeneratePassword($length = 12)
     $chars_for_pw .= "abcdefghijklmnopqrstuvwxyz";
     mt_srand((double)microtime() * 1000000);
     for ($i = 0; $i < $length; $i++) {
-        $number = random_int(0, strlen($chars_for_pw));
+        $number = random_int(0, strlen($chars_for_pw) - 1);
         $char_control .= $chars_for_pw[$number];
     }
 
@@ -187,23 +189,5 @@ function GeneratePassword($length = 12)
 
 }
 
-function randomid($length)
-{
-    //Funktion zur Generierung einer zufälligen ID
-
-    $char_control = "";
-    $chars_for_pw = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    $chars_for_pw .= "0123456789";
-
-    $chars_for_pw .= "abcdefghijklmnopqrstuvwxyz";
-    mt_srand((double)microtime() * 1000000);
-    for ($i = 0; $i < $length; $i++) {
-        $number = random_int(0, strlen($chars_for_pw));
-        $char_control .= $chars_for_pw[$number];
-    }
-
-    return $char_control;
-
-}
 
 ?>
