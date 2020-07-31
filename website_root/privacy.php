@@ -349,6 +349,7 @@
                         </ul>
 
                     </div>
+                    <p>Hier geht es zum <a class="aa" href="impressum.php">Impressum</a> und zu den <a class="aa" href="terms_of_use.php">Nutzungsbedingungen</a>. </p>
 
                     <p>Quelle: <a class="aa"
                                   href="https://www.arbeitsagentur.de/datei/Datenschutzerklaerung_ba018190.pdf">Agentur
