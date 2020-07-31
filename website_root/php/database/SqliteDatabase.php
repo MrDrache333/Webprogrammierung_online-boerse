@@ -185,7 +185,7 @@ class SqliteDatabase implements Database
     /**
      * Starts a Transaction
      */
-    public function begin()
+    public function begin(): void
     {
         if (!$this->conn->inTransaction()) {
             $this->conn->beginTransaction();
@@ -195,7 +195,7 @@ class SqliteDatabase implements Database
     /**
      * Ends a Transaction and commits
      */
-    public function end()
+    public function end(): void
     {
         if ($this->conn->inTransaction()) {
             $this->conn->commit();
@@ -205,7 +205,7 @@ class SqliteDatabase implements Database
     /**
      * Stops a Transaction and rolls back
      */
-    public function stop()
+    public function stop(): void
     {
         if ($this->conn->inTransaction()) {
             $this->conn->rollBack();
