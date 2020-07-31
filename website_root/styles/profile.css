@@ -171,9 +171,9 @@ h1 {
     animation: animatezoom 1.5s
 }
 
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 548px) {
     .profile_img {
-        width: 150px;
+        width: 100%;
     }
 
     h1 {

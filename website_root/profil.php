@@ -175,7 +175,6 @@ include "profil_loader.php";
             </div>
         </div>
     </div>
-</div>
 
 <?php include "footer.php"; ?>
 
