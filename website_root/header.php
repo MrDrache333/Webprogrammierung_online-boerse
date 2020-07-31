@@ -69,11 +69,35 @@ if (isset($_GET["randomid"]) && isset($_GET["email"])) {
                 $user->setNewmail(null);
                 $user->setLink(null);
                 $UserDAOImpl->emailaenderung($user);
+                logout("Ihre Regestrierung war erfolgreich. Loggen Sie sich mit der neuen Email ein");
                 header("Location: noJSLogin.php");
+            } else {
+                logout("Ihre Regestrierung nicht erfolgreich. Loggen Sie sich mit der alten Email erneut ein");
             }
+        } else {
+            logout("Ihre Regestrierung nicht erfolgreich. Loggen Sie sich mit der alten Email erneut ein");
         }
     }
 }
+
+
+if (isset($_GET["email"])) {
+    $email = $_GET["email"];
+    $UserDAOImpl = new UserDAOImpl();
+    $user = $UserDAOImpl->findUserByMail($email);
+    $link = $user->getLink();
+    if (strlen($link) == 8) {
+        if (isset($_GET["randomid"]) && preg_match(".$link.", $_GET["randomid"])) {
+            $user->setLink(null);
+            $result = $UserDAOImpl->update($user);
+
+            logout("Ihre Regestrierung war erfolgreich");
+        } else {
+            logout("Ihre Regestrierung war nicht erfolgreich");
+        }
+    }
+}
+
 
 function Fehlerbehandlung($texterror)
 {
@@ -436,25 +460,6 @@ if (!isset($_COOKIE["wpcc"])) {
     }
     ?>
 </div>
-
-<?php
-if (isset($_GET["email"])) {
-    $email = $_GET["email"];
-    $UserDAOImpl = new UserDAOImpl();
-    $user = $UserDAOImpl->findUserByMail($email);
-    $link = $user->getLink();
-    if (strlen($link) == 8) {
-        if (isset($_GET["randomid"]) && preg_match(".$link.", $_GET["randomid"])) {
-            $user->setLink(null);
-            $result = $UserDAOImpl->update($user);
-//TODO Fehlerbehandulung bei falschen daten und Bestätigung das man registriert wurde per Text
-            // logout("Ihre Regestrierung war erfolgreich");
-        }
-    }
-}
-
-
-?>
 
 <!-- Script with the click, which kills the Modal-->
 <script>

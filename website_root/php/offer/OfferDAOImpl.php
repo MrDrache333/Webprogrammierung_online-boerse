@@ -95,6 +95,7 @@ class OfferDAOImpl implements OfferDAO
 
     public function update($offer)
     {
+        $this->database->begin();
         $command = "Select address From offers WHERE id=?";
         $values = [$offer->getId()];
         $adressid = $this->database->execute($command, $values);
@@ -156,7 +157,10 @@ class OfferDAOImpl implements OfferDAO
         }
         $command = "UPDATE offers SET title=?, subtitle=?, companyname=?, description=?,address=?,free=?,offerType=?,duration=?,workModel=? WHERE id=?";
         $values = [$offer->getTitle(), $offer->getSubTitle(), $offer->getCompanyName(), $offer->getDescription(), $adressiddata, $offer->getFree(), $offer->getOfferType(), $offer->getDuration(), $offer->getWorkModel(), $offer->getId()];
-        return $this->database->execute($command, $values);
+        $return = $this->database->execute($command, $values);
+        $this->database->end();
+        return $return;
+
     }
 
     public function getOwnOffers($user)
