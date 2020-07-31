@@ -64,9 +64,12 @@
                     date_default_timezone_set("Europe/Berlin");
                     $timestamp = time();
                     $absendermail = $_POST["email"];
+                    $absendermail = htmlspecialchars($absendermail);
                     $empfaenger = "dominik.luebben@uni-oldenburg.de";
                     $absendername = $_POST["name"];
+                    $absendername = htmlspecialchars($absendername);
                     $betreff = $_POST["subject"];
+                    $betreff = htmlspecialchars($betreff);
                     $text = "Die Person" . $absendername . "schireb um" . $timestamp . "folgendes:" . $_POST["message"];
 
                     if (mail($empfaenger, $betreff, $text, "From: $absendername <$absendermail>")) {
