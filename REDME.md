@@ -3,7 +3,7 @@ Teilnehmende: Fenja Bauer, Dominik Lübben, Keno Oelrichs Garcia
 
 ## Vorraussetzungen, um unsere Seite in Betrieb nehmen zu können
 
- - Ein Admin wurde für die Seite nicht vorgesehen, aber ein Testaccount ist über demo@demo.de Passwort: demo einsehbar.
+ - Ein Admin wurde für die Seite nicht vorgesehen, aber ein Testaccount ist über *demo@demo.de* Passwort: *demo* einsehbar.
  - Facebook bzw Twitter verlinkung nicht auf localhost da die von Facebook gesperrt ist.
     Die Verlinkung ist auf ein NAS von uns und die ID der Anzeige wird mitübertragen.
     Die Datenbank dort hat aber nur die Einträge die von uns vordefiniert sind.
@@ -39,6 +39,16 @@ Teilnehmende: Fenja Bauer, Dominik Lübben, Keno Oelrichs Garcia
 - Teilen der Anzeige auf Facebook,Telegram,Twitter
 - Adresse per Map
 - Infos vom Job
+
+## Erklärungen
+### Transaktionen
+Um Transaktionen zu nutzen, können die in *SqliteDatabase.php* definierten Methoden *begin*,*end*,*stop* verwendet werden. Hierbei wird folgendes ausgeführt:
+1. begin (Beginnt eine Transaktion)
+- Wenn aktuell noch keine Transaktion gestartet wurde, wird eine gestartet.
+2. end (Beendet eine erfolgreiche Transaktion)
+- Wenn eine Transaktion bereits gestartet wurde, dann wird diese mit einem *Commit* beendet.
+3. stop (Beendet eine fehlerhafte Transaktion)
+- Wenn eine Transaktion bereits gestartet wurde, dann wird diese beendet und mit *Rollback* wiederrufen.
 
 ## Nicht umgesetzte Teilaufgaben
 
