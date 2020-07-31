@@ -43,7 +43,8 @@
 
                         <h3 class="title_light">EU-Streitschlichtung</h3>
                         <p>Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-                            <a class="aa" href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a>.<br/>
+                            <a class="aa" href="https://ec.europa.eu/consumers/odr" target="_blank"
+                               rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a>.<br/>
                             Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
 
                         <h3 class="title_light">Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h3>
@@ -84,7 +85,7 @@
                             bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden
                             wir derartige Inhalte umgehend entfernen.</p>
                         <p>Hier gehts zu den <a class="aa" href="terms_of_use.php">Nutzungsbedingungen</a> und zum <a
-                                    class="aa"  href="privacy.php">Datenschutz</a></p>
+                                    class="aa" href="privacy.php">Datenschutz</a></p>
                         <p>Quelle: <a class="aa" href="https://www.e-recht24.de/impressum-generator.html">https://www.e-recht24.de/impressum-generator.html</a>
                         </p>
                     </div>
@@ -92,6 +93,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <?php include "footer.php"; ?>
 

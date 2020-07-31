@@ -171,7 +171,7 @@ function displayResults($result)
             ?>
             <div class="nextSideButtons">
                 <?php
-                if ($_SESSION["searchStartWith"] !== 0 && $result[0]->getId() < $_SESSION["maxResults"]) {
+                if ($_SESSION["searchStartWith"] >= 0 && $result[0]->getId() < $_SESSION["maxResults"]) {
                     ?>
                     <form method="GET">
                         <div class="nextSideButtonContainer">
