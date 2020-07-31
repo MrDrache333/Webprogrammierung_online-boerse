@@ -345,6 +345,13 @@ textarea:focus, input:focus {
 .form-submit {
     padding-top: 27px;
 }
+.aa:visited {
+    color: green;
+}
+
+.aa:link {
+    color: green;
+}
 
 .formulare {
     display: flex;

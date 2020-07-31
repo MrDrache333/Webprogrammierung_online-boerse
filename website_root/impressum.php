@@ -85,7 +85,7 @@
                             bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden
                             wir derartige Inhalte umgehend entfernen.</p>
                         <p>Hier gehts zu den <a class="aa" href="terms_of_use.php">Nutzungsbedingungen</a> und zum <a
-                                    class="aa" href="privacy.php">Datenschutz</a></p>
+                                    class="aa" href="privacy.php">Datenschutz</a>.</p>
                         <p>Quelle: <a class="aa" href="https://www.e-recht24.de/impressum-generator.html">https://www.e-recht24.de/impressum-generator.html</a>
                         </p>
                     </div>

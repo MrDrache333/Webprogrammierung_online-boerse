@@ -211,7 +211,7 @@
                             Arbeitsorte, so müssen diese in mehreren Stellenangeboten angegeben werden. </p>
                        <h4>§ 8 Unzulässige Angebote und Inhalte - Arbeitnehmer</h4>
                         <p>Für ausbildung- und arbeitssuchende Kunden gelten §7 Abs. 1 und Abs. 3 Nr.1 analog für veröffentlichte Stellengesuche.</p>
-                       <p>Hier geht es zum <a class="aa" href="impressum.php">Impressum</a> und zum <a class="aa" href="privacy.php">Datenschutz</a> </p>
+                       <p>Hier geht es zum <a class="aa" href="impressum.php">Impressum</a> und zum <a class="aa" href="privacy.php">Datenschutz</a>. </p>
                         <p>Quelle: <a class="aa" href="https://www.arbeitsagentur.de/datei/Nutzungsbedingungen_ba042566.pdf">Agentur
                                 für Arbeit Nutzungsbedingugen</a>
                             Ähnlich zu
