@@ -105,6 +105,7 @@ article:hover {
 
 .article-info-row {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     width: fit-content;
     min-width: 200px;
@@ -394,6 +395,10 @@ label {
 
     .jobs-result {
         padding-left: 0;
+    }
+
+    .result-h3 {
+        font-size: 1rem;
     }
 
 }
