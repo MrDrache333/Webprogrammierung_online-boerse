@@ -410,7 +410,7 @@ if (isset($_SESSION["tempUpload"]) && $_SESSION["tempUpload"] != false) {
         $offer = $OfferDao->getOfferByID($_SESSION["offerid"]);
         $logo = $offer->getLogo();
     } else {
-        $logo = "images/profile_template.png";
+        $logo = "images/company_placeholder.png";
     }
 }
 ?>
