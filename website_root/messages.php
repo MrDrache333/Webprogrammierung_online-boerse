@@ -1,6 +1,7 @@
 <?php
 include "header.php";
 include "messages_loader.php";
+
 ?>
 <div class="header">
     <nav>

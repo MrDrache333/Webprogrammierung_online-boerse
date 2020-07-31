@@ -88,74 +88,76 @@ if (isset($_POST["arbeitszeiten"])) {
 
 
 if (isset($_POST["edit_offer"])) {
-    if ($eingelogt == "true") {
+    if (isset($_SESSION["token"]) && isset($_POST["token"]) && $_SESSION["token"] == $_POST["token"]) {
+        if ($eingelogt == "true") {
 
 
-        if ($titel == null || strlen($titel) > 50) {
-            $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
-        }
-        if ($subtitle == null || strlen($subtitle) > 50) {
-            $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
-        }
-        if ($straße == null || strlen($straße) > 50) {
-            $errornachricht = Fehlerbehandlung("Ihre Straße ist falsch.");
-        }
-        if (!isset($hsnr)) {
-            $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
-        }
-        if ($ort == null || strlen($ort) > 50) {
-            $errornachricht = Fehlerbehandlung("Ihr Ort ist falsch.");
-        }
-        if (!preg_match('/([0-9]){5,5}$/', $plz)) {
-            $errornachricht = Fehlerbehandlung("Ihre Postleitzahl ist falsch.");
-        }
-        if (!preg_match('/^[0-9-_]{3,50}$/', $free)) {
-            $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
-        }
-        if ($beschreibung == null || strlen($beschreibung) > 1999) {
-            $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
-        }
-        if ($companyname == null || strlen($companyname) > 50) {
-            $errornachricht = Fehlerbehandlung("Ihr Firmenname ist falsch.");
-        }
-        if ($art == null) {
-            $errornachricht = Fehlerbehandlung("Ihre Angebotsart ist nicht gesetzt.");
-        }
-        if ($befristung == null) {
-            $errornachricht = Fehlerbehandlung("Ihre Befrsitung ist nicht gesetzt.");
-        }
-        if ($arbeitszeit == null) {
-            $errornachricht = Fehlerbehandlung("Ihre Arbeitszeit ist nicht gesetzt.");
+            if ($titel == null || strlen($titel) > 50) {
+                $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
+            }
+            if ($subtitle == null || strlen($subtitle) > 50) {
+                $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
+            }
+            if ($straße == null || strlen($straße) > 50) {
+                $errornachricht = Fehlerbehandlung("Ihre Straße ist falsch.");
+            }
+            if (!isset($hsnr)) {
+                $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
+            }
+            if ($ort == null || strlen($ort) > 50) {
+                $errornachricht = Fehlerbehandlung("Ihr Ort ist falsch.");
+            }
+            if (!preg_match('/([0-9]){5,5}$/', $plz)) {
+                $errornachricht = Fehlerbehandlung("Ihre Postleitzahl ist falsch.");
+            }
+            if (!preg_match('/^[0-9-_]{3,50}$/', $free)) {
+                $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
+            }
+            if ($beschreibung == null || strlen($beschreibung) > 1999) {
+                $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
+            }
+            if ($companyname == null || strlen($companyname) > 50) {
+                $errornachricht = Fehlerbehandlung("Ihr Firmenname ist falsch.");
+            }
+            if ($art == null) {
+                $errornachricht = Fehlerbehandlung("Ihre Angebotsart ist nicht gesetzt.");
+            }
+            if ($befristung == null) {
+                $errornachricht = Fehlerbehandlung("Ihre Befrsitung ist nicht gesetzt.");
+            }
+            if ($arbeitszeit == null) {
+                $errornachricht = Fehlerbehandlung("Ihre Arbeitszeit ist nicht gesetzt.");
+            }
+
+            if (!isset($_SESSION["error"])) {
+                ?>
+                <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
+                $_SESSION["kik"] = true;
+            }
+
+            $offer->setTitle(htmlspecialchars($titel));
+            $offer->setSubTitle(htmlspecialchars($subtitle));
+            $offer->setCompanyName(htmlspecialchars($companyname));
+            $offer->setDescription(htmlspecialchars($beschreibung));
+            $offerid = $_SESSION["offerid"];
+            $offer->setId($offerid);
+            $address = new Address(null, "Deutschland", $ort, $straße, $hsnr, $plz);
+            $offer->setAddress($address);
+            $offer->setFree(htmlspecialchars($free));
+            $offer->setOfferType($art);
+            $offer->setDuration($befristung);
+            $offer->setWorkModel($arbeitszeit);
+            $OfferDao->update($offer);
+
+            if (isset($_SESSION['tempUpload'])) {
+                rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $offer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
+                unset($_SESSION['tempUpload']);
+
+            }
         }
 
-        if (!isset($_SESSION["error"])) {
-            ?>
-            <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
-            $_SESSION["kik"] = true;
-        }
 
-        $offer->setTitle(htmlspecialchars($titel));
-        $offer->setSubTitle(htmlspecialchars($subtitle));
-        $offer->setCompanyName(htmlspecialchars($companyname));
-        $offer->setDescription(htmlspecialchars($beschreibung));
-        $offerid = $_SESSION["offerid"];
-        $offer->setId($offerid);
-        $address = new Address(null, "Deutschland", $ort, $straße, $hsnr, $plz);
-        $offer->setAddress($address);
-        $offer->setFree(htmlspecialchars($free));
-        $offer->setOfferType($art);
-        $offer->setDuration($befristung);
-        $offer->setWorkModel($arbeitszeit);
-        $OfferDao->update($offer);
-
-        if (isset($_SESSION['tempUpload'])) {
-            rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $offer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
-            unset($_SESSION['tempUpload']);
-
-        }
     }
-
-
 }
 
 if (isset($_POST["bearbeiten_offer"])) {
@@ -166,7 +168,7 @@ if (isset($_POST["bearbeiten_offer"])) {
         $_SESSION["offerid"] = $id;
 
         if ($offer !== null) {
-            //TODO Was passiert, wenn kein Ergebnis zurückgegeben wurde?
+            $errornachricht = Fehlerbehandlung("Es ist ein Fehler aufgetreten.");
         }
         $titel = $offer->getTitle();
         $subtitle = $offer->getSubTitle();
@@ -308,92 +310,94 @@ if (isset($_POST["uploadLogoSubmit"])) {
 
 if (isset($_POST["submit_offer"])) {
     if ($eingelogt == "true") {
+        if (isset($_SESSION["token"]) && isset($_POST["token"]) && $_SESSION["token"] == $_POST["token"]) {
 
 
-        if (isset($_POST["titel"], $_POST["subtitel"], $_POST["straße"], $_POST["hausnummer"], $_POST["ort"], $_POST["plz"], $_POST["free"], $_POST["beschreibung"], $_POST["companyname"])) {
-            $AddressDAO = $OfferDao->getAddressDAOImpl();
-            $email = $_COOKIE["email"];
-            $user = $UserDAO->findUserByMail($email);
-            $idaktuelle = $user->getId();
+            if (isset($_POST["titel"], $_POST["subtitel"], $_POST["straße"], $_POST["hausnummer"], $_POST["ort"], $_POST["plz"], $_POST["free"], $_POST["beschreibung"], $_POST["companyname"])) {
+                $AddressDAO = $OfferDao->getAddressDAOImpl();
+                $email = $_COOKIE["email"];
+                $user = $UserDAO->findUserByMail($email);
+                $idaktuelle = $user->getId();
 
 
-            if ($titel == null || strlen($titel) > 50) {
-                $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
-            }
-            if ($subtitle == null || strlen($subtitle) > 50) {
-                $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
-            }
-            if ($straße == null || strlen($straße) > 50) {
-                $errornachricht = Fehlerbehandlung("Ihre Straße ist falsch.");
-            }
-            if (!preg_match('/^[0-9a-zA-Z]{1,50}$/', $hsnr)) {
-                $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
-            }
-            if ($ort == null || strlen($ort) > 50) {
-                $errornachricht = Fehlerbehandlung("Ihr Ort ist falsch.");
-            }
-            if (!preg_match('/^[\d]{5}$/', $plz)) {
-                $errornachricht = Fehlerbehandlung("Ihre Postleitzahl ist falsch.");
-            }
+                if ($titel == null || strlen($titel) > 50) {
+                    $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
+                }
+                if ($subtitle == null || strlen($subtitle) > 50) {
+                    $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
+                }
+                if ($straße == null || strlen($straße) > 50) {
+                    $errornachricht = Fehlerbehandlung("Ihre Straße ist falsch.");
+                }
+                if (!preg_match('/^[0-9a-zA-Z]{1,50}$/', $hsnr)) {
+                    $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
+                }
+                if ($ort == null || strlen($ort) > 50) {
+                    $errornachricht = Fehlerbehandlung("Ihr Ort ist falsch.");
+                }
+                if (!preg_match('/^[\d]{5}$/', $plz)) {
+                    $errornachricht = Fehlerbehandlung("Ihre Postleitzahl ist falsch.");
+                }
 
-            if ($beschreibung == null || strlen($beschreibung) > 1999) {
-                $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
-            }
-            if ($companyname == null || strlen($companyname) > 50) {
-                $errornachricht = Fehlerbehandlung("Ihr Firmenname ist falsch.");
-            }
-            if (!isset ($art)) {
-                $errornachricht = Fehlerbehandlung("Ihre Angebotsart ist nicht gesetzt.");
-            }
-            if (!preg_match('/^[0-9-_]{3,50}$/', $free)) {
-                $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
-            }
-            if (!isset($befristung)) {
-                $errornachricht = Fehlerbehandlung("Ihre Befristung ist nicht gesetzt.");
-            }
-            if (!isset($arbeitszeit)) {
-                $errornachricht = Fehlerbehandlung("Ihre Arbeitszeit ist nicht gesetzt.");
-            }
+                if ($beschreibung == null || strlen($beschreibung) > 1999) {
+                    $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
+                }
+                if ($companyname == null || strlen($companyname) > 50) {
+                    $errornachricht = Fehlerbehandlung("Ihr Firmenname ist falsch.");
+                }
+                if (!isset ($art)) {
+                    $errornachricht = Fehlerbehandlung("Ihre Angebotsart ist nicht gesetzt.");
+                }
+                if (!preg_match('/^[0-9-_]{3,50}$/', $free)) {
+                    $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
+                }
+                if (!isset($befristung)) {
+                    $errornachricht = Fehlerbehandlung("Ihre Befristung ist nicht gesetzt.");
+                }
+                if (!isset($arbeitszeit)) {
+                    $errornachricht = Fehlerbehandlung("Ihre Arbeitszeit ist nicht gesetzt.");
+                }
 
-            if (!isset($_SESSION["error"])) {
+                if (!isset($_SESSION["error"])) {
 
 
-                $address = new Address(1, "Deutschland", $ort, $straße, $hsnr, $plz);
-                $offer = new Offer();
-                $offer->setAddress($address);
-                $offer->setTitle($titel);
-                $offer->setSubTitle($subtitle);
-                $offer->setFree(date($free));
-                $offer->setCompanyName($companyname);
-                $offer->setDescription($beschreibung);
-                $offer->setCreated(date("Y-m-d"));
-                $offer->setDuration($befristung);
-                $offer->setOfferType($art);
-                $offer->setCreator($idaktuelle);
-                $offer->setWorkModel($arbeitszeit);
-                $result = $OfferDao->create($offer);
-                if ($result) {
-                    $result = $OfferDao->getLastOwnOffer($user);
-                    if ($result != null) {
-                        $createdOffer = current($result);
-                        if (isset($_SESSION['tempUpload'])) {
-                            rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $createdOffer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
-                            $_SESSION['tempUpload'] = false;
+                    $address = new Address(1, "Deutschland", $ort, $straße, $hsnr, $plz);
+                    $offer = new Offer();
+                    $offer->setAddress($address);
+                    $offer->setTitle($titel);
+                    $offer->setSubTitle($subtitle);
+                    $offer->setFree(date($free));
+                    $offer->setCompanyName($companyname);
+                    $offer->setDescription($beschreibung);
+                    $offer->setCreated(date("Y-m-d"));
+                    $offer->setDuration($befristung);
+                    $offer->setOfferType($art);
+                    $offer->setCreator($idaktuelle);
+                    $offer->setWorkModel($arbeitszeit);
+                    $result = $OfferDao->create($offer);
+                    if ($result) {
+                        $result = $OfferDao->getLastOwnOffer($user);
+                        if ($result != null) {
+                            $createdOffer = current($result);
+                            if (isset($_SESSION['tempUpload'])) {
+                                rename("images/logos/" . $_SESSION['tempUpload'], "images/logos/" . $createdOffer->getId() . substr($_SESSION['tempUpload'], strpos($_SESSION["tempUpload"], ".")));
+                                $_SESSION['tempUpload'] = false;
+
+                            }
+                            ?>
+                            <script language="javascript"
+                                    type="text/javascript"> document.location = "index.php"; </script><?php
+                            $_SESSION["kik"] = true;
 
                         }
-                        ?>
-                        <script language="javascript"
-                                type="text/javascript"> document.location = "index.php"; </script><?php
-                        $_SESSION["kik"] = true;
-
                     }
+                } else {
+                    $errornachricht = Fehlerbehandlung("Es ist ein Fehler aufgetreten.");
+
                 }
             } else {
-
-
+                $errornachricht = Fehlerbehandlung("Es ist ein Fehler aufgetreten.");
             }
-        } else {
-
         }
     }
 

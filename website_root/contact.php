@@ -17,6 +17,7 @@
             </li>
             <li class="navibutton"><a href="impressum.php" class="naviobjekt"> Impressum</a></li>
         </ul>
+    </nav>
 </div>
 
 
@@ -86,6 +87,7 @@
             </form>
         </div>
     </div>
+</div>
 </div>
 
 
