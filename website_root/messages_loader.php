@@ -83,7 +83,7 @@ function displayResults($result)
                             </div>
                             <div class="anzeige_footer">
                                 <div class="erstellt rowItem">
-                                    <h5>erstellt am:<br><?php echo $offer->getCreated(); ?>
+                                    <h5>erstellt am:<br><?php echo $offer->getCreated(); ?></h5>
                                 </div>
                                 <div class="frei rowItem">
                                     <h5> Frei ab:<br><?php echo $offer->getFree(); ?></h5>
@@ -105,15 +105,14 @@ function displayResults($result)
                                                    class="submit btn delete"
                                                    name="anzeigeloeschen"
                                                    id="submit"/>
-
-
-                                    </div>
                                     </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
             <?php
         }
