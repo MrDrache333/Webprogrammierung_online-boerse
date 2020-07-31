@@ -1,11 +1,16 @@
 @media (prefers-color-scheme: dark) {
-
+    .title_light >h1,h2,h3,h4{
+        color: white !important;
+    }
     .impressumContainer,
     .impressumContent > h1 {
         background-color: rgb(31, 31, 31) !important;
     }
-}
 
+}
+.title_light{
+    color:black;
+}
 .aa:visited {
     color: green;
 }

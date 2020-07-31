@@ -29,7 +29,7 @@
             <div class="impressumContainer">
                 <div class="contact-row">
                     <div class="contact-col">
-                        <h3>Einleitung</h3>
+                        <h3 class="title_light">Einleitung</h3>
                         <p>
                             Das Portal www.kefedo.de ermöglicht es Ihnen, Informationen zu dem gesamten
                             Dienstleistungsangebot einzusehen und eServices zu nutzen. Einen Überblick über die
@@ -38,7 +38,7 @@
                             nur in der männlichen Form. Für die Inanspruchnahme des Portals gelten die folgenden
                             Regelungen.
                         </p>
-                        <h3>Übergreifende Regelungen</h3>
+                        <h3 class="title_light">Übergreifende Regelungen</h3>
                         <h4>§1 Nutzung des Portals unter www.kefedo.de</h4>
                         <p>(1) Zur Nutzung des Portals ist jede natürliche oder juristische Person berechtigt. Dies
                             umfasst auch Minderjährige ab Vollendung des 15. Lebensjahrs (vgl. §36 SGB I). Die Nutzung
@@ -123,7 +123,7 @@
                             übernimmt keine Verantwortung. </p>
                         <p>(5) KeFeDo haftet nicht für Schäden, die den Nutzern des Portals durch Computerviren oder
                             sonstige schädigende Mechanismen entstehen, die ihren Ursprng nicht bei KeFeDo haben.</p>
-                        <h3>Spezifische Regelungen im Falle der Nutzung der Jobangebote</h3>
+                        <h3 class="title_light">Spezifische Regelungen im Falle der Nutzung der Jobangebote</h3>
                         <h4>§6 Spezifika zur Registrierung und Nutzung</h4>
                         <p>Der Zugriff auf ihre Daten ist durch ein Kennwort geschützt. Mit ihrer Einwilligung erklären
                             Sie sich einverstanden, dass die von Ihnen eingestellten Daten zum Bewerber bzw.

@@ -29,7 +29,7 @@
             <div class="impressumContainer">
                 <div class="contact-row">
                     <div class="contact-col">
-                        <h3>Angaben gem&auml;&szlig; &sect; 5 TMG</h3>
+                        <h3 class="title_light">Angaben gem&auml;&szlig; &sect; 5 TMG</h3>
                         <p>KeFeDo GmbH<br/>
                             Ammerl&auml;nder Heerstra&szlig;e 114-118<br/>
                             26129 Oldenburg</p>
@@ -37,16 +37,16 @@
                         <p><strong>Vertreten durch:</strong><br/>
                             Fenja Bauer, Keno Oelrichs Garcia und Dominik L&uuml;bben</p>
 
-                        <h3>Kontakt</h3>
+                        <h3 class="title_light">Kontakt</h3>
                         <p>Telefon: +49441 7984450<br/>
                             E-Mail: info.kefedo@mail.de</p>
 
-                        <h3>EU-Streitschlichtung</h3>
+                        <h3 class="title_light">EU-Streitschlichtung</h3>
                         <p>Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
                             <a class="aa" href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a>.<br/>
                             Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
 
-                        <h3>Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h3>
+                        <h3 class="title_light">Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h3>
                         <p>Wir nehmen an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teil.
                             Zuständig ist die Universalschlichtungsstelle des Zentrums für Schlichtung e.V., Straßburger
                             Straße 8, 77694 Kehl am Rhein (<a class="aa" href="https://www.verbraucher-schlichter.de"
