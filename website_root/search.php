@@ -178,7 +178,8 @@ function displayResults($result)
                             <label for="previousSite" hidden>Vorherige Seite</label>
                             <input type="hidden" value="<?php echo($result[0]->getId() + 6) ?>" name="startWith">
                             <button class="nextSideButton" id="previousSite" type="submit"><span class="center"><span
-                                            class="material-icons">arrow_back</span> zurück</span></button>
+                                            class="material-icons">arrow_back</span> Vorherige Seite
+                                </span></button>
                         </div>
                     </form>
                     <?php
