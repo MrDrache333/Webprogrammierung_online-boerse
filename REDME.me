@@ -4,17 +4,42 @@ Teilnehmende: Fenja Bauer, Dominik Lübben, Keno Oelrichs Garcia
 1. Vorraussetzungen, um unsere Seite in Betrieb nehmen zu können:
 
  1.1 Ein Admin wurde für die Seite nicht vorgesehen, aber ein Testaccount ist über demo@demo.de Passwort: demo einsehbar.
- 1..  Facebook bzw Twitter verlinkung nicht auf localhost da die von Facebook gesperrt ist.
+ 1.2  Facebook bzw Twitter verlinkung nicht auf localhost da die von Facebook gesperrt ist.
     Die Verlinkung ist auf ein NAS von uns und die ID der Anzeige wird mitübertragen.
     Die Datenbank dort hat aber nur die Einträge die von uns vordefiniert sind.
-    Das heisst bei neu erstellten Anzeigen wird diese auf dem NAS nicht gefunden.
+    Das heisst bei neu erstellten Anzeigen werden diese auf dem NAS nicht gefunden.
 
 2.Stichwortartige Auflistung aller Funktionalitäten bzw. eine Sitemap:
 2.1 Funktionalitäten:
+        -Jobanzeigen ertsellen
+            -Titel
+            -Addresse
+            -Beschriebung
+            -Bild
+        -Account erstellen
+            -Name
+            -Bild
+        -Suche nach Jobs
+            -Filter
+            -Intiligente Suche
+        -Kontakt Seite
+            -Kontakt per Mail
+        -Mein Anzeigen
+            -listet alle eignen Anzeigen auf
+            -löschen und barbeiten
+        -Detail Ansicht Job
+            -Teilen der Anziege auf Facebook,Telegram,Twitter
+            -Adresse per Map
+            -Infos vom Job
 2.2 Sitemap:
 
 
 
 3.Nicht umgesetzte Teilaufgaben:
 4.Fehler oder Mängel:
+    4.1 133 new_offer_loader.php weiterleitung durch Javascript. Dies ist nicht sinnvoll da Nutzer,
+        die Javascript aus haben nicht weitergeleitet werden.
+    4.2 nicht überall sind Cookies durch Sessions ersetzt worden.
 5.Besonderheiten die    über    dieeigentlichen    Aufgaben    hinaus berücksichtigt bzw. integriert wurden, bitte angeben
+    5.1 Darkmode der sich an das Designe des Nutzers anpasst. Ist die Frabe im Betriebssytem auf dunkel getstell,
+        wird unsere Website dunkel.

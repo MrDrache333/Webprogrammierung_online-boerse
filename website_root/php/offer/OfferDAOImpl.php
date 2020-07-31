@@ -99,21 +99,31 @@ class OfferDAOImpl implements OfferDAO
         $values = [$offer->getId()];
         $adressid = $this->database->execute($command, $values);
         $offerid = $adressid[0]["address"];
+        $command = "Select * From Address WHERE id=?";
+        $values = [$offerid];
+        $uberprufung = $this->database->execute($command, $values);
+        $uberprufung = current($uberprufung);
         $command = "SELECT Count(offers.id) From Offers where address=?;";
         $values = [$offerid];
         $abfrage1 = $this->database->execute($command, $values);
         $address = $abfrage1[0]["Count(offers.id)"];
         $this->addressDAOImpl = new AddressDAOImpl($this->database);
-        if ($address !== "1") {
-            // alte Adresse  wird öfter als 1 mal verwendet somit alte Adresse behalten
-            $abfrage2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
 
-            if ($abfrage2 === null || sizeof($abfrage2) === 0) {
-                //neue Adresse gibt es noch nicht und wird angelegt
-                $this->addressDAOImpl->create($offer->getAddress());
-                $offer2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
-                $offer2 = current($offer2);
-                $adressiddata = $offer2->getID();
+        if ($offer->getAddress()->getTown() == $uberprufung["town"] && $offer->getAddress()->getStreet() == $uberprufung["street"] && $offer->getAddress()->getNumber() == $uberprufung["number"] && $offer->getAddress()->getPlz() == $uberprufung["plz"]) {
+            //do nothing
+            $adressiddata = $address;
+        } else {
+
+            if ($address !== "1") {
+                // alte Adresse  wird öfter als 1 mal verwendet somit alte Adresse behalten
+                $abfrage2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
+
+                if ($abfrage2 === null || sizeof($abfrage2) === 0) {
+                    //neue Adresse gibt es noch nicht und wird angelegt
+                    $this->addressDAOImpl->create($offer->getAddress());
+                    $offer2 = $this->addressDAOImpl->findAddressId($offer->getAddress());
+                    $offer2 = current($offer2);
+                    $adressiddata = $offer2->getID();
 
             } else {
                 //neue Adresse gibt es bereits also nur ID ändern
@@ -126,7 +136,6 @@ class OfferDAOImpl implements OfferDAO
 
             if ($abfrage2 === null || sizeof($abfrage2) === 0) {
                 //alte Adresse auf neue umschreiben ändern
-                var_dump($offer);
                 $plz = $offer->getAddress()->getPlz();
                 $street = $offer->getAddress()->getStreet();
                 $ort = $offer->getAddress()->getTown();
@@ -142,6 +151,7 @@ class OfferDAOImpl implements OfferDAO
                 $values = [$offerid];
                 $this->database->execute($command, $values);
                 $adressiddata = current($abfrage2)->getId();
+            }
             }
         }
         $command = "UPDATE offers SET title=?, subtitle=?, companyname=?, description=?,address=?,free=?,offerType=?,duration=?,workModel=? WHERE id=?";

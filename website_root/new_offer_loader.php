@@ -91,19 +91,19 @@ if (isset($_POST["edit_offer"])) {
     if ($eingelogt == "true") {
 
 
-        if (!isset($titel)) {
+        if ($titel == null || strlen($titel) > 50) {
             $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
         }
-        if (!isset($subtitle)) {
+        if ($subtitle == null || strlen($subtitle) > 50) {
             $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
         }
-        if (!isset($straße)) {
+        if ($straße == null || strlen($straße) > 50) {
             $errornachricht = Fehlerbehandlung("Ihre Straße ist falsch.");
         }
         if (!isset($hsnr)) {
             $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
         }
-        if (!isset($ort)) {
+        if ($ort == null || strlen($ort) > 50) {
             $errornachricht = Fehlerbehandlung("Ihr Ort ist falsch.");
         }
         if (!preg_match('/([0-9]){5,5}$/', $plz)) {
@@ -112,10 +112,10 @@ if (isset($_POST["edit_offer"])) {
         if (!preg_match('/^[0-9-_]{3,50}$/', $free)) {
             $errornachricht = Fehlerbehandlung("Ihr Verfügbarkeitsdatumfrei ist falsch.");
         }
-        if (!isset($beschreibung)) {
+        if ($beschreibung == null || strlen($beschreibung) > 1999) {
             $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
         }
-        if (!isset($companyname)) {
+        if ($companyname == null || strlen($companyname) > 50) {
             $errornachricht = Fehlerbehandlung("Ihr Firmenname ist falsch.");
         }
         if ($art == null) {
@@ -133,6 +133,7 @@ if (isset($_POST["edit_offer"])) {
             <script language="javascript" type="text/javascript"> document.location = "index.php"; </script><?php
             $_SESSION["kik"] = true;
         }
+
         $offer->setTitle(htmlspecialchars($titel));
         $offer->setSubTitle(htmlspecialchars($subtitle));
         $offer->setCompanyName(htmlspecialchars($companyname));
@@ -152,8 +153,9 @@ if (isset($_POST["edit_offer"])) {
             unset($_SESSION['tempUpload']);
 
         }
-
     }
+
+
 }
 
 if (isset($_POST["bearbeiten_offer"])) {
@@ -315,29 +317,29 @@ if (isset($_POST["submit_offer"])) {
             $idaktuelle = $user->getId();
 
 
-            if (!isset($titel)) {
+            if ($titel == null || strlen($titel) > 50) {
                 $errornachricht = Fehlerbehandlung("Ihr Titel ist falsch.");
             }
-            if (!isset($subtitle)) {
+            if ($subtitle == null || strlen($subtitle) > 50) {
                 $errornachricht = Fehlerbehandlung("Ihr Untertitel ist falsch.");
             }
-            if (!isset($straße)) {
+            if ($straße == null || strlen($straße) > 50) {
                 $errornachricht = Fehlerbehandlung("Ihre Straße ist falsch.");
             }
             if (!preg_match('/^[0-9a-zA-Z]{1,50}$/', $hsnr)) {
                 $errornachricht = Fehlerbehandlung("Ihre Hausnummer ist falsch.");
             }
-            if (!isset($ort)) {
+            if ($ort == null || strlen($ort) > 50) {
                 $errornachricht = Fehlerbehandlung("Ihr Ort ist falsch.");
             }
             if (!preg_match('/^[\d]{5}$/', $plz)) {
                 $errornachricht = Fehlerbehandlung("Ihre Postleitzahl ist falsch.");
             }
 
-            if (!isset($beschreibung)) {
+            if ($beschreibung == null || strlen($beschreibung) > 1999) {
                 $errornachricht = Fehlerbehandlung("Ihre Beschreibung ist falsch.");
             }
-            if (!isset($companyname)) {
+            if ($companyname == null || strlen($companyname) > 50) {
                 $errornachricht = Fehlerbehandlung("Ihr Firmenname ist falsch.");
             }
             if (!isset ($art)) {
